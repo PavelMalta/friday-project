@@ -1,6 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Navigation.module.css"
+import {routes} from "../../router/routes";
 
 
 export const Navigation = () => {
@@ -8,13 +9,13 @@ export const Navigation = () => {
         <div className={s.navigationContainer}>
             <h1>Navigation</h1>
             <div className={s.linksList}>
-                <NavLink to={'/'}>Login</NavLink>
-                <NavLink to={'/'}>Registration</NavLink>
-                <NavLink to={'/'}>Profile</NavLink>
-                <NavLink to={'/'}>404</NavLink>
-                <NavLink to={'/'}>Password Recover</NavLink>
-                <NavLink to={'/'}>New Password</NavLink>
-                <NavLink to={'/'}>Presentation</NavLink>
+                <NavLink to={routes.login}>Login</NavLink>
+                <NavLink to={routes.registration}>Registration</NavLink>
+                <NavLink to={routes.profile}>Profile</NavLink>
+                <NavLink to={routes.notFound}>404</NavLink>
+                <NavLink to={routes.passwordRecover}>Password Recover</NavLink>
+                <NavLink to={routes.newPassword}>New Password</NavLink>
+                <NavLink to={routes.presentation}>Presentation</NavLink>
             </div>
         </div>
     )
