@@ -1,0 +1,20 @@
+.navigationContainer {
+    grid-area: navigation;
+    border: 1px solid black;
+    height: 93vh;
+    width: 100%;
+
+}
+
+.linksList {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-flow: column;
+    padding-left: 10px;
+}
+.linksList a {
+    margin-top: 10px;
+    text-decoration: none;
+    color: firebrick;
+}

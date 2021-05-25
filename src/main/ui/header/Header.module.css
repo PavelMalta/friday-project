@@ -1,0 +1,5 @@
+.headerContainer {
+    grid-area: header;
+    border: 1px solid black;
+    height: 7vh;
+}
