@@ -7,7 +7,7 @@ import {routes} from "../../router/routes";
 export const Navigation = () => {
     return (
         <div className={s.navigationContainer}>
-            <h1>Navigation</h1>
+            <h2>Navigation</h2>
             <div className={s.linksList}>
                 <NavLink to={routes.login}>Login</NavLink>
                 <NavLink to={routes.registration}>Registration</NavLink>
