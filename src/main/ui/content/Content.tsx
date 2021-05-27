@@ -17,10 +17,10 @@ export const Content = () => {
                 <Route exact path={routes.login} render={() => <Login/>} />
                 <Route exact path={routes.registration} render={() => <Registration/>} />
                 <Route exact path={routes.profile} render={() => <Profile/>} />
-                <Route exact path={routes.notFound} render={() => <NotFound/>} />
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecover/>} />
                 <Route exact path={routes.newPassword} render={() => <NewPassword/>} />
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
+                <Route render={() => <NotFound/>} />
             </Switch>
         </div>
     )
