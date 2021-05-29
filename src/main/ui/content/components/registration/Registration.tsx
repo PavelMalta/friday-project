@@ -3,6 +3,9 @@ import style from './Registration.module.css'
 
 
 export const Registration = () => {
+
+
+
     return (
         <div>
             <form action="" className={style.form}>
