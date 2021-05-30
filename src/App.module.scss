@@ -1,0 +1,14 @@
+// Осталось от фронта
+/* .app {
+    display: grid;
+    grid-template-columns: 15% 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header header header"
+        "navigation content content content"
+} */
+
+.content {
+    background-image: url(./main/ui/assets/images/Background.png);
+    background-size: cover;
+}

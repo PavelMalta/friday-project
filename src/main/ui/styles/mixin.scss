@@ -1,0 +1,18 @@
+@mixin text($fontSize, $fontWeight, $lineHeight) {
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    line-height: $lineHeight;
+}
+
+@mixin media($width, $type:min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+    }
+    @media (#{$type}-width: $width) {
+        @content;
+    } 
+}
+

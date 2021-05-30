@@ -1,0 +1,14 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
+.logo {
+    display: flex;
+    justify-content: center;
+    @include text(26px, 600, 39px);
+    color: $textColor;
+    text-align: center;
+    padding-top: 25px;
+    &:hover {
+        font-weight: 700;
+    }
+}

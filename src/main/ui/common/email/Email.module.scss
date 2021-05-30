@@ -1,0 +1,24 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 347px;
+    width: 100%;
+    margin-bottom: 24px; 
+    }
+    .label {
+        @include text(13px, 400, 20px);
+        color: $textColorLight;
+        opacity: 0.8;
+        &:hover {
+            font-weight: 600;
+        }
+    }
+    .input__item {
+        border: none;
+        height: 26px;
+        border-bottom: 1.6px solid rgba(36,37,74,0.2);
+    }
