@@ -12,14 +12,14 @@ function App() {
         <div className={s.app}>
 
             {/* Осталось от фронта */}
-            {/* <Header/>
+             <Header/>
             <Navigation/>
-            <Content/> */}
+            <Content/>
             
 
             {/* Тут подключены сверстанные странички */}
             <div className={s.content}>
-            <LoginPage/>
+          {/*  <LoginPage/>*/}
             {/* <Register/> */}
             </div>
         </div>

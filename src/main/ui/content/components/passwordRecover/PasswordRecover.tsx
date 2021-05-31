@@ -4,7 +4,8 @@ import React from "react";
 export const PasswordRecover = () => {
     return (
         <div>
-            Password Recover
+            <input/>
+            <button>Send</button>
         </div>
     )
 }
