@@ -1,0 +1,61 @@
+@import './../../../styles/mixin.scss';
+@import './../../../styles/vars.scss';
+
+.loginPage {
+    height: 100vh;
+    .wrapper {
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .inner {
+            background-color: $primaryColor;
+            max-width: 413px;
+            width: 100%;
+            border-radius: 30px; 
+            opacity: 0.8;
+            .form {
+                margin-top: 38px;
+            }
+            .linkPassword {
+                @include text (14px, 400, 17px);
+                color: $textColor;
+                display: inline-block;
+                margin: 38px 51px 0 0;
+                display: flex;
+                justify-content: flex-end; 
+                &:hover {
+                    font-weight: 500;
+                }  
+            }
+            .btn {
+                display: flex;
+                justify-content: center; 
+                margin-top: 79px;
+            }
+            .singUp {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 31px;
+                padding-bottom: 26px;
+                .span {
+                    @include text (14px, 600, 24px);
+                    color: $textColor;
+                    opacity: 0.5;
+                    &:hover {
+                        font-weight: 700;
+                    }
+                }
+                .linkSingUp {
+                    @include text (16px, 600, 24px);
+                    color: $accentColor;
+                    margin-top: 11px;
+                    &:hover {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }     
+}

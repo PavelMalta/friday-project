@@ -1,9 +1,10 @@
 import React from 'react';
-import s from './App.module.css';
+import s from './App.module.scss';
 import { Content } from './main/ui/content/Content';
 import { Header } from './main/ui/header/Header';
 import { Navigation } from './main/ui/navigation/Navigation';
-import {Registration} from "./main/ui/content/components/registration/Registration";
+import {Register} from "./main/ui/pages/auth/register/Register";
+import {RegistrationContainer} from "./main/ui/pages/auth/register/api/RegistrationContainer";
 
 function App() {
     return (
@@ -11,10 +12,9 @@ function App() {
             <Header/>
             <Navigation/>
             <Content/>
-            <Registration/>
+            {/*<Register/>*/}
         </div>
     );
 }
 
 export default App;
-//test

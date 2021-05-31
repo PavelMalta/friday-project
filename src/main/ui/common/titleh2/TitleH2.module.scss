@@ -1,0 +1,9 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
+.title {
+    @include text (22px, 600, 33px);
+    color: $textColor;
+    text-align: center;
+    padding-top: 32px;
+}
