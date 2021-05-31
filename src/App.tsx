@@ -4,7 +4,7 @@ import { Content } from './main/ui/content/Content';
 import { Header } from './main/ui/header/Header';
 import { Navigation } from './main/ui/navigation/Navigation';
 import {Register} from "./main/ui/pages/auth/register/Register";
-import {RegistrationContainer} from "./main/ui/pages/auth/register/api/RegistrationContainer";
+import {RegistrationContainer} from "./main/ui/pages/auth/register/RegistrationContainer";
 
 function App() {
     return (

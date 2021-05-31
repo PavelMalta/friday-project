@@ -8,7 +8,7 @@ import {PasswordRecover} from "./components/passwordRecover/PasswordRecover";
 import {NewPassword} from "./components/newPassword/NewPassword";
 import {Presentation} from "./components/presentation/Presentation";
 import {LoginPage} from "./components/login/Login";
-import {RegistrationContainer} from "../pages/auth/register/api/RegistrationContainer";
+import {RegistrationContainer} from "../pages/auth/register/RegistrationContainer";
 
 export const Content = () => {
     return (

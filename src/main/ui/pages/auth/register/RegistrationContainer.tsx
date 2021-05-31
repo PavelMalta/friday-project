@@ -1,7 +1,7 @@
-import {Register} from "../Register";
+import {Register} from "./Register";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {setNewUserTC} from "../../../../../store/registration-reducer";
+import {setNewUserTC} from "../../../../store/registration-reducer";
 
 
 export const RegistrationContainer = () => {
