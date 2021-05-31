@@ -1,16 +1,14 @@
-import React, {ChangeEvent, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch} from "react-redux"
+import React, {useState} from "react";
 import {getAuthUserData} from "../../../../store/login-reducer";
-import { LoginPage } from "./LoginPage";
-
+import {LoginPage} from "./LoginPage";
 
 export const LoginContainer = () => {
-    debugger
 
     const dispatch = useDispatch()
 
-    let [email, setEmail] = useState<string>('')
-    let [password, setPassword] = useState<string>('')
+    let [email, setEmail] = useState<string>('nya-admin@nya.nya')
+    let [password, setPassword] = useState<string>('1qazxcvBG')
     let [rememberMe, setRememberMe] = useState<boolean>(false)
 
     const onChangeEmail = (email: string) => {
@@ -28,18 +26,15 @@ export const LoginContainer = () => {
         setEmail('')
         setPassword('')
         setRememberMe(false)
-
-
     }
 
-    return <LoginPage
-                email={email}
-                password={password}
-                rememberMe={rememberMe}
-                onChangeEmail={onChangeEmail}
-                onclickHandler={onclickHandler}
-                onChangePassword={onChangePassword}
-                onChangeRememberMe={onChangeRememberMe}
+    return <LoginPage email={email}
+                      password={password}
+                      rememberMe={rememberMe}
+                      onclickHandler={onclickHandler}
+                      onChangeEmail={onChangeEmail}
+                      onChangePassword={onChangePassword}
+                      onChangeRememberMe={onChangeRememberMe}/>
 
-    />
+
 }

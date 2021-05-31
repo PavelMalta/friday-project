@@ -17,7 +17,7 @@ function App() {
             {/*/!* Тут подключены сверстанные странички *!/*/}
             <div className={s.content}>
             <LoginContainer/>
-            {/*<Register/>*/}
+            <Register/>
             </div>
         </div>
     );

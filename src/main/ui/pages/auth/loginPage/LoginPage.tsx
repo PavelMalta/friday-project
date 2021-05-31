@@ -1,9 +1,9 @@
 import s from "./LoginPage.module.scss";
-import { Input } from "../../../common/input/Input";
-import { Button } from "../../../common/button/Button";
-import { Logo } from "../../../common/logo/Logo";
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
-import React, {ChangeEvent} from "react";
+import {Input} from "../../../common/input/Input";
+import {Button} from "../../../common/button/Button";
+import {Logo} from "../../../common/logo/Logo";
+import {TitleH2} from "../../../common/titleh2/TitleH2";
+import React from "react";
 
 type LoginPagePropsType = {
     email: string
@@ -17,7 +17,6 @@ type LoginPagePropsType = {
 }
 
 export const LoginPage = (props:LoginPagePropsType) => {
-    debugger
 
     const changeEmail = (value: string) => {
         props.onChangeEmail(value)
@@ -37,20 +36,20 @@ export const LoginPage = (props:LoginPagePropsType) => {
                     <TitleH2/>
                     <div className={s.form}>
                         <Input title="Email"
-                                type= "email"
-                                name="email"
+                               type= "email"
+                               name="email"
                                placeholder={'email'}
-                                value={props.email}
-                                onChange={changeEmail}
+                               value={props.email}
+                               onChange={changeEmail}
                                style= {{marginTop:"25px"}}
                         />   {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
-                                type= "password"
-                                name="password"
+                               type= "password"
+                               name="password"
                                placeholder={'password'}
-                                value={props.password}
-                                onChange={changePassword}
-                            style= {{marginTop:"25px"}}
+                               value={props.password}
+                               onChange={changePassword}
+                               style= {{marginTop:"25px"}}
                         />
                     </div>
                     <a className={s.linkPassword} href="#">Forgot Password</a>

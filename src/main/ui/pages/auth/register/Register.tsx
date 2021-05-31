@@ -6,8 +6,6 @@ import { TitleH2 } from "../../../common/titleh2/TitleH2";
 import React from "react";
 
 
-
-
 export const Register = () => {
     return (
         <div className={s.loginPage}>
@@ -35,13 +33,16 @@ export const Register = () => {
                     </div>
                     <form className={s.btn}>
                         <Button value="Cancel"
+                                onClick={()=>{}}
                             style={{width:"124px", 
                                     backgroundColor: "#CDCEF4",
                                     color: "#21268F",
                                     marginRight: "36px"
                                     }} />
                         <Button value="Register"
-                            style={{width:"187px"}}/>
+                                onClick={()=>{}}
+                            style={{width:"187px"}}
+                        />
                     </form>
                 </div>
             </div>

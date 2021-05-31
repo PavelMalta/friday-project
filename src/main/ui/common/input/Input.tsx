@@ -1,15 +1,14 @@
 import s from "./Input.module.scss";
 import Eye from "./../../assets/images/loginPage/eye.svg";
-import EyeHide from "./../../assets/images/loginPage/eyeHide.svg";
 import {ChangeEvent} from "react";
 
 type InputPropsType = {
-    title: string
-    type: string
-    name: string
+    title?: string
+    type?: string
+    name?: string
     value?: string
     style?: {}
-    placeholder: string
+    placeholder?: string
     onChange?:(string: string)=> void
 }
 
@@ -20,16 +19,16 @@ export const Input = (props: InputPropsType) => {
     }
 
     return (
-        // <form className={s.wrapper} style= {props.style}>
-            <form className={s.wrapper} >
+        <form className={s.wrapper} style= {props.style}>
+
 
             <label className={s.label}>{props.title}</label>
             <input className={s.input__item}
                 type={props.type}
                 name={props.name}
-                placeholder={props.placeholder}>
+                placeholder={props.placeholder}
                 value={props.value}
-                onChange = {onChangeHandler}
+                onChange = {onChangeHandler}>
             </input>
         
                     <img src={Eye} className={s.icon}/>
