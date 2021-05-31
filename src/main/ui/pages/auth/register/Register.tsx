@@ -21,10 +21,14 @@ export const Register = () => {
                         <Input title="Password"
                                 type= "password"
                                 name="password"
+                                id= "checkbox3"
+                                htmlFor= "checkbox3"
                             style= {{marginTop:"25px"}} />
                             <Input title="Confirm password"
                                 type= "password"
                                 name="Confirm password"
+                                id= "checkbox4"
+                                htmlFor= "checkbox4"
                             style= {{marginTop:"25px"}} />
                     </div>
                     <form className={s.btn}>
