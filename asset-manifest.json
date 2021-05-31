@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/friday-project/static/css/main.b6b4c0fd.chunk.css",
-    "main.js": "/friday-project/static/js/main.ad560b37.chunk.js",
-    "main.js.map": "/friday-project/static/js/main.ad560b37.chunk.js.map",
-    "runtime-main.js": "/friday-project/static/js/runtime-main.50526ded.js",
-    "runtime-main.js.map": "/friday-project/static/js/runtime-main.50526ded.js.map",
-    "static/js/2.349bba48.chunk.js": "/friday-project/static/js/2.349bba48.chunk.js",
-    "static/js/2.349bba48.chunk.js.map": "/friday-project/static/js/2.349bba48.chunk.js.map",
-    "static/js/3.478a61a7.chunk.js": "/friday-project/static/js/3.478a61a7.chunk.js",
-    "static/js/3.478a61a7.chunk.js.map": "/friday-project/static/js/3.478a61a7.chunk.js.map",
+    "main.css": "/friday-project/static/css/main.ab94adea.chunk.css",
+    "main.js": "/friday-project/static/js/main.e63c6fc1.chunk.js",
+    "main.js.map": "/friday-project/static/js/main.e63c6fc1.chunk.js.map",
+    "runtime-main.js": "/friday-project/static/js/runtime-main.3cf4ea4c.js",
+    "runtime-main.js.map": "/friday-project/static/js/runtime-main.3cf4ea4c.js.map",
+    "static/js/2.fff0dc10.chunk.js": "/friday-project/static/js/2.fff0dc10.chunk.js",
+    "static/js/2.fff0dc10.chunk.js.map": "/friday-project/static/js/2.fff0dc10.chunk.js.map",
+    "static/js/3.2b2eb12b.chunk.js": "/friday-project/static/js/3.2b2eb12b.chunk.js",
+    "static/js/3.2b2eb12b.chunk.js.map": "/friday-project/static/js/3.2b2eb12b.chunk.js.map",
     "index.html": "/friday-project/index.html",
-    "static/css/main.b6b4c0fd.chunk.css.map": "/friday-project/static/css/main.b6b4c0fd.chunk.css.map",
-    "static/js/2.349bba48.chunk.js.LICENSE.txt": "/friday-project/static/js/2.349bba48.chunk.js.LICENSE.txt"
+    "static/css/main.ab94adea.chunk.css.map": "/friday-project/static/css/main.ab94adea.chunk.css.map",
+    "static/js/2.fff0dc10.chunk.js.LICENSE.txt": "/friday-project/static/js/2.fff0dc10.chunk.js.LICENSE.txt",
+    "static/media/App.module.scss": "/friday-project/static/media/Background.5639fd6c.png",
+    "static/media/eye.109a1739.svg": "/friday-project/static/media/eye.109a1739.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.50526ded.js",
-    "static/js/2.349bba48.chunk.js",
-    "static/css/main.b6b4c0fd.chunk.css",
-    "static/js/main.ad560b37.chunk.js"
+    "static/js/runtime-main.3cf4ea4c.js",
+    "static/js/2.fff0dc10.chunk.js",
+    "static/css/main.ab94adea.chunk.css",
+    "static/js/main.e63c6fc1.chunk.js"
   ]
 }
