@@ -2,7 +2,6 @@ import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import s from "./Content.module.css"
 import {routes} from "../../router/routes";
-import {Registration} from "./components/registration/Registration";
 import {Profile} from "./components/profile/Profile";
 import {NotFound} from "./components/notFound/NotFound";
 import {PasswordRecover} from "./components/passwordRecover/PasswordRecover";
@@ -24,7 +23,6 @@ export const Content = () => {
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
                 <Route render={() => <NotFound/>} />
 
-                {/*<RegistrationContainer/>*/}
             </Switch>
         </div>
     )
