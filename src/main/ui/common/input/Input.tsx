@@ -1,7 +1,7 @@
 import s from "./Input.module.scss";
 import Eye from "./../../assets/images/loginPage/eye.svg";
 import EyeHide from "./../../assets/images/loginPage/eyeHide.svg";
-import {ChangeEvent} from "react";
+
 
 
 export const Input = (props: any) => {
@@ -22,7 +22,23 @@ export const Input = (props: any) => {
 
             <img src={Eye} className={s.icon}/>
             {/* <img src={EyeHide} className={s.icon}/>  перечеркнутый глаз */}
+                type={props.type}
+                name={props.name}
+                placeholder={props.placeholder}></input>
 
+            {/* Глазик чекбокс */}
+            <div className={s.checkbox}>
+                <input className={s.checkboxInput} type="checkbox" id={props.id}/>
+                <label className={s.checkboxLable} htmlFor={props.htmlFor}></label>
+            </div>
+
+                {/* Не получается заюзать((( */}
+                {/* <Eye
+                    id= "checkbox2"
+                    htmlFor= "checkbox2"
+                /> */}
+
+            <span className={s.span}>Input error</span>
         </form>
     )
 }
