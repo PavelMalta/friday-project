@@ -24,6 +24,9 @@ export const RegistrationContainer = () => {
 
     const registrationButtonClick = () => {
         if (password !== passwordConfirm) {
+            alert('Password & confirm password fields are not equally');
+            setPassword('');
+            setPasswordConfirm('');
             return
         }
         dispatch(setNewUserTC(email, password));

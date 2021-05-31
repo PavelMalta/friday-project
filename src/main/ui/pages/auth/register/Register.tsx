@@ -3,7 +3,6 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
-import {ChangeEvent} from "react";
 
 type RegistrationPropsType = {
     email: string
