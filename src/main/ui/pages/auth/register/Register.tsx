@@ -42,12 +42,14 @@ export const Register = (props: RegistrationPropsType) => {
                                name="email"
                                value={props.email}
                                onChange={emailChange}/> {/* Нужно убрать глазик (логика) */}
+
                         <Input title="Password"
                                type="password"
                                name="password"
                                value={props.password}
                                onChange={passwordChange}
                                style={{marginTop: "25px"}}/>
+
                         <Input title="Confirm password"
                                type="password"
                                name="Confirm password"

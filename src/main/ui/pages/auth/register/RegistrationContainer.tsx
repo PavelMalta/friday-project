@@ -8,8 +8,8 @@ export const RegistrationContainer = () => {
 
     const dispatch = useDispatch()
 
-    let [email, setEmail] = useState<string>('');
-    let [password, setPassword] = useState<string>('');
+    let [email, setEmail] = useState<string>('nya-admin@nya.nya');
+    let [password, setPassword] = useState<string>('1qazxcvBG');
     let [passwordConfirm, setPasswordConfirm] = useState<string>('');
 
     const onEmailChange = (email: string) => {
@@ -33,8 +33,8 @@ export const RegistrationContainer = () => {
         setEmail('');
         setPassword('');
         setPasswordConfirm('');
-
     }
+
     const cancelClick = () => {
         setEmail('');
         setPassword('');
