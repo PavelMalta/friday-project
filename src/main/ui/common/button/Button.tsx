@@ -6,6 +6,7 @@ export const Button = (props: any) => {
         <button
 			className={s.btn}
 			style={props.style}
+			onClick={props.onclick}
 		> 
 			{props.value}
 		</button>

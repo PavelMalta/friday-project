@@ -3,6 +3,7 @@ import { Input } from "../../../common/input/Input";
 import { Button } from "../../../common/button/Button";
 import { Logo } from "../../../common/logo/Logo";
 import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import React from "react";
 
 
 
@@ -17,14 +18,19 @@ export const Register = () => {
                     <div className={s.form}>
                         <Input title="Email"
                                     type= "email"
+                               placeholder={'email'}
+                               style= {{marginTop:"25px"}}
                                     name="email" />   {/* Нужно убрать глазик (логика) */} 
                         <Input title="Password"
                                 type= "password"
+                               placeholder={'password'}
                                 name="password"
-                            style= {{marginTop:"25px"}} />
+                            style= {{marginTop:"25px"}}
+                        />
                             <Input title="Confirm password"
                                 type= "password"
                                 name="Confirm password"
+                                   placeholder={'password'}
                             style= {{marginTop:"25px"}} />
                     </div>
                     <form className={s.btn}>

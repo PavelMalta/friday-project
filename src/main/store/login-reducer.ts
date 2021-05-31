@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {authAPI} from "../ui/content/components/login/api-login";
+import {authAPI} from "../ui/pages/auth/loginPage/api-login";
 
 type InitialStateType = typeof initialState
 

@@ -8,14 +8,15 @@ import {NotFound} from "./components/notFound/NotFound";
 import {PasswordRecover} from "./components/passwordRecover/PasswordRecover";
 import {NewPassword} from "./components/newPassword/NewPassword";
 import {Presentation} from "./components/presentation/Presentation";
-import {LoginPage} from "./components/login/Login";
+import {LoginContainer} from "../pages/auth/loginPage/LoginContainer";
+
 
 export const Content = () => {
     return (
         <div className={s.contentContainer}>
             <Switch>
                 <Route path={'/'} exact render={() => <Redirect to={routes.login}/>}/>
-                <Route exact path={routes.login} render={() => <LoginPage/>} />
+                <Route exact path={routes.login} render={() => <LoginContainer/>} />
                 <Route exact path={routes.registration} render={() => <Registration/>} />
                 <Route exact path={routes.profile} render={() => <Profile/>} />
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecover/>} />
