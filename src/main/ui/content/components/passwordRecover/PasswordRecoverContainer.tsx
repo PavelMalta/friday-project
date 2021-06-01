@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from "react";
-import {recoverTC} from "../../../../store/passwordRecover-reducer";
+import {recoverTC, setErrorAC} from "../../../../store/passwordRecover-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../store/store";
 import {PasswordRecover} from "./PasswordRecover";
@@ -14,10 +14,20 @@ export const PasswordRecoverContainer = () => {
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
+        if (error !== null) {
+            dispatch(setErrorAC(null))
+        }
     }
 
     const onclickHandler = () => {
-        dispatch(recoverTC(email))
+        if (email === "") {
+            dispatch(setErrorAC('Required'))
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+            dispatch(setErrorAC('Invalid email address'))
+        } else {
+            dispatch(recoverTC(email))
+            setEmail("")
+        }
     }
 
     if (isFetching) {

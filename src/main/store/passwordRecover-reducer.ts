@@ -19,7 +19,7 @@ export const passwordRecoverReducer = (state: InitialStateType = initialState, a
 }
 
 export const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
-export const setErrorAC = (error: string) => ({type: "SET-ERROR", error} as const)
+export const setErrorAC = (error: string | null) => ({type: "SET-ERROR", error} as const)
 
 export const recoverTC = (email: string) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
