@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {regAPI} from "../ui/pages/auth/register/api/api-registr";
+import {regAPI} from "../ui/content/components/registration/api/api-registr";
 
 const initialState = {
     newUser: {}
@@ -28,7 +28,6 @@ export const registrationReducer = (state: InitialStateType = initialState, acti
 export const setNewUserAC = (payload: InitialStateType) => ({type: 'SET_NEW_USER', payload}) as const
 
 export const setNewUserTC = (email: string, password: string) => (dispatch: Dispatch) => {
-    debugger
     regAPI.registration(email, password)
         .then(response => {
             console.log(response.data)

@@ -7,8 +7,10 @@ import {NotFound} from "./components/notFound/NotFound";
 import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRecoverContainer";
 import {NewPassword} from "./components/newPassword/NewPassword";
 import {Presentation} from "./components/presentation/Presentation";
-import {LoginPage} from "./components/login/Login";
-import {RegistrationContainer} from "../pages/auth/register/api/RegistrationContainer";
+// import {LoginPage} from "./components/login/Login";
+import {LoginPage} from "../pages/auth/loginPage/LoginPage";
+import {RegistrationPage} from "./components/registration/RegistrationPage";
+
 
 export const Content = () => {
     return (
@@ -16,14 +18,13 @@ export const Content = () => {
             <Switch>
                 <Route path={'/'} exact render={() => <Redirect to={routes.login}/>}/>
                 <Route exact path={routes.login} render={() => <LoginPage/>} />
-                <Route exact path={routes.registration} render={() => <RegistrationContainer/>} />
+                <Route exact path={routes.registration} render={() => <RegistrationPage/>} />
                 <Route exact path={routes.profile} render={() => <Profile/>} />
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>} />
                 <Route exact path={routes.newPassword} render={() => <NewPassword/>} />
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
                 <Route render={() => <NotFound/>} />
 
-                {/*<RegistrationContainer/>*/}
             </Switch>
         </div>
     )
