@@ -17,15 +17,17 @@ function App() {
             {/* Осталось от фронта */}
              <Header/>
             <Navigation/>
+
+            <div className={s.content}>
             <Content/>
             
 
             {/* Тут подключены сверстанные странички */}
-            <div className={s.content}>
+
             {/* <LoginPage/> */}
             {/* <Register/> */}
-            <ForgotPassword/>
-
+           {/* <ForgotPassword/>
+*/}
 
             {/* <LoginPageTest/> */}
             </div>

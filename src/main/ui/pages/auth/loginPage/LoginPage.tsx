@@ -31,7 +31,9 @@ export const LoginPage = () => {
                         <a className={s.linkPassword} href="#">Forgot Password</a>
                     </div>
                     <div className={s.btn}>
-                        <Button value="Login"/>
+                        <Button value="Login"
+                                onClick={()=>{}}
+                        />
                     </div>
                     <div className={s.singUp}>
                         <a className={s.span} href="#">Don’t have an account?</a>

@@ -1,8 +1,8 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {useState} from "react";
 import {recoverTC, setErrorAC} from "../../../../store/passwordRecover-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../store/store";
-import {PasswordRecover} from "./PasswordRecover";
+import {ForgotPassword} from "./forgotPassword/ForgotPassword";
 
 
 export const PasswordRecoverContainer = () => {
@@ -12,8 +12,8 @@ export const PasswordRecoverContainer = () => {
     const error = useSelector<AppRootStateType, string | null>((state) => state.passwordRecover.error)
     const dispatch = useDispatch();
 
-    const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.currentTarget.value)
+    const onChangeEmail = (value: string) => {
+        setEmail(value)
         if (error !== null) {
             dispatch(setErrorAC(null))
         }
@@ -35,7 +35,7 @@ export const PasswordRecoverContainer = () => {
     }
 
     return (
-        <PasswordRecover email={email}
+        <ForgotPassword email={email}
                          error={error}
                          onChangeEmail={onChangeEmail}
                          onclickHandler={onclickHandler}
