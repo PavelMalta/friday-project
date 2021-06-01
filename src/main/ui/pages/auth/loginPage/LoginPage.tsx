@@ -11,7 +11,7 @@ export const LoginPage = () => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <Logo/>
-                    <TitleH2/>
+                    <TitleH2 value= "Sign In"/>
                     <div className={s.form}>
                         <Input title="Email"
                                 type= "email"

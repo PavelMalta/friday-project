@@ -7,17 +7,9 @@ import { Navigation } from './main/ui/navigation/Navigation';
 import { Register } from './main/ui/pages/auth/register/Register';
 import { LoginPage } from './main/ui/pages/auth/loginPage/LoginPage';
 import { LoginPageTest } from './main/ui/pages/auth/loginPageTest/LoginPageTest';
-
-// •••••••••••••••••••••••••••••••
-
+import { ForgotPassword } from './main/ui/pages/auth/forgotPassword/ForgotPassword';
 
 
-
-
-
-
-
-// •••••••••••••••••••••••••••••••
 function App() {
     return (
         <div className={s.app}>
@@ -31,9 +23,11 @@ function App() {
             {/* Тут подключены сверстанные странички */}
             <div className={s.content}>
             {/* <LoginPage/> */}
-            <LoginPageTest/>  {/* Тестовая страница Material UI */}
             {/* <Register/> */}
+            <ForgotPassword/>
             
+
+            {/* <LoginPageTest/> */}
             </div>
         </div>
     );
