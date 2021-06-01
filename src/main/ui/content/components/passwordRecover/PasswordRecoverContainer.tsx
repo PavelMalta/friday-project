@@ -9,6 +9,7 @@ export const PasswordRecoverContainer = () => {
     const [email, setEmail] = useState("shamashov87@mail.ru")
 
     const isFetching = useSelector<AppRootStateType, boolean>((state) => state.passwordRecover.isFetching)
+    const error = useSelector<AppRootStateType, string | null>((state) => state.passwordRecover.error)
     const dispatch = useDispatch();
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +26,7 @@ export const PasswordRecoverContainer = () => {
 
     return (
         <PasswordRecover email={email}
+                         error={error}
                          onChangeEmail={onChangeEmail}
                          onclickHandler={onclickHandler}
         />
