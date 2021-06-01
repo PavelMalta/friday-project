@@ -8,9 +8,24 @@ import {RegistrationPage} from "./main/ui/content/components/registration/Regist
 function App() {
     return (
         <div className={s.app}>
-            <Header/>
+
+            {/* Осталось от фронта */}
+             <Header/>
             <Navigation/>
+
+            <div className={s.content}>
             <Content/>
+
+
+            {/* Тут подключены сверстанные странички */}
+
+         {/*    <LoginPage/>*/}
+            {/* <Register/> */}
+           {/* <ForgotPassword/>
+*/}
+
+            {/* <LoginPageTest/> */}
+            </div>
         </div>
     );
 }

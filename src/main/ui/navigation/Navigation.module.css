@@ -1,7 +1,7 @@
 .navigationContainer {
     grid-area: navigation;
     border: 1px solid black;
-    height: 93vh;
+    height: 35vh;
     width: 100%;
 
 }

@@ -29,16 +29,25 @@ export const Register = () => {
                                name="Confirm password"
                                id= "checkbox4"
                                htmlFor= "checkbox4"
-                               style= {{marginTop:"25px"}} />
+                               style= {{marginTop:"25px"}}/>
+
+                            <Input title="Confirm password"
+                                type= "password"
+                                name="Confirm password"
+                                id= "checkbox4"
+                                htmlFor= "checkbox4"
+                            style= {{marginTop:"25px"}} />
                     </div>
                     <form className={s.btn}>
                         <Button value="Cancel"
+                                onClick={() => {}}
                                 style={{width:"124px",
                                     backgroundColor: "#CDCEF4",
                                     color: "#21268F",
                                     marginRight: "36px"
                                 }} />
                         <Button value="Register"
+                                onClick={() => {}}
                                 style={{width:"187px"}}/>
                     </form>
                 </div>

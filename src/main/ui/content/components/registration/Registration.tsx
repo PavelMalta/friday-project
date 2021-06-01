@@ -1,78 +1,78 @@
-import React, {useState} from "react";
-import style from './Registration.module.css';
-import {useFormik} from "formik";
+import s from "./../../../../ui/pages/auth/register/Register.module.scss";
+import {Input} from "../../../common/input/Input";
+import {Button} from "../../../common/button/Button";
+import {Logo} from "../../../common/logo/Logo";
+import {TitleH2} from "../../../common/titleh2/TitleH2";
 
-
-type FormikErrorType = {
-    email?: string
-    password?: string
-    confirmPassword?: string
+type RegistrationPropsType = {
+    email: string
+    password: string
+    passwordConfirm: string
+    onEmailChange: (email: string) => void
+    onPasswordChange: (password: string) => void
+    onPasswordConfirmChange: (passwordConfirm: string) => void
+    registrationButtonClock: () => void
+    cancelClick: () => void
 }
 
-export const Registration = () => {
+export const Registration = (props: RegistrationPropsType) => {
 
+    const emailChange = (value: string) => {
+        props.onEmailChange(value)
+    }
 
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-            confirmPassword: ''
-        },
-        validate: (values) => {
-            const errors: FormikErrorType = {};
-            if (!values.email) {
-                errors.email = 'email is required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
-            }
+    const passwordChange = (value: string) => {
+        props.onPasswordChange(value)
+    }
 
-            if (!values.password) {
-                errors.password = 'password Required';
-            } else if (values.password.length < 3) {
-                errors.password = 'Must be more then 2 chars';
-            }
-
-            if (!values.confirmPassword) {
-                errors.confirmPassword = 'confirm password Required';
-            } else if(values.password !== values.confirmPassword) {
-                errors.confirmPassword = 'entered values do not match'
-            }
-            return errors;
-        },
-        onSubmit: values => {
-            // dispatch(loginTC(values))
-            formik.resetForm();
-        }
-    })
+    const passwordConfirmChange = (value: string) => {
+        props.onPasswordConfirmChange(value)
+    }
 
 
     return (
-        <div>
-            <form action="" className={style.form}>
-                <div>
-                    <span>Email</span>
-                    <input type="text" className={style.registrationInput}
-                           {...formik.getFieldProps("email")}/>
-                    {formik.touched.email && formik.errors.email ?
-                        <div style={{color: 'red'}}>{formik.errors.email}</div> : null}
-                </div>
-                <div>
-                    <span>Password</span>
-                    <input type="text" className={style.registrationInput}
-                           {...formik.getFieldProps("password")}/>
-                    {formik.touched.password && formik.errors.password ?
-                        <div style={{color: 'red'}}>{formik.errors.password}</div> : null}
-                </div>
-                <div>
-                    <span>Confirm Password</span>
-                    <input type="text" className={style.registrationInput}
-                           {...formik.getFieldProps("confirm password")}/>
+        <div className={s.loginPage}>
+            <div className={s.wrapper}>
+                <div className={s.inner}>
+                    <Logo/>
+                    <TitleH2/>
+                    <div className={s.form}>
+                        <Input title="Email"
+                               type="email"
+                               name="email"
+                               value={props.email}
+                               onChange={emailChange}/> {/* Нужно убрать глазик (логика) */}
 
-                    {formik.touched.confirmPassword && formik.errors.confirmPassword ?
-                        <div style={{color: 'red'}}>{formik.errors.confirmPassword}</div> : null}
+                        <Input title="Password"
+                               type="password"
+                               name="password"
+                               value={props.password}
+                               onChange={passwordChange}
+                               style={{marginTop: "25px"}}/>
+
+                        <Input title="Confirm password"
+                               type="password"
+                               name="Confirm password"
+                               value={props.passwordConfirm}
+                               onChange={passwordConfirmChange}
+                               style={{marginTop: "25px"}}/>
+                    </div>
+                    <form className={s.btn}>
+                        <Button value="Cancel"
+                                onClick={props.cancelClick}
+                                style={{
+                                    width: "124px",
+                                    backgroundColor: "#CDCEF4",
+                                    color: "#21268F",
+                                    marginRight: "36px"
+                                }}/>
+                        <Button value="Registration"
+                                onClick={props.registrationButtonClock}
+                                style={{width: "187px"}}
+                        />
+                    </form>
                 </div>
-                <button type={'submit'} className={style.registrationButton}>Register</button>
-            </form>
+            </div>
         </div>
     )
 }
