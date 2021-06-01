@@ -35,6 +35,7 @@ export const setErrorAC = (error: string) => ({type: "SET-ERROR", error} as cons
 
 
 export const getAuthUserData = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
     authAPI.login(email, password, rememberMe)
         .then(response => {
                 console.log(response.data)
