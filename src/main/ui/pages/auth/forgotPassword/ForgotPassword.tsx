@@ -18,7 +18,7 @@ export const ForgotPassword = () => {
                     </div>
                     <span className={s.text}>Enter your email address and we will send you further instructions </span>
                     <div className={s.btn}>
-                        <Button value="Send Instructions"/>
+                        <Button value="Send Instructions" onClick={()=>{}}/>
                     </div>
                     <div className={s.singUp}>
                         <a className={s.link} href="#">Did you remember your password?</a>

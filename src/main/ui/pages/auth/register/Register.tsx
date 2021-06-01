@@ -26,7 +26,7 @@ export const Register = () => {
                                style={{marginTop: "25px"}}
                                id= "checkbox3"
                                htmlFor= "checkbox3"
-                               style= {{marginTop: "25px"}} />
+                                />
                         <Input title="Confirm password"
                                type="password"
                                name="Confirm password"

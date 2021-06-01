@@ -4,6 +4,8 @@ import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import React, {ChangeEvent} from "react";
+import {NavLink} from "react-router-dom";
+import {routes} from "../../../../router/routes";
 
 type LoginPagePropsType = {
     email: string
@@ -39,41 +41,34 @@ export const LoginPage = (props:LoginPagePropsType) => {
                         <Input title="Email"
                                type= "email"
                                name="email"
+                               error={props.error}
                                placeholder={'email'}
                                value={props.email}
                                onChange={changeEmail}
                                style= {{marginTop:"25px"}}
                         />
-                        {props.error !== null ? <span>{props.error}</span> : null}
+
                         {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
                                type= "password"
                                name="password"
+                               error={props.error}
                                placeholder={'password'}
                                value={props.password}
                                onChange={changePassword}
                                style= {{marginTop:"25px"}}
                         />
-                        {props.error !== null ? <span>{props.error}</span> : null}
+
                     </div>
 
-                    <div className={s.checkbox}>
-                        <input className={s.checkboxInput} type="checkbox" id="checkbox1"
-                               onChange={changeRememberMe}
-                        />
-                        <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
-                                type= "password"
-                                name="password"
-                                id= "checkbox2"
-                                htmlFor= "checkbox2"
-                                style= {{marginTop:"25px"}} />
-                    </div>
+
                     <div className={s.wrap}>
                         <div className={s.checkbox}>
                             <input className={s.checkboxInput} type="checkbox" id="checkbox1"/>
                             <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
                         </div>
-                        <a className={s.linkPassword} href="#">Forgot Password</a>
+
+                        <a className={s.linkPassword} href="">Forgot Password</a>
                     </div>
                     <div className={s.btn}>
                         <Button value="Login"

@@ -1,6 +1,6 @@
 import { Eye } from "../eye/Eye";
 import s from "./Input.module.scss";
-import {ChangeEvent} from "react";
+import React, {ChangeEvent} from "react";
 
 type InputPropsType = {
     title?: string
@@ -10,8 +10,9 @@ type InputPropsType = {
     style?: {}
     placeholder?: string
     onChange?:(string: string)=> void
-    id: string
-    htmlFor: string
+    id?: string
+    htmlFor?: string
+    error?: string | null
 
 
 }
@@ -36,17 +37,15 @@ export const Input = (props: InputPropsType) => {
 
             {/* Глазик чекбокс */}
             <div className={s.checkbox}>
-                <input className={s.checkboxInput} type="checkbox" id={props.id}/>
+
+                <input className={s.checkboxInput} type="checkbox" id={props.id} onClick={()=> {}}/>
                 <label className={s.checkboxLable} htmlFor={props.htmlFor}></label>
             </div>
 
                 {/* Не получается заюзать((( */}
-                {/* <Eye
-                    id= "checkbox2"
-                    htmlFor= "checkbox2"
-                /> */}
+            {/*<Eye id={"checkbox2"}  htmlFor= "checkbox2"/>*/}
 
-            <span className={s.span}>Input error</span>
+            <span className={s.span}>{props.error !== null ? <span>{props.error}</span> : null}</span>
         </form>
     )
 }
