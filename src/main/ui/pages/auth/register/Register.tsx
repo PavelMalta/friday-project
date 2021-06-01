@@ -1,9 +1,25 @@
 import s from "./Register.module.scss";
-import { Input } from "../../../common/input/Input";
-import { Button } from "../../../common/button/Button";
-import { Logo } from "../../../common/logo/Logo";
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import {Input} from "../../../common/input/Input";
+import {Button} from "../../../common/button/Button";
+import {Logo} from "../../../common/logo/Logo";
+import {TitleH2} from "../../../common/titleh2/TitleH2";
 
+type RegistrationPropsType = {
+    email: string
+    password: string
+    passwordConfirm: string
+    onEmailChange: (email: string) => void
+    onPasswordChange: (password: string) => void
+    onPasswordConfirmChange: (passwordConfirm: string) => void
+    registrationButtonClock: () => void
+    cancelClick: () => void
+}
+
+export const Register = (props: RegistrationPropsType) => {
+
+    const emailChange = (value: string) => {
+        props.onEmailChange(value)
+    }
 
 
     const passwordChange = (value: string) => {
@@ -28,17 +44,21 @@ import { TitleH2 } from "../../../common/titleh2/TitleH2";
                                value={props.email}
                                onChange={emailChange}/> {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
-                                type= "password"
-                                name="password"
-                                id= "checkbox3"
-                                htmlFor= "checkbox3"
-                            style= {{marginTop:"25px"}} />
-                            <Input title="Confirm password"
-                                type= "password"
-                                name="Confirm password"
-                                id= "checkbox4"
-                                htmlFor= "checkbox4"
-                            style= {{marginTop:"25px"}} />
+                               type="password"
+                               name="password"
+                               id="checkbox3"
+                               value={props.password}
+                               onChange={passwordChange}
+                               htmlFor="checkbox3"
+                               style={{marginTop: "25px"}}/>
+                        <Input title="Confirm password"
+                               type="password"
+                               name="Confirm password"
+                               id="checkbox4"
+                               htmlFor="checkbox4"
+                               value={props.passwordConfirm}
+                               onChange={passwordConfirmChange}
+                               style={{marginTop: "25px"}}/>
                     </div>
                     <form className={s.btn}>
                         <Button value="Cancel"
