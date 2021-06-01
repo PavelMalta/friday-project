@@ -1,7 +1,12 @@
 import s from "./Button.module.scss";
 
+type ButtonPropsType = {
+	style?: {}
+	onClick?: () => void
+	value?: string
+}
 
-export const Button = (props: any) => {
+export const Button = (props: ButtonPropsType) => {
 
     return (
         <button

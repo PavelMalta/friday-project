@@ -3,11 +3,23 @@ import Eye from "./../../assets/images/loginPage/eye.svg";
 import EyeHide from "./../../assets/images/loginPage/eyeHide.svg";
 import {ChangeEvent} from "react";
 
+type InputPropsType = {
+    title?: string
+    type?: string
+    name?: string
+    value?: string
+    style?: {}
+    placeholder?: string
+    onChange?: (string: string) => void
+    id?: string
+    htmlFor?: string
+    error?: string | null
+}
 
-export const Input = (props: any) => {
+export const Input = (props: InputPropsType) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.onChange(e.currentTarget.value)
+       props.onChange && props.onChange(e.currentTarget.value)
     }
 
     return (

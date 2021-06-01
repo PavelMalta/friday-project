@@ -3,8 +3,7 @@ import s from './App.module.scss';
 import { Content } from './main/ui/content/Content';
 import { Header } from './main/ui/header/Header';
 import { Navigation } from './main/ui/navigation/Navigation';
-import {Register} from "./main/ui/pages/auth/register/Register";
-import {RegistrationContainer} from "./main/ui/pages/auth/register/RegistrationContainer";
+import {RegistrationPage} from "./main/ui/content/components/registration/RegistrationPage";
 
 function App() {
     return (
