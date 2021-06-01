@@ -7,7 +7,7 @@ import {Provider} from "react-redux";
 function App() {
     return (
         <div className={s.app}>
-            <div>hi2</div>
+
             {/*/!* Осталось от фронта *!/*/}
             {/*/!* <Header/>*/}
             {/*<Navigation/>*/}

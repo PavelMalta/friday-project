@@ -3,10 +3,11 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
-import React from "react";
+import React, {ChangeEvent} from "react";
 
 type LoginPagePropsType = {
     email: string
+    error: string | null
     password: string
     rememberMe: boolean
     onclickHandler: () => void
@@ -24,8 +25,8 @@ export const LoginPage = (props:LoginPagePropsType) => {
     const changePassword = (value: string) => {
         props.onChangePassword(value)
     }
-    const changeRememberMe = (value: boolean) => {
-        props.onChangeRememberMe(value)
+    const changeRememberMe = (e: ChangeEvent<HTMLInputElement>) => {
+        props.onChangeRememberMe(e.currentTarget.checked)
     }
 
     return (
@@ -42,7 +43,9 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                value={props.email}
                                onChange={changeEmail}
                                style= {{marginTop:"25px"}}
-                        />   {/* Нужно убрать глазик (логика) */}
+                        />
+                        {props.error !== null ? <span>{props.error}</span> : null}
+                        {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
                                type= "password"
                                name="password"
@@ -51,6 +54,14 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                onChange={changePassword}
                                style= {{marginTop:"25px"}}
                         />
+                        {props.error !== null ? <span>{props.error}</span> : null}
+                    </div>
+
+                    <div className={s.checkbox}>
+                        <input className={s.checkboxInput} type="checkbox" id="checkbox1"
+                               onChange={changeRememberMe}
+                        />
+                        <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
                     </div>
                     <a className={s.linkPassword} href="#">Forgot Password</a>
                     <div className={s.btn}>
