@@ -38,7 +38,7 @@ interface State {
   showPassword: boolean;
 }
 
-export default function Email() {
+export default function Password() {
   const classes = useStyles();
   const [values, setValues] = React.useState<State>({
     amount: '',
@@ -64,30 +64,48 @@ export default function Email() {
   return (
     <div className={classes.root}>
       <div>
-        <div>
-          <TextField className={clsx(classes.margin, classes.textField)} 
-                      id="standard-adornment-email"
-            error   //окрашивает в красный цвет
-            type='email'
-            label= 'Email'
-            value={values.email}
+        <TextField className={clsx(classes.margin, classes.textField)} 
+                  id="standard-adornment-password"
+            error  //окрашивает в красный цвет
+            type={values.showPassword ? 'text' : 'password'}
+            label= 'Password'
+            value={values.password}
             helperText="Incorrect entry."
-            onChange={handleChange('email')} />
-          {/* <TextField
-          error
-          id="standard-error-helper-text"
-          label="Error"
-          defaultValue="Hello World"
-          helperText="Incorrect entry."
-        /> */}
-        </div>
+            onChange={handleChange('password')} 
+            variant='standard'
+            InputProps= {{
+              endAdornment:
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              
+            }}
+            />
+
         {/* <FormControl className={clsx(classes.margin, classes.textField)}>
-          <InputLabel htmlFor="standard-adornment-email">Email</InputLabel>
+          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
           <Input
-            id="standard-adornment-email"
-            type='email'
-            value={values.email}
-            onChange={handleChange('email')}
+            id="standard-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
         </FormControl> */}
       </div>
