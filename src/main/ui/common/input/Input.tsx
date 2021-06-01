@@ -1,5 +1,5 @@
+import { Eye } from "../eye/Eye";
 import s from "./Input.module.scss";
-import Eye from "./../../assets/images/loginPage/eye.svg";
 import {ChangeEvent} from "react";
 
 type InputPropsType = {
@@ -10,6 +10,10 @@ type InputPropsType = {
     style?: {}
     placeholder?: string
     onChange?:(string: string)=> void
+    id: string
+    htmlFor: string
+
+
 }
 
 export const Input = (props: InputPropsType) => {
@@ -20,20 +24,29 @@ export const Input = (props: InputPropsType) => {
 
     return (
         <form className={s.wrapper} style= {props.style}>
-
-
             <label className={s.label}>{props.title}</label>
             <input className={s.input__item}
                 type={props.type}
                 name={props.name}
                 placeholder={props.placeholder}
                 value={props.value}
-                onChange = {onChangeHandler}>
-            </input>
-        
-                    <img src={Eye} className={s.icon}/>
-                    {/* <img src={EyeHide} className={s.icon}/>  перечеркнутый глаз */}
+                   onChange = {onChangeHandler}>
 
+            </input>
+
+            {/* Глазик чекбокс */}
+            <div className={s.checkbox}>
+                <input className={s.checkboxInput} type="checkbox" id={props.id}/>
+                <label className={s.checkboxLable} htmlFor={props.htmlFor}></label>
+            </div>
+
+                {/* Не получается заюзать((( */}
+                {/* <Eye
+                    id= "checkbox2"
+                    htmlFor= "checkbox2"
+                /> */}
+
+            <span className={s.span}>Input error</span>
         </form>
     )
 }

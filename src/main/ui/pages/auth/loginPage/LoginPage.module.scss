@@ -17,16 +17,60 @@
             .form {
                 margin-top: 38px;
             }
-            .linkPassword {
-                @include text (14px, 400, 17px);
-                color: $textColor;
-                display: inline-block;
-                margin: 38px 51px 0 0;
+            .wrap {
                 display: flex;
-                justify-content: flex-end; 
-                &:hover {
-                    font-weight: 500;
-                }  
+                justify-content: space-between;
+                margin: 17px 33px 0;
+                .checkbox {
+                    position: relative;
+                    .checkboxInput {
+                        appearance: none;
+                        position: absolute;
+
+                    }
+                    .checkboxLable {
+                        padding-left: 23px;
+                        @include text(14px,400, 17px);
+                        font-family: 'Montserrat';
+                        cursor: pointer;
+                        &::before{
+                            content: "";
+                            display: block;
+                            width: 20px;
+                            height: 20px;
+                            background-image: url("./../../../assets/images/loginPage/checkboxOff.svg");
+                        
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            z-index: 1;
+                        }
+                        &::after{
+                            content: "";
+                            display: block;
+                            width: 20px;
+                            height: 20px;
+                            background-image: url("./../../../assets/images/loginPage/checkboxOn.svg");
+                        
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            z-index: 2;
+                        
+                            opacity: 0;
+                        }
+                    }
+                    .checkboxInput:checked + .checkboxLable::after {
+                        opacity: 1;
+                    }
+                }
+                .linkPassword {
+                    @include text (14px, 400, 17px);
+                    color: $textColor;
+                    &:hover {
+                        font-weight: 500;
+                    }  
+                }
             }
             .btn {
                 display: flex;

@@ -34,7 +34,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <Logo/>
-                    <TitleH2/>
+                    <TitleH2 value= "Sign In"/>
                     <div className={s.form}>
                         <Input title="Email"
                                type= "email"
@@ -62,8 +62,19 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                onChange={changeRememberMe}
                         />
                         <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
+                                type= "password"
+                                name="password"
+                                id= "checkbox2"
+                                htmlFor= "checkbox2"
+                                style= {{marginTop:"25px"}} />
                     </div>
-                    <a className={s.linkPassword} href="#">Forgot Password</a>
+                    <div className={s.wrap}>
+                        <div className={s.checkbox}>
+                            <input className={s.checkboxInput} type="checkbox" id="checkbox1"/>
+                            <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
+                        </div>
+                        <a className={s.linkPassword} href="#">Forgot Password</a>
+                    </div>
                     <div className={s.btn}>
                         <Button value="Login"
                                 onClick={props.onclickHandler}
