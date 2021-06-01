@@ -3,6 +3,7 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
+import {ChangeEvent} from "react";
 
 type RegistrationPropsType = {
     email: string
@@ -20,7 +21,6 @@ export const Register = (props: RegistrationPropsType) => {
     const emailChange = (value: string) => {
         props.onEmailChange(value)
     }
-
 
     const passwordChange = (value: string) => {
         props.onPasswordChange(value)
@@ -44,21 +44,21 @@ export const Register = (props: RegistrationPropsType) => {
                                value={props.email}
                                onChange={emailChange}/> {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
-                               type="password"
-                               name="password"
-                               id="checkbox3"
+                                type= "password"
+                                name="password"
+                                id= "checkbox3"
                                value={props.password}
                                onChange={passwordChange}
-                               htmlFor="checkbox3"
-                               style={{marginTop: "25px"}}/>
-                        <Input title="Confirm password"
-                               type="password"
-                               name="Confirm password"
-                               id="checkbox4"
-                               htmlFor="checkbox4"
-                               value={props.passwordConfirm}
-                               onChange={passwordConfirmChange}
-                               style={{marginTop: "25px"}}/>
+                                htmlFor= "checkbox3"
+                            style= {{marginTop:"25px"}} />
+                            <Input title="Confirm password"
+                                type= "password"
+                                name="Confirm password"
+                                   value={props.password}
+                                   onChange={passwordConfirmChange}
+                                id= "checkbox4"
+                                htmlFor= "checkbox4"
+                            style= {{marginTop:"25px"}} />
                     </div>
                     <form className={s.btn}>
                         <Button value="Cancel"
