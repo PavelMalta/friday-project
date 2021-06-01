@@ -1,10 +1,13 @@
 import React, {ChangeEvent, useState} from "react";
 import {recoverTC} from "../../../../store/passwordRecover-reducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../../../store/store";
 
 
 export const PasswordRecover = () => {
     const [email, setEmail] = useState("")
+
+    const isFetching = useSelector<AppRootStateType, boolean>((state) => state.passwordRecover.isFetching)
     const dispatch = useDispatch();
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,6 +16,10 @@ export const PasswordRecover = () => {
 
     const onclickHandler = () => {
         dispatch(recoverTC(email))
+    }
+
+    if (isFetching) {
+        return <div>Loading...</div>
     }
 
     return (
