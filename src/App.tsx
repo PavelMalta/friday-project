@@ -24,7 +24,7 @@ function App() {
 
             {/* Тут подключены сверстанные странички */}
 
-            {/* <LoginPage/> */}
+         {/*    <LoginPage/>*/}
             {/* <Register/> */}
            {/* <ForgotPassword/>
 */}

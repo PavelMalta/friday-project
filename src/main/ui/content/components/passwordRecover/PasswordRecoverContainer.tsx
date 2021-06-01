@@ -30,15 +30,12 @@ export const PasswordRecoverContainer = () => {
         }
     }
 
-    if (isFetching) {
-        return <div>Loading...</div>
-    }
-
     return (
         <ForgotPassword email={email}
                          error={error}
                          onChangeEmail={onChangeEmail}
                          onclickHandler={onclickHandler}
+                        isFetching={isFetching}
         />
     )
 }
