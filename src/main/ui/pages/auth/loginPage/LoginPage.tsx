@@ -31,6 +31,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
         props.onChangeRememberMe(e.currentTarget.checked)
     }
 
+
     return (
         <div className={s.loginPage}>
             <div className={s.wrapper}>
@@ -46,17 +47,20 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                value={props.email}
                                onChange={changeEmail}
                                style= {{marginTop:"25px"}}
+                               idName={'inputEmail'}
                         />
 
                         {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
-                               type= "password"
+                               // type= "password"
                                name="password"
                                error={props.error}
                                placeholder={'password'}
                                value={props.password}
                                onChange={changePassword}
                                style= {{marginTop:"25px"}}
+                               idName={'inputPassword'}
+                               id={"checkbox2"}
                         />
 
                     </div>
@@ -64,11 +68,13 @@ export const LoginPage = (props:LoginPagePropsType) => {
 
                     <div className={s.wrap}>
                         <div className={s.checkbox}>
-                            <input className={s.checkboxInput} type="checkbox" id="checkbox1"/>
+
+                            <input className={s.checkboxInput} type="checkbox" id="checkbox1"
+                            />
                             <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
                         </div>
-
-                        <a className={s.linkPassword} href="">Forgot Password</a>
+                        <NavLink className={s.linkPassword} to={routes.passwordRecover}>Forgot Password</NavLink>
+                        {/*<a className={s.linkPassword} href="">Forgot Password</a>*/}
                     </div>
                     <div className={s.btn}>
                         <Button value="Login"
@@ -77,7 +83,8 @@ export const LoginPage = (props:LoginPagePropsType) => {
                     </div>
                     <div className={s.singUp}>
                         <a className={s.span} href="#">Don’t have an account?</a>
-                        <a className={s.linkSingUp} href="#">Sign Up</a>
+                        <NavLink className={s.linkSingUp} to={routes.registration}>Sign Up</NavLink>
+                        {/*<a className={s.linkSingUp} href="#">Sign Up</a>*/}
                     </div>
                 </div>
             </div>

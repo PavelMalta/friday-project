@@ -13,8 +13,7 @@ type InputPropsType = {
     id?: string
     htmlFor?: string
     error?: string | null
-
-
+    idName?: string
 }
 
 export const Input = (props: InputPropsType) => {
@@ -22,6 +21,24 @@ export const Input = (props: InputPropsType) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.onChange && props.onChange(e.currentTarget.value)
     }
+
+    function togglePassword(){
+        debugger
+        let input = document.getElementById('inputPassword');
+        // input && input.setAttribute('type', 'password')
+
+
+        if(input !== null){
+        if (input.getAttribute('type') === 'password') {
+
+            input.setAttribute('type', 'text');
+        } else {
+
+            input.setAttribute('type', 'password');
+        }}
+        return false;
+    }
+
 
     return (
         <form className={s.wrapper} style= {props.style}>
@@ -31,16 +48,17 @@ export const Input = (props: InputPropsType) => {
                 name={props.name}
                 placeholder={props.placeholder}
                 value={props.value}
-                   onChange = {onChangeHandler}>
-
+                onChange = {onChangeHandler}
+                id={props.idName}>
             </input>
 
-            {/* Глазик чекбокс */}
+             {/*Глазик чекбокс*/}
             <div className={s.checkbox}>
-
-                <input className={s.checkboxInput} type="checkbox" id={props.id} onClick={()=> {}}/>
+                {/*<input type="checkbox" onChange={togglePassword} />*/}
+                <input className={s.checkboxInput} type="checkbox" onChange={togglePassword} id={props.id}/>
                 <label className={s.checkboxLable} htmlFor={props.htmlFor}></label>
             </div>
+
 
                 {/* Не получается заюзать((( */}
             {/*<Eye id={"checkbox2"}  htmlFor= "checkbox2"/>*/}
