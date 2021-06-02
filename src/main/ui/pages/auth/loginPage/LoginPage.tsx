@@ -60,7 +60,8 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                onChange={changePassword}
                                style= {{marginTop:"25px"}}
                                idName={'inputPassword'}
-                               id={"checkbox2"}
+                               id= "checkbox2"
+                               htmlFor= "checkbox2"
                         />
 
                     </div>
@@ -79,6 +80,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
                     <div className={s.btn}>
                         <Button value="Login"
                                 onClick={props.onclickHandler}
+
                         />
                     </div>
                     <div className={s.singUp}>

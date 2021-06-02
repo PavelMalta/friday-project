@@ -25,8 +25,6 @@ export const Input = (props: InputPropsType) => {
     function togglePassword(){
         debugger
         let input = document.getElementById('inputPassword');
-        // input && input.setAttribute('type', 'password')
-
 
         if(input !== null){
         if (input.getAttribute('type') === 'password') {
@@ -54,7 +52,7 @@ export const Input = (props: InputPropsType) => {
 
              {/*Глазик чекбокс*/}
             <div className={s.checkbox}>
-                {/*<input type="checkbox" onChange={togglePassword} />*/}
+
                 <input className={s.checkboxInput} type="checkbox" onChange={togglePassword} id={props.id}/>
                 <label className={s.checkboxLable} htmlFor={props.htmlFor}></label>
             </div>
