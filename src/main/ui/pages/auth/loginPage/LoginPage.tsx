@@ -19,8 +19,8 @@ export const LoginPage = () => {
                         <Input title="Password"
                                 type= "password"
                                 name="password"
-                                id= "checkbox2"
-                                htmlFor= "checkbox2"
+                                id= "checkbox"
+                                htmlFor= "checkbox"
                                 style= {{marginTop:"25px"}} />
                     </div>
                     <div className={s.wrap}>
