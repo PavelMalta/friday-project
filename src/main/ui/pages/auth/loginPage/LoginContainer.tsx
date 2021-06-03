@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux"
 import React, {useState} from "react";
-import {getAuthUserData, setErrorAC} from "../../../../store/login-reducer";
+import {getAuthUserData, setEmailErrorAC, setPasswordErrorAC} from "../../../../store/login-reducer";
 import {LoginPage} from "./LoginPage";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
@@ -8,7 +8,8 @@ import {Redirect} from "react-router-dom";
 export const LoginContainer = () => {
 
     const isFetching = useSelector<AppRootStateType, boolean>((state) => state.login.isFetching)
-    const error = useSelector<AppRootStateType, string | null>((state) => state.login.error)
+    const emailError = useSelector<AppRootStateType, string | null>((state) => state.login.emailError)
+    const passwordError = useSelector<AppRootStateType, string | null>((state) => state.login.passwordError)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
 
     const dispatch = useDispatch()
@@ -28,12 +29,14 @@ export const LoginContainer = () => {
     }
 
     let onclickHandler = () => {
-        if (email === "" || password === "") {
-            dispatch(setErrorAC('Required'))
+        if (email === "") {
+            dispatch(setEmailErrorAC('Required'))
+        } else if (password === "") {
+            dispatch(setPasswordErrorAC('Required'))
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-            dispatch(setErrorAC('Invalid email address'))
+            dispatch(setEmailErrorAC('Invalid email address'))
         } else if (password.length < 8) {
-            dispatch(setErrorAC('Password must be more 7 symbols'))
+            dispatch(setPasswordErrorAC('Password must be more 7 symbols'))
         } else {
             dispatch(getAuthUserData(email, password, rememberMe))
             setEmail('')
@@ -50,7 +53,8 @@ export const LoginContainer = () => {
     }
 
     return <LoginPage email={email}
-                      error={error}
+                      emailError={emailError}
+                      passwordError={passwordError}
                       password={password}
                       rememberMe={rememberMe}
                       onclickHandler={onclickHandler}
