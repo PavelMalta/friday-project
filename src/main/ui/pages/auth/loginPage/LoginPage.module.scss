@@ -12,7 +12,7 @@
             background-color: $primaryColor;
             max-width: 413px;
             width: 100%;
-            border-radius: 30px; 
+            border-radius: 30px;
             opacity: 0.8;
             .form {
                 margin-top: 38px;
@@ -39,7 +39,7 @@
                             width: 20px;
                             height: 20px;
                             background-image: url("./../../../assets/images/loginPage/checkboxOff.svg");
-                        
+
                             position: absolute;
                             top: 0;
                             left: 0;
@@ -51,12 +51,12 @@
                             width: 20px;
                             height: 20px;
                             background-image: url("./../../../assets/images/loginPage/checkboxOn.svg");
-                        
+
                             position: absolute;
                             top: 0;
                             left: 0;
                             z-index: 2;
-                        
+
                             opacity: 0;
                         }
                     }
@@ -69,12 +69,12 @@
                     color: $textColor;
                     &:hover {
                         font-weight: 500;
-                    }  
+                    }
                 }
             }
             .btn {
                 display: flex;
-                justify-content: center; 
+                justify-content: center;
                 margin-top: 79px;
             }
             .singUp {
@@ -101,5 +101,5 @@
                 }
             }
         }
-    }     
+    }
 }

@@ -9,172 +9,172 @@
     width: 100%;
     position: relative;
 }
-    .label {
-        @include text(13px, 400, 20px);
-        color: $textColorLight;
-        opacity: 0.8;
-    }
-    .label:hover {
-            font-weight: 600;
-    }
-    
-    .input__item {
-        border: none;
-        height: 26px;
-        border-bottom: 1.6px solid rgba(36,37,74,0.2);
-        }
-    .icon {
-        position: absolute;
-        display: inline-block;
-        top: 20px;
-        right: 16px;
-        width: 22px;
-        height: 15px;
-    }
-        .icon:hover {
-            font-weight: 500;
-        }
-    
-    .span {
-        @include text(11px, 400, 20px);
-        color: red;
-    }
-    
+.label {
+    @include text(13px, 400, 20px);
+    color: $textColorLight;
+    opacity: 0.8;
+}
+.label:hover {
+    font-weight: 600;
+}
 
-    .checkbox {
-        position: relative;
-    }
-    .checkboxInput {
-        appearance: none;
-        position: absolute;
-    }
-    .checkboxLable {
-        // padding-left: 23px;
-        // @include text(14px, 400, 17px);
-        cursor: pointer;
-        // position: absolute;
-        // top:0;
-        // right: 0;
-    }
-    .checkboxLable::before {
-        content: "";
-        display: block;
-        width: 22px;
-        height: 17px;
-        background-image: url("./../../assets/images/loginPage/eye.svg");
-        background-repeat: no-repeat;
-                            
-        position: absolute;
-        bottom: 10px;
-        right: 0;
-        z-index:1;
-    }
-    .checkboxLable::after {
-        content: "";
-        display: block;
-        
-        width: 22px;
-        height: 17px;
-        background-image: url("./../../assets/images/loginPage/eyeHide.svg");
-        background-repeat: no-repeat;
-                            
-        position: absolute;
-        bottom: 10px;
-        right: 0;
-        z-index: 2;
-                            
-        opacity: 0;
-    }                     
-    .checkboxInput:checked + .checkboxLable::after {
-        opacity: 1;
-    }  
-    
-    
+.input__item {
+    border: none;
+    height: 26px;
+    border-bottom: 1.6px solid rgba(36,37,74,0.2);
+}
+.icon {
+    position: absolute;
+    display: inline-block;
+    top: 20px;
+    right: 16px;
+    width: 22px;
+    height: 15px;
+}
+.icon:hover {
+    font-weight: 500;
+}
+
+.span {
+    @include text(11px, 400, 20px);
+    color: red;
+}
+
+
+.checkbox {
+    position: relative;
+}
+.checkboxInput {
+    appearance: none;
+    position: absolute;
+}
+.checkboxLable {
+    // padding-left: 23px;
+    // @include text(14px, 400, 17px);
+    cursor: pointer;
+    // position: absolute;
+    // top:0;
+    // right: 0;
+}
+.checkboxLable::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 17px;
+    background-image: url("./../../assets/images/loginPage/eye.svg");
+    background-repeat: no-repeat;
+
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    z-index:1;
+}
+.checkboxLable::after {
+    content: "";
+    display: block;
+
+    width: 22px;
+    height: 17px;
+    background-image: url("./../../assets/images/loginPage/eyeHide.svg");
+    background-repeat: no-repeat;
+
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    z-index: 2;
+
+    opacity: 0;
+}
+.checkboxInput:checked + .checkboxLable::after {
+    opacity: 1;
+}
 
 
 
 
-    // .wrapper {
-    //     display: flex;
-    //     flex-direction: column;
-    //     margin: 0 auto;
-    //     max-width: 347px;
-    //     width: 100%;
-    //     position: relative;
-    // }
-    //     .label {
-    //         @include text(13px, 400, 20px);
-    //         color: $textColorLight;
-    //         opacity: 0.8;
-    //     }
-    //     .label:hover {
-    //             font-weight: 600;
-    //     }
-        
-    //     .input__item {
-    //         border: none;
-    //         height: 26px;
-    //         border-bottom: 1.6px solid rgba(36,37,74,0.2);
-    //         }
-    //     .icon {
-    //         position: absolute;
-    //         display: inline-block;
-    //         top: 20px;
-    //         right: 16px;
-    //         width: 22px;
-    //         height: 15px;
-    //     }
-    //         .icon:hover {
-    //             font-weight: 500;
-    //         }
-        
-    //     .span {
-    //         @include text(11px, 400, 20px);
-    //         color: red;
-    //     }
-        
-    
-    //     .checkbox {
-    //         position: relative;
-    //     }
-    //     .checkboxInput {
-    //         appearance: none;
-    //         position: absolute;
-    //     }
-    //     // .checkboxLable {
-    //     //     padding-left: 23px;
-    //     //     @include text(14px, 400, 17px);
-    //     //     cursor: pointer;
-    //     // }
-    //     .checkboxInput::before {
-    //         content: "";
-    //         display: block;
-    //         width: 22px;
-    //         height: 17px;
-    //         background-image: url("./../../assets/images/loginPage/eye.svg");
-    //         background-repeat: no-repeat;
-                                
-    //         position: absolute;
-    //         bottom: 6px;
-    //         left: 322px;
-    //         z-index:1;
-    //     }
-    //     .checkboxInput::after {
-    //         content: "";
-    //         display: block;
-            
-    //         width: 22px;
-    //         height: 17px;
-    //         background-image: url("./../../assets/images/loginPage/eyeHide.svg");
-    //         background-repeat: no-repeat;
-                                
-    //         position: absolute;
-    //         bottom: 6px;
-    //         left: 322px;
-    //         z-index: 2;
-                                
-    //         opacity: 0;
-    //     }                     
-    //     .checkboxInput:checked + .checkboxInput::after {
-    //         opacity: 1;
-    //     }  
+
+
+// .wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 0 auto;
+//     max-width: 347px;
+//     width: 100%;
+//     position: relative;
+// }
+//     .label {
+//         @include text(13px, 400, 20px);
+//         color: $textColorLight;
+//         opacity: 0.8;
+//     }
+//     .label:hover {
+//             font-weight: 600;
+//     }
+
+//     .input__item {
+//         border: none;
+//         height: 26px;
+//         border-bottom: 1.6px solid rgba(36,37,74,0.2);
+//         }
+//     .icon {
+//         position: absolute;
+//         display: inline-block;
+//         top: 20px;
+//         right: 16px;
+//         width: 22px;
+//         height: 15px;
+//     }
+//         .icon:hover {
+//             font-weight: 500;
+//         }
+
+//     .span {
+//         @include text(11px, 400, 20px);
+//         color: red;
+//     }
+
+
+//     .checkbox {
+//         position: relative;
+//     }
+//     .checkboxInput {
+//         appearance: none;
+//         position: absolute;
+//     }
+//     // .checkboxLable {
+//     //     padding-left: 23px;
+//     //     @include text(14px, 400, 17px);
+//     //     cursor: pointer;
+//     // }
+//     .checkboxInput::before {
+//         content: "";
+//         display: block;
+//         width: 22px;
+//         height: 17px;
+//         background-image: url("./../../assets/images/loginPage/eye.svg");
+//         background-repeat: no-repeat;
+
+//         position: absolute;
+//         bottom: 6px;
+//         left: 322px;
+//         z-index:1;
+//     }
+//     .checkboxInput::after {
+//         content: "";
+//         display: block;
+
+//         width: 22px;
+//         height: 17px;
+//         background-image: url("./../../assets/images/loginPage/eyeHide.svg");
+//         background-repeat: no-repeat;
+
+//         position: absolute;
+//         bottom: 6px;
+//         left: 322px;
+//         z-index: 2;
+
+//         opacity: 0;
+//     }
+//     .checkboxInput:checked + .checkboxInput::after {
+//         opacity: 1;
+//     }
