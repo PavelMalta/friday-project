@@ -6,7 +6,8 @@ type InitialStateType = typeof initialState
 const initialState = {
     user: {},
     isFetching: false,
-    error: null as null | string,
+    emailError: null as null | string,
+    passwordError: null as null | string,
     isAuth: false
 }
 
@@ -21,9 +22,12 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
         case "IS-FETCHING":
             return {...state,
                 isFetching: action.isFetching}
-        case "SET-ERROR":
+        case "SET-EMAIL-ERROR":
             return {...state,
-                error: action.error}
+                emailError: action.error}
+        case "SET-PASSWORD-ERROR":
+            return {...state,
+                passwordError: action.error}
         default:
             return state
     }
@@ -31,7 +35,8 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
 
 export const setAuthUserDataAC = (payload: InitialStateType) => ({type: 'SET_USER_DATA', payload}) as const
 export const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
-export const setErrorAC = (error: string) => ({type: "SET-ERROR", error} as const)
+export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
+export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
 
 
 export const getAuthUserData = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
@@ -44,7 +49,7 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
         ).catch((e) => {
         const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
         console.log(error)
-        dispatch(setErrorAC(error))
+        dispatch(setEmailErrorAC(error))
     })
         .finally(() => {
             dispatch(isFetchingAC(false))
@@ -54,7 +59,8 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
 
 export type ActionsType =
     |  ReturnType<typeof setAuthUserDataAC>
-    |  ReturnType<typeof setErrorAC>
+    |  ReturnType<typeof setEmailErrorAC>
+    |  ReturnType<typeof setPasswordErrorAC>
     |  ReturnType<typeof isFetchingAC>
 
 

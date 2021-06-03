@@ -2,7 +2,9 @@ import {Dispatch} from "redux";
 import {regAPI} from "../ui/content/components/registration/api/api-registr";
 
 const initialState = {
-    newUser: {}
+    newUser: {},
+    emailError: null as null | string,
+    passwordError: null as null | string,
 }
 
 type newUserType = {
@@ -20,12 +22,20 @@ export const registrationReducer = (state: InitialStateType = initialState, acti
                 newUser: action.payload
             }
         }
+        case "SET-EMAIL-ERROR":
+            return {...state,
+                emailError: action.error}
+        case "SET-PASSWORD-ERROR":
+            return {...state,
+                passwordError: action.error}
         default:
             return state
     }
 }
 
-export const setNewUserAC = (payload: InitialStateType) => ({type: 'SET_NEW_USER', payload}) as const
+export const setNewUserAC = (payload: InitialStateType) => ({type: 'SET_NEW_USER', payload} as const)
+export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
+export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
 
 export const setNewUserTC = (email: string, password: string) => (dispatch: Dispatch) => {
     regAPI.registration(email, password)
@@ -35,10 +45,12 @@ export const setNewUserTC = (email: string, password: string) => (dispatch: Disp
         })
         .catch((e) => {
             const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
-            console.log(error)
+            dispatch(setEmailErrorAC(error))
         })
 }
 
 export type SetNewUserType = ReturnType<typeof setNewUserAC>;
 
-type ActionType = SetNewUserType;
+type ActionType = SetNewUserType
+                | ReturnType<typeof setEmailErrorAC>
+                | ReturnType<typeof setPasswordErrorAC>;

@@ -9,7 +9,8 @@ import {routes} from "../../../../router/routes";
 
 type LoginPagePropsType = {
     email: string
-    error: string | null
+    emailError: string | null
+    passwordError: string | null
     password: string
     rememberMe: boolean
     onclickHandler: () => void
@@ -50,7 +51,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
                         <Input title="Email"
                                type= "email"
                                name="email"
-                               error={props.error}
+                               error={props.emailError}
                                placeholder={'email'}
                                value={props.email}
                                onChange={changeEmail}
@@ -63,7 +64,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                // type= "password"
                                type= {passwordType}
                                name="password"
-                               error={props.error}
+                               error={props.passwordError}
                                placeholder={'password'}
                                value={props.password}
                                onChange={changePassword}
