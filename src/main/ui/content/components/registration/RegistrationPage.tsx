@@ -47,7 +47,7 @@ export const RegistrationPage = () => {
                          onEmailChange={onEmailChange}
                          onPasswordChange={onPasswordChange}
                          onPasswordConfirmChange={onPasswordConfirm}
-                         registrationButtonClock={registrationButtonClick}
+                         registrationButtonClick={registrationButtonClick}
                          cancelClick={cancelClick}
     />
 

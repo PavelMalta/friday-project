@@ -8,58 +8,63 @@ type InputPropsType = {
     value?: string
     style?: {}
     placeholder?: string
-    onChange?:(string: string)=> void
+    onChange?: (string: string) => void
     id?: string
     htmlFor?: string
     error?: string | null
     idName?: string
+    changeVision?: () => void
 }
 
 export const Input = (props: InputPropsType) => {
+
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.onChange && props.onChange(e.currentTarget.value)
     }
 
-    function togglePassword(){
-        debugger
-        let input = document.getElementById('inputPassword' );
+    const ChangeTextVision = () => {
+        props.changeVision && props.changeVision()
+    }
 
-        if(input !== null){
-        if (input.getAttribute('type') === 'password') {
+    function togglePassword() {
 
-            input.setAttribute('type', 'text');
-        } else {
+        let input = document.getElementById('inputPassword');
 
-            input.setAttribute('type', 'password');
-        }}
+        if (input !== null) {
+            if (input.getAttribute('type') === 'password') {
+
+                input.setAttribute('type', 'text');
+            } else {
+
+                input.setAttribute('type', 'password');
+            }
+        }
         return false;
     }
 
+
+
     return (
-        <form className={s.wrapper} style= {props.style}>
+        <form className={s.wrapper} style={props.style}>
             <label className={s.label}>{props.title}</label>
             <input className={s.input__item}
-                type={props.type}
-                name={props.name}
-                placeholder={props.placeholder}
-                value={props.value}
-                onChange = {onChangeHandler}
-                id={props.idName}>
+                   type={props.type}
+                   name={props.name}
+                   placeholder={props.placeholder}
+                   value={props.value}
+                   onChange={onChangeHandler}
+                   id={props.idName}>
             </input>
 
-             {/*Глазик чекбокс*/}
+            {/*Глазик чекбокс*/}
             <div className={s.checkbox}>
-                <div >{props.idName ==='inputPassword'
-                    ? <><input className={s.checkboxInput} type="checkbox" onChange={togglePassword} id={props.id}/>
-                    <label className={s.checkboxLable} htmlFor={props.htmlFor}></label></>
-                     : null}</div>
-
+                <div>{props.idName === 'inputPassword'
+                    ? <><input className={s.checkboxInput} type="checkbox" onChange={ChangeTextVision} id={props.id}/>
+                        <label className={s.checkboxLable} htmlFor={props.htmlFor}></label></>
+                    : null}</div>
             </div>
 
-
-                {/* Не получается заюзать((( */}
-            {/*<Eye id={"checkbox2"}  htmlFor= "checkbox2"/>*/}
 
             <span className={s.span}>{props.error !== null ? <span>{props.error}</span> : null}</span>
         </form>
