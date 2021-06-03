@@ -27,7 +27,7 @@ export const Input = (props: InputPropsType) => {
         props.changeVision && props.changeVision()
     }
 
-    function togglePassword() {
+   /* function togglePassword() {
 
         let input = document.getElementById('inputPassword');
 
@@ -41,7 +41,7 @@ export const Input = (props: InputPropsType) => {
             }
         }
         return false;
-    }
+    }*/
 
 
 
