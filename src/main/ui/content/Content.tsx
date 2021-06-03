@@ -6,9 +6,9 @@ import {Profile} from "./components/profile/Profile";
 import {NotFound} from "./components/notFound/NotFound";
 import {NewPassword} from "./components/newPassword/NewPassword";
 import {Presentation} from "./components/presentation/Presentation";
-import {LoginContainer} from "../pages/auth/loginPage/LoginContainer";
 import {ForgotPassword} from "../pages/auth/forgotPassword/ForgotPassword";
 import {RegistrationPage} from "./components/registration/RegistrationPage";
+import {LoginContainer} from "./components/login/LoginContainer";
 
 
 export const Content = () => {
