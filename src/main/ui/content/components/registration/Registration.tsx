@@ -9,6 +9,8 @@ type RegistrationPropsType = {
     email: string
     password: string
     passwordConfirm: string
+    emailError: string | null
+    passwordError: string | null
     onEmailChange: (email: string) => void
     onPasswordChange: (password: string) => void
     onPasswordConfirmChange: (passwordConfirm: string) => void
@@ -42,6 +44,7 @@ export const Registration = (props: RegistrationPropsType) => {
                                type="email"
                                name="email"
                                value={props.email}
+                               error={props.emailError}
                                onChange={emailChange}/> {/* Нужно убрать глазик (логика) */}
 
                         <Input title="Password"
@@ -50,6 +53,7 @@ export const Registration = (props: RegistrationPropsType) => {
                                id= "checkbox2"
                                htmlFor= "checkbox2"
                                value={props.password}
+                               error={props.passwordError}
                                onChange={passwordChange}
                                idName={'inputPassword'}
                                style={{marginTop: "25px"}}/>
@@ -60,6 +64,7 @@ export const Registration = (props: RegistrationPropsType) => {
                                idName={'inputPassword'}
                                id= "checkbox"
                                htmlFor= "checkbox"
+                               error={props.passwordError}
                                value={props.passwordConfirm}
                                onChange={passwordConfirmChange}
                                style={{marginTop: "25px"}}/>

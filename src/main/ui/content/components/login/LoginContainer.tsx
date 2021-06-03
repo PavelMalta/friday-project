@@ -20,11 +20,15 @@ export const LoginContainer = () => {
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
-        dispatch(setEmailErrorAC(null))
+        if (emailError !== null) {
+            dispatch(setEmailErrorAC(null))
+        }
     }
     const onChangePassword = (password: string) => {
         setPassword(password)
-        dispatch(setPasswordErrorAC(null))
+        if (passwordError !== null) {
+            dispatch(setPasswordErrorAC(null))
+        }
     }
     const onChangeRememberMe = (rememberMe: boolean) => {
         setRememberMe(!rememberMe)
