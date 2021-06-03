@@ -1,5 +1,5 @@
 import s from "./Input.module.scss";
-import { ChangeEvent } from "react";
+import React, {ChangeEvent} from "react";
 
 type InputPropsType = {
     title?: string
@@ -12,39 +12,54 @@ type InputPropsType = {
     id?: string
     htmlFor?: string
     error?: string | null
+    idName?: string
 }
 
 export const Input = (props: InputPropsType) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-       props.onChange && props.onChange(e.currentTarget.value)
+        props.onChange && props.onChange(e.currentTarget.value)
+    }
+
+    function togglePassword(){
+        debugger
+        let input = document.getElementById('inputPassword' );
+
+        if(input !== null){
+        if (input.getAttribute('type') === 'password') {
+
+            input.setAttribute('type', 'text');
+        } else {
+
+            input.setAttribute('type', 'password');
+        }}
+        return false;
     }
 
     return (
-        <form className={s.wrapper} style={props.style}>
+        <form className={s.wrapper} style= {props.style}>
             <label className={s.label}>{props.title}</label>
             <input className={s.input__item}
-                   type={props.type}
-                   name={props.name}
-                   placeholder={props.placeholder}
-                   value={props.value}
-                   onChange={onChangeHandler}/>
+                type={props.type}
+                name={props.name}
+                placeholder={props.placeholder}
+                value={props.value}
+                onChange = {onChangeHandler}
+                id={props.idName}>
+            </input>
 
-          {/*  <img src={Eye} className={s.icon}/>*/}
-            {/* <img src={EyeHide} className={s.icon}/>  перечеркнутый глаз */}
-
-
-            {/* Глазик чекбокс */}
+             {/*Глазик чекбокс*/}
             <div className={s.checkbox}>
-                <input className={s.checkboxInput} type="checkbox" id={props.id}/>
-                <label className={s.checkboxLable} htmlFor={props.htmlFor}></label>
+                <div >{props.idName ==='inputPassword'
+                    ? <><input className={s.checkboxInput} type="checkbox" onChange={togglePassword} id={props.id}/>
+                    <label className={s.checkboxLable} htmlFor={props.htmlFor}></label></>
+                     : null}</div>
+
             </div>
 
+
                 {/* Не получается заюзать((( */}
-                {/* <Eye
-                    id= "checkbox2"
-                    htmlFor= "checkbox2"
-                /> */}
+            {/*<Eye id={"checkbox2"}  htmlFor= "checkbox2"/>*/}
 
             <span className={s.span}>{props.error !== null ? <span>{props.error}</span> : null}</span>
         </form>
