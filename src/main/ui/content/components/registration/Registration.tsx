@@ -3,6 +3,7 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
+import React from "react";
 
 type RegistrationPropsType = {
     email: string
@@ -46,13 +47,19 @@ export const Registration = (props: RegistrationPropsType) => {
                         <Input title="Password"
                                type="password"
                                name="password"
+                               id= "checkbox2"
+                               htmlFor= "checkbox2"
                                value={props.password}
                                onChange={passwordChange}
+                               idName={'inputPassword'}
                                style={{marginTop: "25px"}}/>
 
                         <Input title="Confirm password"
                                type="password"
                                name="Confirm password"
+                               idName={'inputPassword'}
+                               id= "checkbox"
+                               htmlFor= "checkbox"
                                value={props.passwordConfirm}
                                onChange={passwordConfirmChange}
                                style={{marginTop: "25px"}}/>

@@ -84,7 +84,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
                         />
                     </div>
                     <div className={s.singUp}>
-                        <a className={s.span} href="#">Don’t have an account?</a>
+                        <label className={s.span} >Don’t have an account?</label>
                         <NavLink className={s.linkSingUp} to={routes.registration}>Sign Up</NavLink>
                         {/*<a className={s.linkSingUp} href="#">Sign Up</a>*/}
                     </div>

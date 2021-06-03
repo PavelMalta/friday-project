@@ -3,6 +3,7 @@ import { Input } from "../../../common/input/Input";
 import { Button } from "../../../common/button/Button";
 import { Logo } from "../../../common/logo/Logo";
 import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import React from "react";
 
 
 
@@ -23,10 +24,12 @@ export const Register = () => {
                             name="password"
                             id= "checkbox"
                             htmlFor= "checkbox"
+                            idName={'inputPassword'}
                             style= {{marginTop:"25px"}} />
                         <Input title="Confirm password"
                             type= "password"
                             name="Confirm password"
+                            idName={'inputPassword'}
                             id= "checkbox1"
                             htmlFor= "checkbox1"
                             style= {{marginTop:"25px"}}/>

@@ -1,4 +1,3 @@
-import { Eye } from "../eye/Eye";
 import s from "./Input.module.scss";
 import React, {ChangeEvent} from "react";
 
@@ -24,7 +23,7 @@ export const Input = (props: InputPropsType) => {
 
     function togglePassword(){
         debugger
-        let input = document.getElementById('inputPassword');
+        let input = document.getElementById('inputPassword' );
 
         if(input !== null){
         if (input.getAttribute('type') === 'password') {
