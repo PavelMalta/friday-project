@@ -1,10 +1,12 @@
 import {Dispatch} from "redux";
 import {regAPI} from "../ui/content/components/registration/api/api-registr";
+import {isFetchingAC} from "./login-reducer";
 
 const initialState = {
     newUser: {},
     emailError: null as null | string,
     passwordError: null as null | string,
+
 }
 
 type newUserType = {
@@ -33,11 +35,12 @@ export const registrationReducer = (state: InitialStateType = initialState, acti
     }
 }
 
-export const setNewUserAC = (payload: InitialStateType) => ({type: 'SET_NEW_USER', payload} as const)
-export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
-export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
+export const setNewUserAC = (payload: InitialStateType) => ({type: 'SET_NEW_USER', payload} as const);
+export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const);
+export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const);
 
 export const setNewUserTC = (email: string, password: string) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
     regAPI.registration(email, password)
         .then(response => {
             console.log(response.data)
@@ -46,6 +49,9 @@ export const setNewUserTC = (email: string, password: string) => (dispatch: Disp
         .catch((e) => {
             const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
             dispatch(setEmailErrorAC(error))
+        })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
         })
 }
 
