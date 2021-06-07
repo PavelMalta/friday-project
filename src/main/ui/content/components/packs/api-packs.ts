@@ -42,9 +42,23 @@ export type PacksQueryParamsType = {
     page?: number
 }
 
+export type AddPackPayloadType = {
+    name?: string
+    path?: string
+    grade?: number
+    shots?: number
+    rating?: number
+    deckCover?: string
+    private?: boolean
+    type?: string
+}
+
 
 export const packsAPI = {
     getPacks(packQueryParams: PacksQueryParamsType) {
         return instance.get('cards/pack', {params: packQueryParams})
+    },
+    addPack(addPackPayload: AddPackPayloadType) {
+        return instance.post('cards/pack', {cardsPack: addPackPayload})
     }
 }

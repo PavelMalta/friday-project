@@ -1,4 +1,9 @@
-import {PackResponseType, packsAPI, PacksQueryParamsType} from "../ui/content/components/packs/api-packs";
+import {
+    AddPackPayloadType,
+    PackResponseType,
+    packsAPI,
+    PacksQueryParamsType
+} from "../ui/content/components/packs/api-packs";
 import {Dispatch} from "redux";
 
 
@@ -48,4 +53,13 @@ export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: 
         })
 }
 
-type ActionType = ReturnType<typeof getPacksAC> | ReturnType<typeof isFetchingAC>
+export const addCardsPackTC = (addPackPayload: AddPackPayloadType, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
+    packsAPI.addPack(addPackPayload)
+        .then(() => {
+            // @ts-ignore
+            dispatch(getPacksTC(packQueryParams))
+        })
+}
+
+type ActionType = ReturnType<typeof getPacksAC> | ReturnType<typeof isFetchingAC> | ReturnType<typeof isFetchingAC>

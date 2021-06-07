@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch} from "react-redux";
-import {getPacksTC} from "../../../../store/packs-reducer";
+import {addCardsPackTC, getPacksTC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
 
 
@@ -8,12 +8,17 @@ export const Packs = () => {
 
     const dispatch = useDispatch();
 
-    const getPacks = () => {
-        dispatch(getPacksTC({}))
+   useEffect(() => {
+        dispatch(getPacksTC({pageCount: 10}))
+    },[])
+
+    const addPack = () => {
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
     }
+
     return (
         <div>
-            <button onClick={getPacks}>get Packs</button>
+            <button onClick={addPack}>Add new pack</button>
             <PacksTable/>
         </div>
     )
