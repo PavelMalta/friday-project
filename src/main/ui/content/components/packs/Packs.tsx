@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {getPacksTC} from "../../../../store/packs-reducer";
+import {PacksTable} from "./packTable/PacksTable";
 
 
 export const Packs = () => {
@@ -13,6 +14,7 @@ export const Packs = () => {
     return (
         <div>
             <button onClick={getPacks}>get Packs</button>
+            <PacksTable/>
         </div>
     )
 }

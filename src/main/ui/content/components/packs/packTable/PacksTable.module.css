@@ -1,0 +1,11 @@
+.table {
+
+}
+
+.row {
+    display: flex;
+}
+
+.item {
+    margin: 10px 50px;
+}
