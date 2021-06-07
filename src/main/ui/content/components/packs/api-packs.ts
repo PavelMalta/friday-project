@@ -8,25 +8,30 @@ const instance = axios.create({
 export type cardPacksType = {
     _id: string
     user_id: string
+    user_name: string
+    private: boolean
     name: string
     path: string
-    cardsCount: number
     grate: number
     shots: number
-    rating: number
+    deckCover: string
+    cardsCount: number
     type: string
+    rating: number
     created: string
     updated: string
+    more_id: string
     __v: string
 }
 
 export type PackResponseType = {
     cardPacks: Array<cardPacksType>
-    cardPacksTotalCount: number
-    maxCardsCount: number
-    minCardsCount: number
     page: number
     pageCount: number
+    cardPacksTotalCount: number
+    minCardsCount: number
+    maxCardsCount: number
+
 }
 
 export type PacksQueryParamsType = {
