@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 type PacksTableType = {
     deletePack: (packID: string) => void
     updatePack: (packID: string ,title: string) => void
+    learnPack: (packID: string) => void
 }
 
 export const PacksTable = (props: PacksTableType) => {
@@ -37,10 +38,10 @@ export const PacksTable = (props: PacksTableType) => {
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
                                 <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>
-                                <NavLink to={`/cards/${item._id}`}>Learn</NavLink>
+                                <button onClick={() => props.learnPack(item._id)}>Learn</button>
                               </div>
                             : <div className={s.item}>
-                                <NavLink to={`/cards/${item._id}`}>Learn</NavLink>
+                                <button onClick={() => props.learnPack(item._id)}>Learn</button>
                               </div>
                         }
                     </div>
@@ -48,5 +49,4 @@ export const PacksTable = (props: PacksTableType) => {
             })}
         </div>
     )
-    
-}
+};

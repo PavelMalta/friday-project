@@ -1,13 +1,10 @@
-.table {
-
-}
-
 .row {
     display: flex;
+    background-color: white;
 }
 
 .item {
     height: 30px;
     width: 150px;
-    margin: 10px 50px;
+    margin: 10px 20px;
 }

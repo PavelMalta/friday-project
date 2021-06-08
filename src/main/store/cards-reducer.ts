@@ -1,5 +1,4 @@
-import {cardQueryParamsType, CardsResponseType} from "../ui/content/components/cards/cardsTable/api-cards";
-import {packsAPI} from "../ui/content/components/packs/api-packs";
+import {cardQueryParamsType, cardsAPI, CardsResponseType} from "../ui/content/components/cards/api-cards";
 import {Dispatch} from "redux";
 
 const initialState = {
@@ -37,7 +36,7 @@ const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching}
 
 export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
-    packsAPI.getPacks(cardQueryParams)
+    cardsAPI.getCards(cardQueryParams)
         .then(res => {
             dispatch(getCardsAC(res.data))
         })

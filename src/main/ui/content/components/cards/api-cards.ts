@@ -9,7 +9,7 @@ const instance = axios.create({
 
 export const cardsAPI = {
     getCards(cardQueryParams: cardQueryParamsType) {
-        return instance.get('cards/pack', {params: cardQueryParams})
+        return instance.get('cards/card', {params: cardQueryParams})
     }
 }
 

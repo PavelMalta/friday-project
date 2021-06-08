@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
 import {Redirect} from "react-router-dom";
+import {getCardsTC} from "../../../../store/cards-reducer";
 
 
 export const Packs = () => {
@@ -22,6 +23,9 @@ export const Packs = () => {
     const updatePack = (PackID: string, title: string) => {
         dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 10}))
     }
+    const learnPack = (PackID: string) => {
+        dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
+    }
 
 
     return (
@@ -29,6 +33,7 @@ export const Packs = () => {
             <button onClick={addPack}>Add new pack</button>
             <PacksTable deletePack={deletePack}
                         updatePack={updatePack}
+                        learnPack={learnPack}
             />
         </div>
     )
