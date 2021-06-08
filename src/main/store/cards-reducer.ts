@@ -1,4 +1,9 @@
-import {cardQueryParamsType, cardsAPI, CardsResponseType} from "../ui/content/components/cards/api-cards";
+import {
+    cardQueryParamsType,
+    cardsAPI,
+    CardsResponseType,
+    NewCardPayloadType
+} from "../ui/content/components/cards/api-cards";
 import {Dispatch} from "redux";
 
 const initialState = {
@@ -42,6 +47,18 @@ export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: D
         })
         .catch((e) => {
 
+        })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
+}
+
+export const addCardTC = (newCardPayload: NewCardPayloadType, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
+    cardsAPI.addCard(newCardPayload)
+        .then(res => {
+            // @ts-ignore
+            dispatch(getCardsTC(cardQueryParams))
         })
         .finally(() => {
             dispatch(isFetchingAC(false))
