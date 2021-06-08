@@ -65,4 +65,16 @@ export const addCardTC = (newCardPayload: NewCardPayloadType, cardQueryParams: c
         })
 }
 
+export const deleteCardTC = (cardID: string, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
+    cardsAPI.deleteCard(cardID)
+        .then(res => {
+            // @ts-ignore
+            dispatch(getCardsTC(cardQueryParams))
+        })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
+}
+
 type ActionType = ReturnType<typeof getCardsAC> | ReturnType<typeof isFetchingAC>
