@@ -27,6 +27,8 @@ export const packsReducer = (state: InitialStateType = initialState, action: Act
     switch (action.type) {
         case "GET-PACKS":
             return {...state, packsTableData: action.packsTableData}
+        case "SET-CURRENT-PAGE":
+            return {...state, packsTableData: {...state.packsTableData, page: action.currentPage} }
         case "IS-FETCHING":
             return {...state, isFetching: action.isFetching}
         default:
@@ -38,6 +40,10 @@ export const getPacksAC = (packsTableData: PackResponseType) => {
     return {type: "GET-PACKS", packsTableData} as const
 }
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
+
+export const setCurrentPageAC = (currentPage: number) => {
+    return {type: "SET-CURRENT-PAGE", currentPage} as const
+}
 
 export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
@@ -78,4 +84,6 @@ export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, pack
         })
 }
 
-type ActionType = ReturnType<typeof getPacksAC> | ReturnType<typeof isFetchingAC> | ReturnType<typeof isFetchingAC>
+type ActionType = ReturnType<typeof getPacksAC> |
+                ReturnType<typeof isFetchingAC> |
+                ReturnType<typeof setCurrentPageAC>

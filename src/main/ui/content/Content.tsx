@@ -9,9 +9,18 @@ import {Presentation} from "./components/presentation/Presentation";
 import {RegistrationPage} from "./components/registration/RegistrationPage";
 import {LoginContainer} from "./components/login/LoginContainer";
 import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRecoverContainer";
+import {CardsTable} from "./components/cards/cardsTable/CardsTable";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../store/store";
+import {Preloader} from "../common/preloader/Preloader";
 
 
 export const Content = () => {
+    const isFetching = useSelector<AppRootStateType, boolean>((state) => state.login.isFetching)
+
+    if (isFetching) {
+        return <Preloader/>
+    }
     return (
         <div className={s.contentContainer}>
             <Switch>

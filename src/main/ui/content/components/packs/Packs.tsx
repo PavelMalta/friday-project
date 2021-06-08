@@ -1,17 +1,22 @@
 import React, {useEffect} from 'react';
-import {useDispatch} from "react-redux";
-import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC, setCurrentPageAC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
 import {Redirect} from "react-router-dom";
 import {getCardsTC} from "../../../../store/cards-reducer";
+import {AppRootStateType} from "../../../../store/store";
+import {PackResponseType} from "./api-packs";
+import {Paginator} from "../../../common/paginator/Paginator";
+import {Preloader} from "../../../common/preloader/Preloader";
 
 
 export const Packs = () => {
-
+    const isFetching = useSelector<AppRootStateType, boolean>((state) => state.login.isFetching)
+    const packsData = useSelector<AppRootStateType, PackResponseType>(state => state.packs.packsTableData)
     const dispatch = useDispatch();
 
    useEffect(() => {
-        dispatch(getPacksTC({pageCount: 10}))
+        dispatch(getPacksTC({pageCount: 20}))
     },[])
 
     const addPack = () => {
@@ -27,9 +32,23 @@ export const Packs = () => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
     }
 
+    const changePage = (pageNumber: number) => {
+        dispatch(setCurrentPageAC(pageNumber))
+        dispatch(getPacksTC({page: pageNumber, pageCount: 20}))
+    }
+
+    if (isFetching) {
+        // return <div>Loading...</div>
+        return <Preloader/>
+    }
 
     return (
         <div>
+            <Paginator totalItemsCount={packsData.cardPacksTotalCount}
+                       pageSize={20}
+                       currentPage={packsData.page}
+                       onPageChanged={changePage}/>
+
             <button onClick={addPack}>Add new pack</button>
             <PacksTable deletePack={deletePack}
                         updatePack={updatePack}

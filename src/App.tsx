@@ -15,6 +15,7 @@ import {LoginPageTest} from './main/ui/pages/auth/loginPageTest/LoginPageTest';
 import {CheckEmail} from './main/ui/pages/auth/сheckEmail/CheckEmail';
 import {CreateNewPassword} from './main/ui/pages/auth/createNewPassword/CreateNewPassword';
 import {Head} from './main/ui/common/head/Head';
+import {CardsTable} from "./main/ui/content/components/cards/cardsTable/CardsTable";
 
 
 
@@ -31,18 +32,9 @@ function App() {
             {/* <Head/> */}
             <div className={s.content}>
                 <Content/>
+                {/*<Packs/>*/}
+                {/*<Cards/>*/}
                 <Packs/>
-                <Cards/>
-
-
-                {/* <LoginPage/> */}
-                {/* <Register/> */}
-                {/* <ForgotPassword/> */}
-                {/* <CheckEmail/> */}
-                {/* <CreateNewPassword/> */}
-
-
-                {/* <LoginPageTest/>  Material UI*/}
             </div>
         </div>
     );

@@ -4,7 +4,6 @@ import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../api-packs";
 import {v1} from "uuid";
 import s from "./PacksTable.module.css"
-import { NavLink } from 'react-router-dom';
 
 
 type PacksTableType = {
@@ -28,6 +27,7 @@ export const PacksTable = (props: PacksTableType) => {
         <div className={s.table}>
             {packsData.cardPacks.map((item) => {
                 return (
+
                     <div key={v1()} className={s.row}>
                         <div className={s.item}>{item.name}</div>
                         <div className={s.item}>{item.cardsCount}</div>

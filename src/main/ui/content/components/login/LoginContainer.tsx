@@ -4,6 +4,7 @@ import {getAuthUserData, setEmailErrorAC, setPasswordErrorAC} from "../../../../
 import {LoginPage} from "./LoginPage";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
+import {Preloader} from "../../../common/preloader/Preloader";
 
 export const LoginContainer = () => {
 
@@ -52,7 +53,8 @@ export const LoginContainer = () => {
     }
 
     if (isFetching) {
-        return <div>Loading...</div>
+        return <Preloader/>
+        // return <div>Loading...</div>
     }
     if (isAuth) {
         return <Redirect to={'/profile'}/>
