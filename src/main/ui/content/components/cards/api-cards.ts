@@ -16,6 +16,9 @@ export const cardsAPI = {
     },
     deleteCard(cardID: string) {
         return instance.delete(`cards/card/?id=${cardID}`)
+    },
+    updateCard(updateCardPayload: UpdateCardPayloadType) {
+        return instance.put('cards/card', {card: updateCardPayload})
     }
 }
 
@@ -54,7 +57,7 @@ export type CardsType = {
     _id: string
 }
 
-export type NewCardPayloadType ={
+export type NewCardPayloadType = {
     cardsPack_id: string
     question?: string
     answer?: string
@@ -68,3 +71,9 @@ export type NewCardPayloadType ={
     type?: string
 }
 
+export type UpdateCardPayloadType = {
+    _id: string
+    question?: string
+    answer?: string
+    comments?: string
+}

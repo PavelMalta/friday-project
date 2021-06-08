@@ -7,6 +7,7 @@ import {v1} from "uuid";
 
 type CardsTableType = {
     deleteCard: (cardID: string) => void
+    updateCard: (cardID: string) => void
 }
 
 export const CardsTable = (props: CardsTableType) => {
@@ -41,6 +42,7 @@ export const CardsTable = (props: CardsTableType) => {
                             {item.user_id === "60be3008bf6f0f0bb0f722a9"
                                 ? <div>
                                     <button onClick={() => {props.deleteCard(item._id)}}>Delete</button>
+                                    <button onClick={() => {props.updateCard(item._id)}}>Edit</button>
                                 </div>
                                 : <div></div>
                             }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {addCardTC, deleteCardTC, getCardsTC} from "../../../../store/cards-reducer";
+import {addCardTC, deleteCardTC, updateCardTC} from "../../../../store/cards-reducer";
 import {CardsTable} from "./cardsTable/CardsTable";
 
 
@@ -10,8 +10,8 @@ export const Cards = () => {
 
     const newCardPayload = {
         cardsPack_id: '60bf750b73a1060004ae9189',
-        question: 'Who are you?',
-        answer: 'I am pokemon'
+        question: 'Who is she?',
+        answer: 'She is pokemoniha'
     }
 
     const addCards = () => {
@@ -22,10 +22,19 @@ export const Cards = () => {
         dispatch(deleteCardTC(cardID, {cardsPack_id: '60bf750b73a1060004ae9189', pageCount: 100}))
     }
 
+    const updateCard = (cardID: string) => {
+        const updateCardPayload = {
+            _id: cardID,
+            question: 'What?'
+        }
+        dispatch(updateCardTC(updateCardPayload, {cardsPack_id: '60bf750b73a1060004ae9189', pageCount: 100}))
+    }
+
     return (
         <div>
             <button onClick={addCards}>Add cards</button>
             <CardsTable deleteCard={deleteCard}
+                        updateCard={updateCard}
             />
         </div>
     )

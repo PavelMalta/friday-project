@@ -2,7 +2,7 @@ import {
     cardQueryParamsType,
     cardsAPI,
     CardsResponseType,
-    NewCardPayloadType
+    NewCardPayloadType, UpdateCardPayloadType
 } from "../ui/content/components/cards/api-cards";
 import {Dispatch} from "redux";
 
@@ -68,6 +68,18 @@ export const addCardTC = (newCardPayload: NewCardPayloadType, cardQueryParams: c
 export const deleteCardTC = (cardID: string, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
     dispatch(isFetchingAC(true))
     cardsAPI.deleteCard(cardID)
+        .then(res => {
+            // @ts-ignore
+            dispatch(getCardsTC(cardQueryParams))
+        })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
+}
+
+export const updateCardTC = (updateCardPayload: UpdateCardPayloadType, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
+    cardsAPI.updateCard(updateCardPayload)
         .then(res => {
             // @ts-ignore
             dispatch(getCardsTC(cardQueryParams))
