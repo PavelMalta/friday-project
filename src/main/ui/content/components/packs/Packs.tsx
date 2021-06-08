@@ -15,21 +15,18 @@ export const Packs = () => {
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
     }
-    const deletePack = () => {
-       const idPack = "60bf28cc73a1060004ae9166"
+    const deletePack = (idPack: string) => {
         dispatch(deleteCardsPackTC(idPack, {pageCount: 10}))
     }
     const updatePack = () => {
-        const idPack = "60bf28cc73a1060004ae9166"
+        const idPack = "60bf261ce83ee23614112b9b"
         dispatch(updateCardsPackTC({_id: idPack, name: "Hello"}, {pageCount: 10}))
     }
 
     return (
         <div>
             <button onClick={addPack}>Add new pack</button>
-            <button onClick={deletePack}>delete pack</button>
-            <button onClick={updatePack}>update pack</button>
-            <PacksTable/>
+            <PacksTable deletePack={deletePack}/>
         </div>
     )
 }
