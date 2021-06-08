@@ -1,7 +1,6 @@
-import {CardsResponseType} from "../ui/content/components/cards/cardsTable/api-cards";
-import {packsAPI, PacksQueryParamsType} from "../ui/content/components/packs/api-packs";
+import {cardQueryParamsType, CardsResponseType} from "../ui/content/components/cards/cardsTable/api-cards";
+import {packsAPI} from "../ui/content/components/packs/api-packs";
 import {Dispatch} from "redux";
-import {getPacksAC} from "./packs-reducer";
 
 const initialState = {
      cardsTableData: {
@@ -10,8 +9,7 @@ const initialState = {
          maxGrade: 0,
          minGrade: 0,
          page: 0,
-         pageCount: 0,
-         packUserId: ''
+         pageCount: 0
      },
     isFetching: false
 }
@@ -20,7 +18,7 @@ type InitialStateType = {
     isFetching: boolean
 }
 
-export const newPasswordReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
+export const cardsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case "GET-CARDS":
             return {...state, cardsTableData: action.cardsTableData}
@@ -37,9 +35,9 @@ const getCardsAC = (cardsTableData: CardsResponseType) => {
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 
 
-export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
+export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
-    packsAPI.getPacks(packQueryParams)
+    packsAPI.getPacks(cardQueryParams)
         .then(res => {
             dispatch(getCardsAC(res.data))
         })

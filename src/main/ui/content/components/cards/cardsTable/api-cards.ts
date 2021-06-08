@@ -17,7 +17,7 @@ export const cardsAPI = {
 export type cardQueryParamsType = {
     cardAnswer?: string
     cardQuestion?: string
-    cardsPack_id?: string
+    cardsPack_id: string
     min?: number
     max?: number
     page?: number
@@ -31,7 +31,6 @@ export type CardsResponseType = {
     minGrade: number
     page: number
     pageCount: number
-    packUserId: string
 }
 
 export type CardsType = {
