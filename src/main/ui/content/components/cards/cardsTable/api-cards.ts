@@ -23,3 +23,29 @@ export type cardQueryParamsType = {
     page?: number
     pageCount?: number
 }
+
+export type CardsResponseType = {
+    cards: Array<CardsType>
+    cardsTotalCount: number
+    maxGrade: number
+    minGrade: number
+    page: number
+    pageCount: number
+    packUserId: string
+}
+
+export type CardsType = {
+    answer: string
+    question: string
+    cardsPack_id: string
+    grade: number
+    rating: number
+    shots: number
+    type: string
+    user_id: string
+    created: string
+    updated: string
+    __v: number
+    _id: string
+}
+
