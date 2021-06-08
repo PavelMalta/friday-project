@@ -10,6 +10,9 @@ const instance = axios.create({
 export const cardsAPI = {
     getCards(cardQueryParams: cardQueryParamsType) {
         return instance.get('cards/card', {params: cardQueryParams})
+    },
+    addCard(newCardPayload: NewCardPayloadType) {
+        return instance.post('cards/card',{card: newCardPayload})
     }
 }
 
@@ -46,5 +49,19 @@ export type CardsType = {
     updated: string
     __v: number
     _id: string
+}
+
+export type NewCardPayloadType ={
+    cardsPack_id: string
+    question?: string
+    answer?: string
+    grade?: number
+    shots?: number
+    rating?: number
+    answerImg?: string
+    questionImg?: string
+    questionVideo?: string
+    answerVideo?: string
+    type?: string
 }
 
