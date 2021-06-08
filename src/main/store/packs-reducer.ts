@@ -2,7 +2,7 @@ import {
     AddPackPayloadType,
     PackResponseType,
     packsAPI,
-    PacksQueryParamsType
+    PacksQueryParamsType, updatePackPayloadType
 } from "../ui/content/components/packs/api-packs";
 import {Dispatch} from "redux";
 
@@ -64,6 +64,14 @@ export const addCardsPackTC = (addPackPayload: AddPackPayloadType, packQueryPara
 export const deleteCardsPackTC = (idPack: string, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.deletePack(idPack)
+        .then(() => {
+            // @ts-ignore
+            dispatch(getPacksTC(packQueryParams))
+        })
+}
+export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
+    packsAPI.updatePack(updatePackPayload)
         .then(() => {
             // @ts-ignore
             dispatch(getPacksTC(packQueryParams))

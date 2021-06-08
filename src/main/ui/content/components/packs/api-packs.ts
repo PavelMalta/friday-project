@@ -53,6 +53,10 @@ export type AddPackPayloadType = {
     type?: string
 }
 
+export type updatePackPayloadType = {
+    _id: string
+    name?: string
+}
 
 
 
@@ -65,5 +69,8 @@ export const packsAPI = {
     },
     deletePack(idPack: string) {
         return instance.delete(`cards/pack?id=${idPack}`)
+    },
+    updatePack(updatePackPayload: updatePackPayloadType) {
+        return instance.put('cards/pack', {cardsPack: updatePackPayload})
     }
 }
