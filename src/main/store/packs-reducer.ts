@@ -61,5 +61,13 @@ export const addCardsPackTC = (addPackPayload: AddPackPayloadType, packQueryPara
             dispatch(getPacksTC(packQueryParams))
         })
 }
+export const deleteCardsPackTC = (idPack: string, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
+    dispatch(isFetchingAC(true))
+    packsAPI.deletePack(idPack)
+        .then(() => {
+            // @ts-ignore
+            dispatch(getPacksTC(packQueryParams))
+        })
+}
 
 type ActionType = ReturnType<typeof getPacksAC> | ReturnType<typeof isFetchingAC> | ReturnType<typeof isFetchingAC>

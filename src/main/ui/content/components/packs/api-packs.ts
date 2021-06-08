@@ -54,11 +54,16 @@ export type AddPackPayloadType = {
 }
 
 
+
+
 export const packsAPI = {
     getPacks(packQueryParams: PacksQueryParamsType) {
         return instance.get('cards/pack', {params: packQueryParams})
     },
     addPack(addPackPayload: AddPackPayloadType) {
         return instance.post('cards/pack', {cardsPack: addPackPayload})
+    },
+    deletePack(idPack: string) {
+        return instance.delete(`cards/pack?id=${idPack}`)
     }
 }
