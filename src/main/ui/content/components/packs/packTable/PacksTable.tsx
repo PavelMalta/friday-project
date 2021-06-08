@@ -8,6 +8,7 @@ import s from "./PacksTable.module.css"
 
 type PacksTableType = {
     deletePack: (packID: string) => void
+    updatePack: (packID: string ,title: string) => void
 }
 
 export const PacksTable = (props: PacksTableType) => {
@@ -34,7 +35,7 @@ export const PacksTable = (props: PacksTableType) => {
                         {item.user_id === "60be3008bf6f0f0bb0f722a9"
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
-                                <button>Edit</button>
+                                <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>
                                 <button>Learn</button>
                               </div>
                             : <div className={s.item}>
