@@ -38,10 +38,14 @@ export const PacksTable = (props: PacksTableType) => {
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
                                 <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>
-                                <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                                <NavLink to={`/cards/${item._id}`}>
+                                    <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                                </NavLink>
                               </div>
                             : <div className={s.item}>
-                                <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                               <NavLink to={`/cards/${item._id}`}>
+                                   <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                               </NavLink>
                               </div>
                         }
                     </div>
@@ -49,4 +53,4 @@ export const PacksTable = (props: PacksTableType) => {
             })}
         </div>
     )
-};
+}

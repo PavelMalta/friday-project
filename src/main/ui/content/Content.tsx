@@ -25,7 +25,7 @@ export const Content = () => {
                 <Route exact path={routes.newPassword} render={() => <NewPassword/>} />
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
                 <Route exact path={routes.packs} render={() => <Packs/>} />
-                <Route exact path={routes.cards} render={() => <Cards/>} />
+                <Route path={routes.cards} render={() => <Cards/>} />
                 <Route render={() => <NotFound/>} />
             </Switch>
         </div>
