@@ -5,6 +5,22 @@ const instance = axios.create({
     baseURL: 'https://neko-back.herokuapp.com/2.0/'
 })
 
+
+export const packsAPI = {
+    getPacks(packQueryParams: PacksQueryParamsType) {
+        return instance.get('cards/pack', {params: packQueryParams})
+    },
+    addPack(addPackPayload: AddPackPayloadType) {
+        return instance.post('cards/pack', {cardsPack: addPackPayload})
+    },
+    deletePack(idPack: string) {
+        return instance.delete(`cards/pack?id=${idPack}`)
+    },
+    updatePack(updatePackPayload: updatePackPayloadType) {
+        return instance.put('cards/pack', {cardsPack: updatePackPayload})
+    }
+}
+
 export type cardPacksType = {
     _id: string
     user_id: string
@@ -58,19 +74,3 @@ export type updatePackPayloadType = {
     name?: string
 }
 
-
-
-export const packsAPI = {
-    getPacks(packQueryParams: PacksQueryParamsType) {
-        return instance.get('cards/pack', {params: packQueryParams})
-    },
-    addPack(addPackPayload: AddPackPayloadType) {
-        return instance.post('cards/pack', {cardsPack: addPackPayload})
-    },
-    deletePack(idPack: string) {
-        return instance.delete(`cards/pack?id=${idPack}`)
-    },
-    updatePack(updatePackPayload: updatePackPayloadType) {
-        return instance.put('cards/pack', {cardsPack: updatePackPayload})
-    }
-}

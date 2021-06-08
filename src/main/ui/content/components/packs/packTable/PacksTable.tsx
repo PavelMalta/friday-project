@@ -4,6 +4,7 @@ import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../api-packs";
 import {v1} from "uuid";
 import s from "./PacksTable.module.css"
+import { NavLink } from 'react-router-dom';
 
 
 type PacksTableType = {
@@ -36,10 +37,10 @@ export const PacksTable = (props: PacksTableType) => {
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
                                 <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>
-                                <button>Learn</button>
+                                <NavLink to={`/cards/${item._id}`}>Learn</NavLink>
                               </div>
                             : <div className={s.item}>
-                                <button>Learn</button>
+                                <NavLink to={`/cards/${item._id}`}>Learn</NavLink>
                               </div>
                         }
                     </div>
@@ -47,4 +48,5 @@ export const PacksTable = (props: PacksTableType) => {
             })}
         </div>
     )
+    
 }

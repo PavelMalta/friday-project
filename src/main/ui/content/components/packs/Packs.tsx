@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
+import {Redirect} from "react-router-dom";
 
 
 export const Packs = () => {
@@ -21,6 +22,7 @@ export const Packs = () => {
     const updatePack = (PackID: string, title: string) => {
         dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 10}))
     }
+
 
     return (
         <div>
