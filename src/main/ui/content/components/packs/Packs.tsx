@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
-import {getCardsTC} from "../../../../store/cards-reducer";
+import {getCardsTC, setCardsPackIdAC} from "../../../../store/cards-reducer";
 import {isAuthUserData} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 
@@ -31,6 +31,7 @@ export const Packs = () => {
     }
     const learnPack = (PackID: string) => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
+        dispatch(setCardsPackIdAC(PackID))
     }
 
 
