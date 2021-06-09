@@ -20,7 +20,7 @@ export const Packs = () => {
 
     useEffect(() => {
         dispatch(getPacksTC({pageCount: 10}))
-    }, [dispatch])
+    }, [dispatch, isAuth])
 
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
