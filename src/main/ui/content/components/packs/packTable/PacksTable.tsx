@@ -4,6 +4,7 @@ import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../api-packs";
 import {v1} from "uuid";
 import s from "./PacksTable.module.css"
+import { NavLink } from 'react-router-dom';
 
 
 type PacksTableType = {
@@ -27,21 +28,24 @@ export const PacksTable = (props: PacksTableType) => {
         <div className={s.table}>
             {packsData.cardPacks.map((item) => {
                 return (
-
                     <div key={v1()} className={s.row}>
                         <div className={s.item}>{item.name}</div>
                         <div className={s.item}>{item.cardsCount}</div>
                         <div className={s.item}>{formatDate(item.updated)}</div>
                         <div className={s.item}>{item.user_name}</div>
 
-                        {item.user_id === "60b54d045498cb3eac5bf6f9"
+                        {item.user_id === "60be3008bf6f0f0bb0f722a9"
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
                                 <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>
-                                <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                                <NavLink to={`/cards/${item._id}`}>
+                                    <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                                </NavLink>
                               </div>
                             : <div className={s.item}>
-                                <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                               <NavLink to={`/cards/${item._id}`}>
+                                   <button onClick={() => props.learnPack(item._id)}>Learn</button>
+                               </NavLink>
                               </div>
                         }
                     </div>
@@ -49,4 +53,4 @@ export const PacksTable = (props: PacksTableType) => {
             })}
         </div>
     )
-};
+}

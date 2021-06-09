@@ -5,6 +5,8 @@ export const routes = {
     registration: "/registration",
     notFound: "/404",
     passwordRecover: "/recover",
-    newPassword: "/newPassword",
+    newPassword: "/newPassword/:token",
     presentation: "/presentation",
+    packs: "/packs",
+    cards: "/cards"
 }
