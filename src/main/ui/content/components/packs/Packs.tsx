@@ -1,22 +1,24 @@
 import React, {useEffect} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
 import {getCardsTC} from "../../../../store/cards-reducer";
 import {isAuthUserData} from "../../../../store/login-reducer";
+import {AppRootStateType} from "../../../../store/store";
 
 
 export const Packs = () => {
 
+    const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(isAuthUserData())
-    },[])
+    }, [])
 
-   useEffect(() => {
+    useEffect(() => {
         dispatch(getPacksTC({pageCount: 10}))
-    },[])
+    }, [])
 
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
@@ -35,7 +37,8 @@ export const Packs = () => {
     return (
         <div>
             <button onClick={addPack}>Add new pack</button>
-            <PacksTable deletePack={deletePack}
+            <PacksTable userID={userID}
+                        deletePack={deletePack}
                         updatePack={updatePack}
                         learnPack={learnPack}
             />

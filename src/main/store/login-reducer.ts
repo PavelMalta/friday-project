@@ -8,7 +8,8 @@ const initialState = {
     isFetching: false,
     emailError: null as null | string,
     passwordError: null as null | string,
-    isAuth: false
+    isAuth: false,
+    userID: ""
 }
 
 export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
@@ -20,14 +21,25 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
                 isAuth: true
             }
         case "IS-FETCHING":
-            return {...state,
-                isFetching: action.isFetching}
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         case "SET-EMAIL-ERROR":
-            return {...state,
-                emailError: action.error}
+            return {
+                ...state,
+                emailError: action.error
+            }
         case "SET-PASSWORD-ERROR":
-            return {...state,
-                passwordError: action.error}
+            return {
+                ...state,
+                passwordError: action.error
+            }
+        case "SET-USER-ID":
+            return {
+                ...state,
+                userID: action.userID
+            }
         default:
             return state
     }
@@ -37,6 +49,7 @@ export const setAuthUserDataAC = (payload: InitialStateType) => ({type: 'SET_USE
 export const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
 export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
+export const setUserID = (userID: string) => ({type: "SET-USER-ID", userID} as const)
 
 
 export const getAuthUserData = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
@@ -45,6 +58,7 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
         .then(response => {
                 console.log(response.data)
                 dispatch(setAuthUserDataAC(response.data))
+                dispatch(setUserID(response.data._id))
             }
         ).catch((e) => {
         const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
@@ -60,6 +74,7 @@ export const isAuthUserData = () => (dispatch: Dispatch) => {
     authAPI.getAuth()
         .then(response => {
                 dispatch(setAuthUserDataAC(response.data))
+                dispatch(setUserID(response.data._id))
             }
         ).catch((e) => {
         const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
@@ -68,12 +83,12 @@ export const isAuthUserData = () => (dispatch: Dispatch) => {
 }
 
 
-
 export type ActionsType =
-    |  ReturnType<typeof setAuthUserDataAC>
-    |  ReturnType<typeof setEmailErrorAC>
-    |  ReturnType<typeof setPasswordErrorAC>
-    |  ReturnType<typeof isFetchingAC>
+    | ReturnType<typeof setAuthUserDataAC>
+    | ReturnType<typeof setEmailErrorAC>
+    | ReturnType<typeof setPasswordErrorAC>
+    | ReturnType<typeof isFetchingAC>
+    | ReturnType<typeof setUserID>
 
 
 
