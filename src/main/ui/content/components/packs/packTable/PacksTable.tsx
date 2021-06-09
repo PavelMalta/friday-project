@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 
 type PacksTableType = {
+    userID: string
     deletePack: (packID: string) => void
     updatePack: (packID: string ,title: string) => void
     learnPack: (packID: string) => void
@@ -34,7 +35,7 @@ export const PacksTable = (props: PacksTableType) => {
                         <div className={s.item}>{formatDate(item.updated)}</div>
                         <div className={s.item}>{item.user_name}</div>
 
-                        {item.user_id === "60b54d045498cb3eac5bf6f9"
+                        {item.user_id === props.userID
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
                                 <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>

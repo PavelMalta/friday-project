@@ -6,6 +6,7 @@ import s from "./CardsTable.module.css"
 import {v1} from "uuid";
 
 type CardsTableType = {
+    userID: string
     deleteCard: (cardID: string) => void
     updateCard: (cardID: string) => void
 }
@@ -39,16 +40,10 @@ export const CardsTable = (props: CardsTableType) => {
                             <div className={s.item}>
                                 {item.grade}
                             </div>
-                            {item.user_id === "60b54d045498cb3eac5bf6f9"
+                            {item.user_id === props.userID
                                 ? <div>
-                                    <button onClick={() => {
-                                        props.deleteCard(item._id)
-                                    }}>Delete
-                                    </button>
-                                    <button onClick={() => {
-                                        props.updateCard(item._id)
-                                    }}>Edit
-                                    </button>
+                                    <button onClick={() => {props.deleteCard(item._id)}}>Delete</button>
+                                    <button onClick={() => {props.updateCard(item._id)}}>Edit</button>
                                 </div>
                                 : <div></div>
                             }

@@ -8,7 +8,9 @@
     color: $textColor;
     text-align: center;
     padding-top: 25px;
+    transition: transform 500ms ease, color 500ms ease;
     &:hover {
-        font-weight: 700;
+        transform: scale(1.03);
+        color: #111;
     }
 }

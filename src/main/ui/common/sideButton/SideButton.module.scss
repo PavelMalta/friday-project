@@ -1,0 +1,29 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
+.sideButton {
+    margin: 20px 0 13px 0;
+    padding: 0 23px;
+    .btnActive{
+        width: 97px;
+        height: 36px;
+        @include text (14px, 400, 17px);
+        background-color: $primaryColor;
+        color: $textColor;
+        border: none;
+        &:hover{
+            background-color: darken($primaryColor, 10%);
+        }
+    }
+    .btn {
+        width: 97px;
+        height: 36px;
+        @include text (14px, 400, 17px);
+        background-color: #919DC8;
+        color: $primaryColor;
+        border: none;
+        &:hover{
+            background-color: darken(#919DC8, 10%);
+        }
+    }
+}
