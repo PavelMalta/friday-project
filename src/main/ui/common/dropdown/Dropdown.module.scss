@@ -1,0 +1,25 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
+.dropdown {
+    display: flex;
+    align-items: center;
+    margin-left: 25px; 
+}
+.text {
+    @include text(12px, 400, 14px);
+    color: $textColor;
+
+}
+.dropdownSelect {
+    .item {
+        @include text(12px, 400, 14px);
+        color: $textColor;
+        cursor: pointer;
+        display: block;
+        padding: 5px;
+        background-color: transparent;
+        border: 1px solid #635D80;
+        margin: 0 10px;
+    }
+}

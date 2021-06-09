@@ -2,5 +2,15 @@
 @import './../../styles/vars.scss';
 
 .head {
-    color: orangered;
+    background-color: #E0E4EB;
+    .container {
+        display: flex;
+        padding: 0 136px;
+        @media screen and (min-width: 1440px)  { 
+            padding: 0 215px;  
+        }
+        @media screen and (min-width: 1920px)  { 
+            padding: 0 456px;  
+        }
+    }
 }

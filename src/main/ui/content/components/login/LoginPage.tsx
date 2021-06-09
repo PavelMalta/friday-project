@@ -3,7 +3,7 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {routes} from "../../../../router/routes";
 
@@ -32,6 +32,14 @@ export const LoginPage = (props:LoginPagePropsType) => {
         props.onChangeRememberMe(e.currentTarget.checked)
     }
 
+    const [passwordType, setPasswordType] = useState<"password" | "text">("password");
+
+    const togglePasswordType = () => {
+        if (passwordType === 'text') {
+            setPasswordType('password')
+        } else setPasswordType('text')
+    }
+
 
     return (
         <div className={s.loginPage}>
@@ -54,6 +62,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
                         {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
                                // type= "password"
+                               type= {passwordType}
                                name="password"
                                error={props.passwordError}
                                placeholder={'password'}
@@ -63,6 +72,7 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                idName={'inputPassword'}
                                id= "checkbox2"
                                htmlFor= "checkbox2"
+                               changeVision={togglePasswordType}
                         />
 
                     </div>

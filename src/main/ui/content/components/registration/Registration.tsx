@@ -3,7 +3,7 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
 import {TitleH2} from "../../../common/titleh2/TitleH2";
-import React from "react";
+import React, {useState} from "react";
 
 type RegistrationPropsType = {
     email: string
@@ -14,7 +14,7 @@ type RegistrationPropsType = {
     onEmailChange: (email: string) => void
     onPasswordChange: (password: string) => void
     onPasswordConfirmChange: (passwordConfirm: string) => void
-    registrationButtonClock: () => void
+    registrationButtonClick: () => void
     cancelClick: () => void
 }
 
@@ -33,6 +33,21 @@ export const Registration = (props: RegistrationPropsType) => {
     }
 
 
+    const [passwordType, setPasswordType] = useState<"password" | "text">("password");
+    const [passwordConfirmType, setPasswordConfirmType] = useState<"password" | "text">("password");
+
+    const togglePasswordType = () => {
+            if (passwordType === 'text') {
+                setPasswordType('password')
+            } else setPasswordType('text')
+    }
+
+    const togglePasswordConfirmType = () => {
+        if (passwordConfirmType === 'text') {
+            setPasswordConfirmType('password')
+        } else setPasswordConfirmType('text')
+    }
+
     return (
         <div className={s.loginPage}>
             <div className={s.wrapper}>
@@ -48,25 +63,27 @@ export const Registration = (props: RegistrationPropsType) => {
                                onChange={emailChange}/> {/* Нужно убрать глазик (логика) */}
 
                         <Input title="Password"
-                               type="password"
+                               type={passwordType}
                                name="password"
                                id= "checkbox2"
                                htmlFor= "checkbox2"
                                value={props.password}
                                error={props.passwordError}
                                onChange={passwordChange}
-                               idName={'inputPassword'}
+                               changeVision={togglePasswordType}
+                               idName='inputPassword'
                                style={{marginTop: "25px"}}/>
 
                         <Input title="Confirm password"
-                               type="password"
+                               type={passwordConfirmType}
                                name="Confirm password"
-                               idName={'inputPassword'}
+                               idName='inputPassword'
                                id= "checkbox"
                                htmlFor= "checkbox"
                                error={props.passwordError}
                                value={props.passwordConfirm}
                                onChange={passwordConfirmChange}
+                               changeVision={togglePasswordConfirmType}
                                style={{marginTop: "25px"}}/>
                     </div>
                     <form className={s.btn}>
@@ -79,7 +96,7 @@ export const Registration = (props: RegistrationPropsType) => {
                                     marginRight: "36px"
                                 }}/>
                         <Button value="Registration"
-                                onClick={props.registrationButtonClock}
+                                onClick={props.registrationButtonClick}
                                 style={{width: "187px"}}
                         />
                     </form>
