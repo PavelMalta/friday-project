@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
-import {authAPI} from "../ui/pages/auth/loginPage/api-login";
+import {authAPI} from "../ui/content/components/login/api-login";
+
 
 type InitialStateType = typeof initialState
 
@@ -40,6 +41,12 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
                 ...state,
                 userID: action.userID
             }
+        case "LOGOUT":
+            return {
+                ...state,
+                user: {},
+                isAuth: false
+            }
         default:
             return state
     }
@@ -50,6 +57,7 @@ export const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFe
 export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
 export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
 export const setUserID = (userID: string) => ({type: "SET-USER-ID", userID} as const)
+export const logoutAC = () => ({type: "LOGOUT"} as const)
 
 
 export const getAuthUserData = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
@@ -82,6 +90,17 @@ export const isAuthUserData = () => (dispatch: Dispatch) => {
     })
 }
 
+export const logoutTC = () => (dispatch: Dispatch) => {
+    authAPI.logout()
+        .then(response => {
+                dispatch(logoutAC())
+            }
+        ).catch((e) => {
+        const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
+        dispatch(setEmailErrorAC(error))
+    })
+}
+
 
 export type ActionsType =
     | ReturnType<typeof setAuthUserDataAC>
@@ -89,6 +108,7 @@ export type ActionsType =
     | ReturnType<typeof setPasswordErrorAC>
     | ReturnType<typeof isFetchingAC>
     | ReturnType<typeof setUserID>
+    | ReturnType<typeof logoutAC>
 
 
 

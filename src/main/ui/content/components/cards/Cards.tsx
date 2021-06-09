@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addCardTC, deleteCardTC, updateCardTC} from "../../../../store/cards-reducer";
 import {CardsTable} from "./cardsTable/CardsTable";
-import {isAuthUserData} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 
 
@@ -11,10 +10,6 @@ export const Cards = () => {
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(isAuthUserData())
-    }, [])
 
     const newCardPayload = {
         cardsPack_id: cardsPackId,

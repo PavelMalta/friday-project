@@ -18,7 +18,7 @@ export const Packs = () => {
 
     useEffect(() => {
         dispatch(getPacksTC({pageCount: 10}))
-    }, [])
+    }, [dispatch])
 
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
