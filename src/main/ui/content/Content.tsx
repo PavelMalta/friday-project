@@ -13,14 +13,12 @@ import {CardsTable} from "./components/cards/cardsTable/CardsTable";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../store/store";
 import {Preloader} from "../common/preloader/Preloader";
+import {Cards} from "./components/cards/Cards";
+import {Packs} from "./components/packs/Packs";
 
 
 export const Content = () => {
-    const isFetching = useSelector<AppRootStateType, boolean>((state) => state.login.isFetching)
 
-    if (isFetching) {
-        return <Preloader/>
-    }
     return (
         <div className={s.contentContainer}>
             <Switch>
@@ -31,7 +29,11 @@ export const Content = () => {
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>} />
                 <Route exact path={routes.newPassword} render={() => <NewPassword/>} />
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
+                <Route exact path={routes.packs} render={() => <Packs/>} />
+                <Route path={routes.cards} render={() => <Cards/>} />
+
                 <Route render={() => <NotFound/>} />
+
             </Switch>
         </div>
     )

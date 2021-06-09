@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC, setCurrentPageAC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
@@ -16,14 +16,15 @@ export const Packs = () => {
     const dispatch = useDispatch();
 
    useEffect(() => {
+       debugger
         dispatch(getPacksTC({pageCount: 20}))
     },[])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 20}))
     }
     const deletePack = (PackID: string) => {
-        dispatch(deleteCardsPackTC(PackID, {pageCount: 10}))
+        dispatch(deleteCardsPackTC(PackID, {pageCount: 20}))
     }
     const updatePack = (PackID: string, title: string) => {
         dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 10}))
@@ -37,8 +38,9 @@ export const Packs = () => {
         dispatch(getPacksTC({page: pageNumber, pageCount: 20}))
     }
 
+    const [pageSize, setPageSize] = useState<number>(1)
+
     if (isFetching) {
-        // return <div>Loading...</div>
         return <Preloader/>
     }
 
