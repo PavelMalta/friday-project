@@ -71,6 +71,10 @@ export const PacksList = (props: PacksListType) => {
                                 value4={item.user_name}
                                 packUserId={item.user_id}
                                 userId={props.userID}
+                                packId={item._id}
+                                deletePack={props.deletePack}
+                                updatePack={props.updatePack}
+                                learnPack={props.learnPack}
                                 />
                         </tr>)})}
                     </table>

@@ -20,17 +20,17 @@ export const Packs = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(getPacksTC({pageCount: 5}))
+        dispatch(getPacksTC({pageCount: 7}))
     }, [dispatch, isAuth])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 5}))
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 7}))
     }
     const deletePack = (PackID: string) => {
-        dispatch(deleteCardsPackTC(PackID, {pageCount: 10}))
+        dispatch(deleteCardsPackTC(PackID, {pageCount: 7}))
     }
     const updatePack = (PackID: string, title: string) => {
-        dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 5}))
+        dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 7}))
     }
     const learnPack = (PackID: string) => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
