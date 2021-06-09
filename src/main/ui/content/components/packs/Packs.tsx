@@ -29,8 +29,8 @@ export const Packs = () => {
     const deletePack = (PackID: string) => {
         dispatch(deleteCardsPackTC(PackID, {pageCount: 7}))
     }
-    const updatePack = (PackID: string, title: string) => {
-        dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 7}))
+    const updatePack = (PackID: string) => {
+        dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: 7}))
     }
     const learnPack = (PackID: string) => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
