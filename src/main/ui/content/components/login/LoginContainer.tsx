@@ -55,7 +55,7 @@ export const LoginContainer = () => {
         return <div>Loading...</div>
     }
     if (isAuth) {
-        return <Redirect to={'/profile'}/>
+        return <Redirect to={'/packs'}/>
     }
 
     return <LoginPage email={email}
