@@ -5,11 +5,13 @@ import {PacksTable} from "./packTable/PacksTable";
 import {getCardsTC, setCardsPackIdAC} from "../../../../store/cards-reducer";
 import {isAuthUserData} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
+import {Redirect} from "react-router-dom";
 
 
 export const Packs = () => {
 
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
+    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -34,6 +36,9 @@ export const Packs = () => {
         dispatch(setCardsPackIdAC(PackID))
     }
 
+    if (!isAuth) {
+        return <Redirect to={'/login'}/>
+    }
 
     return (
         <div>

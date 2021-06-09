@@ -3,12 +3,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {addCardTC, deleteCardTC, updateCardTC} from "../../../../store/cards-reducer";
 import {CardsTable} from "./cardsTable/CardsTable";
 import {AppRootStateType} from "../../../../store/store";
+import {Redirect} from "react-router-dom";
 
 
 export const Cards = () => {
 
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
+    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const dispatch = useDispatch()
 
     const newCardPayload = {
@@ -31,6 +33,10 @@ export const Cards = () => {
             question: 'What?'
         }
         dispatch(updateCardTC(updateCardPayload, {cardsPack_id: cardsPackId, pageCount: 100}))
+    }
+
+    if (!isAuth) {
+        return <Redirect to={'/login'}/>
     }
 
     return (
