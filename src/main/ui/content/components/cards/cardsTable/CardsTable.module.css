@@ -1,0 +1,9 @@
+.row {
+    display: flex;
+}
+
+.item {
+    height: 30px;
+    width: 150px;
+    margin: 10px 20px;
+}
