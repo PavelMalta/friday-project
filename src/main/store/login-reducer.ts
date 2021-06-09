@@ -56,6 +56,18 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
         })
 }
 
+export const isAuthUserData = () => (dispatch: Dispatch) => {
+    authAPI.getAuth()
+        .then(response => {
+                dispatch(setAuthUserDataAC(response.data))
+            }
+        ).catch((e) => {
+        const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
+        dispatch(setEmailErrorAC(error))
+    })
+}
+
+
 
 export type ActionsType =
     |  ReturnType<typeof setAuthUserDataAC>

@@ -2,13 +2,17 @@ import React, {useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
 import {PacksTable} from "./packTable/PacksTable";
-import {Redirect} from "react-router-dom";
 import {getCardsTC} from "../../../../store/cards-reducer";
+import {isAuthUserData} from "../../../../store/login-reducer";
 
 
 export const Packs = () => {
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(isAuthUserData())
+    },[])
 
    useEffect(() => {
         dispatch(getPacksTC({pageCount: 10}))
