@@ -34,7 +34,7 @@ export const PacksTable = (props: PacksTableType) => {
                         <div className={s.item}>{formatDate(item.updated)}</div>
                         <div className={s.item}>{item.user_name}</div>
 
-                        {item.user_id === "60be3008bf6f0f0bb0f722a9"
+                        {item.user_id === "60b54d045498cb3eac5bf6f9"
                             ? <div className={s.item}>
                                 <button onClick={() => props.deletePack(item._id)}>Delete</button>
                                 <button onClick={() => props.updatePack(item._id, "Hello")}>Edit</button>

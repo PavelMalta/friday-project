@@ -16,24 +16,19 @@ import {CheckEmail} from './main/ui/pages/auth/сheckEmail/CheckEmail';
 import {CreateNewPassword} from './main/ui/pages/auth/createNewPassword/CreateNewPassword';
 import {Head} from './main/ui/common/head/Head';
 import {CardsTable} from "./main/ui/content/components/cards/cardsTable/CardsTable";
-
+import {Preloader} from "./main/ui/common/preloader/Preloader";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "./main/store/store";
 
 
 function App() {
-    return (
-        <div className={s.app}>
 
-            {/* Осталось от фронта */}
+        return (
+        <div className={s.app}>
             <Header/>
             <Navigation/>
-
-
-            {/* Тут подключены сверстанные странички */}
-            {/* <Head/> */}
             <div className={s.content}>
                 <Content/>
-                {/*<Packs/>*/}
-                {/*<Cards/>*/}
                 <Packs/>
             </div>
         </div>

@@ -15,8 +15,8 @@ export const LoginContainer = () => {
 
     const dispatch = useDispatch()
 
-    let [email, setEmail] = useState<string>('nya-admin@nya.nya')
-    let [password, setPassword] = useState<string>('1qazxcvBG')
+    let [email, setEmail] = useState<string>('forpaul@mail.ru')
+    let [password, setPassword] = useState<string>('12345678')
     let [rememberMe, setRememberMe] = useState<boolean>(false)
 
     const onChangeEmail = (email: string) => {
@@ -54,7 +54,6 @@ export const LoginContainer = () => {
 
     if (isFetching) {
         return <Preloader/>
-        // return <div>Loading...</div>
     }
     if (isAuth) {
         return <Redirect to={'/profile'}/>
