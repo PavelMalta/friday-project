@@ -6,6 +6,7 @@ import {getCardsTC, setCardsPackIdAC} from "../../../../store/cards-reducer";
 import {isAuthUserData} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
+import {PacksList} from "./packsList/PacksList";
 
 
 export const Packs = () => {
@@ -19,17 +20,17 @@ export const Packs = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(getPacksTC({pageCount: 10}))
+        dispatch(getPacksTC({pageCount: 5}))
     }, [dispatch, isAuth])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 5}))
     }
     const deletePack = (PackID: string) => {
         dispatch(deleteCardsPackTC(PackID, {pageCount: 10}))
     }
     const updatePack = (PackID: string, title: string) => {
-        dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 10}))
+        dispatch(updateCardsPackTC({_id: PackID, name: title}, {pageCount: 5}))
     }
     const learnPack = (PackID: string) => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
@@ -42,12 +43,17 @@ export const Packs = () => {
 
     return (
         <div>
-            <button onClick={addPack}>Add new pack</button>
-            <PacksTable userID={userID}
+           {/* <button onClick={addPack}>Add new pack</button>*/}
+           {/* <PacksTable userID={userID}
                         deletePack={deletePack}
                         updatePack={updatePack}
                         learnPack={learnPack}
-            />
+            />*/}
+            <PacksList userID={userID}
+                       addNewPack={addPack}
+                       deletePack={deletePack}
+                       updatePack={updatePack}
+                       learnPack={learnPack}/>
         </div>
     )
 }

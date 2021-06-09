@@ -8,12 +8,18 @@ export const String = (props: any) => {
             <td>{props.value2}</td>
             <td>{props.value3}</td>
             <td>{props.value4}</td>
-            <td>
-                <Actions value="Delete"
-                    style={{ backgroundColor: "#F1453D", color: "#fff" }} />
-                <Actions value="Edit" />
-                <Actions value="Learn" />
-            </td>
+            {props.packUserId === props.userId
+                ?<td>
+                    <Actions value="Delete"
+                             style={{ backgroundColor: "#F1453D", color: "#fff" }} />
+                    <Actions value="Edit" />
+                    <Actions value="Learn" />
+                </td>
+                :<td>
+                    <Actions value="Learn" />
+                </td>
+            }
+
         </>
     )
 }

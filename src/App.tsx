@@ -23,12 +23,12 @@ function App() {
 
             {/* Осталось от фронта */}
             <Header/>
-            <Content/>
+           {/* <Content/>*/}
             {/* Тут подключены сверстанные странички */}
             <Head/>
             <div className={s.content}>
-                {/*<Content/>*/}
-                <PacksList/>
+                <Content/>
+                {/*<PacksList/>*/}
 
 
             {/* <LoginPage/> */}
