@@ -13,6 +13,9 @@ import { LoginPageTest } from './main/ui/pages/auth/loginPageTest/LoginPageTest'
 import { CheckEmail } from './main/ui/pages/auth/сheckEmail/CheckEmail';
 import { CreateNewPassword } from './main/ui/pages/auth/createNewPassword/CreateNewPassword';
 import { Head } from './main/ui/common/head/Head';
+import { PacksList } from './main/ui/pages/main/packsList/PacksList';
+import { Error } from './main/ui/pages/error/Error';
+
 
 
 
@@ -21,26 +24,25 @@ function App() {
         <div className={s.app}>
 
             {/* Осталось от фронта */}
-            <Header/>
-            <Navigation/>
+            {/* <Header/> */}
+            {/* <Navigation/> */}
 
 
             {/* Тут подключены сверстанные странички */}
-            {/* <Head/> */}
+            <Head/>
             <div className={s.content}>
-            <Content/>
+                {/* <Content/> */}
 
+                {/* <LoginPage/> */}
+                {/* <Register/> */}
+                {/* <ForgotPassword/> */}
+                {/* <CheckEmail/> */}
+                {/* <CreateNewPassword/> */}
+                <PacksList/>
 
-            {/* <LoginPage/> */}
-            {/* <Register/> */}
-            {/* <ForgotPassword/> */}
-            {/* <CheckEmail/> */}
-            {/* <CreateNewPassword/> */}
-
-
-
-            {/* <LoginPageTest/>  Material UI*/}
+                {/* <LoginPageTest/>  Material UI*/}
             </div>
+                {/* <Error/> */}
         </div>
     );
 }
