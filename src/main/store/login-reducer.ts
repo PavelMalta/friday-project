@@ -64,13 +64,13 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
     dispatch(isFetchingAC(true))
     authAPI.login(email, password, rememberMe)
         .then(response => {
-                /*dispatch(setAuthUserDataAC(response.data))
-                dispatch(setUserID(response.data._id))*/
-            // @ts-ignore
-            dispatch(isAuthUserData())
+                console.log(response.data)
+                dispatch(setAuthUserDataAC(response.data))
+                dispatch(setUserID(response.data._id))
             }
         ).catch((e) => {
         const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
+        console.log(error)
         dispatch(setEmailErrorAC(error))
     })
         .finally(() => {

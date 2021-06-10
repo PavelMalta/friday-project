@@ -5,6 +5,8 @@ import {
     PacksQueryParamsType, updatePackPayloadType
 } from "../ui/content/components/packs/api-packs";
 import {Dispatch} from "redux";
+import {authAPI} from "../ui/content/components/login/api-login";
+import {setAuthUserDataAC, setUserID} from "./login-reducer";
 
 
 const initialState = {
@@ -39,6 +41,23 @@ export const getPacksAC = (packsTableData: PackResponseType) => {
 }
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 
+export const getStartPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
+    dispatch(isFetchingAC(true))
+    authAPI.getAuth()
+        .then(res => {
+            dispatch(setAuthUserDataAC(res.data))
+            dispatch(setUserID(res.data._id))
+            packsAPI.getPacks(packQueryParams)
+                .then(res => {
+                    dispatch(getPacksAC(res.data))
+                })
+                .catch((e) => {
+                })
+        })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
+}
 export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
     packsAPI.getPacks(packQueryParams)
@@ -78,4 +97,8 @@ export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, pack
         })
 }
 
-type ActionType = ReturnType<typeof getPacksAC> | ReturnType<typeof isFetchingAC> | ReturnType<typeof isFetchingAC>
+type ActionType = ReturnType<typeof getPacksAC>
+    | ReturnType<typeof isFetchingAC>
+    | ReturnType<typeof isFetchingAC>
+    | ReturnType<typeof setAuthUserDataAC>
+    | ReturnType<typeof setUserID>

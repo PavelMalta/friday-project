@@ -1,9 +1,12 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addCardsPackTC, deleteCardsPackTC, getPacksTC, updateCardsPackTC} from "../../../../store/packs-reducer";
-import {PacksTable} from "./packTable/PacksTable";
+import {
+    addCardsPackTC,
+    deleteCardsPackTC,
+    getStartPacksTC,
+    updateCardsPackTC
+} from "../../../../store/packs-reducer";
 import {getCardsTC, setCardsPackIdAC} from "../../../../store/cards-reducer";
-import {isAuthUserData} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PacksList} from "./packsList/PacksList";
@@ -16,12 +19,8 @@ export const Packs = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(isAuthUserData())
+        dispatch(getStartPacksTC({pageCount: 7}))
     }, [])
-
-    useEffect(() => {
-        dispatch(getPacksTC({pageCount: 7}))
-    }, [dispatch, isAuth])
 
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 7}))
