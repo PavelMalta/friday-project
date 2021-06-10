@@ -12,12 +12,17 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export default function PaginationRounded() {
+export default function PaginationRounded(props: any) {
   const classes = useStyles();
+
+  const count = Math.ceil(props.packTotalCount / props.packsPageCount)
+    const onChangeHandler = (event: object, page: number) => {
+      props.onChangePage(page)
+    }
 
   return (
     <div className={classes.root}>
-      <Pagination count={10} shape="rounded" />
+      <Pagination count={count} shape="rounded" onChange={onChangeHandler}/>
     </div>
     
   );

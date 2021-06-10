@@ -10,6 +10,7 @@ import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../api-packs";
+import {v1} from "uuid";
 
 type PacksListType = {
     userID: string
@@ -17,6 +18,7 @@ type PacksListType = {
     deletePack: (packID: string) => void
     updatePack: (packID: string ,title: string) => void
     learnPack: (packID: string) => void
+    onChangePage: (page: number) => void
 }
 
 export const PacksList = (props: PacksListType) => {
@@ -62,7 +64,7 @@ export const PacksList = (props: PacksListType) => {
                         </tr>
                         {packsData.cardPacks.map((item) => {
                             return (
-                        <tr>
+                        <tr key={v1()}>
 
                             <String
                                 value1={item.name}
@@ -80,7 +82,11 @@ export const PacksList = (props: PacksListType) => {
                     </table>
                 </div>
                 <div className={s.pagination}>
-                    <PaginationRounded/>
+                    <PaginationRounded packTotalCount={packsData.cardPacksTotalCount}
+                                       packsPageCount={packsData.pageCount}
+                                       page={packsData.page}
+                                       onChangePage={props.onChangePage}
+                    />
                     <Dropdown/>
                 </div>
                 

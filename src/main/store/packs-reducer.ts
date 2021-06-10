@@ -17,7 +17,7 @@ const initialState = {
         cardPacksTotalCount: 0,
         maxCardsCount: 0,
         minCardsCount: 0,
-        page: 0,
+        page: 1,
         pageCount: 0
     },
     isFetching: false

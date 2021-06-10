@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {
     addCardsPackTC,
@@ -14,26 +14,31 @@ import {PacksList} from "./packsList/PacksList";
 
 export const Packs = () => {
 
+    const [pageNumber, setPageNumber] = useState(1)
+
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getStartPacksTC({pageCount: 7}))
-    }, [])
+        dispatch(getStartPacksTC({pageCount: 5, page: pageNumber}))
+    }, [pageNumber])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 7}))
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 5}))
     }
     const deletePack = (PackID: string) => {
-        dispatch(deleteCardsPackTC(PackID, {pageCount: 7}))
+        dispatch(deleteCardsPackTC(PackID, {pageCount: 5, page: pageNumber}))
     }
     const updatePack = (PackID: string) => {
-        dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: 7}))
+        dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: 5, page: pageNumber}))
     }
     const learnPack = (PackID: string) => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
         dispatch(setCardsPackIdAC(PackID))
+    }
+    const onChangePage = (page: number) => {
+        setPageNumber(page)
     }
 
     if (!isAuth) {
@@ -52,7 +57,9 @@ export const Packs = () => {
                        addNewPack={addPack}
                        deletePack={deletePack}
                        updatePack={updatePack}
-                       learnPack={learnPack}/>
+                       learnPack={learnPack}
+                       onChangePage={onChangePage}
+            />
         </div>
     )
 }
