@@ -1,21 +1,24 @@
+import React from "react";
+import { ChangeEvent } from "react";
+
 import s from "./Dropdown.module.scss";
 
-export const Dropdown = () => {
+export const Dropdown = (props: any) => {
+
+    const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+        props.onChangeOption(e.target.value)
+    }
+
     return (
         <div className={s.dropdown}>
             <span className={s.text}>Show</span>
             <div className={s.dropdownSelect}>
-                <select className={s.item}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                <select className={s.item} onChange={onChangeHandler}>
                     <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
                     <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
                 </select>
             </div>
             <span className={s.text}>Cards per Page</span>

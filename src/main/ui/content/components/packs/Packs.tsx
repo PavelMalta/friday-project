@@ -12,11 +12,11 @@ import {Redirect} from "react-router-dom";
 import {PackResponseType} from "./api-packs";
 import {PacksList} from "./packsList/PacksList";
 
-
+export type SelectValueType = 5 | 10 | 25 | 50 | 100;
 
 export const Packs = () => {
 
-    const [options, setOptions] = useState(1)
+    const [options, setOptions] = useState<SelectValueType>(5)
 
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
@@ -24,24 +24,27 @@ export const Packs = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getStartPacksTC({pageCount: 10, page: packsData.page}))
-    }, [dispatch])
+        dispatch(getStartPacksTC({pageCount: options, page: packsData.page}))
+    }, [dispatch, options])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: 10}))
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: options}))
     }
     const deletePack = (PackID: string) => {
-        dispatch(deleteCardsPackTC(PackID, {pageCount: 10, page: packsData.page}))
+        dispatch(deleteCardsPackTC(PackID, {pageCount: options, page: packsData.page}))
     }
     const updatePack = (PackID: string) => {
-        dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: 10, page: packsData.page}))
+        dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: options, page: packsData.page}))
     }
     const learnPack = (PackID: string) => {
         dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
         dispatch(setCardsPackIdAC(PackID))
     }
     const onChangePage = (page: number) => {
-        dispatch(getPacksTC({pageCount: 10, page: page}))
+        dispatch(getPacksTC({pageCount: options, page: page}))
+    }
+    const onChangeOption = (value: SelectValueType) => {
+        setOptions(value)
     }
 
     if (!isAuth) {
@@ -62,6 +65,8 @@ export const Packs = () => {
                        updatePack={updatePack}
                        learnPack={learnPack}
                        onChangePage={onChangePage}
+                       value={options}
+                       onChangeOption={onChangeOption}
             />
         </div>
     )
