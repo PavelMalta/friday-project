@@ -1,8 +1,11 @@
+import { truncate } from "fs";
+import { Actions } from "../../../../common/actions/Actions";
+import s from "./StringTablePL.module.scss";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {Actions} from "../actions/Actions";
 import s from "./String.module.scss";
 
+export const StringTablePL = (props: any) => {
 type StringPropsType = {
     value1: string
     value2: number
@@ -16,9 +19,9 @@ type StringPropsType = {
     learnPack: (packID: string) => void
 }
 
-export const String = (props: any) => {
+export const StringTablePL = (props: any) => {
     return (
-        <>
+        <tr>
             <td>{props.value1}</td>
             <td>{props.value2}</td>
             <td>{props.value3}</td>
@@ -51,6 +54,6 @@ export const String = (props: any) => {
                 </td>
             }
 
-        </>
+        </tr>
     )
 }
