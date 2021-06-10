@@ -5,6 +5,8 @@ import {
     NewCardPayloadType, UpdateCardPayloadType
 } from "../ui/content/components/cards/api-cards";
 import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
+import {AppRootStateType} from "./store";
 
 const initialState = {
      cardsTableData: {
@@ -17,11 +19,6 @@ const initialState = {
      },
     isFetching: false,
     cardsPackId: ""
-}
-type InitialStateType = {
-    cardsTableData: CardsResponseType
-    isFetching: boolean
-    cardsPackId: string
 }
 
 export const cardsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
@@ -37,13 +34,13 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Act
     }
 }
 
-const getCardsAC = (cardsTableData: CardsResponseType) => {
-    return {type: "GET-CARDS", cardsTableData} as const
-}
+//Actions
+const getCardsAC = (cardsTableData: CardsResponseType) => ({type: "GET-CARDS", cardsTableData} as const)
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 export const setCardsPackIdAC = (cardsPackId: string) => ({type: "SET-CARDS-PACK-ID", cardsPackId} as const)
 
 
+//Thunks
 export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
     cardsAPI.getCards(cardQueryParams)
@@ -58,11 +55,10 @@ export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: D
         })
 }
 
-export const addCardTC = (newCardPayload: NewCardPayloadType, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
+export const addCardTC = (newCardPayload: NewCardPayloadType, cardQueryParams: cardQueryParamsType):ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     cardsAPI.addCard(newCardPayload)
         .then(res => {
-            // @ts-ignore
             dispatch(getCardsTC(cardQueryParams))
         })
         .finally(() => {
@@ -70,11 +66,10 @@ export const addCardTC = (newCardPayload: NewCardPayloadType, cardQueryParams: c
         })
 }
 
-export const deleteCardTC = (cardID: string, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
+export const deleteCardTC = (cardID: string, cardQueryParams: cardQueryParamsType):ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     cardsAPI.deleteCard(cardID)
         .then(res => {
-            // @ts-ignore
             dispatch(getCardsTC(cardQueryParams))
         })
         .finally(() => {
@@ -82,17 +77,26 @@ export const deleteCardTC = (cardID: string, cardQueryParams: cardQueryParamsTyp
         })
 }
 
-export const updateCardTC = (updateCardPayload: UpdateCardPayloadType, cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch) => {
+export const updateCardTC = (updateCardPayload: UpdateCardPayloadType, cardQueryParams: cardQueryParamsType):ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     cardsAPI.updateCard(updateCardPayload)
         .then(res => {
-            // @ts-ignore
             dispatch(getCardsTC(cardQueryParams))
         })
         .finally(() => {
             dispatch(isFetchingAC(false))
         })
 }
+
+
+//Types
+type InitialStateType = {
+    cardsTableData: CardsResponseType
+    isFetching: boolean
+    cardsPackId: string
+}
+
+type ThunkType = ThunkAction<void, AppRootStateType, {}, ActionType>
 
 type ActionType = ReturnType<typeof getCardsAC>
                 | ReturnType<typeof isFetchingAC>

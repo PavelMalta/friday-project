@@ -7,6 +7,8 @@ import {
 import {Dispatch} from "redux";
 import {authAPI} from "../ui/content/components/login/api-login";
 import {setAuthUserDataAC, setUserID} from "./login-reducer";
+import {ThunkAction} from "redux-thunk";
+import {AppRootStateType} from "./store";
 
 
 const initialState = {
@@ -20,10 +22,6 @@ const initialState = {
     },
     isFetching: false
 }
-type InitialStateType = {
-    packsTableData: PackResponseType
-    isFetching: boolean
-}
 
 export const packsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
@@ -36,11 +34,12 @@ export const packsReducer = (state: InitialStateType = initialState, action: Act
     }
 }
 
-export const getPacksAC = (packsTableData: PackResponseType) => {
-    return {type: "GET-PACKS", packsTableData} as const
-}
+// Actions
+export const getPacksAC = (packsTableData: PackResponseType) => ({type: "GET-PACKS", packsTableData} as const)
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 
+
+// Thunks
 export const getStartPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
     authAPI.getAuth()
@@ -72,30 +71,45 @@ export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: 
         })
 }
 
-export const addCardsPackTC = (addPackPayload: AddPackPayloadType, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
+export const addCardsPackTC = (addPackPayload: AddPackPayloadType, packQueryParams: PacksQueryParamsType): ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.addPack(addPackPayload)
         .then(() => {
-            // @ts-ignore
             dispatch(getPacksTC(packQueryParams))
         })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
 }
-export const deleteCardsPackTC = (idPack: string, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
+export const deleteCardsPackTC = (idPack: string, packQueryParams: PacksQueryParamsType): ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.deletePack(idPack)
         .then(() => {
-            // @ts-ignore
             dispatch(getPacksTC(packQueryParams))
         })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
 }
-export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch) => {
+export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, packQueryParams: PacksQueryParamsType): ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.updatePack(updatePackPayload)
         .then(() => {
-            // @ts-ignore
             dispatch(getPacksTC(packQueryParams))
         })
+        .finally(() => {
+            dispatch(isFetchingAC(false))
+        })
 }
+
+
+// Types
+type InitialStateType = {
+    packsTableData: PackResponseType
+    isFetching: boolean
+}
+
+type ThunkType = ThunkAction<void, AppRootStateType, {}, ActionType>
 
 type ActionType = ReturnType<typeof getPacksAC>
     | ReturnType<typeof isFetchingAC>

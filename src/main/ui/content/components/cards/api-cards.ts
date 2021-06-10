@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 
 const instance = axios.create({
@@ -9,7 +9,7 @@ const instance = axios.create({
 
 export const cardsAPI = {
     getCards(cardQueryParams: cardQueryParamsType) {
-        return instance.get('cards/card', {params: cardQueryParams})
+        return instance.get<CardsResponseType, AxiosResponse<CardsResponseType>>('cards/card', {params: cardQueryParams})
     },
     addCard(newCardPayload: NewCardPayloadType) {
         return instance.post('cards/card',{card: newCardPayload})
