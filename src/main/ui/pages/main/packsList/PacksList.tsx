@@ -5,7 +5,7 @@ import PaginationRounded from "../../../common/pagination/Pagination";
 import RangeSlider from "../../../common/rangeSlider/RangeSlider";
 import { Search } from "../../../common/search/Search";
 import { SideButton } from "../../../common/sideButton/SideButton";
-import { String } from "../../../common/string/String";
+import { StringTablePL } from "./stringTablePL/StringTablePL";
 import { TitleH2 } from "../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 
@@ -40,24 +40,12 @@ export const PacksList = () => {
                             <th className={s.item4}>Created by</th>
                             <th className={s.item5}>Actions</th>
                         </tr>
-                        <tr>
-                            <String
+                            <StringTablePL
                                 value1="Pack Name"
                                 value2="4"
                                 value3="18.03.2021"
                                 value4="Ivan Ivanov"
-                                />
-                            {/* <td>Pack Name</td>
-                            <td>4</td>
-                            <td>18.03.2021</td>
-                            <td>Ivan Ivanov</td>
-                            <td>
-                                <Actions value="Delete"
-                                        style={{backgroundColor: "#F1453D", color: "#fff"}}/>
-                                <Actions value="Edit"/>
-                                <Actions value="Learn"/>
-                            </td> */}
-                        </tr>
+                            />
                     </table>
                 </div>
                 <div className={s.pagination}>

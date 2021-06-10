@@ -7,8 +7,9 @@
     @include text (12px, 600, 14px);
     background-color: $secondaryColor;
     color: $accentColor;
+    border-radius: 6px;
     border: none;
-    margin-right: 6px;
+    margin: 1px;
     &:hover {
         background-color: darken($secondaryColor, 10%); 
         box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);

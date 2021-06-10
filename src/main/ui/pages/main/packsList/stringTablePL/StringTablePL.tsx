@@ -1,9 +1,10 @@
-import { Actions } from "../actions/Actions";
-import s from "./String.module.scss";
+import { truncate } from "fs";
+import { Actions } from "../../../../common/actions/Actions";
+import s from "./StringTablePL.module.scss";
 
-export const String = (props: any) => {
+export const StringTablePL = (props: any) => {
     return (
-        <>
+        <tr>
             <td>{props.value1}</td>
             <td>{props.value2}</td>
             <td>{props.value3}</td>
@@ -14,6 +15,6 @@ export const String = (props: any) => {
                 <Actions value="Edit" />
                 <Actions value="Learn" />
             </td>
-        </>
+        </tr>
     )
 }

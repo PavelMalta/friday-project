@@ -15,6 +15,7 @@ import { CreateNewPassword } from './main/ui/pages/auth/createNewPassword/Create
 import { Head } from './main/ui/common/head/Head';
 import { PacksList } from './main/ui/pages/main/packsList/PacksList';
 import { Error } from './main/ui/pages/error/Error';
+import { PackName } from './main/ui/pages/main/packName/PackName';
 
 
 
@@ -38,7 +39,8 @@ function App() {
                 {/* <ForgotPassword/> */}
                 {/* <CheckEmail/> */}
                 {/* <CreateNewPassword/> */}
-                <PacksList/>
+                {/* <PacksList/> */}
+                <PackName/>
 
                 {/* <LoginPageTest/>  Material UI*/}
             </div>
