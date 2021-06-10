@@ -8,10 +8,32 @@ import { SideButton } from "../../../common/sideButton/SideButton";
 import { StringTablePL } from "./stringTablePL/StringTablePL";
 import { TitleH2 } from "../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../../../store/store";
+import {PackResponseType} from "../../../content/components/packs/api-packs";
+import {v1} from "uuid";
 
+type PacksListType = {
+    userID: string
+    addNewPack: () => void
+    deletePack: (packID: string) => void
+    updatePack: (packID: string ,title: string) => void
+    learnPack: (packID: string) => void
+    onChangePage: (page: number) => void
+}
 
+export const PacksList = (props: PacksListType) => {
 
-export const PacksList = () => {
+    const packsData = useSelector<AppRootStateType, PackResponseType>(state => state.packs.packsTableData)
+
+    const formatDate = (date: string): string => {
+        return new Date(date).toLocaleDateString("ru", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        });
+    }
+
     return (
         <div className={s.packsList}>
             <aside className={s.aside}>
@@ -28,7 +50,9 @@ export const PacksList = () => {
                 <div className={s.form}>
                     <Search/>
                     <Button value="Add new pack"
-                            style= {{width: "184px", marginLeft: "24px" }} onClick= {()=>{}}/>
+                            style= {{width: "184px", marginLeft: "24px" }}
+                            onClick= {props.addNewPack}
+                    />
                 </div>
                 
                 <div className={s.wrap}>
@@ -40,16 +64,30 @@ export const PacksList = () => {
                             <th className={s.item4}>Created by</th>
                             <th className={s.item5}>Actions</th>
                         </tr>
-                            <StringTablePL
-                                value1="Pack Name"
-                                value2="4"
-                                value3="18.03.2021"
-                                value4="Ivan Ivanov"
-                            />
+                        {packsData.cardPacks.map((item) => {
+                            return (
+                                    <StringTablePL
+                                        key={v1()}
+                                        value1={item.name}
+                                        value2={item.cardsCount}
+                                        value3={formatDate(item.updated)}
+                                        value4={item.user_name}
+                                        packUserId={item.user_id}
+                                        userId={props.userID}
+                                        packId={item._id}
+                                        deletePack={props.deletePack}
+                                        updatePack={props.updatePack}
+                                        learnPack={props.learnPack}
+                                    />
+                                )})}
                     </table>
                 </div>
                 <div className={s.pagination}>
-                    <PaginationRounded/>
+                    <PaginationRounded packTotalCount={packsData.cardPacksTotalCount}
+                                       packsPageCount={packsData.pageCount}
+                                       page={packsData.page}
+                                       onChangePage={props.onChangePage}
+                    />
                     <Dropdown/>
                 </div>
                 

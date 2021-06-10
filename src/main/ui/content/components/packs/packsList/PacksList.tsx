@@ -4,12 +4,12 @@ import PaginationRounded from "../../../../common/pagination/Pagination";
 import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
 import { Search } from "../../../../common/search/Search";
 import { SideButton } from "../../../../common/sideButton/SideButton";
-import { String } from "../../../../common/string/String";
+import { StringTablePL } from "./stringTablePL/StringTablePL";
 import { TitleH2 } from "../../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
-import {PackResponseType} from "../api-packs";
+import {PackResponseType} from "../../../../content/components/packs/api-packs";
 import {v1} from "uuid";
 
 type PacksListType = {
@@ -50,7 +50,8 @@ export const PacksList = (props: PacksListType) => {
                     <Search/>
                     <Button value="Add new pack"
                             style= {{width: "184px", marginLeft: "24px" }}
-                            onClick= {props.addNewPack}/>
+                            onClick= {props.addNewPack}
+                    />
                 </div>
                 
                 <div className={s.wrap}>
@@ -64,21 +65,20 @@ export const PacksList = (props: PacksListType) => {
                         </tr>
                         {packsData.cardPacks.map((item) => {
                             return (
-                        <tr key={v1()}>
-
-                            <String
-                                value1={item.name}
-                                value2={item.cardsCount}
-                                value3={formatDate(item.updated)}
-                                value4={item.user_name}
-                                packUserId={item.user_id}
-                                userId={props.userID}
-                                packId={item._id}
-                                deletePack={props.deletePack}
-                                updatePack={props.updatePack}
-                                learnPack={props.learnPack}
-                                />
-                        </tr>)})}
+                                    <StringTablePL
+                                        key={v1()}
+                                        value1={item.name}
+                                        value2={item.cardsCount}
+                                        value3={formatDate(item.updated)}
+                                        value4={item.user_name}
+                                        packUserId={item.user_id}
+                                        userId={props.userID}
+                                        packId={item._id}
+                                        deletePack={props.deletePack}
+                                        updatePack={props.updatePack}
+                                        learnPack={props.learnPack}
+                                    />
+                                )})}
                     </table>
                 </div>
                 <div className={s.pagination}>

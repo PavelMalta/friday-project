@@ -1,7 +1,5 @@
-import { truncate } from "fs";
-import { Actions } from "../../../../common/actions/Actions";
-import s from "./StringTablePL.module.scss";
 import React from "react";
+import { Actions } from "../../../../../common/actions/Actions";
 import {NavLink} from "react-router-dom";
 
 type StringPropsType = {
@@ -17,7 +15,7 @@ type StringPropsType = {
     learnPack: (packID: string) => void
 }
 
-export const StringTablePL = (props: any) => {
+export const StringTablePL = (props: StringPropsType) => {
     return (
         <tr>
             <td>{props.value1}</td>
