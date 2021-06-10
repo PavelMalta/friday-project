@@ -22,7 +22,7 @@ export default function PaginationRounded(props: any) {
 
   return (
     <div className={classes.root}>
-      <Pagination count={count} shape="rounded" onChange={onChangeHandler}/>
+      <Pagination count={count} shape="rounded" onChange={onChangeHandler} page={props.page}/>
     </div>
     
   );
