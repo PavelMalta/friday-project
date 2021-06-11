@@ -22,6 +22,9 @@ type PacksListType = {
     onChangePage: (page: number) => void
     value: SelectValueType
     onChangeOption: (value: SelectValueType) => void
+    onClickMyButton: () => void
+    onClickAllButton: () => void
+
 }
 
 export const PacksList = (props: PacksListType) => {
@@ -40,7 +43,10 @@ export const PacksList = (props: PacksListType) => {
         <div className={s.packsList}>
             <aside className={s.aside}>
                 <h3 className={s.titleH3}>Show packs cards</h3>
-                <SideButton />
+                <SideButton
+                    onClickMyButton={props.onClickMyButton}
+                    onClickAllButton={props.onClickAllButton}
+                />
                 <h3 className={s.titleH3}>Number of cards</h3>
                 <div className={s.rangeSlider}>
                     <RangeSlider/>

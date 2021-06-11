@@ -6,7 +6,7 @@ import {
     getStartPacksTC,
     updateCardsPackTC
 } from "../../../../store/packs-reducer";
-import {getCardsTC, setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
+import {setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PackResponseType} from "./api-packs";
@@ -47,6 +47,12 @@ export const Packs = () => {
     const onChangeOption = (value: SelectValueType) => {
         setOptions(value)
     }
+    const onClickMyButton = () => {
+        dispatch(getPacksTC({pageCount: options, user_id: userID}))
+    }
+    const onClickAllButton = () => {
+        dispatch(getPacksTC({pageCount: options}))
+    }
 
     if (!isAuth) {
         return <Redirect to={'/login'}/>
@@ -68,6 +74,8 @@ export const Packs = () => {
                        onChangePage={onChangePage}
                        value={options}
                        onChangeOption={onChangeOption}
+                       onClickMyButton={onClickMyButton}
+                       onClickAllButton={onClickAllButton}
             />
         </div>
     )
