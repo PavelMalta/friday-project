@@ -7,4 +7,6 @@ export const routes = {
     passwordRecover: "/recover",
     newPassword: "/newPassword/:token",
     presentation: "/presentation",
+    packs: "/packs",
+    cards: "/cards"
 }

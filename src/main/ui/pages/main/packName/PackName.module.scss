@@ -1,0 +1,77 @@
+@import './../../../styles/mixin.scss';
+@import './../../../styles/vars.scss';
+
+.packName {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 71px 0;
+    min-height: 100vh;
+    // height: 100%;
+    .content {
+        background-color: rgba(254, 254, 255, 0.73);
+        padding: 19px 24px 75px 24px;
+        border-radius: 30px;
+        position: relative;
+        max-width: 1008px;
+        width: 100%;
+        .back {
+            display: flex; 
+            border: none; 
+            margin-bottom: 20px;  
+            .icon {
+                margin-right: 10px;
+                transform: translateY(5px);
+            }
+        }
+        .search {
+            margin-bottom: 24px;
+        }
+        .wrap {
+            table {
+                text-align: left;
+                filter: drop-shadow(0px 4px 14px rgba(45, 46, 70, 0.15));
+                border-collapse: collapse;
+                color: $textColor;
+                max-width: 960px;
+                width: 100%;
+            }
+            tr {
+                .item1 {
+                    width: 36.5%;
+                }
+                .item2 {
+                    width: 36.5%;
+                }
+                .item3 {
+                    width: 17.2%;
+                }
+                .item4 {
+                    width: 9.8%;
+                }
+            } 
+            th {
+                padding: 10px;
+                background: #ECECF9;
+                @include text (14px, 700, 16px);
+            } 
+            td {
+                padding: 10px;
+                @include text (14px, 400, 16px);
+
+            }
+            tr:nth-child(odd) {
+                background: #F8F7FD;
+            }
+            tr:nth-child(even) {
+                background: #FFFFFF;
+            }
+
+        }
+        .pagination {
+            display: flex;
+            position: absolute;
+            bottom: 25px;
+            left: 25px
+        }
+    }
+}

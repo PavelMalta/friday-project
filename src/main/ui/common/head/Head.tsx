@@ -1,13 +1,15 @@
-import { Logo } from "../logo/Logo";
 import s from "./Head.module.scss";
-import List from "./../../assets/images/head/list.svg";
-import Profile from "./../../assets/images/head/profile.svg";
+import { Tab } from "./tab/Tab";
+import { Logo } from "../logo/Logo";
 
 
 export const Head = () => {
     return (
         <div className={s.head}>
-            <Logo/>
+            <div className={s.container}>
+                <Logo style= {{justifyContent: "start", padding: "10px 0", marginRight: "168px"}}/>
+                <Tab/>
+            </div>
         </div>
     )
 }

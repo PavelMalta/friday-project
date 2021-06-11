@@ -1,0 +1,17 @@
+@import './../../styles/mixin.scss';
+@import './../../styles/vars.scss';
+
+.search {
+    width: 66%;
+    .input{
+        width: 100%;
+        height: 36px;
+        background-color: #ECECF9;
+        border: 1px solid #635D80;
+        background-image: url("./../../assets/images/main/search.svg");
+        background-repeat: no-repeat;
+        background-position: 16px, center;
+        padding-left: 40px;
+        @include text (14px, 400, 24px)
+    }
+}
