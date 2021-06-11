@@ -47,6 +47,12 @@ export const Packs = () => {
     const onChangeOption = (value: SelectValueType) => {
         setOptions(value)
     }
+    const onClickMyButton = () => {
+        dispatch(getPacksTC({pageCount: options, user_id: userID}))
+    }
+    const onClickAllButton = () => {
+        dispatch(getPacksTC({pageCount: options}))
+    }
 
     if (!isAuth) {
         return <Redirect to={'/login'}/>
@@ -62,6 +68,8 @@ export const Packs = () => {
                        onChangePage={onChangePage}
                        value={options}
                        onChangeOption={onChangeOption}
+                       onClickMyButton={onClickMyButton}
+                       onClickAllButton={onClickAllButton}
             />
         </div>
     )

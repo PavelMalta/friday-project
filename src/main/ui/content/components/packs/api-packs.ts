@@ -56,6 +56,7 @@ export type PacksQueryParamsType = {
     min?: number
     max?: number
     page?: number
+    user_id?: string
 }
 
 export type AddPackPayloadType = {
