@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 const instance = axios.create({
     withCredentials: true,
@@ -8,7 +8,7 @@ const instance = axios.create({
 
 export const packsAPI = {
     getPacks(packQueryParams: PacksQueryParamsType) {
-        return instance.get('cards/pack', {params: packQueryParams})
+        return instance.get<PackResponseType, AxiosResponse<PackResponseType>>('cards/pack', {params: packQueryParams})
     },
     addPack(addPackPayload: AddPackPayloadType) {
         return instance.post('cards/pack', {cardsPack: addPackPayload})
@@ -56,6 +56,7 @@ export type PacksQueryParamsType = {
     min?: number
     max?: number
     page?: number
+    user_id?: string
 }
 
 export type AddPackPayloadType = {

@@ -56,7 +56,7 @@ export const LoginContainer = () => {
         return <Preloader/>
     }
     if (isAuth) {
-        return <Redirect to={'/profile'}/>
+        return <Redirect to={'/packs'}/>
     }
 
     return <LoginPage email={email}

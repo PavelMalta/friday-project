@@ -9,16 +9,13 @@ import {Presentation} from "./components/presentation/Presentation";
 import {RegistrationPage} from "./components/registration/RegistrationPage";
 import {LoginContainer} from "./components/login/LoginContainer";
 import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRecoverContainer";
-import {CardsTable} from "./components/cards/cardsTable/CardsTable";
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../store/store";
-import {Preloader} from "../common/preloader/Preloader";
-import {Cards} from "./components/cards/Cards";
 import {Packs} from "./components/packs/Packs";
+import {Cards} from "./components/cards/Cards";
+import {Error} from "../pages/error/Error";
+import { NewPasswordContainer } from "./components/newPassword/NewPasswordContainer";
 
 
 export const Content = () => {
-
     return (
         <div className={s.contentContainer}>
             <Switch>
@@ -27,13 +24,11 @@ export const Content = () => {
                 <Route exact path={routes.registration} render={() => <RegistrationPage/>} />
                 <Route exact path={routes.profile} render={() => <Profile/>} />
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>} />
-                <Route exact path={routes.newPassword} render={() => <NewPassword/>} />
+                <Route exact path={routes.newPassword} render={() => <NewPasswordContainer/>} />
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
                 <Route exact path={routes.packs} render={() => <Packs/>} />
                 <Route path={routes.cards} render={() => <Cards/>} />
-
-                <Route render={() => <NotFound/>} />
-
+                <Route render={() => <Error/>} />
             </Switch>
         </div>
     )

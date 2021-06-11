@@ -1,25 +1,30 @@
-import { Actions } from "../../../common/actions/Actions";
-import { Button } from "../../../common/button/Button";
-import { Dropdown } from "../../../common/dropdown/Dropdown";
-import PaginationRounded from "../../../common/pagination/Pagination";
-import RangeSlider from "../../../common/rangeSlider/RangeSlider";
-import { Search } from "../../../common/search/Search";
-import { SideButton } from "../../../common/sideButton/SideButton";
+import { Button } from "../../../../common/button/Button";
+import { Dropdown } from "../../../../common/dropdown/Dropdown";
+import PaginationRounded from "../../../../common/pagination/Pagination";
+import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
+import { Search } from "../../../../common/search/Search";
+import { SideButton } from "../../../../common/sideButton/SideButton";
 import { StringTablePL } from "./stringTablePL/StringTablePL";
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import { TitleH2 } from "../../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../../../store/store";
-import {PackResponseType} from "../../../content/components/packs/api-packs";
+import {AppRootStateType} from "../../../../../store/store";
+import {PackResponseType} from "../../../../content/components/packs/api-packs";
 import {v1} from "uuid";
+import {SelectValueType} from "../Packs";
 
 type PacksListType = {
     userID: string
     addNewPack: () => void
     deletePack: (packID: string) => void
-    updatePack: (packID: string ,title: string) => void
-    learnPack: (packID: string) => void
+    updatePack: (packID: string, title: string) => void
+    learnPack: (packID: string, packName: string) => void
     onChangePage: (page: number) => void
+    value: SelectValueType
+    onChangeOption: (value: SelectValueType) => void
+    onClickMyButton: () => void
+    onClickAllButton: () => void
+
 }
 
 export const PacksList = (props: PacksListType) => {
@@ -38,7 +43,10 @@ export const PacksList = (props: PacksListType) => {
         <div className={s.packsList}>
             <aside className={s.aside}>
                 <h3 className={s.titleH3}>Show packs cards</h3>
-                <SideButton />
+                <SideButton
+                    onClickMyButton={props.onClickMyButton}
+                    onClickAllButton={props.onClickAllButton}
+                />
                 <h3 className={s.titleH3}>Number of cards</h3>
                 <div className={s.rangeSlider}>
                     <RangeSlider/>
@@ -83,12 +91,16 @@ export const PacksList = (props: PacksListType) => {
                     </table>
                 </div>
                 <div className={s.pagination}>
-                    <PaginationRounded packTotalCount={packsData.cardPacksTotalCount}
-                                       packsPageCount={packsData.pageCount}
+                    <PaginationRounded totalCount={packsData.cardPacksTotalCount}
+                                       pageCount={packsData.pageCount}
                                        page={packsData.page}
                                        onChangePage={props.onChangePage}
                     />
-                    <Dropdown/>
+                    <Dropdown
+                        options={[5, 10, 25, 50, 100]}
+                        value={props.value}
+                        onChangeOption={props.onChangeOption}
+                    />
                 </div>
                 
             </div>
