@@ -6,7 +6,7 @@ import {
     getStartPacksTC,
     updateCardsPackTC
 } from "../../../../store/packs-reducer";
-import {getCardsTC, setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
+import {setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PackResponseType} from "./api-packs";
@@ -54,12 +54,6 @@ export const Packs = () => {
 
     return (
         <div>
-           {/* <button onClick={addPack}>Add new pack</button>*/}
-           {/* <PacksTable userID={userID}
-                        deletePack={deletePack}
-                        updatePack={updatePack}
-                        learnPack={learnPack}
-            />*/}
             <PacksList userID={userID}
                        addNewPack={addPack}
                        deletePack={deletePack}
