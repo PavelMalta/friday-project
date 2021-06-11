@@ -9,12 +9,15 @@ import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
+import {SelectValueType} from "../../packs/Packs";
 
 type CardsListType = {
     userID: string
     deleteCard: (cardID: string) => void
     updateCard: (cardID: string) => void
     onChangePage: (page: number) => void
+    value: SelectValueType
+    onChangeOption: (value: SelectValueType) => void
 }
 
 export const CardsList = (props: CardsListType) => {
@@ -68,7 +71,11 @@ export const CardsList = (props: CardsListType) => {
                         page={cardsData.page}
                         onChangePage={props.onChangePage}
                     />
-                    <Dropdown/>
+                    <Dropdown
+                        options={[5, 10, 25, 50, 100]}
+                        value={props.value}
+                        onChangeOption={props.onChangeOption}
+                    />
                 </div>
             </div>
         </div>

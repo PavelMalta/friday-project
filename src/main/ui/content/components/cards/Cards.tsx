@@ -4,7 +4,6 @@ import {addCardTC, deleteCardTC, getCardsTC, updateCardTC} from "../../../../sto
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {CardsList} from "./cardsList/CardsList";
-import {getPacksTC} from "../../../../store/packs-reducer";
 import {SelectValueType} from "../packs/Packs";
 
 
@@ -19,7 +18,7 @@ export const Cards = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getCardsTC({cardsPack_id: cardsPackId, pageCount: 10}))
+        dispatch(getCardsTC({cardsPack_id: cardsPackId, pageCount: options}))
     }, [dispatch, options])
 
     const newCardPayload = {
@@ -49,6 +48,7 @@ export const Cards = () => {
     }
 
     const onChangeOption = (value: SelectValueType) => {
+        debugger
         setOptions(value)
     }
 
@@ -67,6 +67,8 @@ export const Cards = () => {
                        deleteCard={deleteCard}
                        updateCard={updateCard}
                        onChangePage={onChangePage}
+                       value={options}
+                       onChangeOption={onChangeOption}
             />
         </div>
     )
