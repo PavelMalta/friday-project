@@ -10,6 +10,7 @@ import {AppRootStateType} from "../../../../../store/store";
 import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
 import {SelectValueType} from "../../packs/Packs";
+import {InitialStateType} from "../../../../../store/cards-reducer";
 
 type CardsListType = {
     userID: string
@@ -22,7 +23,7 @@ type CardsListType = {
 
 export const CardsList = (props: CardsListType) => {
 
-    const cardsData = useSelector<AppRootStateType, CardsResponseType>(state => state.cards.cardsTableData)
+    const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards)
 
     const formatDate = (date: string): string => {
         return new Date(date).toLocaleDateString("ru", {
@@ -37,7 +38,7 @@ export const CardsList = (props: CardsListType) => {
             <div className={s.content}>
                 <button className={s.back}>
                     <img className={s.icon} src={Back} alt="icon"/>
-                    <TitleH2 value="Pack Name"
+                    <TitleH2 value={cardsData.packName}
                              style={{textAlign: "left", paddingTop: "0"}}
                     />
                 </button>
@@ -52,7 +53,7 @@ export const CardsList = (props: CardsListType) => {
                             <th className={s.item3}>Last Updated</th>
                             <th className={s.item4}>Grade</th>
                         </tr>
-                        {cardsData.cards.map((item) => {
+                        {cardsData.cardsTableData.cards.map((item) => {
                             return (
                                 <StringTablePN
                                     key={v1()}
@@ -66,9 +67,9 @@ export const CardsList = (props: CardsListType) => {
                 </div>
                 <div className={s.pagination}>
                     <PaginationRounded
-                        totalCount={cardsData.cardsTotalCount}
-                        pageCount={cardsData.pageCount}
-                        page={cardsData.page}
+                        totalCount={cardsData.cardsTableData.cardsTotalCount}
+                        pageCount={cardsData.cardsTableData.pageCount}
+                        page={cardsData.cardsTableData.page}
                         onChangePage={props.onChangePage}
                     />
                     <Dropdown

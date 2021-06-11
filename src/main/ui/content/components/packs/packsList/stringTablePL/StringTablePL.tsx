@@ -12,10 +12,21 @@ type StringPropsType = {
     packId: string
     deletePack: (packID: string) => void
     updatePack: (packID: string, title: string) => void
-    learnPack: (packID: string) => void
+    learnPack: (packID: string, packName: string) => void
 }
 
 export const StringTablePL = (props: StringPropsType) => {
+
+    const onClickDeletePack = () => {
+        props.deletePack(props.packId)
+    }
+    const onClickUpdatePack = () => {
+        props.updatePack(props.packId, "Update successful")
+    }
+    const onClickLearnPack = () => {
+        props.learnPack(props.packId, props.value1)
+    }
+
     return (
         <tr>
             <td>{props.value1}</td>
@@ -26,25 +37,21 @@ export const StringTablePL = (props: StringPropsType) => {
                 ? <td>
                     <Actions value="Delete"
                              style={{backgroundColor: "#F1453D", color: "#fff"}}
-                             onClick={props.deletePack}
-                             packId={props.packId}
+                             onClick={onClickDeletePack}
                     />
                     <Actions value="Edit"
-                             onClick={props.updatePack}
-                             packId={props.packId}
+                             onClick={onClickUpdatePack}
                     />
                     <NavLink to={`/cards/${props.packId}`}>
                         <Actions value="Learn"
-                                 onClick={props.learnPack}
-                                 packId={props.packId}
+                                 onClick={onClickLearnPack}
                         />
                     </NavLink>
                 </td>
                 : <td>
                     <NavLink to={`/cards/${props.packId}`}>
                         <Actions value="Learn"
-                                 onClick={props.learnPack}
-                                 packId={props.packId}
+                                 onClick={onClickLearnPack}
                         />
                     </NavLink>
                 </td>

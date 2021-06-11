@@ -6,7 +6,7 @@ import {
     getStartPacksTC,
     updateCardsPackTC
 } from "../../../../store/packs-reducer";
-import {getCardsTC, setCardsPackIdAC} from "../../../../store/cards-reducer";
+import {getCardsTC, setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PackResponseType} from "./api-packs";
@@ -30,14 +30,16 @@ export const Packs = () => {
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: options}))
     }
-    const deletePack = (PackID: string) => {
-        dispatch(deleteCardsPackTC(PackID, {pageCount: options, page: packsData.page}))
+    const deletePack = (packId: string) => {
+        dispatch(deleteCardsPackTC(packId, {pageCount: options, page: packsData.page}))
     }
-    const updatePack = (PackID: string) => {
-        dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: options, page: packsData.page}))
+    const updatePack = (packId: string, title: string) => {
+        dispatch(updateCardsPackTC({_id: packId, name: title}, {pageCount: options, page: packsData.page}))
     }
-    const learnPack = (PackID: string) => {
-        dispatch(setCardsPackIdAC(PackID))
+    const learnPack = (packId: string, packName: string) => {
+        debugger
+        dispatch(setCardsPackIdAC(packId))
+        dispatch(setPackNameAC(packName))
     }
     const onChangePage = (page: number) => {
         dispatch(getPacksTC({pageCount: options, page: page}))

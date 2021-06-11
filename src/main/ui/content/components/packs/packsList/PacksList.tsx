@@ -17,8 +17,8 @@ type PacksListType = {
     userID: string
     addNewPack: () => void
     deletePack: (packID: string) => void
-    updatePack: (packID: string ,title: string) => void
-    learnPack: (packID: string) => void
+    updatePack: (packID: string, title: string) => void
+    learnPack: (packID: string, packName: string) => void
     onChangePage: (page: number) => void
     value: SelectValueType
     onChangeOption: (value: SelectValueType) => void
