@@ -11,6 +11,8 @@ import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
 import {SelectValueType} from "../../packs/Packs";
 import {InitialStateType} from "../../../../../store/cards-reducer";
+import React from "react";
+import {NavLink} from "react-router-dom";
 
 type CardsListType = {
     userID: string
@@ -37,7 +39,9 @@ export const CardsList = (props: CardsListType) => {
         <div className={s.packName}>
             <div className={s.content}>
                 <button className={s.back}>
-                    <img className={s.icon} src={Back} alt="icon"/>
+                    <NavLink to={`/packs`}>
+                        <img className={s.icon} src={Back} alt="icon"/>
+                    </NavLink>
                     <TitleH2 value={cardsData.packName}
                              style={{textAlign: "left", paddingTop: "0"}}
                     />
