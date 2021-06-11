@@ -60,12 +60,6 @@ export const Packs = () => {
 
     return (
         <div>
-           {/* <button onClick={addPack}>Add new pack</button>*/}
-           {/* <PacksTable userID={userID}
-                        deletePack={deletePack}
-                        updatePack={updatePack}
-                        learnPack={learnPack}
-            />*/}
             <PacksList userID={userID}
                        addNewPack={addPack}
                        deletePack={deletePack}
