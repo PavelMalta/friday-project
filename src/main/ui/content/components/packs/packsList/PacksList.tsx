@@ -85,8 +85,8 @@ export const PacksList = (props: PacksListType) => {
                     </table>
                 </div>
                 <div className={s.pagination}>
-                    <PaginationRounded packTotalCount={packsData.cardPacksTotalCount}
-                                       packsPageCount={packsData.pageCount}
+                    <PaginationRounded totalCount={packsData.cardPacksTotalCount}
+                                       pageCount={packsData.pageCount}
                                        page={packsData.page}
                                        onChangePage={props.onChangePage}
                     />

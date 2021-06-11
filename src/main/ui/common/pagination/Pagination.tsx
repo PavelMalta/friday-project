@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) =>
 export default function PaginationRounded(props: any) {
   const classes = useStyles();
 
-  const count = Math.ceil(props.packTotalCount / props.packsPageCount)
+  const count = Math.ceil(props.totalCount / props.pageCount)
     const onChangeHandler = (event: object, page: number) => {
       props.onChangePage(page)
     }

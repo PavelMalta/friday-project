@@ -14,6 +14,7 @@ type CardsListType = {
     userID: string
     deleteCard: (cardID: string) => void
     updateCard: (cardID: string) => void
+    onChangePage: (page: number) => void
 }
 
 export const CardsList = (props: CardsListType) => {
@@ -61,7 +62,12 @@ export const CardsList = (props: CardsListType) => {
                     </table>
                 </div>
                 <div className={s.pagination}>
-                    <PaginationRounded/>
+                    <PaginationRounded
+                        totalCount={cardsData.cardsTotalCount}
+                        pageCount={cardsData.pageCount}
+                        page={cardsData.page}
+                        onChangePage={props.onChangePage}
+                    />
                     <Dropdown/>
                 </div>
             </div>

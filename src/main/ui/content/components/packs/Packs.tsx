@@ -16,7 +16,7 @@ export type SelectValueType = 5 | 10 | 25 | 50 | 100;
 
 export const Packs = () => {
 
-    const [options, setOptions] = useState<SelectValueType>(5)
+    const [options, setOptions] = useState<SelectValueType>(10)
 
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
@@ -37,7 +37,6 @@ export const Packs = () => {
         dispatch(updateCardsPackTC({_id: PackID, name: "Voy voy polegche!"}, {pageCount: options, page: packsData.page}))
     }
     const learnPack = (PackID: string) => {
-        dispatch(getCardsTC({cardsPack_id: PackID, pageCount: 100}))
         dispatch(setCardsPackIdAC(PackID))
     }
     const onChangePage = (page: number) => {
