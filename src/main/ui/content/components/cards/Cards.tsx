@@ -4,6 +4,7 @@ import {addCardTC, deleteCardTC, updateCardTC} from "../../../../store/cards-red
 import {CardsTable} from "./cardsTable/CardsTable";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
+import {CardsList} from "./cardsList/CardsList";
 
 
 export const Cards = () => {
@@ -42,9 +43,13 @@ export const Cards = () => {
     return (
         <div>
             <button onClick={addCards}>Add cards</button>
-            <CardsTable userID={userID}
+            {/*<CardsTable userID={userID}
                         deleteCard={deleteCard}
                         updateCard={updateCard}
+            />*/}
+            <CardsList userID={userID}
+                       deleteCard={deleteCard}
+                       updateCard={updateCard}
             />
         </div>
     )

@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function HalfRating() {
+export default function HalfRating(props: any) {
   const classes = useStyles();
 
   return (
     <div>
         {/* <Rating name="size-small" defaultValue={2} size="small" /> */}
-      <Rating name="half-rating" defaultValue={2.5} precision={0.5} size="small"  classes={classes}/>
+      <Rating name="half-rating" defaultValue={props.rating} precision={0.5} size="small"  classes={classes}/>
     </div>
   );
 }
