@@ -20,7 +20,8 @@ const initialState = {
         page: 1,
         pageCount: 0
     },
-    isFetching: false
+    isFetching: false,
+    options: 5 as SelectValueType
 }
 
 export const packsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
@@ -29,6 +30,8 @@ export const packsReducer = (state: InitialStateType = initialState, action: Act
             return {...state, packsTableData: action.packsTableData}
         case "IS-FETCHING":
             return {...state, isFetching: action.isFetching}
+        case "SET-OPTIONS":
+            return {...state, options: action.options}
         default:
             return state
     }
@@ -37,6 +40,7 @@ export const packsReducer = (state: InitialStateType = initialState, action: Act
 // Actions
 export const getPacksAC = (packsTableData: PackResponseType) => ({type: "GET-PACKS", packsTableData} as const)
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
+export const setOptionsAC = (options: SelectValueType) => ({type: "SET-OPTIONS", options} as const)
 
 
 // Thunks
@@ -104,15 +108,18 @@ export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, pack
 
 
 // Types
+export type SelectValueType = 5 | 10 | 25 | 50 | 100;
+
 type InitialStateType = {
     packsTableData: PackResponseType
     isFetching: boolean
+    options: SelectValueType
 }
 
 type ThunkType = ThunkAction<void, AppRootStateType, {}, ActionType>
 
 type ActionType = ReturnType<typeof getPacksAC>
     | ReturnType<typeof isFetchingAC>
-    | ReturnType<typeof isFetchingAC>
+    | ReturnType<typeof setOptionsAC>
     | ReturnType<typeof setAuthUserDataAC>
     | ReturnType<typeof setUserID>

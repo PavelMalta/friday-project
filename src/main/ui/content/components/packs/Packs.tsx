@@ -3,7 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     addCardsPackTC,
     deleteCardsPackTC, getPacksTC,
-    getStartPacksTC,
+    getStartPacksTC, SelectValueType,
+    setOptionsAC,
     updateCardsPackTC
 } from "../../../../store/packs-reducer";
 import {setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
@@ -11,21 +12,22 @@ import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PackResponseType} from "./api-packs";
 import {PacksList} from "./packsList/PacksList";
+import {LoginInitialStateType} from "../../../../store/login-reducer";
 
-export type SelectValueType = 5 | 10 | 25 | 50 | 100;
+
 
 export const Packs = () => {
 
-    const [options, setOptions] = useState<SelectValueType>(10)
+/*    const [options, setOptions] = useState<SelectValueType>(5)*/
 
-    const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
+    const userData = useSelector<AppRootStateType, LoginInitialStateType>(state => state.login)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const packsData = useSelector<AppRootStateType, PackResponseType>(state => state.packs.packsTableData)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getStartPacksTC({pageCount: options, page: packsData.page}))
-    }, [dispatch, options])
+    }, [dispatch])
 
     const addPack = () => {
         dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: options}))
@@ -45,10 +47,11 @@ export const Packs = () => {
         dispatch(getPacksTC({pageCount: options, page: page}))
     }
     const onChangeOption = (value: SelectValueType) => {
-        setOptions(value)
+        dispatch(setOptionsAC(value))
+        dispatch(getPacksTC({pageCount: value}))
     }
     const onClickMyButton = () => {
-        dispatch(getPacksTC({pageCount: options, user_id: userID}))
+        dispatch(getPacksTC({pageCount: options, user_id: userData.userID}))
     }
     const onClickAllButton = () => {
         dispatch(getPacksTC({pageCount: options}))
@@ -60,7 +63,7 @@ export const Packs = () => {
 
     return (
         <div>
-            <PacksList userID={userID}
+            <PacksList userID={userData.userID}
                        addNewPack={addPack}
                        deletePack={deletePack}
                        updatePack={updatePack}
