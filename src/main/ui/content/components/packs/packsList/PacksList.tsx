@@ -11,7 +11,8 @@ import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../../../../content/components/packs/api-packs";
 import {v1} from "uuid";
-import {SelectValueType} from "../Packs";
+import {SelectValueType} from "../../../../../store/packs-reducer";
+
 
 type PacksListType = {
     userID: string
@@ -20,7 +21,6 @@ type PacksListType = {
     updatePack: (packID: string, title: string) => void
     learnPack: (packID: string, packName: string) => void
     onChangePage: (page: number) => void
-    value: SelectValueType
     onChangeOption: (value: SelectValueType) => void
     onClickMyButton: () => void
     onClickAllButton: () => void
@@ -98,7 +98,6 @@ export const PacksList = (props: PacksListType) => {
                     />
                     <Dropdown
                         options={[5, 10, 25, 50, 100]}
-                        value={props.value}
                         onChangeOption={props.onChangeOption}
                     />
                 </div>
