@@ -21,17 +21,17 @@ const initialState = {
         pageCount: 0
     },
     isFetching: false,
-    options: 5 as SelectValueType
+    options: {pageCount: 5} as PacksQueryParamsType
 }
 
-export const packsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
+export const packsReducer = (state: PacksInitialStateType = initialState, action: ActionType): PacksInitialStateType => {
     switch (action.type) {
         case "GET-PACKS":
             return {...state, packsTableData: action.packsTableData}
         case "IS-FETCHING":
             return {...state, isFetching: action.isFetching}
         case "SET-OPTIONS":
-            return {...state, options: action.options}
+            return {...state, options: {...state.options, ...action.options}}
         default:
             return state
     }
@@ -40,17 +40,19 @@ export const packsReducer = (state: InitialStateType = initialState, action: Act
 // Actions
 export const getPacksAC = (packsTableData: PackResponseType) => ({type: "GET-PACKS", packsTableData} as const)
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
-export const setOptionsAC = (options: SelectValueType) => ({type: "SET-OPTIONS", options} as const)
+export const setOptionsAC = (options: PacksQueryParamsType) => ({type: "SET-OPTIONS", options} as const)
 
 
 // Thunks
-export const getStartPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
+export const getStartPacksTC = () => (dispatch: Dispatch<ActionType>, getState: ()=> AppRootStateType) => {
     dispatch(isFetchingAC(true))
+
+    const reduxOptions = getState().packs.options
     authAPI.getAuth()
         .then(res => {
             dispatch(setAuthUserDataAC(res.data))
             dispatch(setUserID(res.data._id))
-            packsAPI.getPacks(packQueryParams)
+            packsAPI.getPacks(reduxOptions)
                 .then(res => {
                     dispatch(getPacksAC(res.data))
                 })
@@ -61,9 +63,15 @@ export const getStartPacksTC = (packQueryParams: PacksQueryParamsType) => (dispa
             dispatch(isFetchingAC(false))
         })
 }
-export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
+export const getPacksTC = (options?: PacksQueryParamsType) => (dispatch: Dispatch<ActionType>, getState: ()=> AppRootStateType) => {
     dispatch(isFetchingAC(true))
-    packsAPI.getPacks(packQueryParams)
+
+    if (options) {
+        dispatch(setOptionsAC(options))
+    }
+    const reduxOptions = getState().packs.options
+
+    packsAPI.getPacks(reduxOptions)
         .then(res => {
             dispatch(getPacksAC(res.data))
         })
@@ -75,31 +83,31 @@ export const getPacksTC = (packQueryParams: PacksQueryParamsType) => (dispatch: 
         })
 }
 
-export const addCardsPackTC = (addPackPayload: AddPackPayloadType, packQueryParams: PacksQueryParamsType): ThunkType => (dispatch) => {
+export const addCardsPackTC = (addPackPayload: AddPackPayloadType): ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.addPack(addPackPayload)
         .then(() => {
-            dispatch(getPacksTC(packQueryParams))
+            dispatch(getPacksTC())
         })
         .finally(() => {
             dispatch(isFetchingAC(false))
         })
 }
-export const deleteCardsPackTC = (idPack: string, packQueryParams: PacksQueryParamsType): ThunkType => (dispatch) => {
+export const deleteCardsPackTC = (idPack: string): ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.deletePack(idPack)
         .then(() => {
-            dispatch(getPacksTC(packQueryParams))
+            dispatch(getPacksTC())
         })
         .finally(() => {
             dispatch(isFetchingAC(false))
         })
 }
-export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, packQueryParams: PacksQueryParamsType): ThunkType => (dispatch) => {
+export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType): ThunkType => (dispatch) => {
     dispatch(isFetchingAC(true))
     packsAPI.updatePack(updatePackPayload)
         .then(() => {
-            dispatch(getPacksTC(packQueryParams))
+            dispatch(getPacksTC())
         })
         .finally(() => {
             dispatch(isFetchingAC(false))
@@ -110,10 +118,11 @@ export const updateCardsPackTC = (updatePackPayload: updatePackPayloadType, pack
 // Types
 export type SelectValueType = 5 | 10 | 25 | 50 | 100;
 
-type InitialStateType = {
+
+export type PacksInitialStateType = {
     packsTableData: PackResponseType
     isFetching: boolean
-    options: SelectValueType
+    options: PacksQueryParamsType
 }
 
 type ThunkType = ThunkAction<void, AppRootStateType, {}, ActionType>

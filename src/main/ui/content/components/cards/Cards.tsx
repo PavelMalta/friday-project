@@ -4,7 +4,8 @@ import {addCardTC, deleteCardTC, getCardsTC, updateCardTC} from "../../../../sto
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {CardsList} from "./cardsList/CardsList";
-import {SelectValueType} from "../packs/Packs";
+import {SelectValueType} from "../../../../store/packs-reducer";
+
 
 
 

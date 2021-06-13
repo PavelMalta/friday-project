@@ -7,12 +7,11 @@ import PaginationRounded from "../../../../common/pagination/Pagination";
 import {Dropdown} from "../../../../common/dropdown/Dropdown";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
-import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
-import {SelectValueType} from "../../packs/Packs";
 import {InitialStateType} from "../../../../../store/cards-reducer";
 import React from "react";
 import {NavLink} from "react-router-dom";
+import {SelectValueType} from "../../../../../store/packs-reducer";
 
 type CardsListType = {
     userID: string

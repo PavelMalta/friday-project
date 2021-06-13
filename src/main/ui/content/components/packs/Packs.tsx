@@ -3,40 +3,37 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     addCardsPackTC,
     deleteCardsPackTC, getPacksTC,
-    getStartPacksTC, SelectValueType,
+    getStartPacksTC, PacksInitialStateType, SelectValueType,
     setOptionsAC,
     updateCardsPackTC
 } from "../../../../store/packs-reducer";
 import {setCardsPackIdAC, setPackNameAC} from "../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
-import {PackResponseType} from "./api-packs";
 import {PacksList} from "./packsList/PacksList";
 import {LoginInitialStateType} from "../../../../store/login-reducer";
 
 
-
 export const Packs = () => {
 
-/*    const [options, setOptions] = useState<SelectValueType>(5)*/
+    /*    const [options, setOptions] = useState<SelectValueType>(5)*/
 
     const userData = useSelector<AppRootStateType, LoginInitialStateType>(state => state.login)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
-    const packsData = useSelector<AppRootStateType, PackResponseType>(state => state.packs.packsTableData)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getStartPacksTC({pageCount: options, page: packsData.page}))
+        dispatch(getStartPacksTC())
     }, [dispatch])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}, {pageCount: options}))
+        dispatch(addCardsPackTC({name: "Y menia polychilos"}))
     }
     const deletePack = (packId: string) => {
-        dispatch(deleteCardsPackTC(packId, {pageCount: options, page: packsData.page}))
+        dispatch(deleteCardsPackTC(packId))
     }
     const updatePack = (packId: string, title: string) => {
-        dispatch(updateCardsPackTC({_id: packId, name: title}, {pageCount: options, page: packsData.page}))
+        dispatch(updateCardsPackTC({_id: packId, name: title}))
     }
     const learnPack = (packId: string, packName: string) => {
         debugger
@@ -44,17 +41,17 @@ export const Packs = () => {
         dispatch(setPackNameAC(packName))
     }
     const onChangePage = (page: number) => {
-        dispatch(getPacksTC({pageCount: options, page: page}))
+        dispatch(getPacksTC({page: page}))
     }
-    const onChangeOption = (value: SelectValueType) => {
-        dispatch(setOptionsAC(value))
-        dispatch(getPacksTC({pageCount: value}))
+    const onChangeSelectValue = (value: SelectValueType) => {
+        dispatch(setOptionsAC({pageCount: value}))
+        dispatch(getPacksTC())
     }
     const onClickMyButton = () => {
-        dispatch(getPacksTC({pageCount: options, user_id: userData.userID}))
+        dispatch(getPacksTC({user_id: userData.userID}))
     }
     const onClickAllButton = () => {
-        dispatch(getPacksTC({pageCount: options}))
+        dispatch(getPacksTC({user_id: ""}))
     }
 
     if (!isAuth) {
@@ -69,8 +66,7 @@ export const Packs = () => {
                        updatePack={updatePack}
                        learnPack={learnPack}
                        onChangePage={onChangePage}
-                       value={options}
-                       onChangeOption={onChangeOption}
+                       onChangeOption={onChangeSelectValue}
                        onClickMyButton={onClickMyButton}
                        onClickAllButton={onClickAllButton}
             />
