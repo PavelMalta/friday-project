@@ -6,6 +6,7 @@ import {TitleH2} from "../../../common/titleh2/TitleH2";
 import React, {ChangeEvent, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {routes} from "../../../../router/routes";
+import Modal from "../../../common/modal/Modal";
 
 type LoginPagePropsType = {
     email: string
@@ -102,5 +103,5 @@ export const LoginPage = (props:LoginPagePropsType) => {
                 </div>
             </div>
         </div>
-    )
+      )
 }
