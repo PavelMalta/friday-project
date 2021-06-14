@@ -14,6 +14,10 @@ import { CheckEmail } from './main/ui/pages/auth/сheckEmail/CheckEmail';
 import { CreateNewPassword } from './main/ui/pages/auth/createNewPassword/CreateNewPassword';
 import { Head } from './main/ui/common/head/Head';
 import {PacksList} from "./main/ui/pages/main/packsList/PacksList";
+import { ProfileIvan } from './main/ui/pages/profile/profileIvan/ProfileIvan';
+import { Error } from './main/ui/pages/error/Error';
+import { ProfilePeter } from './main/ui/pages/profile/profilePetr/ProfilePetr';
+import { EditProfile } from './main/ui/pages/profile/editProfile/EditProfile';
 
 
 
@@ -23,12 +27,12 @@ function App() {
 
             {/* Осталось от фронта */}
             <Header/>
-           {/* <Content/>*/}
+           {/* <Content/> */}
             {/* Тут подключены сверстанные странички */}
-            <Head/>
+            {/* <Head/> */}
             <div className={s.content}>
                 <Content/>
-                {/*<PacksList/>*/}
+                {/* <PacksList/> */}
 
 
             {/* <LoginPage/> */}
@@ -36,6 +40,10 @@ function App() {
             {/* <ForgotPassword/> */}
             {/* <CheckEmail/> */}
             {/* <CreateNewPassword/> */}
+
+            {/* <ProfileIvan/> */}
+            {/* <ProfilePeter/> */}
+            {/* <EditProfile/> */}
 
 
 

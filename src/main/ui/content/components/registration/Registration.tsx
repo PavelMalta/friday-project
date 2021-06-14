@@ -1,4 +1,4 @@
-import s from "./../../../../ui/pages/auth/register/Register.module.scss";
+import s from "./Registration.module.scss";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {Logo} from "../../../common/logo/Logo";
@@ -53,7 +53,9 @@ export const Registration = (props: RegistrationPropsType) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <Logo/>
-                    <TitleH2/>
+                    <TitleH2 style={{marginTop: "25px"}}
+                            value="Sign Up"
+                    />
                     <div className={s.form}>
                         <Input title="Email"
                                type="email"
@@ -93,7 +95,6 @@ export const Registration = (props: RegistrationPropsType) => {
                                     width: "124px",
                                     backgroundColor: "#CDCEF4",
                                     color: "#21268F",
-                                    marginRight: "36px"
                                 }}/>
                         <Button value="Registration"
                                 onClick={props.registrationButtonClick}

@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 347px;
+    // max-width: 347px;
     width: 100%;
     position: relative;
 }
@@ -22,6 +22,7 @@
     border: none;
     height: 26px;
     border-bottom: 1.6px solid rgba(36,37,74,0.2);
+    background-color:transparent;
 }
 .icon {
     position: absolute;

@@ -1,6 +1,6 @@
 import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
-import s from "./Content.module.css"
+import s from "./Content.module.scss"
 import {routes} from "../../router/routes";
 import {Profile} from "./components/profile/Profile";
 import {NotFound} from "./components/notFound/NotFound";

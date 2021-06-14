@@ -15,7 +15,7 @@ type StringPropsType = {
     learnPack: (packID: string, packName: string) => void
 }
 
-export const StringTablePL = (props: StringPropsType) => {
+export const StringTablePL = (props: any) => {
 
     const onClickDeletePack = () => {
         props.deletePack(props.packId)
