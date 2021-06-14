@@ -47,20 +47,19 @@ export const LoginPage = (props:LoginPagePropsType) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <Logo/>
-                    <TitleH2 value= "Sign In"/>
+                    <TitleH2 style= {{marginTop:"33px"}} 
+                            value= "Sign In"
+                            />
                     <div className={s.form}>
                         <Input title="Email"
-                               type= "email"
-                               name="email"
-                               error={props.emailError}
-                               placeholder={'email'}
-                               value={props.email}
-                               onChange={changeEmail}
-                               style= {{marginTop:"25px"}}
-                               idName={'inputEmail'}
+                                type= "email"
+                                name="email"
+                                error={props.emailError}
+                                placeholder={'email'}
+                                value={props.email}
+                                onChange={changeEmail}
+                                idName={'inputEmail'}
                         />
-
-                        {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
                                // type= "password"
                                type= {passwordType}
@@ -75,15 +74,10 @@ export const LoginPage = (props:LoginPagePropsType) => {
                                htmlFor= "checkbox2"
                                changeVision={togglePasswordType}
                         />
-
                     </div>
-
-
                     <div className={s.wrap}>
                         <div className={s.checkbox}>
-
-                            <input className={s.checkboxInput} type="checkbox" id="checkbox1"
-                            />
+                            <input className={s.checkboxInput} type="checkbox" id="checkbox1"/>
                             <label className={s.checkboxLable} htmlFor="checkbox1">Rememder me</label>
                         </div>
                         <NavLink className={s.linkPassword} to={routes.passwordRecover}>Forgot Password</NavLink>

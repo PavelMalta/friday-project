@@ -1,0 +1,103 @@
+@import './../../../styles/mixin.scss';
+@import './../../../styles/vars.scss';
+
+.profilePetr{
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 71px 0;
+    min-height: 100vh;
+    .aside {
+        background-color: #ECECF9;
+        border-radius: 30px 0 0  30px;
+        .profile {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            height: 216px;
+            padding-top: 24px;
+            background-color: #e0e7f5;
+            border-radius: 30px 0 0 0 ;
+            .name {
+                margin: 4px 0;
+                @include text (17px, 600, 27px);
+                color: $textColor;
+            }
+            .span {
+                @include text (14px, 400, 17px);
+                color: $textColor;
+                margin-bottom: 8px;
+                border-radius: 2px;
+            }
+        }
+        .titleH3{
+            @include text (16px, 600, 19px);
+            color: $textColor;
+            padding: 33px 0 0 23px;
+        } 
+        .rangeSlider {
+            padding: 0 23px;
+            margin-top: 54px;
+        }
+    }
+    .content {
+        padding: 0 48px 71px 48px;
+        background-color: rgba(254, 254, 255, 0.73);
+        border-radius: 0 30px 30px 0;
+        position: relative;
+        max-width: 765px;
+        width: 100%;
+        .form {
+            display: flex;
+        }
+        .wrap {
+            margin-top: 24px;      
+            table {
+                color: $textColor;
+                text-align: left;
+                filter: drop-shadow(0px 4px 14px rgba(45, 46, 70, 0.15));
+                border-collapse: collapse;
+                max-width: 670px;
+                width: 100%;
+            }
+            tr {
+                .item1 {
+                width: 27.5%;
+                }
+                .item2 {
+                    width: 11.5%;
+                }
+                .item3 {
+                    width: 20.5%;
+                }
+                .item4 {
+                    width: 16.5%;
+                }
+                .item5 {
+                    width: 24%;
+                }
+            }
+            th {
+                @include text (14px, 700, 16px);
+                background: #ECECF9;
+                padding: 10px;
+            }
+            td {
+                padding: 10px;
+                @include text (14px, 400, 16px);
+            }
+            tr:nth-child(odd) {
+                background: #F8F7FD;
+            }
+            tr:nth-child(even) {
+                background: #FFFFFF;
+            }
+        }
+    }
+    .pagination {
+        display: flex;
+        position: absolute;
+        bottom: 25px;
+        left: 35px
+    }
+
+}

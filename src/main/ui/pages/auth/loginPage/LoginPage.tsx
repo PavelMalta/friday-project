@@ -41,17 +41,16 @@ export const LoginPage = (props:LoginPagePropsType) => {
                     <TitleH2 value= "Sign In"/>
                     <div className={s.form}>
                         <Input title="Email"
-                               type= "email"
-                               name="email"
-                               error={props.emailError}
-                               placeholder={'email'}
-                               value={props.email}
-                               onChange={changeEmail}
-                               style= {{marginTop:"25px"}}
-                               idName={'inputEmail'}
+                                type= "email"
+                                name="email"
+                                error={props.emailError}
+                                placeholder={'email'}
+                                value={props.email}
+                                onChange={changeEmail}
+                                style= {{marginTop:"25px"}}
+                                idName={'inputEmail'}
                         />
 
-                        {/* Нужно убрать глазик (логика) */}
                         <Input title="Password"
                                // type= "password"
                                name="password"

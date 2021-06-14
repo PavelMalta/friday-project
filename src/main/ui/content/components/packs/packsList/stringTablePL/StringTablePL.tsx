@@ -17,7 +17,7 @@ type StringPropsType = {
     learnPack: (packID: string, packName: string) => void
 }
 
-export const StringTablePL = (props: StringPropsType) => {
+export const StringTablePL = (props: any) => {
 
     const [activeModalDelete, setActiveModalDelete] = useState<boolean>(false)
     const [activeModalUpdate, setActiveModalUpdate] = useState<boolean>(false)
