@@ -37,7 +37,6 @@ export const Packs = () => {
         dispatch(updateCardsPackTC({_id: packId, name: title}, {pageCount: options, page: packsData.page}))
     }
     const learnPack = (packId: string, packName: string) => {
-        debugger
         dispatch(setCardsPackIdAC(packId))
         dispatch(setPackNameAC(packName))
     }
