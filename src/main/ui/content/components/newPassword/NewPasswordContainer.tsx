@@ -56,7 +56,8 @@ export const NewPasswordContainer = () => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <Logo/>
-                    <TitleH2 value="Create new password"/>
+                    <TitleH2 style={{marginTop: "32px"}}
+                            value="Create new password"/>
                     <div className={s.form}>
                         <Input title="New password"
                                type="password"

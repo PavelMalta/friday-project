@@ -6,9 +6,19 @@
     justify-content: center;
     padding: 24px 0 71px 0;
     min-height: 100vh;
+    @media screen and (max-width: 875px) { 
+        flex-direction: column;
+        align-items:center;
+    }
     .aside {
         background-color: #ECECF9;
         border-radius: 30px 0 0  30px;
+        @media screen and (max-width: 875px) { 
+            border-radius: 30px 30px 0 0;
+            display: flex;
+            max-width: 765px;
+            width: 100%;
+        }
         .titleH3{
             @include text (16px, 600, 19px);
             color: $textColor;
@@ -21,7 +31,7 @@
     }
     .content {
         padding: 0 48px 71px 48px;
-        background-color: rgba(254, 254, 255, 0.73);
+        background-color: $primaryColor;
         border-radius: 0 30px 30px 0;
         position: relative;
         max-width: 765px;
