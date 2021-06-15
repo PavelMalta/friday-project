@@ -18,7 +18,8 @@ export const ForgotPassword = (props: ForgotPasswordPropsType) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <Logo/>
-                    <TitleH2 value="Sign In"/>
+                    <TitleH2 style={{marginTop: "32px"}}
+                            value="Forgot your password?"/>
                     <div className={s.form}>
                         <Input title="Email"
                                type="email"
@@ -26,7 +27,7 @@ export const ForgotPassword = (props: ForgotPasswordPropsType) => {
                                value={props.email}
                                onChange={props.onChangeEmail}
                                error={props.error}
-                        /> {/*Нужно убрать глазик (логика)*/}
+                        /> 
                     </div>
                     <span className={s.text}>Enter your email address and we will send you further instructions </span>
                     <div className={s.btn}>

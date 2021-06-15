@@ -2,8 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {
     addCardsPackTC,
-    deleteCardsPackTC, getPacksTC,
-    getStartPacksTC, PacksInitialStateType, SelectValueType,
+    deleteCardsPackTC,
+    getPacksTC,
+    getStartPacksTC,
+    SelectValueType,
     setOptionsAC,
     updateCardsPackTC
 } from "../../../../store/packs-reducer";
@@ -19,6 +21,10 @@ export const Packs = () => {
 
     const userData = useSelector<AppRootStateType, LoginInitialStateType>(state => state.login)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
+    const [activeModalAdd, setActiveModalAdd] = useState<boolean>(false)
+    const [namePack, setNamePack] = useState<string>('')
+
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -26,7 +32,8 @@ export const Packs = () => {
     }, [dispatch])
 
     const addPack = () => {
-        dispatch(addCardsPackTC({name: "Y menia polychilos"}))
+        dispatch(addCardsPackTC({name: namePack}))
+        setActiveModalAdd(false)
     }
     const deletePack = (packId: string) => {
         dispatch(deleteCardsPackTC(packId))
@@ -67,7 +74,11 @@ export const Packs = () => {
                        onChangeOption={onChangeSelectValue}
                        onClickMyButton={onClickMyButton}
                        onClickAllButton={onClickAllButton}
+                       setActiveModalAdd={setActiveModalAdd}
+                       setNamePack={setNamePack}
+                       activeModalAdd={activeModalAdd}
             />
+
         </div>
     )
 }

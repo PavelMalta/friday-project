@@ -59,7 +59,7 @@ export const LoginContainer = () => {
         return <Redirect to={'/packs'}/>
     }
 
-    return <LoginPage email={email}
+    return    <LoginPage email={email}
                       emailError={emailError}
                       passwordError={passwordError}
                       password={password}
@@ -68,6 +68,7 @@ export const LoginContainer = () => {
                       onChangeEmail={onChangeEmail}
                       onChangePassword={onChangePassword}
                       onChangeRememberMe={onChangeRememberMe}/>
+
 
 
 }
