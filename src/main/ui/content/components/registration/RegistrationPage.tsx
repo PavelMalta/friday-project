@@ -1,12 +1,15 @@
 import {Registration} from "./Registration";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setNewUserTC} from "../../../../store/registration-reducer";
 import {setEmailErrorAC, setPasswordErrorAC} from "../../../../store/registration-reducer";
 import {AppRootStateType} from "../../../../store/store";
+import {Redirect} from "react-router-dom";
 
 
 export const RegistrationPage = () => {
+    const isFetching = useSelector<AppRootStateType, boolean>((state) => state.login.isFetching);
+    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const emailError = useSelector<AppRootStateType, string | null>((state) => state.registration.emailError)
     const passwordError = useSelector<AppRootStateType, string | null>((state) => state.registration.passwordError)
     const dispatch = useDispatch()
@@ -49,9 +52,8 @@ export const RegistrationPage = () => {
             setPasswordConfirm('');
         } else {
             dispatch(setNewUserTC(email, password));
-            setEmail('');
-            setPassword('');
-            setPasswordConfirm('');
+            // setPassword('');
+            // setPasswordConfirm('');
         }
     }
 
@@ -59,6 +61,13 @@ export const RegistrationPage = () => {
         setEmail('');
         setPassword('');
         setPasswordConfirm('');
+    }
+
+    if (isFetching) {
+        return <div>Loading...</div>
+    }
+    if (isAuth) {
+        return <Redirect to={'/profile'}/>
     }
 
     return <Registration email={email}

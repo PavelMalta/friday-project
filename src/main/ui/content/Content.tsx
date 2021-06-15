@@ -12,6 +12,7 @@ import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRec
 import {Packs} from "./components/packs/Packs";
 import {Cards} from "./components/cards/Cards";
 import {Error} from "../pages/error/Error";
+import { NewPasswordContainer } from "./components/newPassword/NewPasswordContainer";
 import {LearnPack} from "./components/packs/learnPack/LearnPack";
 
 
@@ -24,7 +25,7 @@ export const Content = () => {
                 <Route exact path={routes.registration} render={() => <RegistrationPage/>} />
                 <Route exact path={routes.profile} render={() => <Profile/>} />
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>} />
-                <Route exact path={routes.newPassword} render={() => <NewPassword/>} />
+                <Route exact path={routes.newPassword} render={() => <NewPasswordContainer/>} />
                 <Route exact path={routes.presentation} render={() => <Presentation/>} />
                 <Route exact path={routes.packs} render={() => <Packs/>} />
                 <Route exact path={routes.cards} render={() => <Cards/>} />
