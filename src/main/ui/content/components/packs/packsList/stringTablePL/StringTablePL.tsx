@@ -56,7 +56,7 @@ export const StringTablePL = (props: any) => {
                     <Actions value="Edit"
                              onClick={updateModalHandler}
                     />
-                    <NavLink to={`/cards/${props.packId}`}>
+                    <NavLink to={`/learnPack/${props.packId}`}>
                         <Actions value="Learn"
                                  onClick={onClickLearnPack}
                         />
@@ -64,7 +64,7 @@ export const StringTablePL = (props: any) => {
 
                 </td>
                 : <td>
-                    <NavLink to={`/cards/${props.packId}`}>
+                    <NavLink to={`/learnPack/${props.packId}`}>
                         <Actions value="Learn"
                                  onClick={onClickLearnPack}
                         />

@@ -92,6 +92,17 @@ export const updateCardTC = (updateCardPayload: UpdateCardPayloadType, cardQuery
         })
 }
 
+export const rateCardTC = (grade: number, cardId: string ):ThunkType => (dispatch) => {
+    dispatch(isFetchingAC(true));
+    cardsAPI.rate(grade, cardId)
+        .then(res => {
+            /*getCardsAC(res.data)*/
+        })
+        .finally( () => {
+            dispatch(isFetchingAC(false))
+        })
+}
+
 
 //Types
 export type InitialStateType = {

@@ -4,6 +4,7 @@ import {getAuthUserData, setEmailErrorAC, setPasswordErrorAC} from "../../../../
 import {LoginPage} from "./LoginPage";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
+import {Preloader} from "../../../common/preloader/Preloader";
 
 export const LoginContainer = () => {
 
@@ -14,8 +15,8 @@ export const LoginContainer = () => {
 
     const dispatch = useDispatch()
 
-    let [email, setEmail] = useState<string>('nya-admin@nya.nya')
-    let [password, setPassword] = useState<string>('1qazxcvBG')
+    let [email, setEmail] = useState<string>('forpaul@mail.ru')
+    let [password, setPassword] = useState<string>('12345678')
     let [rememberMe, setRememberMe] = useState<boolean>(false)
 
     const onChangeEmail = (email: string) => {
@@ -52,7 +53,7 @@ export const LoginContainer = () => {
     }
 
     if (isFetching) {
-        return <div>Loading...</div>
+        return <Preloader/>
     }
     if (isAuth) {
         return <Redirect to={'/packs'}/>

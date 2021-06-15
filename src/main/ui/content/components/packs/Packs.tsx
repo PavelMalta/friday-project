@@ -14,11 +14,10 @@ import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PacksList} from "./packsList/PacksList";
 import {LoginInitialStateType} from "../../../../store/login-reducer";
+import {LearnPack} from "./learnPack/LearnPack";
 
 
 export const Packs = () => {
-
-    /*    const [options, setOptions] = useState<SelectValueType>(5)*/
 
     const userData = useSelector<AppRootStateType, LoginInitialStateType>(state => state.login)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
@@ -43,7 +42,6 @@ export const Packs = () => {
         dispatch(updateCardsPackTC({_id: packId, name: title}))
     }
     const learnPack = (packId: string, packName: string) => {
-        debugger
         dispatch(setCardsPackIdAC(packId))
         dispatch(setPackNameAC(packName))
     }
