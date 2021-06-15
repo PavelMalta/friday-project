@@ -69,10 +69,19 @@ export const LearnPack = (props: any) => {
         setIsShow(true)
     }
 
+    const nextHandler = () => {
+        setIsShow(false)
+        if (cardsData.length > 0) {
+            setCard(getCard(cardsData))
+        }
+    }
+
     return (
         <div className={s.container}>
-           {/* <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>*/}
-            <AnswerWindow packName={packName} question={card.question}  answer={card.answer} />
+            {isShow
+                ? <AnswerWindow packName={packName} question={card.question} answer={card.answer} nextHandler={nextHandler}/>
+                : <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
+            }
         </div>
     )
 }

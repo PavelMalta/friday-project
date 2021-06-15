@@ -5,10 +5,11 @@ type AnswerWindowPropsType = {
     packName: string
     question: string
     answer: string
+    nextHandler: () => void
 }
 
 export const AnswerWindow: React.FC<AnswerWindowPropsType> = (
-    {packName, question, answer}
+    {packName, question, answer, nextHandler}
 ) => {
     return (
         <div className={s.cardAnswer}>
@@ -34,7 +35,7 @@ export const AnswerWindow: React.FC<AnswerWindowPropsType> = (
             </div>
             <div className={s.buttonContainer}>
                 <button>Cancel</button>
-                <button>Next</button>
+                <button onClick={nextHandler}>Next</button>
             </div>
         </div>
     )
