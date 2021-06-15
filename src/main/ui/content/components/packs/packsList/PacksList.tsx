@@ -12,6 +12,8 @@ import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../../../../content/components/packs/api-packs";
 import {v1} from "uuid";
 import {SelectValueType} from "../../../../../store/packs-reducer";
+import ModalForAddPack from "../../../../common/modal/ModalForPack/ModalForAddPack";
+
 
 
 type PacksListType = {
@@ -24,6 +26,9 @@ type PacksListType = {
     onChangeOption: (value: SelectValueType) => void
     onClickMyButton: () => void
     onClickAllButton: () => void
+    setActiveModalAdd: (a: boolean) => void
+    setNamePack: (n: string)=> void
+    activeModalAdd: boolean
 
 }
 
@@ -38,7 +43,9 @@ export const PacksList = (props: PacksListType) => {
             year: "numeric"
         });
     }
-
+    const onAddCardPacks = () => {
+        props.setActiveModalAdd(true)
+    }
     return (
         <div className={s.packsList}>
             <aside className={s.aside}>
@@ -65,7 +72,7 @@ export const PacksList = (props: PacksListType) => {
                     <Search/>
                     <Button value="Add new pack"
                             style= {{width: "184px", marginLeft: "24px" }}
-                            onClick= {props.addNewPack}
+                            onClick= {onAddCardPacks}
                     />
                 </div>
                 
@@ -109,6 +116,8 @@ export const PacksList = (props: PacksListType) => {
                 </div>
                 
             </div>
+            <ModalForAddPack active={props.activeModalAdd} setActive={props.setActiveModalAdd} addPackHandler={props.addNewPack}
+                             setNamePack={props.setNamePack} />
         </div>
 
     )

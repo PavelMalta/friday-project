@@ -1,6 +1,6 @@
 
 export const routes = {
-    profile: "/",
+    profile: "/profile",
     login: "/login",
     registration: "/registration",
     notFound: "/404",
