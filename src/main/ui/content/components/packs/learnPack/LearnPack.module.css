@@ -21,3 +21,15 @@
     display: flex;
     justify-content: space-around;
 }
+
+.cardAnswer {
+    background-color: #E0E4EB;
+    border-radius: 20px;
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}

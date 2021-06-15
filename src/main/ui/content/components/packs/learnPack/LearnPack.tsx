@@ -6,6 +6,7 @@ import {CardsType} from "../../cards/api-cards";
 import {useParams} from "react-router-dom";
 import {getCardsTC} from "../../../../../store/cards-reducer";
 import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
+import {AnswerWindow} from "./answerWindow/AnswerWindow";
 
 const grades = ['не знал', 'забыл', 'долго думал', 'перепутал', 'знал'];
 
@@ -70,7 +71,8 @@ export const LearnPack = (props: any) => {
 
     return (
         <div className={s.container}>
-            <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
+           {/* <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>*/}
+            <AnswerWindow packName={packName} question={card.question}  answer={card.answer} />
         </div>
     )
 }
