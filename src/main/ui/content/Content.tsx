@@ -3,8 +3,6 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import s from "./Content.module.css"
 import {routes} from "../../router/routes";
 import {Profile} from "./components/profile/Profile";
-import {NotFound} from "./components/notFound/NotFound";
-import {NewPassword} from "./components/newPassword/NewPassword";
 import {Presentation} from "./components/presentation/Presentation";
 import {RegistrationPage} from "./components/registration/RegistrationPage";
 import {LoginContainer} from "./components/login/LoginContainer";
