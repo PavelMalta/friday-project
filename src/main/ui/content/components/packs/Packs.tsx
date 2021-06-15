@@ -12,6 +12,7 @@ import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PacksList} from "./packsList/PacksList";
 import {LoginInitialStateType} from "../../../../store/login-reducer";
+import {LearnPack} from "./learnPack/LearnPack";
 
 
 export const Packs = () => {
@@ -36,7 +37,6 @@ export const Packs = () => {
         dispatch(updateCardsPackTC({_id: packId, name: title}))
     }
     const learnPack = (packId: string, packName: string) => {
-        debugger
         dispatch(setCardsPackIdAC(packId))
         dispatch(setPackNameAC(packName))
     }
@@ -60,7 +60,7 @@ export const Packs = () => {
 
     return (
         <div>
-            <PacksList userID={userData.userID}
+            {/*<PacksList userID={userData.userID}
                        addNewPack={addPack}
                        deletePack={deletePack}
                        updatePack={updatePack}
@@ -69,7 +69,8 @@ export const Packs = () => {
                        onChangeOption={onChangeSelectValue}
                        onClickMyButton={onClickMyButton}
                        onClickAllButton={onClickAllButton}
-            />
+            />*/}
+            <LearnPack/>
         </div>
     )
 }
