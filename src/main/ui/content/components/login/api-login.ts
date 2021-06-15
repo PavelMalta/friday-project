@@ -16,6 +16,10 @@ export const authAPI = {
     },
     logout() {
         return instance.delete('auth/me')
+    },
+    updateProfile(name: string, avatar: string) {
+        return instance.put('auth/me', {name, avatar})
+
     }
 }
 

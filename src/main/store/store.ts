@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import {appReducer} from "./app-reducer";
 import {loginReducer} from "./login-reducer";
 import {passwordRecoverReducer} from "./passwordRecover-reducer";
-import {profileReducer} from "./profile-reducer";
+// import {profileReducer} from "./profile-reducer";
 import {registrationReducer} from "./registration-reducer";
 import {packsReducer} from "./packs-reducer";
 import {cardsReducer} from "./cards-reducer";
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     login: loginReducer,
     newPassword: resetPasswordReducer,
     passwordRecover: passwordRecoverReducer,
-    profile: profileReducer,
+    // profile: profileReducer,
     registration: registrationReducer,
     packs: packsReducer,
     cards: cardsReducer
