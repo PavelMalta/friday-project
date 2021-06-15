@@ -2,9 +2,9 @@ import {Dispatch} from "redux";
 import {authAPI} from "../ui/content/components/login/api-login";
 
 
-type InitialStateType = typeof initialState
+export type LoginInitialStateType = typeof loginInitialState
 
-const initialState = {
+const loginInitialState = {
     user: {},
     isFetching: false,
     emailError: null as null | string,
@@ -13,7 +13,7 @@ const initialState = {
     userID: ""
 }
 
-export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const loginReducer = (state: LoginInitialStateType = loginInitialState, action: ActionsType): LoginInitialStateType => {
     switch (action.type) {
         case 'SET_USER_DATA':
             return {
@@ -52,7 +52,7 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
     }
 }
 
-export const setAuthUserDataAC = (payload: InitialStateType) => ({type: 'SET_USER_DATA', payload}) as const
+export const setAuthUserDataAC = (payload: LoginInitialStateType) => ({type: 'SET_USER_DATA', payload}) as const
 export const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
 export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
