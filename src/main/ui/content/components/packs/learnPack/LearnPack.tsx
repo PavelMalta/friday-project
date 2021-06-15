@@ -26,6 +26,7 @@ const getCard = (cards: CardsType[]) => {
 export const LearnPack = (props: any) => {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [first, setFirst] = useState<boolean>(true);
+    const [grade, setGrade] = useState<number>(0)
 
     const cardsData = useSelector<AppRootStateType, Array<CardsType>>(state => state.cards.cardsTableData.cards)
     const packName = useSelector<AppRootStateType, string>(state => state.cards.packName)
@@ -77,10 +78,19 @@ export const LearnPack = (props: any) => {
         }
     }
 
+    const changeInputValue = (range: number) => {
+        setGrade(range)
+    }
+
     return (
         <div className={s.container}>
             {isShow
-                ? <AnswerWindow packName={packName} question={card.question} answer={card.answer} nextHandler={nextHandler}/>
+                ? <AnswerWindow packName={packName}
+                                question={card.question}
+                                answer={card.answer}
+                                nextHandler={nextHandler}
+                                changeInputValue={changeInputValue}
+                />
                 : <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
             }
         </div>

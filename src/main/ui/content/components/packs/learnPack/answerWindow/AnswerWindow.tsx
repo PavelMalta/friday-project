@@ -8,10 +8,11 @@ type AnswerWindowPropsType = {
     question: string
     answer: string
     nextHandler: () => void
+    changeInputValue: (range: number) => void
 }
 
 export const AnswerWindow: React.FC<AnswerWindowPropsType> = (
-    {packName, question, answer, nextHandler}
+    {packName, question, answer, nextHandler, changeInputValue}
 ) => {
     return (
         <div className={s.cardAnswer}>
@@ -20,24 +21,19 @@ export const AnswerWindow: React.FC<AnswerWindowPropsType> = (
             <div>Answer: {answer}</div>
             <div className={s.checkboxContainer}>
                 <div>
-                    <input type="checkbox" onChange={() => {
-                    }}/> <span>Did not know</span>
+                    <input type="checkbox" onChange={()=>{changeInputValue(1)}}/> <span>Did not know</span>
                 </div>
                 <div>
-                    <input type="checkbox" onChange={() => {
-                    }}/> <span>Forgot</span>
+                    <input type="checkbox" onChange={()=>{changeInputValue(2)}}/> <span>Forgot</span>
                 </div>
                 <div>
-                    <input type="checkbox" onChange={() => {
-                    }}/> <span>A lot of thought</span>
+                    <input type="checkbox" onChange={()=>{changeInputValue(3)}}/> <span>A lot of thought</span>
                 </div>
                 <div>
-                    <input type="checkbox" onChange={() => {
-                    }}/> <span>Confused</span>
+                    <input type="checkbox" onChange={()=>{changeInputValue(4)}}/> <span>Confused</span>
                 </div>
                 <div>
-                    <input type="checkbox" onChange={() => {
-                    }}/> <span>Knew the answer</span>
+                    <input type="checkbox" onChange={()=>{changeInputValue(5)}}/> <span>Knew the answer</span>
                 </div>
             </div>
             <div className={s.buttonContainer}>
