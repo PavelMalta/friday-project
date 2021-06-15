@@ -66,22 +66,17 @@ export const EditProfile =  (props: any) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <TitleH2 value="Personal Information"/>
-                    <div className={s.eidt}>
-                        <div className={s.imgWrap}>
-                            <img className={s.profileImg} style={{width: '100px', height: '100px'}} src={''} alt={'userPhoto'}/>
-                        </div>
-                        {change &&
-                        <div className={s.inputWrap}>
-                            <input className={s.profileInput} type='file' onChange={event => uploadImage(event)}/>
-                        </div>
-                        }
-
-
-                        <button className={s.btnSave} onClick={updateProfileHandler} >{change ? 'save' : 'change'}</button>
+                    <input type="file"
+                           accept=".jpg, .jpeg, .png"
+                           multiple
+                           onChange={(e) => {
+                               e.currentTarget.value.length !== 0 &&
+                               uploadImage(e)
+                           }}/>
 
                         <img className={s.photo} src={profilePeter} alt="photo"/>
                         <img className={s.icon} src={aditPhoto} alt="photo"/>
-                    </div>
+
                     
                     <form className={s.form}>
                         <Input style= {{marginBottom:"25px"}}
@@ -102,7 +97,7 @@ export const EditProfile =  (props: any) => {
                         />
                         <Button style={{width: "125px"}}
                                 value="Save"
-                                onClick={props.onclickHandler}
+                                onClick={updateProfileHandler}
                         />
                     </div>
                 </div>
