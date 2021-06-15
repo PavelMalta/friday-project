@@ -72,6 +72,7 @@ export const LearnPack = (props: any) => {
     const nextHandler = () => {
         setIsShow(false)
         if (cardsData.length > 0) {
+            //dispatch
             setCard(getCard(cardsData))
         }
     }

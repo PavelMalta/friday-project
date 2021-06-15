@@ -1,5 +1,7 @@
 import React from "react";
 import s from "../LearnPack.module.css";
+import {routes} from "../../../../../../router/routes";
+import {NavLink} from "react-router-dom";
 
 type QuestionWindowPropsType = {
     packName: string
@@ -15,7 +17,9 @@ export const QuestionWindow: React.FC<QuestionWindowPropsType> = (
             <h2>Learn {packName}</h2>
             <div>Question: {question}</div>
             <div className={s.buttonContainer}>
-                <button>Cancel</button>
+                <NavLink to={routes.packs}>
+                    <button>Cancel</button>
+                </NavLink>
                 <button onClick={showAnswer}>Show answer</button>
             </div>
         </div>
