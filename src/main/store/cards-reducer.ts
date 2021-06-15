@@ -47,6 +47,7 @@ export const setPackNameAC = (packName: string) => ({type: "SET-PACK-NAME", pack
 //Thunks
 export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
+    debugger
     cardsAPI.getCards(cardQueryParams)
         .then(res => {
             dispatch(getCardsAC(res.data))

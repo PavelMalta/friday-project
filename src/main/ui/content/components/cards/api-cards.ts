@@ -12,7 +12,7 @@ export const cardsAPI = {
         return instance.get<CardsResponseType, AxiosResponse<CardsResponseType>>('cards/card', {params: cardQueryParams})
     },
     addCard(newCardPayload: NewCardPayloadType) {
-        return instance.post('cards/card',{card: newCardPayload})
+        return instance.post('cards/card', {card: newCardPayload})
     },
     deleteCard(cardID: string) {
         return instance.delete(`cards/card/?id=${cardID}`)
@@ -53,7 +53,6 @@ export type CardsType = {
     user_id: string
     created: string
     updated: string
-    __v: number
     _id: string
 }
 
