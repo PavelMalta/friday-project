@@ -42,14 +42,14 @@ export const StringTablePL = (props: StringPropsType) => {
                     <Actions value="Edit"
                              onClick={onClickUpdatePack}
                     />
-                    <NavLink to={`/cards/${props.packId}`}>
+                    <NavLink to={`/learnPack/${props.packId}`}>
                         <Actions value="Learn"
                                  onClick={onClickLearnPack}
                         />
                     </NavLink>
                 </td>
                 : <td>
-                    <NavLink to={`/cards/${props.packId}`}>
+                    <NavLink to={`/learnPack/${props.packId}`}>
                         <Actions value="Learn"
                                  onClick={onClickLearnPack}
                         />

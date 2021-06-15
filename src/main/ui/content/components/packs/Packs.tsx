@@ -17,8 +17,6 @@ import {LearnPack} from "./learnPack/LearnPack";
 
 export const Packs = () => {
 
-    /*    const [options, setOptions] = useState<SelectValueType>(5)*/
-
     const userData = useSelector<AppRootStateType, LoginInitialStateType>(state => state.login)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const dispatch = useDispatch();
@@ -60,7 +58,7 @@ export const Packs = () => {
 
     return (
         <div>
-            {/*<PacksList userID={userData.userID}
+            <PacksList userID={userData.userID}
                        addNewPack={addPack}
                        deletePack={deletePack}
                        updatePack={updatePack}
@@ -69,8 +67,7 @@ export const Packs = () => {
                        onChangeOption={onChangeSelectValue}
                        onClickMyButton={onClickMyButton}
                        onClickAllButton={onClickAllButton}
-            />*/}
-            <LearnPack/>
+            />
         </div>
     )
 }
