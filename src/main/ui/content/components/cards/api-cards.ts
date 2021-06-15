@@ -19,6 +19,10 @@ export const cardsAPI = {
     },
     updateCard(updateCardPayload: UpdateCardPayloadType) {
         return instance.put('cards/card', {card: updateCardPayload})
+    },
+    rate(grade: number, cardID: string){
+        debugger
+        return instance.put('cards/grade', {grade, cardID} )
     }
 }
 

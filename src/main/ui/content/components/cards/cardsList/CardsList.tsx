@@ -5,8 +5,9 @@ import {Search} from "../../../../common/search/Search";
 import {StringTablePN} from "./stringTablePN/StringTablePN";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import {Dropdown} from "../../../../common/dropdown/Dropdown";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
+import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
 import {InitialStateType} from "../../../../../store/cards-reducer";
 import React from "react";
@@ -24,7 +25,7 @@ type CardsListType = {
 
 export const CardsList = (props: CardsListType) => {
 
-    const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards)
+    const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards);
 
     const formatDate = (date: string): string => {
         return new Date(date).toLocaleDateString("ru", {
@@ -64,6 +65,8 @@ export const CardsList = (props: CardsListType) => {
                                     value2={item.answer}
                                     value3={formatDate(item.updated)}
                                     rating={item.rating}
+                                    id={item._id}
+
                                 />)
                         })}
                     </table>

@@ -1,12 +1,11 @@
-import { Actions } from "../../../common/actions/Actions";
-import { Button } from "../../../common/button/Button";
-import { Dropdown } from "../../../common/dropdown/Dropdown";
+import {Button} from "../../../common/button/Button";
+import {Dropdown} from "../../../common/dropdown/Dropdown";
 import PaginationRounded from "../../../common/pagination/Pagination";
 import RangeSlider from "../../../common/rangeSlider/RangeSlider";
-import { Search } from "../../../common/search/Search";
-import { SideButton } from "../../../common/sideButton/SideButton";
-import { StringTablePL } from "./stringTablePL/StringTablePL";
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import {Search} from "../../../common/search/Search";
+import {SideButton} from "../../../common/sideButton/SideButton";
+import {StringTablePL} from "./stringTablePL/StringTablePL";
+import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../store/store";
