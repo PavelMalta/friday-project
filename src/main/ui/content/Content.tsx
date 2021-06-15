@@ -1,10 +1,7 @@
 import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
-import s from "./Content.module.css"
+import s from "./Content.module.scss"
 import {routes} from "../../router/routes";
-import {Profile} from "./components/profile/Profile";
-import {NotFound} from "./components/notFound/NotFound";
-import {NewPassword} from "./components/newPassword/NewPassword";
 import {Presentation} from "./components/presentation/Presentation";
 import {RegistrationPage} from "./components/registration/RegistrationPage";
 import {LoginContainer} from "./components/login/LoginContainer";
@@ -13,7 +10,6 @@ import {Packs} from "./components/packs/Packs";
 import {Cards} from "./components/cards/Cards";
 import { NewPasswordContainer } from "./components/newPassword/NewPasswordContainer";
 import {LearnPack} from "./components/packs/learnPack/LearnPack";
-import {NewPasswordContainer} from "./components/newPassword/NewPasswordContainer";
 import {EditProfile} from "./components/profile/EditProfile";
 import {Error} from "./components/error/Error";
 

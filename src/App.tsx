@@ -39,9 +39,9 @@ function App() {
             {/* <CheckEmail/> */}
             {/* <CreateNewPassword/> */}
 
-            <ProfileIvan/>
+           {/* <ProfileIvan/>
             <ProfilePeter/>
-            <EditProfile/>
+            <EditProfile/>*/}
 
 
 
