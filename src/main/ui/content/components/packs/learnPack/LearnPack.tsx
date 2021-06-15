@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {CardsType} from "../../cards/api-cards";
 import {useParams} from "react-router-dom";
-import {getCardsTC} from "../../../../../store/cards-reducer";
+import {getCardsTC, rateCardTC} from "../../../../../store/cards-reducer";
 import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
 import {AnswerWindow} from "./answerWindow/AnswerWindow";
 
@@ -53,7 +53,7 @@ export const LearnPack = (props: any) => {
 
     useEffect(() => {
         if (first) {
-            dispatch(getCardsTC({cardsPack_id: packId}))
+            dispatch(getCardsTC({cardsPack_id: packId, pageCount: 100}))
             setFirst(false)
         }
         if (cardsData.length > 0) {
@@ -73,7 +73,7 @@ export const LearnPack = (props: any) => {
     const nextHandler = () => {
         setIsShow(false)
         if (cardsData.length > 0) {
-            //dispatch
+            dispatch(rateCardTC(grade,card._id))
             setCard(getCard(cardsData))
         }
     }

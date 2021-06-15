@@ -47,7 +47,6 @@ export const setPackNameAC = (packName: string) => ({type: "SET-PACK-NAME", pack
 //Thunks
 export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
-    debugger
     cardsAPI.getCards(cardQueryParams)
         .then(res => {
             dispatch(getCardsAC(res.data))
@@ -97,7 +96,7 @@ export const rateCardTC = (grade: number, cardId: string ):ThunkType => (dispatc
     dispatch(isFetchingAC(true));
     cardsAPI.rate(grade, cardId)
         .then(res => {
-            getCardsAC(res.data)
+            /*getCardsAC(res.data)*/
         })
         .finally( () => {
             dispatch(isFetchingAC(false))
