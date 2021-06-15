@@ -1,8 +1,8 @@
-@import './../../styles/mixin.scss';
-@import './../../styles/vars.scss';
+@import './../../../styles/mixin.scss';
+@import './../../../styles/vars.scss';
 
 .error {
-    background-image: url("./../../assets/images/404.png");
+    background-image: url("./../../../assets/images/404.png");
     background-size: cover;
     min-height: 100vh;
     background-position: center;

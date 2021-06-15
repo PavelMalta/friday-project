@@ -11,7 +11,7 @@ import {LoginContainer} from "./components/login/LoginContainer";
 import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRecoverContainer";
 import {Packs} from "./components/packs/Packs";
 import {Cards} from "./components/cards/Cards";
-import {Error} from "../pages/error/Error";
+import {Error} from "./components/error/Error";
 import { NewPasswordContainer } from "./components/newPassword/NewPasswordContainer";
 
 

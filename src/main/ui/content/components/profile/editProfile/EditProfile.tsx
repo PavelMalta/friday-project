@@ -1,9 +1,9 @@
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import { TitleH2 } from "../../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
-import profilePeter from "./../../../assets/images/profile/profileIvan.png";
-import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
-import { Input } from "../../../common/input/Input";
-import { Button } from "../../../common/button/Button";
+import profilePeter from "./../../../../assets/images/profile/profileIvan.png";
+import aditPhoto from "./../../../../assets/images/profile/editPhoto.png";
+import { Input } from "../../../../common/input/Input";
+import { Button } from "../../../../common/button/Button";
 
 
 export const EditProfile = (props:any) => {
@@ -14,7 +14,10 @@ export const EditProfile = (props:any) => {
                     <TitleH2 value="Personal Information"/>
                     <div className={s.eidt}>
                         <img className={s.photo} src={profilePeter} alt="photo"/>
-                        <img className={s.icon} src={aditPhoto} alt="photo"/>
+                        <div>
+                            <img className={s.icon} src={aditPhoto} alt="photo"/>
+                        </div>
+                        
                     </div>
                     
                     <form className={s.form}>

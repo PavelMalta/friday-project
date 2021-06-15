@@ -1,21 +1,20 @@
-import { Dropdown } from "../../../common/dropdown/Dropdown";
-import PaginationRounded from "../../../common/pagination/Pagination";
-import RangeSlider from "../../../common/rangeSlider/RangeSlider";
-import { Search } from "../../../common/search/Search";
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
-import { StringTablePL } from "../../../content/components/packs/packsList/stringTablePL/StringTablePL";
-import s from "./ProfileIvan.module.scss";
-import profileIvan from "./../../../assets/images/profile/profileIvan.png";
+import { Dropdown } from "../../../../common/dropdown/Dropdown";
+import PaginationRounded from "../../../../common/pagination/Pagination";
+import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
+import { Search } from "../../../../common/search/Search";
+import { TitleH2 } from "../../../../common/titleh2/TitleH2";
+import { StringTablePL } from "../../../../content/components/packs/packsList/stringTablePL/StringTablePL";
+import s from "./ProfilePetr.module.scss";
+import profilePeter from "./../../../../assets/images/profile/profilePetr.svg";
 
-export const ProfileIvan = () => {
+export const ProfilePeter = () => {
     return (
-            <div className={s.profileIvan}>
+            <div className={s.profilePetr}>
                 <aside className={s.aside}>
                     <div className={s.profile}>
-                        <img className={s.photo} src={profileIvan} alt="photo"/>
-                        <p className={s.name}>Ivan Ivanov</p>
+                        <img className={s.photo} src={profilePeter} alt="photo"/>
+                        <p className={s.name}>Peter Ivanov</p>
                         <span className={s.span}>Front-end developer</span>
-                        <button className={s.btn}>Edit profile</button>
                     </div>
                     <h3 className={s.titleH3}>Number of cards</h3>
                     <div className={s.rangeSlider}>

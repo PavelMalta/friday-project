@@ -1,7 +1,7 @@
-@import './../../../styles/mixin.scss';
-@import './../../../styles/vars.scss';
+@import './../../../../styles/mixin.scss';
+@import './../../../../styles/vars.scss';
 
-.packsList{
+.profilePetr{
     display: flex;
     justify-content: center;
     padding: 24px 0 71px 0;
@@ -9,6 +9,26 @@
     .aside {
         background-color: #ECECF9;
         border-radius: 30px 0 0  30px;
+        .profile {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            height: 216px;
+            padding-top: 24px;
+            background-color: #e0e7f5;
+            border-radius: 30px 0 0 0 ;
+            .name {
+                margin: 4px 0;
+                @include text (17px, 600, 27px);
+                color: $textColor;
+            }
+            .span {
+                @include text (14px, 400, 17px);
+                color: $textColor;
+                margin-bottom: 8px;
+                border-radius: 2px;
+            }
+        }
         .titleH3{
             @include text (16px, 600, 19px);
             color: $textColor;
@@ -17,7 +37,7 @@
         .rangeSlider {
             padding: 0 23px;
             margin-top: 54px;
-        } 
+        }
     }
     .content {
         padding: 0 48px 71px 48px;
