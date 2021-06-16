@@ -5,7 +5,7 @@ type StringTablePNType = {
     value1: string
     value2: string
     value3: string
-    rating: number
+    grade: number
     id: string
 
 }
@@ -19,7 +19,7 @@ export const StringTablePN = (props: StringTablePNType) => {
             <td>{props.value2}</td>
             <td>{props.value3}</td>
             <td>
-                <HalfRating rating={props.rating} id={props.id}/>
+                <HalfRating grade={props.grade} id={props.id}/>
             </td>
             <td>
                 {/*<button value={1} onClick={() => props.onSendRating(1)}>не знал</button>*/}

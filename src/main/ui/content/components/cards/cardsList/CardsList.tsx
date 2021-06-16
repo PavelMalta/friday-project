@@ -64,9 +64,8 @@ export const CardsList = (props: CardsListType) => {
                                     value1={item.question}
                                     value2={item.answer}
                                     value3={formatDate(item.updated)}
-                                    rating={item.rating}
+                                    grade={item.grade}
                                     id={item._id}
-
                                 />)
                         })}
                     </table>

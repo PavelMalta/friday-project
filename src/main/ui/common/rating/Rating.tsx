@@ -25,7 +25,7 @@ export default function HalfRating(props: any) {
   return (
     <div>
         {/* <Rating name="size-small" defaultValue={2} size="small" /> */}
-      <Rating name="half-rating" defaultValue={props.rating} precision={1} size="small"  classes={classes}/>
+      <Rating name="half-rating" defaultValue={props.grade} precision={1} size="small"  classes={classes}/>
     </div>
   );
 }
