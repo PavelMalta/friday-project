@@ -13,6 +13,7 @@ import {PackResponseType} from "../../../../content/components/packs/api-packs";
 import {v1} from "uuid";
 import {SelectValueType} from "../../../../../store/packs-reducer";
 import ModalForAddPack from "../../../../common/modal/ModalForPack/ModalForAddPack";
+import React from "react";
 
 
 
@@ -32,7 +33,7 @@ type PacksListType = {
 
 }
 
-export const PacksList = (props: PacksListType) => {
+export const PacksList = React.memo((props: PacksListType) => {
 
     const packsData = useSelector<AppRootStateType, PackResponseType>(state => state.packs.packsTableData)
 
@@ -121,4 +122,4 @@ export const PacksList = (props: PacksListType) => {
         </div>
 
     )
-}
+})

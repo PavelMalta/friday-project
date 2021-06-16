@@ -5,9 +5,8 @@ import {Search} from "../../../../common/search/Search";
 import {StringTablePN} from "./stringTablePN/StringTablePN";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import {Dropdown} from "../../../../common/dropdown/Dropdown";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
-import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
 import {InitialStateType} from "../../../../../store/cards-reducer";
 import React from "react";
@@ -23,7 +22,7 @@ type CardsListType = {
     onChangeOption: (value: SelectValueType) => void
 }
 
-export const CardsList = (props: CardsListType) => {
+export const CardsList = React.memo((props: CardsListType) => {
 
     const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards);
 
@@ -86,4 +85,4 @@ export const CardsList = (props: CardsListType) => {
             </div>
         </div>
     )
-}
+})

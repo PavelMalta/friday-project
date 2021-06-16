@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addCardTC, deleteCardTC, getCardsTC, updateCardTC} from "../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../store/store";
@@ -32,26 +32,25 @@ export const Cards = () => {
         dispatch(addCardTC(newCardPayload, {cardsPack_id: cardsPackId, pageCount: 100}))
     }
 
-    const deleteCard = (cardID: string) => {
+    const deleteCard = useCallback((cardID: string) => {
         dispatch(deleteCardTC(cardID, {cardsPack_id: cardsPackId, pageCount: 100}))
-    }
+    },[])
 
-    const updateCard = (cardID: string) => {
+    const updateCard = useCallback((cardID: string) => {
         const updateCardPayload = {
             _id: cardID,
             question: 'What?'
         }
         dispatch(updateCardTC(updateCardPayload, {cardsPack_id: cardsPackId, pageCount: 100}))
-    }
+    },[])
 
-    const onChangePage = (page: number) => {
+    const onChangePage = useCallback((page: number) => {
         dispatch(getCardsTC({cardsPack_id: cardsPackId,pageCount: options, page: page}))
-    }
+    },[])
 
-    const onChangeOption = (value: SelectValueType) => {
-        debugger
+    const onChangeOption = useCallback((value: SelectValueType) => {
         setOptions(value)
-    }
+    },[])
 
     if (!isAuth) {
         return <Redirect to={'/login'}/>

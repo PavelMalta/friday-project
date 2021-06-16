@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {
     addCardsPackTC,
@@ -14,7 +14,7 @@ import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {PacksList} from "./packsList/PacksList";
 import {LoginInitialStateType} from "../../../../store/login-reducer";
-import {LearnPack} from "./learnPack/LearnPack";
+
 
 
 export const Packs = () => {
@@ -31,33 +31,33 @@ export const Packs = () => {
         dispatch(getStartPacksTC())
     }, [dispatch])
 
-    const addPack = () => {
+    const addPack = useCallback(() => {
         dispatch(addCardsPackTC({name: namePack}))
         setActiveModalAdd(false)
-    }
-    const deletePack = (packId: string) => {
+    },[])
+    const deletePack = useCallback((packId: string) => {
         dispatch(deleteCardsPackTC(packId))
-    }
-    const updatePack = (packId: string, title: string) => {
+    },[])
+    const updatePack = useCallback((packId: string, title: string) => {
         dispatch(updateCardsPackTC({_id: packId, name: title}))
-    }
-    const learnPack = (packId: string, packName: string) => {
+    },[])
+    const learnPack = useCallback((packId: string, packName: string) => {
         dispatch(setCardsPackIdAC(packId))
         dispatch(setPackNameAC(packName))
-    }
-    const onChangePage = (page: number) => {
+    },[])
+    const onChangePage = useCallback((page: number) => {
         dispatch(getPacksTC({page: page}))
-    }
-    const onChangeSelectValue = (value: SelectValueType) => {
+    },[])
+    const onChangeSelectValue = useCallback((value: SelectValueType) => {
         dispatch(setOptionsAC({pageCount: value}))
         dispatch(getPacksTC())
-    }
-    const onClickMyButton = () => {
+    },[])
+    const onClickMyButton = useCallback(() => {
         dispatch(getPacksTC({user_id: userData.userID}))
-    }
-    const onClickAllButton = () => {
+    },[])
+    const onClickAllButton = useCallback(() => {
         dispatch(getPacksTC({user_id: ""}))
-    }
+    },[])
 
     if (!isAuth) {
         return <Redirect to={'/login'}/>
