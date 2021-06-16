@@ -96,7 +96,7 @@ export const rateCardTC = (grade: number, cardId: string ):ThunkType => (dispatc
     dispatch(isFetchingAC(true));
     cardsAPI.rate(grade, cardId)
         .then(res => {
-            getCardsAC(res.data)
+            /*getCardsAC(res.data)*/
         })
         .finally( () => {
             dispatch(isFetchingAC(false))

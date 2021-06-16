@@ -6,14 +6,16 @@ import { Navigation } from './main/ui/navigation/Navigation';
 import {RegistrationPage} from "./main/ui/content/components/registration/RegistrationPage";
 
 // Прошу не удалять я с этим работаю (Люба;))
-import { LoginPage } from './main/ui/pages/auth/loginPage/LoginPage';
-import { Register } from './main/ui/pages/auth/register/Register';
-import { ForgotPassword } from './main/ui/content/components/passwordRecover/forgotPassword/ForgotPassword';
-import { LoginPageTest } from './main/ui/pages/auth/loginPageTest/LoginPageTest';
-import { CheckEmail } from './main/ui/pages/auth/сheckEmail/CheckEmail';
-import { CreateNewPassword } from './main/ui/pages/auth/createNewPassword/CreateNewPassword';
+
+
+
+
 import { Head } from './main/ui/common/head/Head';
-import {PacksList} from "./main/ui/pages/main/packsList/PacksList";
+
+import { ProfileIvan } from './main/ui/content/components/profile/profileIvan/ProfileIvan';
+
+import { ProfilePeter } from './main/ui/content/components/profile/profilePetr/ProfilePetr';
+import { EditProfile } from './main/ui/content/components/profile/editProfile/EditProfile';
 
 
 
@@ -23,12 +25,12 @@ function App() {
 
             {/* Осталось от фронта */}
             <Header/>
-           {/* <Content/>*/}
+           {/* <Content/> */}
             {/* Тут подключены сверстанные странички */}
-            <Head/>
+             <Head/>
             <div className={s.content}>
                 <Content/>
-                {/*<PacksList/>*/}
+                {/* <PacksList/> */}
 
 
             {/* <LoginPage/> */}
@@ -36,6 +38,10 @@ function App() {
             {/* <ForgotPassword/> */}
             {/* <CheckEmail/> */}
             {/* <CreateNewPassword/> */}
+
+           {/* <ProfileIvan/>
+            <ProfilePeter/>
+            <EditProfile/>*/}
 
 
 

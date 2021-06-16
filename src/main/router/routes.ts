@@ -1,6 +1,6 @@
 
 export const routes = {
-    profile: "/",
+    profile: "/profile",
     login: "/login",
     registration: "/registration",
     notFound: "/404",
@@ -8,5 +8,6 @@ export const routes = {
     newPassword: "/newPassword/:token",
     presentation: "/presentation",
     packs: "/packs",
-    cards: "/cards"
+    cards: "/cards",
+    learnPack: "/learnPack/:packId"
 }

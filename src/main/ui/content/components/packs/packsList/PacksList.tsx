@@ -11,7 +11,11 @@ import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {PackResponseType} from "../../../../content/components/packs/api-packs";
 import {v1} from "uuid";
-import {SelectValueType} from "../Packs";
+import {SelectValueType} from "../../../../../store/packs-reducer";
+import ModalForAddPack from "../../../../common/modal/ModalForPack/ModalForAddPack";
+import React from "react";
+
+
 
 type PacksListType = {
     userID: string
@@ -20,14 +24,16 @@ type PacksListType = {
     updatePack: (packID: string, title: string) => void
     learnPack: (packID: string, packName: string) => void
     onChangePage: (page: number) => void
-    value: SelectValueType
     onChangeOption: (value: SelectValueType) => void
     onClickMyButton: () => void
     onClickAllButton: () => void
+    setActiveModalAdd: (a: boolean) => void
+    setNamePack: (n: string)=> void
+    activeModalAdd: boolean
 
 }
 
-export const PacksList = (props: PacksListType) => {
+export const PacksList = React.memo((props: PacksListType) => {
 
     const packsData = useSelector<AppRootStateType, PackResponseType>(state => state.packs.packsTableData)
 
@@ -38,20 +44,28 @@ export const PacksList = (props: PacksListType) => {
             year: "numeric"
         });
     }
-
+    const onAddCardPacks = () => {
+        props.setActiveModalAdd(true)
+    }
     return (
         <div className={s.packsList}>
             <aside className={s.aside}>
-                <h3 className={s.titleH3}>Show packs cards</h3>
-                <SideButton
-                    onClickMyButton={props.onClickMyButton}
-                    onClickAllButton={props.onClickAllButton}
-                />
-                <h3 className={s.titleH3}>Number of cards</h3>
-                <div className={s.rangeSlider}>
-                    <RangeSlider/>
+                <div className={s.packsCard}>
+                    <h3 className={s.titleH3}>Show packs cards</h3>
+                    <SideButton
+                        onClickMyButton={props.onClickMyButton}
+                        onClickAllButton={props.onClickAllButton}
+                    />
+                </div>
+
+                <div className={s.NumberCard}>
+                    <h3 className={s.titleH3}>Number of cards</h3>
+                    <div className={s.rangeSlider}>
+                        <RangeSlider/>
+                    </div>
                 </div>               
             </aside>
+            
             <div className={s.content}>
                 <TitleH2 value="Packs list"
                     style={{ textAlign: "start", padding: "24px 0 15px 0"}} />
@@ -59,7 +73,7 @@ export const PacksList = (props: PacksListType) => {
                     <Search/>
                     <Button value="Add new pack"
                             style= {{width: "184px", marginLeft: "24px" }}
-                            onClick= {props.addNewPack}
+                            onClick= {onAddCardPacks}
                     />
                 </div>
                 
@@ -98,13 +112,14 @@ export const PacksList = (props: PacksListType) => {
                     />
                     <Dropdown
                         options={[5, 10, 25, 50, 100]}
-                        value={props.value}
                         onChangeOption={props.onChangeOption}
                     />
                 </div>
                 
             </div>
+            <ModalForAddPack active={props.activeModalAdd} setActive={props.setActiveModalAdd} addPackHandler={props.addNewPack}
+                             setNamePack={props.setNamePack} />
         </div>
 
     )
-}
+})

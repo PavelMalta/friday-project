@@ -1,6 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Actions } from "../../../../../common/actions/Actions";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
+import ModalForDelete from "../../../../../common/modal/ModalForCards/ModalForDelete";
+import ModalForUpdateCardsPack from "../../../../../common/modal/ModalForCards/ModalForUpdateCardsPack";
+import {routes} from "../../../../../../router/routes";
+import {setCardsPackIdAC, setPackNameAC} from "../../../../../../store/cards-reducer";
+import {useDispatch} from "react-redux";
 
 type StringPropsType = {
     value1: string
@@ -15,20 +20,45 @@ type StringPropsType = {
     learnPack: (packID: string, packName: string) => void
 }
 
-export const StringTablePL = (props: StringPropsType) => {
+export const StringTablePL = (props: any) => {
+
+    const [goCards, setGoCards] = useState<boolean>(false)
+
+    const dispatch = useDispatch()
+    const [activeModalDelete, setActiveModalDelete] = useState<boolean>(false)
+    const [activeModalUpdate, setActiveModalUpdate] = useState<boolean>(false)
+    const [titleCard, setTitleCard] = useState<string>('')
 
     const onClickDeletePack = () => {
         props.deletePack(props.packId)
     }
+
     const onClickUpdatePack = () => {
-        props.updatePack(props.packId, "Update successful")
+        props.updatePack(props.packId, titleCard)
+    }
+
+    const updateModalHandler = () => {
+        setActiveModalUpdate(true)
+        setTitleCard('')
     }
     const onClickLearnPack = () => {
         props.learnPack(props.packId, props.value1)
     }
+    const onRemoveHandler = () => {
+        setActiveModalDelete(true)
+    }
+    const onDoubleClick = () => {
+        dispatch(setCardsPackIdAC(props.packId))
+        dispatch(setPackNameAC(props.value1))
+        setGoCards(true)
+    }
+
+    if (goCards) {
+        return <Redirect to={routes.cards}/>
+    }
 
     return (
-        <tr>
+        <tr onDoubleClick={onDoubleClick}>
             <td>{props.value1}</td>
             <td>{props.value2}</td>
             <td>{props.value3}</td>
@@ -37,26 +67,34 @@ export const StringTablePL = (props: StringPropsType) => {
                 ? <td>
                     <Actions value="Delete"
                              style={{backgroundColor: "#F1453D", color: "#fff"}}
-                             onClick={onClickDeletePack}
+                             onClick={onRemoveHandler}
                     />
                     <Actions value="Edit"
-                             onClick={onClickUpdatePack}
+                             onClick={updateModalHandler}
                     />
-                    <NavLink to={`/cards/${props.packId}`}>
+                    <NavLink to={`/learnPack/${props.packId}`}>
                         <Actions value="Learn"
                                  onClick={onClickLearnPack}
                         />
                     </NavLink>
+
                 </td>
                 : <td>
-                    <NavLink to={`/cards/${props.packId}`}>
+                    <NavLink to={`/learnPack/${props.packId}`}>
                         <Actions value="Learn"
                                  onClick={onClickLearnPack}
                         />
                     </NavLink>
                 </td>
             }
-
+            <ModalForDelete active={activeModalDelete}
+                            setActive={setActiveModalDelete}
+                            onClickDeletePack={onClickDeletePack}
+                            title={props.value1}
+            />
+            <ModalForUpdateCardsPack active={activeModalUpdate} setActive={setActiveModalUpdate}
+                                     setTitleCard={setTitleCard}
+                                     onClickUpdatePack={onClickUpdatePack}/>
         </tr>
     )
 }

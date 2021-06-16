@@ -5,14 +5,13 @@ import {Search} from "../../../../common/search/Search";
 import {StringTablePN} from "./stringTablePN/StringTablePN";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import {Dropdown} from "../../../../common/dropdown/Dropdown";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
-import {CardsResponseType} from "../api-cards";
 import {v1} from "uuid";
-import {SelectValueType} from "../../packs/Packs";
-import {InitialStateType, rateCardTC} from "../../../../../store/cards-reducer";
+import {InitialStateType} from "../../../../../store/cards-reducer";
 import React from "react";
 import {NavLink} from "react-router-dom";
+import {SelectValueType} from "../../../../../store/packs-reducer";
 
 type CardsListType = {
     userID: string
@@ -23,10 +22,9 @@ type CardsListType = {
     onChangeOption: (value: SelectValueType) => void
 }
 
-export const CardsList = (props: CardsListType) => {
+export const CardsList = React.memo((props: CardsListType) => {
 
     const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards);
-
 
     const formatDate = (date: string): string => {
         return new Date(date).toLocaleDateString("ru", {
@@ -35,8 +33,6 @@ export const CardsList = (props: CardsListType) => {
             year: "numeric"
         })
     }
-
-
 
     return (
         <div className={s.packName}>
@@ -67,9 +63,8 @@ export const CardsList = (props: CardsListType) => {
                                     value1={item.question}
                                     value2={item.answer}
                                     value3={formatDate(item.updated)}
-                                    rating={item.rating}
+                                    grade={item.grade}
                                     id={item._id}
-
                                 />)
                         })}
                     </table>
@@ -90,4 +85,4 @@ export const CardsList = (props: CardsListType) => {
             </div>
         </div>
     )
-}
+})

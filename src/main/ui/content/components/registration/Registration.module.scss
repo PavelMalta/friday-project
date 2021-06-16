@@ -1,0 +1,27 @@
+@import './../../../styles/mixin.scss';
+@import './../../../styles/vars.scss';
+
+.loginPage {
+    height: 100vh;
+    .wrapper {
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .inner {
+            background-color: $primaryColor;
+            max-width: 413px;
+            width: 100%;
+            border-radius: 30px;
+            padding: 25px 33px 60px;
+            .form {
+                margin-top: 38px;
+            }
+            .btn {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 84px;
+            }
+        }
+    }
+}

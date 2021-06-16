@@ -2,10 +2,27 @@ import {Dispatch} from "redux";
 import {authAPI} from "../ui/content/components/login/api-login";
 
 
-type InitialStateType = typeof initialState
 
-const initialState = {
-    user: {},
+export type LoginInitialStateType = typeof loginInitialState
+
+export type UserDataType = {
+    avatar: string,
+    created: number,
+    email: string,
+    isAdmin: boolean,
+    name: string,
+    publicCardPacksCount: number,
+    rememberMe: boolean,
+    token: string,
+    updated: number,
+    _id: string,
+}
+
+const loginInitialState = {
+    user: {
+        avatar: '',
+        name: '',
+         },
     isFetching: false,
     emailError: null as null | string,
     passwordError: null as null | string,
@@ -13,12 +30,12 @@ const initialState = {
     userID: ""
 }
 
-export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const loginReducer = (state: LoginInitialStateType = loginInitialState, action: ActionsType): LoginInitialStateType => {
     switch (action.type) {
         case 'SET_USER_DATA':
             return {
                 ...state,
-                user: action.payload,
+                // user: action.payload,
                 isAuth: true
             }
         case "IS-FETCHING":
@@ -44,20 +61,30 @@ export const loginReducer = (state: InitialStateType = initialState, action: Act
         case "LOGOUT":
             return {
                 ...state,
-                user: {},
+                // user: {},
                 isAuth: false
+            }
+        case  'UPDATE_PROFILE':
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    name: action.payload.user.name,
+                    avatar: action.payload.user.avatar
+                }
             }
         default:
             return state
     }
 }
 
-export const setAuthUserDataAC = (payload: InitialStateType) => ({type: 'SET_USER_DATA', payload}) as const
+export const setAuthUserDataAC = (payload: LoginInitialStateType) => ({type: 'SET_USER_DATA', payload}) as const
 export const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 export const setEmailErrorAC = (error: string | null) => ({type: "SET-EMAIL-ERROR", error} as const)
 export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWORD-ERROR", error} as const)
 export const setUserID = (userID: string) => ({type: "SET-USER-ID", userID} as const)
 export const logoutAC = () => ({type: "LOGOUT"} as const)
+export const updateUserProfileAC = (user: UserDataType) => ({type: 'UPDATE_PROFILE', payload: {user}} as const)
 
 
 export const getAuthUserData = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
@@ -101,6 +128,20 @@ export const logoutTC = () => (dispatch: Dispatch) => {
     })
 }
 
+export const updateProfileDataTC = (name: string, avatar: string) => (dispatch: Dispatch) => {
+        dispatch(isFetchingAC(true))
+        authAPI.updateProfile(name, avatar)
+            .then(response => {
+                dispatch(updateUserProfileAC(response.data.updatedUser))
+                 }
+            ).catch( (e) => {
+            const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
+            console.log(error)
+        })
+            .finally(() => {
+                dispatch(isFetchingAC(false))
+            })
+    }
 
 export type ActionsType =
     | ReturnType<typeof setAuthUserDataAC>
@@ -109,6 +150,7 @@ export type ActionsType =
     | ReturnType<typeof isFetchingAC>
     | ReturnType<typeof setUserID>
     | ReturnType<typeof logoutAC>
+    | ReturnType<typeof updateUserProfileAC>
 
 
 
