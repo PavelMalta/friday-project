@@ -77,7 +77,7 @@ export const PacksList = (props: PacksListType) => {
                 </div>
                 
                 <div className={s.wrap}>
-                    <table>
+                    <table>                  
                         <tr>
                             <th className={s.item1}>Name</th>
                             <th className={s.item2}>Cards</th>

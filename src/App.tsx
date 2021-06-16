@@ -5,17 +5,14 @@ import { Header } from './main/ui/header/Header';
 import { Navigation } from './main/ui/navigation/Navigation';
 import {RegistrationPage} from "./main/ui/content/components/registration/RegistrationPage";
 
-// Прошу не удалять я с этим работаю (Люба;))
-
-
-
 
 import { Head } from './main/ui/common/head/Head';
-
 import { ProfileIvan } from './main/ui/content/components/profile/profileIvan/ProfileIvan';
-
 import { ProfilePeter } from './main/ui/content/components/profile/profilePetr/ProfilePetr';
 import { EditProfile } from './main/ui/content/components/profile/editProfile/EditProfile';
+import { Error } from './main/ui/content/components/error/Error';
+import { Question } from './main/ui/lubaPages/question/Question';
+import { QuestionAnswer } from './main/ui/lubaPages/questionAnswer/QuestionAnswer';
 
 
 
@@ -26,28 +23,19 @@ function App() {
             {/* Осталось от фронта */}
             <Header/>
            {/* <Content/> */}
-            {/* Тут подключены сверстанные странички */}
-            {/* <Head/> */}
+
+            <Head/>
             <div className={s.content}>
                 <Content/>
-                {/* <PacksList/> */}
 
+            {/* <ProfileIvan/> */}
+            {/* <ProfilePeter/> */}
+            {/* <EditProfile/> */}
+            {/* <Question/> */}
+            {/* <QuestionAnswer/> */}
 
-            {/* <LoginPage/> */}
-            {/* <Register/> */}
-            {/* <ForgotPassword/> */}
-            {/* <CheckEmail/> */}
-            {/* <CreateNewPassword/> */}
-
-           {/* <ProfileIvan/>
-            <ProfilePeter/>
-            <EditProfile/>*/}
-
-
-
-            {/* <LoginPageTest/>  Material UI*/}
             </div>
-                {/* <Error/> */}
+            {/* <Error/> */}
         </div>
     );
 }
