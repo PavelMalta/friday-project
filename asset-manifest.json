@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/friday-project/static/css/main.b431f15e.chunk.css",
-    "main.js": "/friday-project/static/js/main.0b813346.chunk.js",
-    "main.js.map": "/friday-project/static/js/main.0b813346.chunk.js.map",
+    "main.js": "/friday-project/static/js/main.a32715d8.chunk.js",
+    "main.js.map": "/friday-project/static/js/main.a32715d8.chunk.js.map",
     "runtime-main.js": "/friday-project/static/js/runtime-main.abe2f9b1.js",
     "runtime-main.js.map": "/friday-project/static/js/runtime-main.abe2f9b1.js.map",
     "static/js/2.58d816cf.chunk.js": "/friday-project/static/js/2.58d816cf.chunk.js",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.abe2f9b1.js",
     "static/js/2.58d816cf.chunk.js",
     "static/css/main.b431f15e.chunk.css",
-    "static/js/main.0b813346.chunk.js"
+    "static/js/main.a32715d8.chunk.js"
   ]
 }
