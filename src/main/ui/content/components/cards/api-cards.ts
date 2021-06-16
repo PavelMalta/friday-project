@@ -21,7 +21,7 @@ export const cardsAPI = {
         return instance.put('cards/card', {card: updateCardPayload})
     },
     rate(grade: number, cardID: string){
-        return instance.put('cards/grade', {grade, cardID} )
+        return instance.put('cards/grade', {grade: grade, card_id: cardID} )
     }
 }
 

@@ -24,8 +24,8 @@ export const Cards = () => {
 
     const newCardPayload = {
         cardsPack_id: cardsPackId,
-        question: 'Who is she?',
-        answer: 'She is pokemoniha'
+        question: 'Who?',
+        answer: 'Pokemon'
     }
 
     const addCards = () => {

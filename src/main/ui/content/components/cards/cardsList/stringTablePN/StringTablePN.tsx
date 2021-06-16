@@ -7,7 +7,7 @@ type StringTablePNType = {
     value3: string
     rating: number
     id: string
-    // onSendRating: (value: number) => void
+
 }
 
 export const StringTablePN = (props: StringTablePNType) => {
