@@ -27,7 +27,7 @@ function App() {
             <Header/>
            {/* <Content/> */}
             {/* Тут подключены сверстанные странички */}
-            {/* <Head/> */}
+             <Head/>
             <div className={s.content}>
                 <Content/>
                 {/* <PacksList/> */}
