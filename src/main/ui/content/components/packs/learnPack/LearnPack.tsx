@@ -8,8 +8,6 @@ import {getCardsTC, rateCardTC} from "../../../../../store/cards-reducer";
 import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
 import {AnswerWindow} from "./answerWindow/AnswerWindow";
 
-const grades = ['не знал', 'забыл', 'долго думал', 'перепутал', 'знал'];
-
 const getCard = (cards: CardsType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
     const rand = Math.random() * sum;
@@ -18,12 +16,10 @@ const getCard = (cards: CardsType[]) => {
             return {sum: newSum, id: newSum < rand ? i : acc.id}
         }
         , {sum: 0, id: -1});
-    console.log('test: ', sum, rand, res)
-
     return cards[res.id + 1];
 }
 
-export const LearnPack = (props: any) => {
+export const LearnPack = () => {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [first, setFirst] = useState<boolean>(true);
     const [grade, setGrade] = useState<number>(0)
