@@ -27,7 +27,6 @@ export const CardsList = (props: CardsListType) => {
 
     const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards);
 
-    const dispatch = useDispatch();
 
     const formatDate = (date: string): string => {
         return new Date(date).toLocaleDateString("ru", {
