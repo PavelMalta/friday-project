@@ -5,8 +5,8 @@ import {AppRootStateType} from "../../../../../store/store";
 import {CardsType} from "../../cards/api-cards";
 import {useParams} from "react-router-dom";
 import {getCardsTC, rateCardTC} from "../../../../../store/cards-reducer";
-import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
-import {AnswerWindow} from "./answerWindow/AnswerWindow";
+import {Question} from "./question/Question";
+import {QuestionAnswer} from "./questionAnswer/QuestionAnswer";
 
 const getCard = (cards: CardsType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
@@ -23,6 +23,7 @@ export const LearnPack = () => {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [first, setFirst] = useState<boolean>(true);
     const [grade, setGrade] = useState<number>(0)
+    const [disabledButton, setDisabledButton] = useState<boolean>(true)
 
     const cardsData = useSelector<AppRootStateType, Array<CardsType>>(state => state.cards.cardsTableData.cards)
     const packName = useSelector<AppRootStateType, string>(state => state.cards.packName)
@@ -68,26 +69,29 @@ export const LearnPack = () => {
 
     const nextHandler = () => {
         setIsShow(false)
+        setDisabledButton(true)
         if (cardsData.length > 0) {
-            dispatch(rateCardTC(grade,card._id))
+            dispatch(rateCardTC(grade, card._id))
             setCard(getCard(cardsData))
         }
     }
 
     const changeInputValue = (range: number) => {
         setGrade(range)
+        setDisabledButton(false)
     }
 
     return (
         <div className={s.container}>
             {isShow
-                ? <AnswerWindow packName={packName}
-                                question={card.question}
-                                answer={card.answer}
-                                nextHandler={nextHandler}
-                                changeInputValue={changeInputValue}
+                ? <QuestionAnswer packName={packName}
+                                  question={card.question}
+                                  answer={card.answer}
+                                  nextHandler={nextHandler}
+                                  changeInputValue={changeInputValue}
+                                  disabledButton={disabledButton}
                 />
-                : <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
+                : <Question packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
             }
         </div>
     )

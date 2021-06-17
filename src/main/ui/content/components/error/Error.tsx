@@ -1,4 +1,5 @@
 import s from "./Error.module.scss";
+import background from "./../../../assets/images/404.png";
 
 export const Error = () => {
     return (
