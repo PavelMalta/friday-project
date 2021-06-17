@@ -8,8 +8,8 @@ import {Dropdown} from "../../../../common/dropdown/Dropdown";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {v1} from "uuid";
-import {InitialStateType} from "../../../../../store/cards-reducer";
-import React from "react";
+import {InitialStateType, updateAnswerQuestion, updateCardTC} from "../../../../../store/cards-reducer";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {SelectValueType} from "../../../../../store/packs-reducer";
 
@@ -34,7 +34,15 @@ export const CardsList = React.memo((props: CardsListType) => {
         })
     }
 
+
+    const changeAnswerQuestion = () => {
+        // updateCardTC()
+    }
+
+
+
     return (
+
         <div className={s.packName}>
             <div className={s.content}>
                 <button className={s.back}>
@@ -57,7 +65,10 @@ export const CardsList = React.memo((props: CardsListType) => {
                             <th className={s.item4}>Grade</th>
                         </tr>
                         {cardsData.cardsTableData.cards.map((item) => {
+
+
                             return (
+
                                 <StringTablePN
                                     key={v1()}
                                     value1={item.question}

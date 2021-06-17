@@ -8,5 +8,6 @@ export const routes = {
     newPassword: "/newPassword/:token",
     packs: "/packs",
     cards: "/cards",
-    learnPack: "/learnPack/:packId"
+    learnPack: "/learnPack/:packId",
+    updateArea: "/updateArea/:cardID"
 }

@@ -16,6 +16,9 @@ export const cardsAPI = {
     },
     rate(grade: number, cardID: string){
         return instance.put('cards/grade', {grade: grade, card_id: cardID} )
+    },
+    updateQuestion(question: string, answer: string, cardID: string){
+        return instance.put('cards/grade', {cardQuestion: question, cardAnswer: answer, card_id: cardID} )
     }
 }
 
