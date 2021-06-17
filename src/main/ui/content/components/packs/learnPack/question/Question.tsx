@@ -18,12 +18,14 @@ export const Question: React.FC<QuestionPropsType> = (
         <div className={s.question}>
             <div className={s.wrapper}>
                 <div className={s.inner}>
-                    <TitleH2 value={`Learn “${packName}”`}
-                    />
-                    <p className={s.text}>
-                        <span className={s.span}>Question:</span>
-                        “{question}”
-                    </p>
+                    <TitleH2 value={`Learn “${packName}”`}/>
+                    <div className={s.container}>
+                        <p className={s.text}>
+                            <span className={s.span}>Question:</span>
+                            “{question}”
+                        </p>
+                    </div>
+                    
                     <div className={s.btn}>
                         <NavLink to={routes.packs}>
                             <Button

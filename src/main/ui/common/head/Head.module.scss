@@ -6,6 +6,20 @@
     .container {
         display: flex;
         padding: 0 136px;
+        .logo {
+            @include text(26px, 600, 39px);
+            color: $textColor;
+            padding: 10px 0;
+            margin-right: 168px;
+            transition: transform 500ms ease, color 500ms ease;
+            // @media screen and (min-width: 990px)  { 
+            //     margin-right: 0;  
+            // }
+            &:hover {
+                transform: scale(1.03);
+                color: #111;
+            }
+        }
         @media screen and (min-width: 1440px)  { 
             padding: 0 215px;  
         }
