@@ -4,14 +4,11 @@ import { Content } from './main/ui/content/Content';
 import { Header } from './main/ui/header/Header';
 import { Navigation } from './main/ui/navigation/Navigation';
 import {RegistrationPage} from "./main/ui/content/components/registration/RegistrationPage";
-
-
 import { Head } from './main/ui/common/head/Head';
 import { ProfileIvan } from './main/ui/content/components/profile/profileIvan/ProfileIvan';
 import { ProfilePeter } from './main/ui/content/components/profile/profilePetr/ProfilePetr';
 import { EditProfile } from './main/ui/content/components/profile/editProfile/EditProfile';
 import { Error } from './main/ui/content/components/error/Error';
-import { QuestionAnswer } from './main/ui/lubaPages/questionAnswer/QuestionAnswer';
 import { Question } from './main/ui/content/components/packs/learnPack/question/Question';
 
 

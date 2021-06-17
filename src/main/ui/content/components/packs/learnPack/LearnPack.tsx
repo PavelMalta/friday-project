@@ -5,8 +5,6 @@ import {AppRootStateType} from "../../../../../store/store";
 import {CardsType} from "../../cards/api-cards";
 import {useParams} from "react-router-dom";
 import {getCardsTC, rateCardTC} from "../../../../../store/cards-reducer";
-import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
-import {AnswerWindow} from "./answerWindow/AnswerWindow";
 import {Question} from "./question/Question";
 import {QuestionAnswer} from "./questionAnswer/QuestionAnswer";
 
