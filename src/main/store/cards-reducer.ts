@@ -1,7 +1,7 @@
 import {
     cardQueryParamsType,
     cardsAPI,
-    CardsResponseType,
+    CardsResponseType, CardsType,
     NewCardPayloadType, UpdateCardPayloadType
 } from "../ui/content/components/cards/api-cards";
 import {Dispatch} from "redux";
@@ -10,7 +10,7 @@ import {AppRootStateType} from "./store";
 
 const initialState = {
      cardsTableData: {
-         cards: [],
+         cards: [] as Array<CardsType>,
          cardsTotalCount: 0,
          maxGrade: 0,
          minGrade: 0,
@@ -32,6 +32,12 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Act
             return {...state, cardsPackId: action.cardsPackId}
         case "SET-PACK-NAME":
             return {...state, packName: action.packName}
+        case "SET-CARD-RATING":
+                return {...state, cardsTableData: {...state.cardsTableData, cards: state.cardsTableData.cards
+                            .map(card => {
+                                if(card._id === action.cardID) return {...card, grade: action.rating}
+                                else return card
+                            })}}
         default:
             return state
     }
@@ -42,6 +48,7 @@ const getCardsAC = (cardsTableData: CardsResponseType) => ({type: "GET-CARDS", c
 const isFetchingAC = (isFetching: boolean) => ({type: "IS-FETCHING", isFetching} as const)
 export const setCardsPackIdAC = (cardsPackId: string) => ({type: "SET-CARDS-PACK-ID", cardsPackId} as const)
 export const setPackNameAC = (packName: string) => ({type: "SET-PACK-NAME", packName} as const)
+export const rateCardAC = (grade: number, cardID: string) => ({type: "SET-CARD-RATING", rating: grade, cardID} as const)
 
 
 //Thunks
@@ -96,7 +103,7 @@ export const rateCardTC = (grade: number, cardId: string ):ThunkType => (dispatc
     dispatch(isFetchingAC(true));
     cardsAPI.rate(grade, cardId)
         .then(res => {
-          /*  getCardsAC(res.data)*/
+            dispatch(rateCardAC(res.data.updatedGrade.grade, res.data.updatedGrade.card_id))
         })
         .finally( () => {
             dispatch(isFetchingAC(false))
@@ -118,3 +125,4 @@ type ActionType = ReturnType<typeof getCardsAC>
                 | ReturnType<typeof isFetchingAC>
                 | ReturnType<typeof setCardsPackIdAC>
                 | ReturnType<typeof setPackNameAC>
+                | ReturnType<typeof rateCardAC>
