@@ -1,11 +1,5 @@
-import axios, {AxiosResponse} from "axios";
-
-
-const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'https://neko-back.herokuapp.com/2.0/'
-})
-
+import {AxiosResponse} from "axios";
+import { instance } from "../login/api-login";
 
 export const cardsAPI = {
     getCards(cardQueryParams: cardQueryParamsType) {
