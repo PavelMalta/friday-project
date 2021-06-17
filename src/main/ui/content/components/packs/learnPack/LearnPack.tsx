@@ -23,6 +23,7 @@ export const LearnPack = () => {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [first, setFirst] = useState<boolean>(true);
     const [grade, setGrade] = useState<number>(0)
+    const [disabledButton, setDisabledButton] = useState<boolean>(true)
 
     const cardsData = useSelector<AppRootStateType, Array<CardsType>>(state => state.cards.cardsTableData.cards)
     const packName = useSelector<AppRootStateType, string>(state => state.cards.packName)
@@ -68,6 +69,7 @@ export const LearnPack = () => {
 
     const nextHandler = () => {
         setIsShow(false)
+        setDisabledButton(true)
         if (cardsData.length > 0) {
             dispatch(rateCardTC(grade, card._id))
             setCard(getCard(cardsData))
@@ -76,6 +78,7 @@ export const LearnPack = () => {
 
     const changeInputValue = (range: number) => {
         setGrade(range)
+        setDisabledButton(false)
     }
 
     return (
@@ -86,6 +89,7 @@ export const LearnPack = () => {
                                   answer={card.answer}
                                   nextHandler={nextHandler}
                                   changeInputValue={changeInputValue}
+                                  disabledButton={disabledButton}
                 />
                 : <Question packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
             }

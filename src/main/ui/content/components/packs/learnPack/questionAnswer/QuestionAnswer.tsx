@@ -11,10 +11,11 @@ type QuestionAnswerPropsType = {
     answer: string
     nextHandler: () => void
     changeInputValue: (range: number) => void
+    disabledButton: boolean
 }
 
 export const QuestionAnswer: React.FC<QuestionAnswerPropsType> = (
-    {packName, question, answer, nextHandler, changeInputValue}
+    {packName, question, answer, nextHandler, changeInputValue, disabledButton}
 ) => {
     return (
         <div className={s.question}>
@@ -93,6 +94,7 @@ export const QuestionAnswer: React.FC<QuestionAnswerPropsType> = (
                             style={{width: "187px"}}
                             value="Next"
                             onClick={nextHandler}
+                            disabledButton={disabledButton}
                         />
                     </div>
 
