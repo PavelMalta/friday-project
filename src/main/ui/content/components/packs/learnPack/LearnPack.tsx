@@ -8,6 +8,7 @@ import {getCardsTC, rateCardTC} from "../../../../../store/cards-reducer";
 import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
 import {AnswerWindow} from "./answerWindow/AnswerWindow";
 import {Question} from "./question/Question";
+import {QuestionAnswer} from "./questionAnswer/QuestionAnswer";
 
 const getCard = (cards: CardsType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
@@ -70,7 +71,7 @@ export const LearnPack = () => {
     const nextHandler = () => {
         setIsShow(false)
         if (cardsData.length > 0) {
-            dispatch(rateCardTC(grade,card._id))
+            dispatch(rateCardTC(grade, card._id))
             setCard(getCard(cardsData))
         }
     }
@@ -82,11 +83,11 @@ export const LearnPack = () => {
     return (
         <div className={s.container}>
             {isShow
-                ? <AnswerWindow packName={packName}
-                                question={card.question}
-                                answer={card.answer}
-                                nextHandler={nextHandler}
-                                changeInputValue={changeInputValue}
+                ? <QuestionAnswer packName={packName}
+                                  question={card.question}
+                                  answer={card.answer}
+                                  nextHandler={nextHandler}
+                                  changeInputValue={changeInputValue}
                 />
                 : <Question packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
             }
