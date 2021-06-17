@@ -11,8 +11,8 @@ import { ProfileIvan } from './main/ui/content/components/profile/profileIvan/Pr
 import { ProfilePeter } from './main/ui/content/components/profile/profilePetr/ProfilePetr';
 import { EditProfile } from './main/ui/content/components/profile/editProfile/EditProfile';
 import { Error } from './main/ui/content/components/error/Error';
-import { Question } from './main/ui/lubaPages/question/Question';
 import { QuestionAnswer } from './main/ui/lubaPages/questionAnswer/QuestionAnswer';
+import { Question } from './main/ui/content/components/packs/learnPack/question/Question';
 
 
 

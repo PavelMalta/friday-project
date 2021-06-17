@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import {getCardsTC, rateCardTC} from "../../../../../store/cards-reducer";
 import {QuestionWindow} from "./qustionsWindow/QuestionWindow";
 import {AnswerWindow} from "./answerWindow/AnswerWindow";
+import {Question} from "./question/Question";
 
 const getCard = (cards: CardsType[]) => {
     const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
@@ -87,7 +88,7 @@ export const LearnPack = () => {
                                 nextHandler={nextHandler}
                                 changeInputValue={changeInputValue}
                 />
-                : <QuestionWindow packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
+                : <Question packName={packName} question={card.question} showAnswer={showAnswerHandler}/>
             }
         </div>
     )
