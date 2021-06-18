@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCardsTC, updateCardTC} from "../../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../../store/store";
 import {routes} from "../../../../../router/routes";
+import s from "./CardsTable.module.css"
 
 
 export const UpdateArea = () => {
@@ -32,13 +33,13 @@ export const UpdateArea = () => {
     }
 
     return (
-        <div>
+        <div className={s.updateArea}>
             <div>Ur question</div>
-            <textarea value={question} onChange={(e) => {
+            <textarea rows={5} cols={50} value={question} onChange={(e) => {
                 setQuestion(e.currentTarget.value)
             }}/>
             <div>Answer the question</div>
-            <textarea value={answer} onChange={(e) => {
+            <textarea rows={5} cols={50} value={answer} onChange={(e) => {
                 setAnswer(e.currentTarget.value)
             }}/>
             <NavLink to={routes.cards}>
