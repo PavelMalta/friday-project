@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Redirect, useParams, NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {updateCardTC} from "../../../../../store/cards-reducer";
+import {getCardsTC, updateCardTC} from "../../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../../store/store";
 import {routes} from "../../../../../router/routes";
 
@@ -14,11 +14,21 @@ export const UpdateArea = () => {
     const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
     const dispatch = useDispatch();
 
+    const newCardPayload = {
+        cardsPack_id: cardsPackId,
+        question: question,
+        answer: answer
+    }
+
     const onClickHandler = () => {
+        debugger
         dispatch(updateCardTC({_id: cardID, question: question, answer: answer}, {
             cardsPack_id: cardsPackId,
+            cardQuestion: question,
+            cardAnswer: answer,
             pageCount: 100
         }));
+        dispatch(getCardsTC({cardsPack_id: cardsPackId}))
     }
 
     return (

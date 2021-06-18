@@ -35,12 +35,6 @@ export const CardsList = React.memo((props: CardsListType) => {
     }
 
 
-    const changeAnswerQuestion = () => {
-        // updateCardTC()
-    }
-
-
-
     return (
 
         <div className={s.packName}>
