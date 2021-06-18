@@ -78,7 +78,7 @@ export const PacksList = React.memo((props: PacksListType) => {
                 </div>
                 
                 <div className={s.wrap}>
-                    <table>                  
+                    <table className={s.table}>                 
                         <tr>
                             <th className={s.item1}>Name</th>
                             <th className={s.item2}>Cards</th>

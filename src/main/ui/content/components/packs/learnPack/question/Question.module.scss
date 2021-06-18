@@ -14,17 +14,26 @@
             width: 100%;
             border-radius: 30px;
             padding: 36px 30px 60px;
-            .text {
-                margin: 33px 0 78px;
-                @include text (16px, 400, 24px);
-                .span {
-                    @include text (16px, 600, 24px);
+            max-height: 600px;
+            //height: 100%;
+            .container {
+                max-height: 377px;
+                // height: 100%;
+                overflow: auto;
+                margin: 30px 0;
+                .text {
+                    @include text (16px, 400, 24px);
+                    
+                    .span {
+                        @include text (16px, 600, 24px);
+                    }
                 }
             }
-            .btn {
-                display: flex;
-                justify-content: space-between;
+                .btn {
+                    display: flex;
+                    justify-content: space-between;
             }
+            
         }
     }
 }
