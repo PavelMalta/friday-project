@@ -70,6 +70,7 @@ export const CardsList = React.memo((props: CardsListType) => {
                                     value3={formatDate(item.updated)}
                                     grade={item.grade}
                                     id={item._id}
+                                    userID={item.user_id}
                                 />)
                         })}
                     </table>

@@ -13,6 +13,7 @@ type StringTablePNType = {
     value3: string
     grade: number
     id: string
+    userID: string
 }
 
 export const StringTablePN = React.memo((props: StringTablePNType) => {
@@ -21,10 +22,13 @@ export const StringTablePN = React.memo((props: StringTablePNType) => {
     const [answer, setAnswer] = useState<string>('');
     const [active, setActive] = useState<boolean>(false);
     const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
+    const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const dispatch = useDispatch();
 
     const onDoubleClickHandler = () => {
-        setActive(true)
+        if(userID === props.userID){
+            setActive(true)
+        }
     }
 
     const updateCard = () => {
