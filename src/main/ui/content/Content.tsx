@@ -11,7 +11,7 @@ import { NewPasswordContainer } from "./components/newPassword/NewPasswordContai
 import {LearnPack} from "./components/packs/learnPack/LearnPack";
 import {EditProfile} from "./components/profile/EditProfile";
 import {Error} from "./components/error/Error";
-import {UpdateArea} from "./components/cards/cardsTable/UpateArea";
+import {UpdateAreaModal} from "./components/cards/cardsTable/UpateAreaModal";
 
 
 
@@ -28,7 +28,7 @@ export const Content = () => {
                 <Route exact path={routes.packs} render={() => <Packs/>} />
                 <Route exact path={routes.cards} render={() => <Cards/>} />
                 <Route  path={routes.learnPack} render={() => <LearnPack/>} />
-                <Route  path={routes.updateArea} render={() => <UpdateArea/>} />
+                {/*<Route  path={routes.updateArea} render={() => <UpdateArea />} />*/}
                 <Route render={() => <Error/>} />
             </Switch>
         </div>

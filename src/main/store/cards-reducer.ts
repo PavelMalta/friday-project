@@ -1,12 +1,15 @@
 import {
     cardQueryParamsType,
     cardsAPI,
-    CardsResponseType, CardsType,
-    NewCardPayloadType, UpdateCardPayloadType
+    CardsResponseType,
+    CardsType,
+    NewCardPayloadType,
+    UpdateCardPayloadType
 } from "../ui/content/components/cards/api-cards";
 import {Dispatch} from "redux";
 import {ThunkAction} from "redux-thunk";
 import {AppRootStateType} from "./store";
+import {setUserID} from "./login-reducer";
 
 const initialState = {
      cardsTableData: {
@@ -52,6 +55,8 @@ export const rateCardAC = (grade: number, cardID: string) => ({type: "SET-CARD-R
 
 
 //Thunks
+
+
 export const getCardsTC = (cardQueryParams: cardQueryParamsType) => (dispatch: Dispatch<ActionType>) => {
     dispatch(isFetchingAC(true))
     cardsAPI.getCards(cardQueryParams)
@@ -137,3 +142,4 @@ type ActionType = ReturnType<typeof getCardsAC>
                 | ReturnType<typeof setCardsPackIdAC>
                 | ReturnType<typeof setPackNameAC>
                 | ReturnType<typeof rateCardAC>
+                | ReturnType<typeof setUserID>

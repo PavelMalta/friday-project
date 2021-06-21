@@ -8,6 +8,7 @@ type ModalPropsType = {
     setActive: (active: boolean) => void
 }
 
+
 const Modal: React.FC<ModalPropsType> = ({ active, setActive, children }) => {
     return <div className={active ? `${s.modal} + ${s.modalActive}` : s.modal} onClick={() => setActive(false)}>
         <div className={s.modalDialog}>
