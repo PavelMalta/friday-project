@@ -1,13 +1,12 @@
-import { TitleH2 } from "../../../common/titleh2/TitleH2";
+import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
 import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
-import { Input } from "../../../common/input/Input";
-import { Button } from "../../../common/button/Button";
-import {useEffect, useState} from "react";
-import { ChangeEvent } from "react";
+import {Input} from "../../../common/input/Input";
+import {Button} from "../../../common/button/Button";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {isAuthUserData, updateProfileDataTC} from "../../../../store/login-reducer";
+import {updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 
@@ -66,13 +65,13 @@ export const EditProfile =  (props: any) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <TitleH2 value="Personal Information"/>
-                    <input type="file"
-                           accept=".jpg, .jpeg, .png"
-                           multiple
-                           onChange={(e) => {
-                               e.currentTarget.value.length !== 0 &&
-                               uploadImage(e)
-                           }}/>
+                    {/*<input type="file"*/}
+                    {/*       accept=".jpg, .jpeg, .png"*/}
+                    {/*       multiple*/}
+                    {/*       onChange={(e) => {*/}
+                    {/*           e.currentTarget.value.length !== 0 &&*/}
+                    {/*           uploadImage(e)*/}
+                    {/*       }}/>*/}
 
                         <img className={s.photo} src={profilePeter} alt="photo"/>
                         <img className={s.icon} src={aditPhoto} alt="photo"/>
