@@ -15,8 +15,8 @@ export const LoginContainer = () => {
 
     const dispatch = useDispatch()
 
-    let [email, setEmail] = useState<string>('forpaul@mail.ru')
-    let [password, setPassword] = useState<string>('12345678')
+    let [email, setEmail] = useState<string>('nya-admin@nya.nya')
+    let [password, setPassword] = useState<string>('1qazxcvBG')
     let [rememberMe, setRememberMe] = useState<boolean>(false)
 
     const onChangeEmail = (email: string) => {
