@@ -17,10 +17,6 @@ function App() {
     return (
         <div className={s.app}>
 
-            {/* Осталось от фронта */}
-            <Header/>
-           {/* <Content/> */}
-
             <Head/>
             <div className={s.content}>
                 <Content/>
