@@ -29,7 +29,7 @@
         .wrap {
             table {
                 text-align: left;
-                filter: drop-shadow(0px 4px 14px rgba(45, 46, 70, 0.15));
+                box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15);
                 border-collapse: collapse;
                 color: $textColor;
                 max-width: 960px;

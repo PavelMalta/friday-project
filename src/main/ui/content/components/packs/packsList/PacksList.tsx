@@ -1,11 +1,11 @@
-import { Button } from "../../../../common/button/Button";
-import { Dropdown } from "../../../../common/dropdown/Dropdown";
+import {Button} from "../../../../common/button/Button";
+import {Dropdown} from "../../../../common/dropdown/Dropdown";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
-import { Search } from "../../../../common/search/Search";
-import { SideButton } from "../../../../common/sideButton/SideButton";
-import { StringTablePL } from "./stringTablePL/StringTablePL";
-import { TitleH2 } from "../../../../common/titleh2/TitleH2";
+import {Search} from "../../../../common/search/Search";
+import {SideButton} from "../../../../common/sideButton/SideButton";
+import {StringTablePL} from "./stringTablePL/StringTablePL";
+import {TitleH2} from "../../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
@@ -14,7 +14,6 @@ import {v1} from "uuid";
 import {SelectValueType} from "../../../../../store/packs-reducer";
 import ModalForAddPack from "../../../../common/modal/ModalForPack/ModalForAddPack";
 import React from "react";
-
 
 
 type PacksListType = {
@@ -28,7 +27,7 @@ type PacksListType = {
     onClickMyButton: () => void
     onClickAllButton: () => void
     setActiveModalAdd: (a: boolean) => void
-    setNamePack: (n: string)=> void
+    setNamePack: (n: string) => void
     activeModalAdd: boolean
 
 }
@@ -63,22 +62,22 @@ export const PacksList = React.memo((props: PacksListType) => {
                     <div className={s.rangeSlider}>
                         <RangeSlider/>
                     </div>
-                </div>               
+                </div>
             </aside>
-            
+
             <div className={s.content}>
                 <TitleH2 value="Packs list"
-                    style={{ textAlign: "start", padding: "24px 0 15px 0"}} />
+                         style={{textAlign: "start", padding: "24px 0 15px 0"}}/>
                 <div className={s.form}>
                     <Search/>
                     <Button value="Add new pack"
-                            style= {{width: "184px", marginLeft: "24px" }}
-                            onClick= {onAddCardPacks}
+                            style={{width: "184px", marginLeft: "24px"}}
+                            onClick={onAddCardPacks}
                     />
                 </div>
-                
+
                 <div className={s.wrap}>
-                    <table>                  
+                    <table>
                         <tr>
                             <th className={s.item1}>Name</th>
                             <th className={s.item2}>Cards</th>
@@ -88,20 +87,21 @@ export const PacksList = React.memo((props: PacksListType) => {
                         </tr>
                         {packsData.cardPacks.map((item) => {
                             return (
-                                    <StringTablePL
-                                        key={v1()}
-                                        value1={item.name}
-                                        value2={item.cardsCount}
-                                        value3={formatDate(item.updated)}
-                                        value4={item.user_name}
-                                        packUserId={item.user_id}
-                                        userId={props.userID}
-                                        packId={item._id}
-                                        deletePack={props.deletePack}
-                                        updatePack={props.updatePack}
-                                        learnPack={props.learnPack}
-                                    />
-                                )})}
+                                <StringTablePL
+                                    key={v1()}
+                                    value1={item.name}
+                                    value2={item.cardsCount}
+                                    value3={formatDate(item.updated)}
+                                    value4={item.user_name}
+                                    packUserId={item.user_id}
+                                    userId={props.userID}
+                                    packId={item._id}
+                                    deletePack={props.deletePack}
+                                    updatePack={props.updatePack}
+                                    learnPack={props.learnPack}
+                                />
+                            )
+                        })}
                     </table>
                 </div>
                 <div className={s.pagination}>
@@ -115,10 +115,11 @@ export const PacksList = React.memo((props: PacksListType) => {
                         onChangeOption={props.onChangeOption}
                     />
                 </div>
-                
+
             </div>
-            <ModalForAddPack active={props.activeModalAdd} setActive={props.setActiveModalAdd} addPackHandler={props.addNewPack}
-                             setNamePack={props.setNamePack}  modalTitle={"Add new pack"}/>
+            <ModalForAddPack active={props.activeModalAdd} setActive={props.setActiveModalAdd}
+                             addPackHandler={props.addNewPack}
+                             setNamePack={props.setNamePack} modalTitle={"Add new pack"}/>
         </div>
 
     )
