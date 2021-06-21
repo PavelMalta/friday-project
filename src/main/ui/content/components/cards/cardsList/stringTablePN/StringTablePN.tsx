@@ -1,7 +1,10 @@
 import HalfRating from "../../../../../common/rating/Rating";
 import React, {useState} from "react";
 import {UpdateAreaModal} from "../../cardsTable/UpateAreaModal";
-import {useDispatch} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {routes} from "../../../../../../router/routes";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../../../../../store/store";
 import {updateCardTC} from "../../../../../../store/cards-reducer";
 
 type StringTablePNType = {
@@ -10,7 +13,6 @@ type StringTablePNType = {
     value3: string
     grade: number
     id: string
-    packID: string
 }
 
 export const StringTablePN = React.memo((props: StringTablePNType) => {
@@ -18,6 +20,7 @@ export const StringTablePN = React.memo((props: StringTablePNType) => {
     const [question, setQuestion] = useState<string>('');
     const [answer, setAnswer] = useState<string>('');
     const [active, setActive] = useState<boolean>(false);
+    const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
     const dispatch = useDispatch();
 
     const onDoubleClickHandler = () => {
@@ -26,7 +29,7 @@ export const StringTablePN = React.memo((props: StringTablePNType) => {
 
     const updateCard = () => {
         dispatch(updateCardTC({_id: props.id, question: question, answer: answer}, {
-            cardsPack_id: props.packID,
+            cardsPack_id: cardsPackId,
             cardQuestion: question,
             cardAnswer: answer,
             pageCount: 100
