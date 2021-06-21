@@ -118,7 +118,7 @@ export const PacksList = React.memo((props: PacksListType) => {
                 
             </div>
             <ModalForAddPack active={props.activeModalAdd} setActive={props.setActiveModalAdd} addPackHandler={props.addNewPack}
-                             setNamePack={props.setNamePack} />
+                             setNamePack={props.setNamePack}  modalTitle={"Add new pack"}/>
         </div>
 
     )

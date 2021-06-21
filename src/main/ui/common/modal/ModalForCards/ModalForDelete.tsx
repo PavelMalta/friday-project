@@ -6,21 +6,22 @@ import {Actions} from "../../actions/Actions";
 type ModalDeletePropsType = {
     active: boolean,
     title: string,
+    modalTitle: string,
     setActive: (active: boolean) => void,
     onClickDeletePack: () => void
 }
 
 const ModalForDelete: React.FC<ModalDeletePropsType> = (
 
-    {title,onClickDeletePack, setActive, active}
+    {title, modalTitle, onClickDeletePack, setActive, active}
     ) => {
     const deleteModalHandlerNo = () => {
         setActive(false)
     }
 
     return <div>
-        <Modal active={active} setActive={setActive}>
-            {/* <h4>Delete Pack</h4> */}
+        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
+
             Do you really want to remove <b>Pack Name -{title} ?</b>
             All Cards will be excluded from this course.
             <div style={{display: "flex", justifyContent: "space-around"}}>

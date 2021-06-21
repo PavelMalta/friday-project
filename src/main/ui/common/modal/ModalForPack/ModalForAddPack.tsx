@@ -6,6 +6,7 @@ import {Actions} from "../../actions/Actions";
 
 type ModalAddPropsType = {
     active: boolean,
+    modalTitle:string,
     setActive: (active: boolean) => void
     addPackHandler: () => void,
     setNamePack: (e: string) => void,
@@ -14,6 +15,7 @@ type ModalAddPropsType = {
 const ModalForAddPack: React.FC<ModalAddPropsType> = ({
                                                           active, setActive,
                                                           addPackHandler, setNamePack,
+                                                          modalTitle
                                                       }) => {
 
 
@@ -26,8 +28,8 @@ const ModalForAddPack: React.FC<ModalAddPropsType> = ({
         setActive(false)
     }
     return <div>
-        <Modal active={active} setActive={setActive}>
-            <h4>Add new pack</h4>
+        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
+
             <p>Name pack</p>
             <Input type={'text'} onChange={handlerForAddNamePack} placeholder={'Write title here'}/>
             <div style={{display: "flex", justifyContent: "space-around"}}>

@@ -6,12 +6,13 @@ import {Actions} from "../../actions/Actions";
 
 type ModalUpdatePropsType = {
     active: boolean,
+    modalTitle: string,
     setActive: (active: boolean) => void,
     setTitleCard: (t: string) => void,
     onClickUpdatePack: () => void
 }
 
-const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, active, setTitleCard, onClickUpdatePack}) => {
+const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, modalTitle,active, setTitleCard, onClickUpdatePack}) => {
 
     const handlerForUpdateTitleCard = (value: string) => {
         setTitleCard(value)
@@ -20,8 +21,8 @@ const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, act
         setActive(false)
     }
     return <div>
-        <Modal active={active} setActive={setActive}>
-            <h4>Edit Pack</h4>
+        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
+
             <Input type={'text'} onChange={handlerForUpdateTitleCard} placeholder={'Write a new title for pack'}/>
             <div style={{display: "flex", justifyContent: "space-around"}}>
                 <Actions onClick={updateModalHandlerCancel} value={"Cancel"}/>

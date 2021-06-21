@@ -91,9 +91,11 @@ export const StringTablePL = (props: any) => {
                             setActive={setActiveModalDelete}
                             onClickDeletePack={onClickDeletePack}
                             title={props.value1}
+                            modalTitle={"Delete Pack"}
             />
             <ModalForUpdateCardsPack active={activeModalUpdate} setActive={setActiveModalUpdate}
                                      setTitleCard={setTitleCard}
+                                     modalTitle={"Edit Pack"}
                                      onClickUpdatePack={onClickUpdatePack}/>
         </tr>
     )
