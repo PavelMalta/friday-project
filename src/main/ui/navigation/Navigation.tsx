@@ -15,7 +15,6 @@ export const Navigation = () => {
                 <NavLink to={routes.notFound}>404</NavLink>
                 <NavLink to={routes.passwordRecover}>Password Recover</NavLink>
                 <NavLink to={routes.newPassword}>New Password</NavLink>
-                <NavLink to={routes.presentation}>Presentation</NavLink>
                 <NavLink to={routes.packs}>Packs</NavLink>
                 <NavLink to={routes.cards}>Cards</NavLink>
             </div>

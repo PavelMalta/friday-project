@@ -2,7 +2,6 @@ import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import s from "./Content.module.scss"
 import {routes} from "../../router/routes";
-import {Presentation} from "./components/presentation/Presentation";
 import {RegistrationPage} from "./components/registration/RegistrationPage";
 import {LoginContainer} from "./components/login/LoginContainer";
 import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRecoverContainer";
@@ -12,6 +11,7 @@ import { NewPasswordContainer } from "./components/newPassword/NewPasswordContai
 import {LearnPack} from "./components/packs/learnPack/LearnPack";
 import {EditProfile} from "./components/profile/EditProfile";
 import {Error} from "./components/error/Error";
+import {UpdateAreaModal} from "./components/cards/cardsTable/UpateAreaModal";
 
 
 
@@ -25,10 +25,10 @@ export const Content = () => {
                 <Route exact path={routes.profile} render={() =><EditProfile/>} />
                 <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>} />
                 <Route exact path={routes.newPassword} render={() => <NewPasswordContainer/>} />
-                <Route exact path={routes.presentation} render={() => <Presentation/>} />
                 <Route exact path={routes.packs} render={() => <Packs/>} />
                 <Route exact path={routes.cards} render={() => <Cards/>} />
                 <Route  path={routes.learnPack} render={() => <LearnPack/>} />
+                {/*<Route  path={routes.updateArea} render={() => <UpdateArea />} />*/}
                 <Route render={() => <Error/>} />
             </Switch>
         </div>

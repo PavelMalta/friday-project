@@ -1,11 +1,5 @@
-import axios, {AxiosResponse} from "axios";
-
-
-const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'https://neko-back.herokuapp.com/2.0/'
-})
-
+import {AxiosResponse} from "axios";
+import { instance } from "../login/api-login";
 
 export const cardsAPI = {
     getCards(cardQueryParams: cardQueryParamsType) {
@@ -21,7 +15,10 @@ export const cardsAPI = {
         return instance.put('cards/card', {card: updateCardPayload})
     },
     rate(grade: number, cardID: string){
-        return instance.put('cards/grade', {grade, cardID} )
+        return instance.put('cards/grade', {grade: grade, card_id: cardID} )
+    },
+    updateQuestion(question: string, answer: string, cardID: string){
+        return instance.put('cards/grade', {cardQuestion: question, cardAnswer: answer, card_id: cardID} )
     }
 }
 

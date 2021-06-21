@@ -26,8 +26,7 @@ const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, act
             <div style={{display: "flex", justifyContent: "space-around"}}>
                 <Actions onClick={updateModalHandlerCancel} value={"Cancel"}/>
                 <Actions onClick={onClickUpdatePack} value={"Update"}
-                         style={{backgroundColor: "#050e99", color: "#fff"}}/>
-
+                            style={{backgroundColor: "#050e99", color: "#fff"}}/>
             </div>
 
         </Modal>

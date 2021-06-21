@@ -20,14 +20,13 @@ const ModalForDelete: React.FC<ModalDeletePropsType> = (
 
     return <div>
         <Modal active={active} setActive={setActive}>
-            <h4>Delete Pack</h4>
+            {/* <h4>Delete Pack</h4> */}
             Do you really want to remove <b>Pack Name -{title} ?</b>
             All Cards will be excluded from this course.
             <div style={{display: "flex", justifyContent: "space-around"}}>
                 <Actions onClick={deleteModalHandlerNo} value={"Cancel"}/>
                 <Actions onClick={onClickDeletePack} value={"Delete"}
-                     style={{backgroundColor: "#F1453D", color: "#fff"}}/>
-
+                        style={{backgroundColor: "#F1453D", color: "#fff"}}/>
             </div>
         </Modal>
     </div>
