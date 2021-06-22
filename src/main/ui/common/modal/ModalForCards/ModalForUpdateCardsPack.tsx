@@ -1,7 +1,9 @@
 import React from 'react';
 import Modal from '../Modal';
-import {Input} from "../../input/Input";
-import {Actions} from "../../actions/Actions";
+import { Input } from "../../input/Input";
+import { Button } from '../../button/Button';
+import s from './ModalForUpdateCardsPack.module.scss';
+
 
 
 type ModalUpdatePropsType = {
@@ -11,7 +13,7 @@ type ModalUpdatePropsType = {
     onClickUpdatePack: () => void
 }
 
-const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, active, setTitleCard, onClickUpdatePack}) => {
+const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({ setActive, active, setTitleCard, onClickUpdatePack }) => {
 
     const handlerForUpdateTitleCard = (value: string) => {
         setTitleCard(value)
@@ -21,14 +23,22 @@ const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, act
     }
     return <div>
         <Modal active={active} setActive={setActive}>
-            <h4>Edit Pack</h4>
-            <Input type={'text'} onChange={handlerForUpdateTitleCard} placeholder={'Write a new title for pack'}/>
-            <div style={{display: "flex", justifyContent: "space-around"}}>
-                <Actions onClick={updateModalHandlerCancel} value={"Cancel"}/>
-                <Actions onClick={onClickUpdatePack} value={"Update"}
-                            style={{backgroundColor: "#050e99", color: "#fff"}}/>
+            <div className={s.content}>
+                <Input title={'Name Pack'}
+                    type={'text'}
+                    name={'name pack'}
+                    placeholder={'Write a new title for pack'}
+                    onChange={handlerForUpdateTitleCard}
+                />
+                <div className={s.btn}>
+                    <Button style={{ backgroundColor: "#D7D8EF", color: "#21268F", width: "124px" }}
+                            onClick={updateModalHandlerCancel} value={"Cancel"}
+                    />
+                    <Button style={{ backgroundColor: "#21268F", color: "#D7D8EF", width: "124px" }}
+                            onClick={onClickUpdatePack} value={"Update"}
+                    />
+                </div>
             </div>
-
         </Modal>
     </div>
 }

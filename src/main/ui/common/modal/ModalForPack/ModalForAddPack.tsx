@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from '../Modal';
 import {Input} from "../../input/Input";
 import {Actions} from "../../actions/Actions";
+import s from "./ModalForAddPack.module.scss";
 
 
 type ModalAddPropsType = {
