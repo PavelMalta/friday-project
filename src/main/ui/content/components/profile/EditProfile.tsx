@@ -4,21 +4,29 @@ import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {updateProfileDataTC} from "../../../../store/login-reducer";
+import {getProfileUserdataTC, isAuthUserData, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
+import {getStartPacksTC} from "../../../../store/packs-reducer";
 
-export const EditProfile =  (props: any) => {
+export const EditProfile = (props: any) => {
     //HOOKS
     const dispatch = useDispatch()
-    const user = useSelector<AppRootStateType >(state => state.login.user)
+    const user = useSelector<AppRootStateType>(state => state.login.user);
+    const avatar =  useSelector<AppRootStateType>(state => state.login.user.avatar);
+    const inRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        dispatch(getProfileUserdataTC())
+    }, [dispatch])
 
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
     const [name, setName] = useState('')
     const [baseImage, setBaseImage] = useState('');
+
 
     //ENCODING UPDATED DATA TO BASE64
     const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,29 +73,35 @@ export const EditProfile =  (props: any) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <TitleH2 value="Personal Information"/>
-                    {/*<input type="file"*/}
-                    {/*       accept=".jpg, .jpeg, .png"*/}
-                    {/*       multiple*/}
-                    {/*       onChange={(e) => {*/}
-                    {/*           e.currentTarget.value.length !== 0 &&*/}
-                    {/*           uploadImage(e)*/}
-                    {/*       }}/>*/}
+                    <input type="file"
+                           accept=".jpg, .jpeg, .png"
+                           multiple
+                           ref={inRef}
+                           style={{display: 'none'}}
+                           onChange={(e) => {
+                               e.currentTarget.value.length !== 0 &&
+                               uploadImage(e)
+                           }}/>
 
-                        <img className={s.photo} src={profilePeter} alt="photo"/>
-                        <img className={s.icon} src={aditPhoto} alt="photo"/>
+                    <img className={s.photo} src={baseImage} alt="photo"/>
+                    <img className={s.icon} src={aditPhoto} alt="photo"/>
 
-                    
+
                     <form className={s.form}>
-                        <Input style= {{marginBottom:"25px"}}
-                                title="Nickname"
-                                type="text"
-                                name="nickname"
+                        <Input style={{marginBottom: "25px"}}
+                               title="Nickname"
+                               type="text"
+                               name="nickname"
+                               value={name}
+                               onChange={(e) => setName(e)}
                         />
-                        <Input style= {{marginBottom:"106px"}}
-                                title="Email"
-                                type="email"
-                                name="email"
+                        <Input style={{marginBottom: "106px"}}
+                               title="Email"
+                               type="email"
+                               name="email"
                         />
+
+                        <button onClick={() => inRef && inRef.current && inRef.current.click()}>add file</button>
                     </form>
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}

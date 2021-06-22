@@ -105,6 +105,18 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
         })
 }
 
+export const getProfileUserdataTC = () => (dispatch: Dispatch) => {
+        debugger
+    authAPI.getAuth()
+        .then(response => {
+            dispatch(updateUserProfileAC(response.data.user))
+        })
+        .catch((e) => {
+            const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
+            console.log(error)
+        })
+}
+
 export const isAuthUserData = () => (dispatch: Dispatch) => {
     authAPI.getAuth()
         .then(response => {

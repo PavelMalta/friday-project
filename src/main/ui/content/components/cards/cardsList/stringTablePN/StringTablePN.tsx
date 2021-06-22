@@ -1,8 +1,6 @@
 import HalfRating from "../../../../../common/rating/Rating";
 import React, {useState} from "react";
 import {UpdateAreaModal} from "../../cardsTable/UpateAreaModal";
-import {Redirect} from "react-router-dom";
-import {routes} from "../../../../../../router/routes";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../../store/store";
 import {updateCardTC} from "../../../../../../store/cards-reducer";
