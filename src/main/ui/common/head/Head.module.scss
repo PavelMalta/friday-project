@@ -5,26 +5,29 @@
     background-color: #E0E4EB;
     .container {
         display: flex;
-        padding: 0 136px;
+        justify-content: center;
+        padding: 0 15px;
+        @media screen and (max-width: 553px)  { 
+            flex-direction: column;  
+            align-items: center;
+        }
         .logo {
             @include text(26px, 600, 39px);
             color: $textColor;
             padding: 10px 0;
             margin-right: 168px;
             transition: transform 500ms ease, color 500ms ease;
-            // @media screen and (min-width: 990px)  { 
-            //     margin-right: 0;  
-            // }
+            @media screen and (max-width: 796px)  { 
+                margin-right: 0;  
+            }
+            @media screen and (max-width: 553px)  { 
+                @include text(18px, 600, 24px);
+                padding: 10px 0 5px 0;
+            }
             &:hover {
                 transform: scale(1.03);
                 color: #111;
             }
-        }
-        @media screen and (min-width: 1440px)  { 
-            padding: 0 215px;  
-        }
-        @media screen and (min-width: 1920px)  { 
-            padding: 0 456px;  
-        }
+        }    
     }
 }

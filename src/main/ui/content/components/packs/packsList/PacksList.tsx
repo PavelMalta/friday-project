@@ -58,7 +58,7 @@ export const PacksList = React.memo((props: PacksListType) => {
                     />
                 </div>
 
-                <div className={s.NumberCard}>
+                <div className={s.numberCard}>
                     <h3 className={s.titleH3}>Number of cards</h3>
                     <div className={s.rangeSlider}>
                         <RangeSlider/>
@@ -72,7 +72,7 @@ export const PacksList = React.memo((props: PacksListType) => {
                 <div className={s.form}>
                     <Search/>
                     <Button value="Add new pack"
-                            style= {{width: "184px", marginLeft: "24px" }}
+                            style= {{width: "184px" }}
                             onClick= {onAddCardPacks}
                     />
                 </div>

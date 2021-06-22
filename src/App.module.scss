@@ -7,7 +7,11 @@
         "header header header header"
         "navigation content content content"
 } */
-
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 11;
+}
 .content {
     background-image: url(./main/ui/assets/images/Background.png);
     background-size: cover;
