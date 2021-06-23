@@ -31,10 +31,10 @@ const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({ setActive, ac
                     onChange={handlerForUpdateTitleCard}
                 />
                 <div className={s.btn}>
-                    <Button style={{ backgroundColor: "#D7D8EF", color: "#21268F", width: "124px" }}
+                    <Button style={{ backgroundColor: "#D7D8EF", color: "#21268F", width: "124px"}}
                             onClick={updateModalHandlerCancel} value={"Cancel"}
                     />
-                    <Button style={{ backgroundColor: "#21268F", color: "#D7D8EF", width: "124px" }}
+                    <Button style={{ backgroundColor: "#21268F", color: "#D7D8EF", width: "124px"}}
                             onClick={onClickUpdatePack} value={"Update"}
                     />
                 </div>

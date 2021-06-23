@@ -24,7 +24,7 @@ function App() {
                 <Head />
             </div>           
             <div className={s.content}>
-                <Content/>
+                {/* <Content/> */}
 
                 {/* <ProfileIvan/> */}
                 {/* <ProfilePeter/> */}
@@ -37,7 +37,7 @@ function App() {
                             changeInputValue={() => {}}
                             disabledButton={false}
                 /> */}
-                {/* <Cards/> */}
+                <Cards/>
             </div>
             {/* <Error/> */}
         </div>

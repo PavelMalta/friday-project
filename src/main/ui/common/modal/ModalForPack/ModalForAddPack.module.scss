@@ -1,6 +1,11 @@
 @import './../../../styles/mixin.scss';
 @import './../../../styles/vars.scss';
 
-.btn {
-    
+.content {
+    padding: 30px 24px 24px;
+    .btn {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 35px;
+    }
 }
