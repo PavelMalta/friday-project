@@ -7,7 +7,6 @@ import { RegistrationPage } from "./main/ui/content/components/registration/Regi
 import { Head } from './main/ui/common/head/Head';
 import { ProfileIvan } from './main/ui/content/components/profile/profileIvan/ProfileIvan';
 import { ProfilePeter } from './main/ui/content/components/profile/profilePetr/ProfilePetr';
-import { EditProfile } from './main/ui/content/components/profile/editProfile/EditProfile';
 import { Error } from './main/ui/content/components/error/Error';
 import { Question } from './main/ui/content/components/packs/learnPack/question/Question';
 import { QuestionAnswer } from './main/ui/content/components/packs/learnPack/questionAnswer/QuestionAnswer';
@@ -28,7 +27,6 @@ function App() {
 
                 {/* <ProfileIvan/> */}
                 {/* <ProfilePeter/> */}
-                {/* <EditProfile/> */}
                 {/* <Question packName={"packName"} question={"card.question"} showAnswer={() => {}}/> */}
                 {/* <QuestionAnswer  packName={"packName"}
                             question={"card.question"}
