@@ -12,6 +12,7 @@ import {InitialStateType, updateAnswerQuestion, updateCardTC} from "../../../../
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {SelectValueType} from "../../../../../store/packs-reducer";
+import { Button } from "../../../../common/button/Button";
 
 type CardsListType = {
     userID: string
@@ -119,7 +120,10 @@ export const CardsList = React.memo((props: CardsListType) => {
                     />
                 </button>
                 <div className={s.search}>
-                    <Search style={{width: "100%"}}/>
+                    <Search/>
+                    <Button value="Add cards"
+                            style= {{width: "184px" }}
+                            onClick= {()=>{}}/>
                 </div>
                 <div className={s.wrap}>
                     <table>

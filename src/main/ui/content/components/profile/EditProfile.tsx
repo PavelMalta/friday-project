@@ -72,11 +72,12 @@ export const EditProfile =  (props: any) => {
                     {/*           e.currentTarget.value.length !== 0 &&*/}
                     {/*           uploadImage(e)*/}
                     {/*       }}/>*/}
-
+                    <div className={s.eidt}>
                         <img className={s.photo} src={profilePeter} alt="photo"/>
-                        <img className={s.icon} src={aditPhoto} alt="photo"/>
-
-                    
+                        <div>
+                            <img className={s.icon} src={aditPhoto} alt="photo"/>
+                        </div>    
+                    </div>
                     <form className={s.form}>
                         <Input style= {{marginBottom:"25px"}}
                                 title="Nickname"
