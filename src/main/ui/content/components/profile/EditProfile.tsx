@@ -1,35 +1,40 @@
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
-import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getProfileUserdataTC, isAuthUserData, updateProfileDataTC} from "../../../../store/login-reducer";
+import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
-import {getStartPacksTC} from "../../../../store/packs-reducer";
 
 export const EditProfile = (props: any) => {
-    //HOOKS
-    const dispatch = useDispatch()
-    const user = useSelector<AppRootStateType>(state => state.login.user);
-    const avatar =  useSelector<AppRootStateType>(state => state.login.user.avatar);
-    const inRef = useRef<HTMLInputElement>(null)
 
+    const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getProfileUserdataTC())
     }, [dispatch])
 
+    //HOOKS
+
+    const user = useSelector<AppRootStateType>(state => state.login.user);
+    const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
+    // const email = useSelector<AppRootStateType, string>(state => state.login.emailError);
+    const avatar =  useSelector<AppRootStateType, string>(state => state.login.user.avatar);
+    const inRef = useRef<HTMLInputElement>(null)
+
+
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
-    const [name, setName] = useState('')
+    const [name, setName] = useState(userName);
     const [baseImage, setBaseImage] = useState('');
+
 
 
     //ENCODING UPDATED DATA TO BASE64
     const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        debugger
         if (e.target.files) {
             if (e.target.files[0].type !== 'image/jpeg' && 'image/png' && 'image/jpg') {
                 console.log('The picture must be a file of type: jpeg, jpg, png')
@@ -40,7 +45,32 @@ export const EditProfile = (props: any) => {
             }
         }
     };
+
+    // const upload = (e: ChangeEvent<HTMLInputElement>) => {
+    //     const reader = new FileReader();
+    //     const formData = new FormData();
+    //
+    //     const newFile = e.target.files && e.target.files[0];
+    //
+    //     if (newFile) {
+    //         setFile(newFile);
+    //         setFileURL(window.URL.createObjectURL(newFile));
+    //         formData.append('myFile', newFile, newFile.name);
+    //         setFileData(formData);
+    //
+    //         if (code) { // reader
+    //             reader.onloadend = () => {
+    //                 setFile64(reader.result);
+    //             };
+    //
+    //             if (base64) reader.readAsDataURL(newFile);
+    //             else reader.readAsText(newFile);
+    //         }
+    //     }
+    //
+    // }
     const convertBase64 = (file: File) => {
+        debugger
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
@@ -57,6 +87,7 @@ export const EditProfile = (props: any) => {
 
     //SENDING DATA
     const updateProfileHandler = () => {
+        debugger
         setChange(!change)
         if (change) {
             dispatch(updateProfileDataTC(name, baseImage))
@@ -83,13 +114,13 @@ export const EditProfile = (props: any) => {
                                uploadImage(e)
                            }}/>
 
-                    <img className={s.photo} src={baseImage} alt="photo"/>
+                    <img className={s.photo} src={avatar} alt="photo" style={{width: "100px",  borderRadius: "50px" }}/>
                     <img className={s.icon} src={aditPhoto} alt="photo"/>
 
 
                     <form className={s.form}>
                         <Input style={{marginBottom: "25px"}}
-                               title="Nickname"
+                               title='name'
                                type="text"
                                name="nickname"
                                value={name}
