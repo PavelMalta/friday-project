@@ -6,29 +6,21 @@
     background-size: cover;
     height: 100vh;
     background-position: center;
+    position: relative;
     @media screen and (max-width: 875px) { 
         background-size: 1500px 100%;
     }
     .wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-        transform: translatey(15%);
-        height: 100%;
+        position: absolute;
+        top: 60%;
+        width: 100%;
+        text-align: center;
 
         .text {
             @include text (28px, 600, 45px);
             color: $primaryColor;
             margin-bottom: 60px;
             text-align: center;
-            // @media screen and (max-width: 600px) { 
-            //     text-align: center;
-            // }
-            // @media screen and (max-width: 1135px) { 
-            //     text-align: center;
-            // }
         }
         .btn {
             @include text (26px, 600, 34px);
@@ -39,6 +31,8 @@
             height: 60px;
             border: none;
             border-radius: 25px; 
+            display: block;
+            margin: 0 auto;
             &:hover {
                 background-color: darken(rgba(247, 238, 238, 0.53), 5%); 
                 box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);

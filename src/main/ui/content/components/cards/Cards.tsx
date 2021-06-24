@@ -52,9 +52,9 @@ export const Cards = () => {
         setOptions(value)
     },[])
 
-    if (!isAuth) {
-        return <Redirect to={'/login'}/>
-    }
+    // if (!isAuth) {
+    //     return <Redirect to={'/login'}/>
+    // }
 
     return (
         <div>
