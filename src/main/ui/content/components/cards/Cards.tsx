@@ -58,7 +58,6 @@ export const Cards = () => {
 
     return (
         <div>
-            <button onClick={addCards}>Add cards</button>
             <CardsList userID={userID}
                        deleteCard={deleteCard}
                        updateCard={updateCard}
