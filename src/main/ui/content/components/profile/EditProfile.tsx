@@ -3,7 +3,7 @@ import s from "./EditProfile.module.scss";
 import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {useEffect, useRef, useState} from "react";
+import {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
@@ -12,28 +12,31 @@ import {Redirect} from "react-router-dom";
 export const EditProfile = (props: any) => {
 
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getProfileUserdataTC())
-    }, [dispatch])
+
 
     //HOOKS
 
     const user = useSelector<AppRootStateType>(state => state.login.user);
     const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
-    // const email = useSelector<AppRootStateType, string>(state => state.login.emailError);
+    const userEmail = useSelector<AppRootStateType, string>(state => state.login.user.email);
     const avatar =  useSelector<AppRootStateType, string>(state => state.login.user.avatar);
     const inRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        dispatch(getProfileUserdataTC())
+    }, [dispatch, userName])
 
 
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
     const [name, setName] = useState(userName);
-    const [baseImage, setBaseImage] = useState('');
+    const [email, setEmail] = useState(userEmail);
+    const [baseImage, setBaseImage] = useState(avatar);
 
 
 
     //ENCODING UPDATED DATA TO BASE64
-    const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
         debugger
         if (e.target.files) {
             if (e.target.files[0].type !== 'image/jpeg' && 'image/png' && 'image/jpg') {
@@ -41,6 +44,7 @@ export const EditProfile = (props: any) => {
             } else {
                 const file = e.target.files[0];
                 const base64: any = await convertBase64(file);
+                debugger
                 setBaseImage(base64);
             }
         }
@@ -70,7 +74,6 @@ export const EditProfile = (props: any) => {
     //
     // }
     const convertBase64 = (file: File) => {
-        debugger
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
@@ -78,7 +81,6 @@ export const EditProfile = (props: any) => {
             fileReader.onload = () => {
                 resolve(fileReader.result);
             };
-
             fileReader.onerror = (error) => {
                 reject(error);
             };
@@ -87,11 +89,10 @@ export const EditProfile = (props: any) => {
 
     //SENDING DATA
     const updateProfileHandler = () => {
-        debugger
         setChange(!change)
-        if (change) {
+        // if (change) {
             dispatch(updateProfileDataTC(name, baseImage))
-        }
+        // }
     }
 
 
@@ -130,6 +131,7 @@ export const EditProfile = (props: any) => {
                                title="Email"
                                type="email"
                                name="email"
+                               value={userEmail}
                         />
 
                         <button onClick={() => inRef && inRef.current && inRef.current.click()}>add file</button>
