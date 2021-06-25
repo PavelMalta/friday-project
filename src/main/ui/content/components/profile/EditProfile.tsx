@@ -88,9 +88,7 @@ export const EditProfile = (props: any) => {
     //SENDING DATA
     const updateProfileHandler = () => {
         setChange(!change)
-        // if (change) {
             dispatch(updateProfileDataTC(name, baseImage))
-        // }
     }
 
 
