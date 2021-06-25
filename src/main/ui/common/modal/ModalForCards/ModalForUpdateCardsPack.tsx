@@ -9,12 +9,13 @@ import s from './ModalForUpdateCardsPack.module.scss';
 type ModalUpdatePropsType = {
     active: boolean,
     modalTitle: string,
+    packTitle: string,
     setActive: (active: boolean) => void,
     setTitleCard: (t: string) => void,
     onClickUpdatePack: () => void
 }
 
-const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, modalTitle,active, setTitleCard, onClickUpdatePack}) => {
+const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, packTitle, modalTitle,active, setTitleCard, onClickUpdatePack}) => {
 
     const handlerForUpdateTitleCard = (value: string) => {
         setTitleCard(value)
@@ -23,9 +24,9 @@ const ModalForUpdateCardsPack: React.FC<ModalUpdatePropsType> = ({setActive, mod
         setActive(false)
     }
     return <div>
-        <Modal active={active} setActive={setActive}>
+        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
             <div className={s.content}>
-                <Input title={'Name Pack'}
+                <Input title={packTitle}
                     type={'text'}
                     name={'name pack'}
                     placeholder={'Write a new title for pack'}
