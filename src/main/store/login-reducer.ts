@@ -120,7 +120,6 @@ export const getProfileUserdataTC = () => (dispatch: Dispatch) => {
     authAPI.getAuth()
         .then(response => {
             dispatch(updateUserProfileAC(response.data))
-            debugger
         })
         .catch((e) => {
             const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
@@ -156,7 +155,6 @@ export const updateProfileDataTC = (name: string, avatar: string) => (dispatch: 
         dispatch(isFetchingAC(true))
         authAPI.updateProfile(name, avatar)
             .then(response => {
-                debugger
                 dispatch(updateUserProfileAC(response.data.updatedUser))
                 // @ts-ignore
                 dispatch(getProfileUserdataTC())

@@ -19,7 +19,6 @@ export const authAPI = {
         return instance.delete('auth/me')
     },
     updateProfile(name: string, avatar: string) {
-        debugger
         return instance.put('auth/me', {name, avatar})
 
     }
