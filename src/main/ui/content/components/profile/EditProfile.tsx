@@ -24,27 +24,25 @@ export const EditProfile = (props: any) => {
 
     useEffect(() => {
         dispatch(getProfileUserdataTC())
+        setName(userName)
     }, [dispatch, userName])
 
 
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
-    const [name, setName] = useState(userName);
-    const [email, setEmail] = useState(userEmail);
+    const [name, setName] = useState('');
     const [baseImage, setBaseImage] = useState(avatar);
 
 
 
     //ENCODING UPDATED DATA TO BASE64
     const uploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
-        debugger
         if (e.target.files) {
             if (e.target.files[0].type !== 'image/jpeg' && 'image/png' && 'image/jpg') {
                 console.log('The picture must be a file of type: jpeg, jpg, png')
             } else {
                 const file = e.target.files[0];
                 const base64: any = await convertBase64(file);
-                debugger
                 setBaseImage(base64);
             }
         }
