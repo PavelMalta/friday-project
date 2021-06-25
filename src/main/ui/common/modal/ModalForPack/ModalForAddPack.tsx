@@ -15,7 +15,7 @@ type ModalAddPropsType = {
 
 const ModalForAddPack: React.FC<ModalAddPropsType> = ({
                                                           active, setActive,
-                                                          addPackHandler, setNamePack,
+                                                          addPackHandler, setNamePack, modalTitle
                                                       }) => {
 
 
@@ -28,7 +28,7 @@ const ModalForAddPack: React.FC<ModalAddPropsType> = ({
         setActive(false)
     }
     return <div>
-        <Modal active={active} setActive={setActive}>
+        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
             <div className={s.content}>
                 <Input title={'Name Pack'}
                     type={'text'}
