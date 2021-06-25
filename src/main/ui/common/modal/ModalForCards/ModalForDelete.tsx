@@ -23,11 +23,11 @@ const ModalForDelete: React.FC<ModalDeletePropsType> = (
     }
 
     return <div>
-        <Modal active={active} setActive={setActive}>
+        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
             <div className={s.content}>
                 <div className={s.text}>
                     Do you really want to remove
-                    <span className={s.span}>Pack Name - {title}?</span>
+                    <span className={s.span}> Pack Name - {title}?</span>
                     All Cards will be excluded from this course.
                 </div>
                 <div className={s.btn}>
