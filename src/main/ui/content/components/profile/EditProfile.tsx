@@ -19,7 +19,7 @@ export const EditProfile = (props: any) => {
     const user = useSelector<AppRootStateType>(state => state.login.user);
     const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
     const userEmail = useSelector<AppRootStateType, string>(state => state.login.user.email);
-    const avatar =  useSelector<AppRootStateType, string>(state => state.login.user.avatar);
+    const avatar = useSelector<AppRootStateType, string>(state => state.login.user.avatar);
     const inRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
@@ -32,7 +32,6 @@ export const EditProfile = (props: any) => {
     const [change, setChange] = useState(false)
     const [name, setName] = useState('');
     const [baseImage, setBaseImage] = useState(avatar);
-
 
 
     //ENCODING UPDATED DATA TO BASE64
@@ -88,7 +87,7 @@ export const EditProfile = (props: any) => {
     //SENDING DATA
     const updateProfileHandler = () => {
         setChange(!change)
-            dispatch(updateProfileDataTC(name, baseImage))
+        dispatch(updateProfileDataTC(name, baseImage))
     }
 
 
@@ -111,7 +110,7 @@ export const EditProfile = (props: any) => {
                                uploadImage(e)
                            }}/>
 
-                    <img className={s.photo} src={avatar} alt="photo" style={{width: "100px",  borderRadius: "50px" }}/>
+                    <img className={s.photo} src={avatar} alt="photo" style={{width: "100px", borderRadius: "50px"}}/>
                     <img className={s.icon} src={aditPhoto} alt="photo"/>
 
 
@@ -130,7 +129,11 @@ export const EditProfile = (props: any) => {
                                value={userEmail}
                         />
 
-                        <button onClick={() => inRef && inRef.current && inRef.current.click()}>add file</button>
+                        <button onClick={() => inRef && inRef.current && inRef.current.click()}
+                                style={{
+                                    width: "100px", height: "40px", margin: "10px", borderRadius: "50px"
+                                }}>change image
+                        </button>
                     </form>
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
