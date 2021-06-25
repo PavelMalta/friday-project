@@ -1,5 +1,5 @@
 import s from "./Input.module.scss";
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useState} from "react";
 
 type InputPropsType = {
     title?: string
@@ -26,23 +26,6 @@ export const Input = (props: InputPropsType) => {
     const ChangeTextVision = () => {
         props.changeVision && props.changeVision()
     }
-
-   /* function togglePassword() {
-
-        let input = document.getElementById('inputPassword');
-
-        if (input !== null) {
-            if (input.getAttribute('type') === 'password') {
-
-                input.setAttribute('type', 'text');
-            } else {
-
-                input.setAttribute('type', 'password');
-            }
-        }
-        return false;
-    }*/
-
 
 
     return (

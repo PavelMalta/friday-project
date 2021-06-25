@@ -22,6 +22,7 @@ const loginInitialState = {
     user: {
         avatar: '',
         name: '',
+        email: '',
          },
     isFetching: false,
     emailError: null as null | string,
@@ -68,6 +69,15 @@ export const loginReducer = (state: LoginInitialStateType = loginInitialState, a
             return {
                 ...state,
                 user: {
+                    name: action.payload.user.name,
+                    avatar: action.payload.user.avatar,
+                    email: action.payload.user.email
+                }
+            }
+        case  'SET-USER':
+            return {
+                ...state,
+                user: {
                     ...state.user,
                     name: action.payload.user.name,
                     avatar: action.payload.user.avatar
@@ -85,6 +95,7 @@ export const setPasswordErrorAC = (error: string | null) => ({type: "SET-PASSWOR
 export const setUserID = (userID: string) => ({type: "SET-USER-ID", userID} as const)
 export const logoutAC = () => ({type: "LOGOUT"} as const)
 export const updateUserProfileAC = (user: UserDataType) => ({type: 'UPDATE_PROFILE', payload: {user}} as const)
+export const setUserFromServerAC = (user: UserDataType) => ({type: 'SET-USER', payload: {user}} as const)
 
 
 export const getAuthUserData = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
@@ -102,6 +113,17 @@ export const getAuthUserData = (email: string, password: string, rememberMe: boo
     })
         .finally(() => {
             dispatch(isFetchingAC(false))
+        })
+}
+
+export const getProfileUserdataTC = () => (dispatch: Dispatch) => {
+    authAPI.getAuth()
+        .then(response => {
+            dispatch(updateUserProfileAC(response.data))
+        })
+        .catch((e) => {
+            const error = e.response ? e.response.data.error : (e.message + ", more details in the console")
+            console.log(error)
         })
 }
 
@@ -129,10 +151,13 @@ export const logoutTC = () => (dispatch: Dispatch) => {
 }
 
 export const updateProfileDataTC = (name: string, avatar: string) => (dispatch: Dispatch) => {
+    debugger
         dispatch(isFetchingAC(true))
         authAPI.updateProfile(name, avatar)
             .then(response => {
                 dispatch(updateUserProfileAC(response.data.updatedUser))
+                // @ts-ignore
+                dispatch(getProfileUserdataTC())
                  }
             ).catch( (e) => {
             const error = e.response ? e.response.data.error : (e.message + ', more details in the console')
@@ -151,6 +176,7 @@ export type ActionsType =
     | ReturnType<typeof setUserID>
     | ReturnType<typeof logoutAC>
     | ReturnType<typeof updateUserProfileAC>
+    | ReturnType<typeof setUserFromServerAC>
 
 
 
