@@ -1,11 +1,11 @@
-import {Button} from "../../../../common/button/Button";
-import {Dropdown} from "../../../../common/dropdown/Dropdown";
+import { Button } from "../../../../common/button/Button";
+import { Dropdown } from "../../../../common/dropdown/Dropdown";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
-import {Search} from "../../../../common/search/Search";
-import {SideButton} from "../../../../common/sideButton/SideButton";
-import {StringTablePL} from "./stringTablePL/StringTablePL";
-import {TitleH2} from "../../../../common/titleh2/TitleH2";
+import { Search } from "../../../../common/search/Search";
+import { SideButton } from "../../../../common/sideButton/SideButton";
+import { StringTablePL } from "./stringTablePL/StringTablePL";
+import { TitleH2 } from "../../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
@@ -14,6 +14,7 @@ import {v1} from "uuid";
 import {SelectValueType} from "../../../../../store/packs-reducer";
 import ModalForAddPack from "../../../../common/modal/ModalForPack/ModalForAddPack";
 import React from "react";
+
 
 
 type PacksListType = {
@@ -27,7 +28,7 @@ type PacksListType = {
     onClickMyButton: () => void
     onClickAllButton: () => void
     setActiveModalAdd: (a: boolean) => void
-    setNamePack: (n: string) => void
+    setNamePack: (n: string)=> void
     activeModalAdd: boolean
 
 }
@@ -57,22 +58,22 @@ export const PacksList = React.memo((props: PacksListType) => {
                     />
                 </div>
 
-                <div className={s.NumberCard}>
+                <div className={s.numberCard}>
                     <h3 className={s.titleH3}>Number of cards</h3>
                     <div className={s.rangeSlider}>
                         <RangeSlider/>
                     </div>
-                </div>
+                </div>               
             </aside>
-
+            
             <div className={s.content}>
                 <TitleH2 value="Packs list"
-                         style={{textAlign: "start", padding: "24px 0 15px 0"}}/>
+                    style={{ textAlign: "start", padding: "24px 0 15px 0"}} />
                 <div className={s.form}>
                     <Search/>
                     <Button value="Add new pack"
-                            style={{width: "184px", marginLeft: "24px"}}
-                            onClick={onAddCardPacks}
+                            style= {{width: "184px" }}
+                            onClick= {onAddCardPacks}
                     />
                 </div>
 

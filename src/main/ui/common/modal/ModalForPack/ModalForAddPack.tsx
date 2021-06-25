@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from '../Modal';
-import {Input} from "../../input/Input";
-import {Actions} from "../../actions/Actions";
+import { Input } from "../../input/Input";
+import s from "./ModalForAddPack.module.scss";
+import { Button } from '../../button/Button';
 
 
 type ModalAddPropsType = {
@@ -15,7 +16,6 @@ type ModalAddPropsType = {
 const ModalForAddPack: React.FC<ModalAddPropsType> = ({
                                                           active, setActive,
                                                           addPackHandler, setNamePack,
-                                                          modalTitle
                                                       }) => {
 
 
@@ -28,15 +28,22 @@ const ModalForAddPack: React.FC<ModalAddPropsType> = ({
         setActive(false)
     }
     return <div>
-        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
+        <Modal active={active} setActive={setActive}>
+            <div className={s.content}>
+                <Input title={'Name Pack'}
+                    type={'text'}
+                    onChange={handlerForAddNamePack}
+                    placeholder={'Write title here'}
+                />
+                <div className={s.btn}>
+                    <Button style={{ backgroundColor: "#D7D8EF", color: "#21268F", width: "124px" }}
+                        onClick={addCardHandlerCancel} value={"Cancel"}
+                    />
+                    <Button style={{ backgroundColor: "#21268F", color: "#D7D8EF", width: "124px" }}
+                        onClick={addPackHandler} value={"Save"}
+                    />
 
-            <p>Name pack</p>
-            <Input type={'text'} onChange={handlerForAddNamePack} placeholder={'Write title here'}/>
-            <div style={{display: "flex", justifyContent: "space-around"}}>
-                <Actions onClick={addCardHandlerCancel} value={"Cancel"}/>
-                <Actions onClick={addPackHandler} value={"Save"}
-                         style={{backgroundColor: "#02169d", color: "#fff"}}/>
-
+                </div>
             </div>
 
         </Modal>

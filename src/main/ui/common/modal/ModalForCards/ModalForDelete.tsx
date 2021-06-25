@@ -1,6 +1,9 @@
+import s from "./ModalForDelete.module.scss";
 import React from 'react';
 import Modal from '../Modal';
-import {Actions} from "../../actions/Actions";
+
+import { Button } from "../../button/Button";
+
 
 
 type ModalDeletePropsType = {
@@ -20,15 +23,22 @@ const ModalForDelete: React.FC<ModalDeletePropsType> = (
     }
 
     return <div>
-        <Modal active={active} setActive={setActive} modalTitle={modalTitle}>
-
-            Do you really want to remove <b>Pack Name -{title} ?</b>
-            All Cards will be excluded from this course.
-            <div style={{display: "flex", justifyContent: "space-around"}}>
-                <Actions onClick={deleteModalHandlerNo} value={"Cancel"}/>
-                <Actions onClick={onClickDeletePack} value={"Delete"}
-                        style={{backgroundColor: "#F1453D", color: "#fff"}}/>
+        <Modal active={active} setActive={setActive}>
+            <div className={s.content}>
+                <div className={s.text}>
+                    Do you really want to remove
+                    <span className={s.span}>Pack Name - {title}?</span>
+                    All Cards will be excluded from this course.
+                </div>
+                <div className={s.btn}>
+                    <Button onClick={deleteModalHandlerNo} value={"Cancel"}
+                        style={{ backgroundColor: "#D7D8EF", color: "#21268F", width: "124px" }}
+                    />
+                    <Button onClick={onClickDeletePack} value={"Delete"}
+                        style={{ backgroundColor: "#F1453D", color: "#ECECF9", width: "124px" }} />
+                </div>
             </div>
+
         </Modal>
     </div>
 

@@ -19,8 +19,8 @@ const useStyles = makeStyles({
         height: 16,
         boxSizing: "border-box",
         border: "4px solid #21268F",
-        backgroundColor: "#fff",
-    },
+        backgroundColor: "#fff"
+    }
 });
 
 function valuetext(value: number) {

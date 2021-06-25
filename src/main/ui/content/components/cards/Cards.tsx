@@ -58,14 +58,10 @@ export const Cards = () => {
 
     return (
         <div>
-            <button onClick={addCards}>Add cards</button>
-            {/*<CardsTable userID={userID}
-                        deleteCard={deleteCard}
-                        updateCard={updateCard}
-            />*/}
             <CardsList userID={userID}
                        deleteCard={deleteCard}
                        updateCard={updateCard}
+                       addCards={addCards}
                        onChangePage={onChangePage}
                        value={options}
                        onChangeOption={onChangeOption}

@@ -8,16 +8,18 @@ import {Dropdown} from "../../../../common/dropdown/Dropdown";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {v1} from "uuid";
-import {InitialStateType, updateAnswerQuestion, updateCardTC} from "../../../../../store/cards-reducer";
-import React, {useState} from "react";
+import {InitialStateType} from "../../../../../store/cards-reducer";
+import React from "react";
 import {NavLink} from "react-router-dom";
 import {SelectValueType} from "../../../../../store/packs-reducer";
+import { Button } from "../../../../common/button/Button";
 
 type CardsListType = {
     userID: string
     deleteCard: (cardID: string) => void
     updateCard: (cardID: string) => void
     onChangePage: (page: number) => void
+    addCards: () => void
     value: SelectValueType
     onChangeOption: (value: SelectValueType) => void
 }
@@ -48,7 +50,10 @@ export const CardsList = React.memo((props: CardsListType) => {
                     />
                 </button>
                 <div className={s.search}>
-                    <Search style={{width: "100%"}}/>
+                    <Search/>
+                    <Button value="Add cards"
+                            style= {{width: "184px" }}
+                            onClick= {props.addCards}/>
                 </div>
                 <div className={s.wrap}>
                     <table>
