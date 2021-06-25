@@ -1,11 +1,11 @@
-import { Button } from "../../../../common/button/Button";
-import { Dropdown } from "../../../../common/dropdown/Dropdown";
+import {Button} from "../../../../common/button/Button";
+import {Dropdown} from "../../../../common/dropdown/Dropdown";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
-import { Search } from "../../../../common/search/Search";
-import { SideButton } from "../../../../common/sideButton/SideButton";
-import { StringTablePL } from "./stringTablePL/StringTablePL";
-import { TitleH2 } from "../../../../common/titleh2/TitleH2";
+import {Search} from "../../../../common/search/Search";
+import {SideButton} from "../../../../common/sideButton/SideButton";
+import {StringTablePL} from "./stringTablePL/StringTablePL";
+import {TitleH2} from "../../../../common/titleh2/TitleH2";
 import s from "./PacksList.module.scss";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
@@ -16,10 +16,9 @@ import ModalForAddPack from "../../../../common/modal/ModalForPack/ModalForAddPa
 import React from "react";
 
 
-
 type PacksListType = {
     userID: string
-    addNewPack: () => void
+    addNewPack: (name: string) => void
     deletePack: (packID: string) => void
     updatePack: (packID: string, title: string) => void
     learnPack: (packID: string, packName: string) => void
@@ -28,7 +27,6 @@ type PacksListType = {
     onClickMyButton: () => void
     onClickAllButton: () => void
     setActiveModalAdd: (a: boolean) => void
-    setNamePack: (n: string)=> void
     activeModalAdd: boolean
 
 }
@@ -63,17 +61,17 @@ export const PacksList = React.memo((props: PacksListType) => {
                     <div className={s.rangeSlider}>
                         <RangeSlider/>
                     </div>
-                </div>               
+                </div>
             </aside>
-            
+
             <div className={s.content}>
                 <TitleH2 value="Packs list"
-                    style={{ textAlign: "start", padding: "24px 0 15px 0"}} />
+                         style={{textAlign: "start", padding: "24px 0 15px 0"}}/>
                 <div className={s.form}>
                     <Search/>
                     <Button value="Add new pack"
-                            style= {{width: "184px" }}
-                            onClick= {onAddCardPacks}
+                            style={{width: "184px"}}
+                            onClick={onAddCardPacks}
                     />
                 </div>
 
@@ -120,7 +118,7 @@ export const PacksList = React.memo((props: PacksListType) => {
             </div>
             <ModalForAddPack active={props.activeModalAdd} setActive={props.setActiveModalAdd}
                              addPackHandler={props.addNewPack}
-                             setNamePack={props.setNamePack} modalTitle={"Add new pack"}/>
+                             modalTitle={"Add new pack"}/>
         </div>
 
     )

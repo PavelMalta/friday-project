@@ -22,8 +22,6 @@ export const Packs = () => {
     const userData = useSelector<AppRootStateType, LoginInitialStateType>(state => state.login)
     const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const [activeModalAdd, setActiveModalAdd] = useState<boolean>(false)
-    const [namePack, setNamePack] = useState<string>('')
-
 
     const dispatch = useDispatch();
 
@@ -31,10 +29,10 @@ export const Packs = () => {
         dispatch(getStartPacksTC())
     }, [dispatch])
 
-    const addPack = useCallback(() => {
-        dispatch(addCardsPackTC({name: namePack}))
+    const addPack = (name: string) => {
+        dispatch(addCardsPackTC({name: name}))
         setActiveModalAdd(false)
-    },[])
+    }
     const deletePack = useCallback((packId: string) => {
         dispatch(deleteCardsPackTC(packId))
     },[])
@@ -75,7 +73,6 @@ export const Packs = () => {
                        onClickMyButton={onClickMyButton}
                        onClickAllButton={onClickAllButton}
                        setActiveModalAdd={setActiveModalAdd}
-                       setNamePack={setNamePack}
                        activeModalAdd={activeModalAdd}
             />
 

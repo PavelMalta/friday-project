@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Modal from '../Modal';
 import { Input } from "../../input/Input";
 import s from "./ModalForAddPack.module.scss";
@@ -9,19 +9,21 @@ type ModalAddPropsType = {
     active: boolean,
     modalTitle:string,
     setActive: (active: boolean) => void
-    addPackHandler: () => void,
-    setNamePack: (e: string) => void,
+    addPackHandler: (name: string) => void,
    }
 
 const ModalForAddPack: React.FC<ModalAddPropsType> = ({
                                                           active, setActive,
-                                                          addPackHandler, setNamePack, modalTitle
+                                                          addPackHandler, modalTitle
                                                       }) => {
 
+    const[namePack, setNamePack] = useState<string>('')
 
     const handlerForAddNamePack = (value: string) => {
         setNamePack(value)
-
+    }
+    const addNewPackHandler = () => {
+        addPackHandler(namePack)
     }
 
     const addCardHandlerCancel = () => {
@@ -40,7 +42,7 @@ const ModalForAddPack: React.FC<ModalAddPropsType> = ({
                         onClick={addCardHandlerCancel} value={"Cancel"}
                     />
                     <Button style={{ backgroundColor: "#21268F", color: "#D7D8EF", width: "124px" }}
-                        onClick={addPackHandler} value={"Save"}
+                        onClick={addNewPackHandler} value={"Save"}
                     />
 
                 </div>
