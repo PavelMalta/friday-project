@@ -18,7 +18,7 @@ function App() {
     return (
         <div className={s.app}>
 
-            <Header />
+            {/*<Header />*/}
             <div className={s.header}>
                 <Head />
             </div>           
