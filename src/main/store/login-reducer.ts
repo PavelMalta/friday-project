@@ -151,7 +151,6 @@ export const logoutTC = () => (dispatch: Dispatch) => {
 }
 
 export const updateProfileDataTC = (name: string, avatar: string) => (dispatch: Dispatch) => {
-    debugger
         dispatch(isFetchingAC(true))
         authAPI.updateProfile(name, avatar)
             .then(response => {
