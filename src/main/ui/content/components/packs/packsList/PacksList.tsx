@@ -55,7 +55,6 @@ export const PacksList = React.memo((props: PacksListType) => {
                         onClickAllButton={props.onClickAllButton}
                     />
                 </div>
-
                 <div className={s.numberCard}>
                     <h3 className={s.titleH3}>Number of cards</h3>
                     <div className={s.rangeSlider}>
@@ -63,6 +62,7 @@ export const PacksList = React.memo((props: PacksListType) => {
                     </div>
                 </div>
             </aside>
+
 
             <div className={s.content}>
                 <TitleH2 value="Packs list"

@@ -12,15 +12,16 @@ import { Question } from './main/ui/content/components/packs/learnPack/question/
 import { QuestionAnswer } from './main/ui/content/components/packs/learnPack/questionAnswer/QuestionAnswer';
 import { CardsList } from './main/ui/content/components/cards/cardsList/CardsList';
 import { Cards } from './main/ui/content/components/cards/Cards';
+import { EditProfile } from './main/ui/content/components/profile/EditProfile';
 
 
 function App() {
     return (
         <div className={s.app}>
 
-            {/*<Header />*/}
+            <Header/>
             <div className={s.header}>
-                <Head />
+                <Head/>
             </div>           
             <div className={s.content}>
                  <Content/>
@@ -36,6 +37,7 @@ function App() {
                             disabledButton={false}
                 /> */}
               {/*  <Cards/>*/}
+              {/* <EditProfile/> */}
             </div>
             {/* <Error/> */}
         </div>

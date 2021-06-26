@@ -4,96 +4,181 @@
 .profileIvan{
     display: flex;
     justify-content: center;
-    padding: 24px 0 71px 0;
+    padding: 24px 15px 70px 15px;
     min-height: 100vh;
+    @media screen and (max-width: 875px) { 
+        flex-direction: column;
+        align-items:center;
+        padding: 24px 15px 24px 15px;
+    } 
     .aside {
+        padding: 33px 24px;
         background-color: #ECECF9;
         border-radius: 30px 0 0  30px;
+        @media screen and (max-width: 875px) { 
+            border-radius: 30px 30px 0 0;
+            display: flex;
+            justify-content: space-between;
+            max-width: 765px;
+            width: 100%;
+            padding: 20px 70px;
+        }
+        @media screen and (max-width: 730px) { 
+            padding: 20px 35px;
+        }
+        @media screen and (max-width: 598px) { 
+            padding: 15px;
+        }
+        @media screen and (max-width: 558px) { 
+            justify-content: center;
+        }
+        @media screen and (max-width: 510px) { 
+            justify-content: center;
+        }
         .profile {
             display:flex;
             flex-direction: column;
             align-items: center;
-            height: 216px;
-            padding-top: 24px;
-            background-color: #e0e7f5;
-            border-radius: 30px 0 0 0 ;
-            .name {
-                margin: 4px 0;
-                @include text (17px, 600, 27px);
-                color: $textColor;
+            justify-content: center;
+            // max-height: 216px;
+            // height: 100%;
+            // background-color: #e0e7f5;
+            // border-radius: 30px 0 0 0 ;
+            @media screen and (max-width: 875px) {
+                flex-direction: row;
+                // padding: 20px;
             }
-            .span {
-                @include text (14px, 400, 17px);
-                color: $textColor;
-                margin-bottom: 8px;
-                border-radius: 2px;
-            }
-            .btn {
-                @include text (12px, 600, 14px);
-                color: $accentColor;
-                background-color: transparent;
-                border: 1px solid #635D80;
-                padding: 5px 8px;
-                &:hover {
-                    box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+            .info {
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                @media screen and (max-width: 875px) {
+                    align-items: start;
+                    margin-left: 20px;
                 }
+                .name {
+                    margin: 4px 0;
+                    @include text (17px, 600, 27px);
+                    color: $textColor;
+                }
+                .span {
+                    @include text (14px, 400, 17px);
+                    color: $textColor;
+                    margin-bottom: 8px;
+                    border-radius: 2px;
+                }
+                .btn {
+                    @include text (12px, 600, 14px);
+                    color: $accentColor;
+                    background-color: transparent;
+                    border: 1px solid #635D80;
+                    padding: 5px 8px;
+                    &:hover {
+                        box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+                    }
+                }
+            }        
+        }
+        .numberCard {
+            @media screen and (max-width: 558px) { 
+                display: none;
             }
-        }
-        .titleH3{
-            @include text (16px, 600, 19px);
-            color: $textColor;
-            padding: 33px 0 0 23px;
-        } 
-        .rangeSlider {
-            padding: 0 23px;
-            margin-top: 54px;
-        }
+            .titleH3{
+                @include text (16px, 600, 19px);
+                color: $textColor;
+                margin-top: 30px;
+            } 
+            .rangeSlider {
+                margin-top: 35px;
+            }
+        }  
     }
     .content {
-        padding: 0 48px 71px 48px;
-        background-color: rgba(254, 254, 255, 0.73);
+        padding: 0 48px;
+        background-color: $primaryColor;
         border-radius: 0 30px 30px 0;
         position: relative;
         max-width: 765px;
         width: 100%;
+        overflow-y: hidden;
+        padding-bottom: 205px;
+        @media screen and (max-width: 875px) { 
+            border-radius:  0 0 30px 30px;
+            // padding: 0 30px;
+            padding-bottom: 205px;
+        }
+        @media screen and (max-width: 690px) { 
+            padding-bottom: 235px;
+            padding: 0 15px;
+            padding-bottom: 230px;
+        }
+        @media screen and (max-width: 421px) { 
+            padding-bottom: 285px;
+        }
         .form {
             display: flex;
+            justify-content: space-between;
+            @media screen and (max-width: 420px) { 
+                height: 85px;
+                flex-direction: column;
+                justify-content: space-between;
+            }
         }
         .wrap {
-            margin-top: 24px;      
+            margin-top: 24px; 
+            height: 100%;
+            overflow: auto;     
             table {
                 color: $textColor;
                 text-align: left;
-                box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15);
                 border-collapse: collapse;
                 max-width: 670px;
                 width: 100%;
+                box-shadow: 0px 4px 14px rgba(45, 46, 70, 0.15);
+                @media screen and (max-width: 650px)  { 
+                    width: 670px;  
+                }
+            }
+            table th {
+                position: sticky;
+                top: 0;
+                z-index: 10;
             }
             tr {
                 .item1 {
-                width: 27.5%;
+                    padding-left: 24px;
+                    width: 27.6%;
                 }
                 .item2 {
-                    width: 11.5%;
+                    width: 11.6%;
                 }
                 .item3 {
-                    width: 20.5%;
+                    width: 20%;
                 }
                 .item4 {
-                    width: 16.5%;
+                    width: 16.4%;
                 }
                 .item5 {
-                    width: 24%;
+                    width: 24.4%;
+                    padding-right: 24px;
                 }
             }
             th {
                 @include text (14px, 700, 16px);
                 background: #ECECF9;
-                padding: 10px;
+                padding: 16px 0;
+                word-break:break-all;
             }
             td {
-                padding: 10px;
+                padding: 16px 0;
                 @include text (14px, 400, 16px);
+                word-break:break-all;
+            }
+            td:first-child {
+                padding-left: 24px;
+            }
+            td:last-child {
+                padding-right: 24px;
             }
             tr:nth-child(odd) {
                 background: #F8F7FD;
@@ -107,7 +192,12 @@
         display: flex;
         position: absolute;
         bottom: 25px;
-        left: 35px
+        left: 35px;
+        @media screen and (max-width: 690px)  { 
+            flex-direction: column; 
+        }
+        @media screen and (max-width: 415px)  { 
+            left: -15px;
+        }
     }
-
 }
