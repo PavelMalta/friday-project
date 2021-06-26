@@ -47,29 +47,7 @@ export const EditProfile = (props: any) => {
         }
     };
 
-    // const upload = (e: ChangeEvent<HTMLInputElement>) => {
-    //     const reader = new FileReader();
-    //     const formData = new FormData();
-    //
-    //     const newFile = e.target.files && e.target.files[0];
-    //
-    //     if (newFile) {
-    //         setFile(newFile);
-    //         setFileURL(window.URL.createObjectURL(newFile));
-    //         formData.append('myFile', newFile, newFile.name);
-    //         setFileData(formData);
-    //
-    //         if (code) { // reader
-    //             reader.onloadend = () => {
-    //                 setFile64(reader.result);
-    //             };
-    //
-    //             if (base64) reader.readAsDataURL(newFile);
-    //             else reader.readAsText(newFile);
-    //         }
-    //     }
-    //
-    // }
+
     const convertBase64 = (file: File) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
