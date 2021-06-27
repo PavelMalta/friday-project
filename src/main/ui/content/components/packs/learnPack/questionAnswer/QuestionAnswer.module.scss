@@ -3,48 +3,74 @@
 
 .question {
     height: 100vh;
-
+    padding: 0 15px;
     .wrapper {
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-
         .inner {
             background-color: $primaryColor;
-            max-width: 413px;
+            // max-width: 413px;
+            max-width: 600px;
             width: 100%;
             border-radius: 30px;
             padding: 36px 30px 60px;
-            max-height: 600px;
+            max-height: 800px;
+            // max-height: 600px;
             // height: 100%;
+            @media screen and (max-width: 1920px) { 
+                max-width: 600px;
+            }
+            @media screen and (max-width: 1280px) { 
+                max-width: 413px;
+                max-height: 650px;
+            }
+            @media screen and (max-width: 400px) { 
+                max-height: 600px;
+                padding: 15px;
+            }
             .container {
-                max-height: 141px;
-                // height: 100%;
-                overflow: auto;
                 margin: 30px 0;
-                .text1 {
-                    @include text (16px, 400, 24px);
-                    .span {
-                        @include text (16px, 600, 24px);
-                    }
+            }
+            .qeustion {
+                max-height: 205px;
+                overflow: auto;
+                margin-bottom: 25px;
+                @media screen and (max-width: 1280px) { 
+                    max-height: 133px;
                 }
-                .text2 {
-                    margin: 33px 0 48px;
-                    @include text (16px, 400, 24px);
-                    .span {
-                        @include text (16px, 600, 24px);
-                    }
+                @media screen and (max-width: 400px) { 
+                    // max-height: 130px;
+                    margin-bottom: 15px
+                }
+            }
+            .answer {
+                max-height: 205px;
+                overflow: auto;
+                @media screen and (max-width: 1280px) { 
+                    max-height: 133px;
+                }
+                // @media screen and (max-width: 400px) { 
+                //     max-height: 130px;
+                // }
+            }
+            .text {
+                @include text (16px, 400, 24px);
+                .span {
+                    @include text (16px, 600, 24px);
                 }
             }
 
             .radioButton {
-                margin-bottom: 68px;
-
+                margin-bottom: 40px;
                 .title {
                     @include text (16px, 600, 24px);
                 }
-
+                .rate {
+                    display: flex;
+                    justify-content: space-between;
+                }
                 .radio {
                     position: relative;
                     margin-top: 12px;
