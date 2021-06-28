@@ -1,9 +1,10 @@
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
+import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import editPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {useEffect, useRef, useState} from "react";
+import {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
@@ -11,7 +12,6 @@ import {Redirect} from "react-router-dom";
 
 export const EditProfile =  (props: any) => {
     //HOOKS
-
     const user = useSelector<AppRootStateType>(state => state.login.user);
     const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
     const userEmail = useSelector<AppRootStateType, string>(state => state.login.user.email);
@@ -24,8 +24,6 @@ export const EditProfile =  (props: any) => {
         dispatch(getProfileUserdataTC())
         setName(userName)
     }, [dispatch, userName])
-
-
 
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
@@ -44,7 +42,6 @@ export const EditProfile =  (props: any) => {
             }
         }
     };
-
     const convertBase64 = (file: File) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -63,7 +60,9 @@ export const EditProfile =  (props: any) => {
     //SENDING DATA
     const updateProfileHandler = () => {
         setChange(!change)
-        dispatch(updateProfileDataTC(name, baseImage))
+        if (change) {
+            dispatch(updateProfileDataTC(name, baseImage))
+        }
     }
 
 
@@ -78,36 +77,34 @@ export const EditProfile =  (props: any) => {
                     <TitleH2 value="Personal Information"/>
                     <input type="file"
                            accept=".jpg, .jpeg, .png"
-                           multiple
                            ref={inRef}
                            style={{display: 'none'}}
                            onChange={(e) => {
                                e.currentTarget.value.length !== 0 &&
                                uploadImage(e)
                            }}/>
-
-                    <img className={s.photo} src={avatar} alt="photo" style={{width: "100px", borderRadius: "50px"}}/>
-                    <img className={s.icon} src={editPhoto} alt="photo"/>
-
-
+                    <div className={s.edit}>
+                        <img className={s.photo} src={avatar} alt="photo" style={{width: "100px", height: "70px",  borderRadius: "50px"}}/>
+                        <div>
+                            <a onClick={() => inRef && inRef.current && inRef.current.click()}>
+                                <img className={s.icon} src={editPhoto} alt="photo"/>
+                            </a>
+                        </div>    
+                    </div>
                     <form className={s.form}>
                         <Input style= {{marginBottom:"25px"}}
-                                title="Nickname"
-                                type="text"
-                                name="nickname"
+                               title="Nickname"
+                               type="text"
+                               name="nickname"
                                value={name}
-                               onChange={(e) => setName(e)}
-                        />
+                               onChange={(e) => setName(e)}/>
+
                         <Input style={{marginBottom: "106px"}}
                                title="Email"
                                type="email"
                                name="email"
                                value={userEmail}
                         />
-
-                        <button onClick={() => inRef && inRef.current && inRef.current.click()}
-                                style={{width: "100px", height: "30px",
-                                    margin: "15px" ,borderRadius: "50px"}}>change avatar</button>
                     </form>
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
