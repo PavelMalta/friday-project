@@ -4,7 +4,6 @@ import {ModalForEditCard} from "../../cardsTable/ModalForEditCard";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../../store/store";
 import {deleteCardTC, updateCardTC} from "../../../../../../store/cards-reducer";
-import ModalForDelete from "../../../../../common/modal/ModalForCards/ModalForDelete";
 import {ModalForDeleteCard} from "../../cardsTable/ModalForDeleteCard";
 
 type StringTablePNType = {
@@ -37,9 +36,9 @@ export const StringTablePN = React.memo((props: StringTablePNType) => {
     }
 
     const deleteCard = () => {
-            dispatch(deleteCardTC(props.id, {
-                cardsPack_id: cardsPackId
-            }))
+        dispatch(deleteCardTC(props.id, {
+            cardsPack_id: cardsPackId
+        }))
     }
 
     const updateCard = () => {
@@ -66,15 +65,15 @@ export const StringTablePN = React.memo((props: StringTablePNType) => {
                                 modalTitle={'Are yuo sure to delete this card?'}
                                 setActive={setActiveForDelete}
                                 deleteCard={deleteCard}/>
-            <ModalForEditCard
-                active={active}
-                setActive={setActive}
-                setAnswer={setAnswer}
-                setQuestion={setQuestion}
-                updateCardHandler={updateCard}
-                question={question}
-                answer={answer}
-                modalTitle={'Type ur answer & question'}/>
+
+            <ModalForEditCard active={active}
+                              setActive={setActive}
+                              setAnswer={setAnswer}
+                              setQuestion={setQuestion}
+                              updateCardHandler={updateCard}
+                              question={question}
+                              answer={answer}
+                              modalTitle={'Type ur answer & question'}/>
 
         </tr>
     )
