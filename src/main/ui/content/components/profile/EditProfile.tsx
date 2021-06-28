@@ -1,19 +1,29 @@
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
 import profilePeter from "./../../../assets/images/profile/profileIvan.png";
-import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
+import editPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {useState} from "react";
+import {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {updateProfileDataTC} from "../../../../store/login-reducer";
+import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 
 export const EditProfile =  (props: any) => {
     //HOOKS
+    const user = useSelector<AppRootStateType>(state => state.login.user);
+    const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
+    const userEmail = useSelector<AppRootStateType, string>(state => state.login.user.email);
+    const avatar = useSelector<AppRootStateType, string>(state => state.login.user.avatar);
+    const inRef = useRef<HTMLInputElement>(null)
+
     const dispatch = useDispatch()
-    const user = useSelector<AppRootStateType >(state => state.login.user)
+
+    useEffect(() => {
+        dispatch(getProfileUserdataTC())
+        setName(userName)
+    }, [dispatch, userName])
 
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
@@ -65,29 +75,35 @@ export const EditProfile =  (props: any) => {
             <div className={s.wrapper}>
                 <div className={s.inner}>
                     <TitleH2 value="Personal Information"/>
-                    {/*<input type="file"*/}
-                    {/*       accept=".jpg, .jpeg, .png"*/}
-                    {/*       multiple*/}
-                    {/*       onChange={(e) => {*/}
-                    {/*           e.currentTarget.value.length !== 0 &&*/}
-                    {/*           uploadImage(e)*/}
-                    {/*       }}/>*/}
-                    <div className={s.eidt}>
-                        <img className={s.photo} src={profilePeter} alt="photo"/>
+                    <input type="file"
+                           accept=".jpg, .jpeg, .png"
+                           ref={inRef}
+                           style={{display: 'none'}}
+                           onChange={(e) => {
+                               e.currentTarget.value.length !== 0 &&
+                               uploadImage(e)
+                           }}/>
+                    <div className={s.edit}>
+                        <img className={s.photo} src={avatar} alt="photo" style={{width: "100px", height: "70px",  borderRadius: "50px"}}/>
                         <div>
-                            <img className={s.icon} src={aditPhoto} alt="photo"/>
+                            <a onClick={() => inRef && inRef.current && inRef.current.click()}>
+                                <img className={s.icon} src={editPhoto} alt="photo"/>
+                            </a>
                         </div>    
                     </div>
                     <form className={s.form}>
                         <Input style= {{marginBottom:"25px"}}
-                                title="Nickname"
-                                type="text"
-                                name="nickname"
-                        />
-                        <Input style= {{marginBottom:"106px"}}
-                                title="Email"
-                                type="email"
-                                name="email"
+                               title="Nickname"
+                               type="text"
+                               name="nickname"
+                               value={name}
+                               onChange={(e) => setName(e)}/>
+
+                        <Input style={{marginBottom: "106px"}}
+                               title="Email"
+                               type="email"
+                               name="email"
+                               value={userEmail}
                         />
                     </form>
                     <div className={s.btn}>
