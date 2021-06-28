@@ -85,9 +85,8 @@ export const EditProfile =  (props: any) => {
                            }}/>
                     <div className={s.edit}>
                         <div className={s.circle}>
-                            {/* <img className={s.photo} src={avatar} alt="photo"/>  */}
+                            <img className={s.photo} src={avatar} alt="photo"/> 
                         </div>
-                        
                         <div>
                             <a onClick={() => inRef && inRef.current && inRef.current.click()}>
                                 <img className={s.icon} src={editPhoto} alt="photo"/>

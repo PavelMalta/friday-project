@@ -25,11 +25,12 @@
                     height: 96px;
                     width: 96px;
                     border-radius: 50%;
-                    background-image: url(./../../../assets/images/profile/profilePetr.svg);
+                    overflow: hidden;
                     .photo {
-                        // height: 96px;
-                        // width: 96px;
-                        // border-radius: 50%;
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }   
             }            
