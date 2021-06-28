@@ -1,9 +1,10 @@
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
+import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import editPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {useEffect, useRef, useState} from "react";
+import {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
@@ -83,7 +84,9 @@ export const EditProfile =  (props: any) => {
                                uploadImage(e)
                            }}/>
                     <div className={s.edit}>
-                        <img className={s.photo} src={avatar} alt="photo" style={{width: "80px", height: "70px",  borderRadius: "50px"}}/>
+                        <div className={s.circle}>
+                            <img className={s.photo} src={avatar} alt="photo"/> 
+                        </div>
                         <div>
                             <a onClick={() => inRef && inRef.current && inRef.current.click()}>
                                 <img className={s.icon} src={editPhoto} alt="photo"/>
