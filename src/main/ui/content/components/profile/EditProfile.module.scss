@@ -21,11 +21,23 @@
                 position: relative;
                 margin: 15px auto 38px auto;
                 max-width: 96px;
+                .circle {
+                    height: 96px;
+                    width: 96px;
+                    border-radius: 50%;
+                    background-image: url(./../../../assets/images/profile/profilePetr.svg);
+                    .photo {
+                        // height: 96px;
+                        // width: 96px;
+                        // border-radius: 50%;
+                    }
+                }   
             }            
             .icon {
                 position: absolute;
                 top: 65px;
                 right: 0;
+                cursor: pointer;
             }
             .form{}
             .btn {

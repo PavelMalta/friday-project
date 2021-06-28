@@ -84,7 +84,10 @@ export const EditProfile =  (props: any) => {
                                uploadImage(e)
                            }}/>
                     <div className={s.edit}>
-                        <img className={s.photo} src={avatar} alt="photo" style={{width: "100px", height: "70px",  borderRadius: "50px"}}/>
+                        <div className={s.circle}>
+                            {/* <img className={s.photo} src={avatar} alt="photo"/>  */}
+                        </div>
+                        
                         <div>
                             <a onClick={() => inRef && inRef.current && inRef.current.click()}>
                                 <img className={s.icon} src={editPhoto} alt="photo"/>
