@@ -1,11 +1,11 @@
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
-import aditPhoto from "./../../../assets/images/profile/editPhoto.png";
+import editPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {updateProfileDataTC} from "../../../../store/login-reducer";
+import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 
@@ -18,13 +18,14 @@ export const EditProfile =  (props: any) => {
     const avatar = useSelector<AppRootStateType, string>(state => state.login.user.avatar);
     const inRef = useRef<HTMLInputElement>(null)
 
+    const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(getProfileUserdataTC())
         setName(userName)
     }, [dispatch, userName])
 
-    const dispatch = useDispatch()
-    const user = useSelector<AppRootStateType >(state => state.login.user)
+
 
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
@@ -44,29 +45,6 @@ export const EditProfile =  (props: any) => {
         }
     };
 
-    // const upload = (e: ChangeEvent<HTMLInputElement>) => {
-    //     const reader = new FileReader();
-    //     const formData = new FormData();
-    //
-    //     const newFile = e.target.files && e.target.files[0];
-    //
-    //     if (newFile) {
-    //         setFile(newFile);
-    //         setFileURL(window.URL.createObjectURL(newFile));
-    //         formData.append('myFile', newFile, newFile.name);
-    //         setFileData(formData);
-    //
-    //         if (code) { // reader
-    //             reader.onloadend = () => {
-    //                 setFile64(reader.result);
-    //             };
-    //
-    //             if (base64) reader.readAsDataURL(newFile);
-    //             else reader.readAsText(newFile);
-    //         }
-    //     }
-    //
-    // }
     const convertBase64 = (file: File) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -109,7 +87,7 @@ export const EditProfile =  (props: any) => {
                            }}/>
 
                     <img className={s.photo} src={avatar} alt="photo" style={{width: "100px", borderRadius: "50px"}}/>
-                    <img className={s.icon} src={aditPhoto} alt="photo"/>
+                    <img className={s.icon} src={editPhoto} alt="photo"/>
 
 
                     <form className={s.form}>
@@ -117,6 +95,8 @@ export const EditProfile =  (props: any) => {
                                 title="Nickname"
                                 type="text"
                                 name="nickname"
+                               value={name}
+                               onChange={(e) => setName(e)}
                         />
                         <Input style={{marginBottom: "106px"}}
                                title="Email"
@@ -125,7 +105,9 @@ export const EditProfile =  (props: any) => {
                                value={userEmail}
                         />
 
-                        <button onClick={() => inRef && inRef.current && inRef.current.click()}>add file</button>
+                        <button onClick={() => inRef && inRef.current && inRef.current.click()}
+                                style={{width: "100px", height: "30px",
+                                    margin: "15px" ,borderRadius: "50px"}}>change avatar</button>
                     </form>
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
