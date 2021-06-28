@@ -1,9 +1,9 @@
-import { Dropdown } from "../../../../common/dropdown/Dropdown";
-import PaginationRounded from "../../../../common/pagination/Pagination";
-import RangeSlider from "../../../../common/rangeSlider/RangeSlider";
-import { Search } from "../../../../common/search/Search";
-import { TitleH2 } from "../../../../common/titleh2/TitleH2";
-import { StringTablePL } from "../../../../content/components/packs/packsList/stringTablePL/StringTablePL";
+import { Dropdown } from "../../common/dropdown/Dropdown";
+import PaginationRounded from "../../common/pagination/Pagination";
+import RangeSlider from "../../common/rangeSlider/RangeSlider";
+import { Search } from "../../common/search/Search";
+import { TitleH2 } from "../../common/titleh2/TitleH2";
+import { StringTablePL } from "../../content/components/packs/packsList/stringTablePL/StringTablePL";
 import s from "./ProfilePetr.module.scss";
 import profilePeter from "./../../../../assets/images/profile/profilePetr.svg";
 

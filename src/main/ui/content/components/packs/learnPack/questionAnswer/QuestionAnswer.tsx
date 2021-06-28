@@ -21,66 +21,67 @@ export const QuestionAnswer: React.FC<QuestionAnswerPropsType> = (
         <div className={s.question}>
             <div className={s.wrapper}>
                 <div className={s.inner}>
-                    <TitleH2 value={`Learn “${packName}”`}
-                    />
+                    <TitleH2 value={`Learn “${packName}”`} />
                     <div className={s.container}>
-                        <p className={s.text1}>
-                            <span className={s.span}>Question:</span>
-                            “{question}”
-                        </p>
-                        <p className={s.text2}>
-                            <span className={s.span}>Answer:</span>
-                            “{answer}”
-                        </p>
+                        <div className={s.qeustion}>
+                            <p className={s.text}>
+                                <span className={s.span}>Question:</span>
+                                “{question}”
+                            </p>
+                        </div>
+
+                        <div className={s.answer}>
+                            <p className={s.text}>
+                                <span className={s.span}>Answer:</span>
+                                “{answer}”
+                            </p>
+                        </div>
                     </div>
 
                     <div className={s.radioButton}>
                         <h4 className={s.title}>Rate yourself:</h4>
-                        <div className={s.radio}>
-                            <input className={s.radioInput}
-                                name="radio"
-                                type="radio"
-                                id="radio_1"
-                                onChange={() => { changeInputValue(1) }}
-                            />
-                            <label className={s.radioLabel} htmlFor="radio_1">Did not know</label>
+
+                        <div className={s.rate}>
+                            <div className={s.left}>
+                                <div className={s.radio}>
+                                    <input className={s.radioInput}
+                                        name="radio"
+                                        type="radio"
+                                        id="radio_1"
+                                        onChange={() => { changeInputValue(1) }} />
+                                    <label className={s.radioLabel} htmlFor="radio_1">Did not know</label>
+                                </div>
+                                <div className={s.radio}>
+                                    <input className={s.radioInput}
+                                        name="radio"
+                                        type="radio"
+                                        id="radio_2"
+                                        onChange={() => { changeInputValue(2) }} />
+                                    <label className={s.radioLabel} htmlFor="radio_2">Forgot</label>
+                                </div>
+                            </div>
+
+                            <div className={s.right}>
+                                <div className={s.radio}>
+                                    <input className={s.radioInput}
+                                        name="radio"
+                                        type="radio"
+                                        id="radio_3"
+                                        onChange={() => { changeInputValue(3) }} />
+                                    <label className={s.radioLabel} htmlFor="radio_3">A lot of thought</label>
+                                </div>
+                                <div className={s.radio}>
+                                    <input className={s.radioInput}
+                                        name="radio"
+                                        type="radio"
+                                        id="radio_5"
+                                        onChange={() => { changeInputValue(5) }} />
+                                    <label className={s.radioLabel} htmlFor="radio_5">Knew the answer</label>
+                                </div>
+                            </div>
+
                         </div>
-                        <div className={s.radio}>
-                            <input className={s.radioInput}
-                                name="radio"
-                                type="radio"
-                                id="radio_2"
-                                onChange={() => { changeInputValue(2) }}
-                            />
-                            <label className={s.radioLabel} htmlFor="radio_2">Forgot</label>
-                        </div>
-                        <div className={s.radio}>
-                            <input className={s.radioInput}
-                                name="radio"
-                                type="radio"
-                                id="radio_3"
-                                onChange={() => { changeInputValue(3) }}
-                            />
-                            <label className={s.radioLabel} htmlFor="radio_3">A lot of thought</label>
-                        </div>
-                        <div className={s.radio}>
-                            <input className={s.radioInput}
-                                name="radio"
-                                type="radio"
-                                id="radio_4"
-                                onChange={() => { changeInputValue(4) }}
-                            />
-                            <label className={s.radioLabel} htmlFor="radio_4">Сonfused</label>
-                        </div>
-                        <div className={s.radio}>
-                            <input className={s.radioInput}
-                                name="radio"
-                                type="radio"
-                                id="radio_5"
-                                onChange={() => { changeInputValue(5) }}
-                            />
-                            <label className={s.radioLabel} htmlFor="radio_5">Knew the answer</label>
-                        </div>
+
                     </div>
 
                     <div className={s.btn}>
