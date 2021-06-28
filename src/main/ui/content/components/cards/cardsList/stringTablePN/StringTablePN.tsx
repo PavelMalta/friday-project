@@ -1,6 +1,6 @@
 import HalfRating from "../../../../../common/rating/Rating";
 import React, {useState} from "react";
-import {UpdateAreaModal} from "../../cardsTable/UpateAreaModal";
+import {ModalForEditCard} from "../../cardsTable/ModalForEditCard";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../../store/store";
 import {updateCardTC} from "../../../../../../store/cards-reducer";
@@ -47,14 +47,15 @@ export const StringTablePN = React.memo((props: StringTablePNType) => {
             <td>
                 <HalfRating grade={props.grade} id={props.id}/>
             </td>
-            <UpdateAreaModal
+            <ModalForEditCard
                 active={active}
                 setActive={setActive}
                 setAnswer={setAnswer}
                 setQuestion={setQuestion}
                 updateCardHandler={updateCard}
                 question={question}
-                answer={answer}/>
+                answer={answer}
+            modalTitle={'Type ur answer & question'}/>
         </tr>
     )
 })

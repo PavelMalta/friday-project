@@ -50,6 +50,7 @@ export const Packs = () => {
         dispatch(setOptionsAC({pageCount: value}))
         dispatch(getPacksTC())
     },[])
+
     const onClickMyButton = useCallback(() => {
         dispatch(getPacksTC({user_id: userData.userID}))
     },[])

@@ -1,0 +1,12 @@
+
+
+.content {
+    padding: 25px;
+}
+.area {
+    margin: 10px
+}
+.btn {
+    display: flex;
+    justify-content: space-between;
+}

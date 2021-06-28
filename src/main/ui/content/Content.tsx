@@ -11,7 +11,7 @@ import { NewPasswordContainer } from "./components/newPassword/NewPasswordContai
 import {LearnPack} from "./components/packs/learnPack/LearnPack";
 import {EditProfile} from "./components/profile/EditProfile";
 import {Error} from "./components/error/Error";
-import {UpdateAreaModal} from "./components/cards/cardsTable/UpateAreaModal";
+import {ModalForEditCard} from "./components/cards/cardsTable/ModalForEditCard";
 
 
 
