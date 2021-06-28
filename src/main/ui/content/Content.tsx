@@ -20,15 +20,15 @@ export const Content = () => {
         <div className={s.contentContainer}>
             <Switch>
                 <Route path={'/'} exact render={() => <Redirect to={routes.login}/>}/>
-                <Route exact path={routes.login} render={() => <LoginContainer/>} />
-                <Route exact path={routes.registration} render={() => <RegistrationPage/>} />
-                <Route exact path={routes.profile} render={() =><EditProfile/>} />
-                <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>} />
-                <Route exact path={routes.newPassword} render={() => <NewPasswordContainer/>} />
-                <Route exact path={routes.packs} render={() => <Packs/>} />
-                <Route exact path={routes.cards} render={() => <Cards/>} />
-                <Route  path={routes.learnPack} render={() => <LearnPack/>} />
-                <Route render={() => <Error/>} />
+                <Route exact path={routes.login} render={() => <LoginContainer/>}/>
+                <Route exact path={routes.registration} render={() => <RegistrationPage/>}/>
+                <Route exact path={routes.profile} render={() => <EditProfile/>}/>
+                <Route exact path={routes.passwordRecover} render={() => <PasswordRecoverContainer/>}/>
+                <Route exact path={routes.newPassword} render={() => <NewPasswordContainer/>}/>
+                <Route exact path={routes.packs} render={() => <Packs/>}/>
+                <Route exact path={routes.cards} render={() => <Cards/>}/>
+                <Route path={routes.learnPack} render={() => <LearnPack/>}/>
+                <Route render={() => <Error/>}/>
             </Switch>
         </div>
     )
