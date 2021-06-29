@@ -5,14 +5,15 @@ import {Search} from "../../../../common/search/Search";
 import {StringTablePN} from "./stringTablePN/StringTablePN";
 import PaginationRounded from "../../../../common/pagination/Pagination";
 import {Dropdown} from "../../../../common/dropdown/Dropdown";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {v1} from "uuid";
-import {InitialStateType} from "../../../../../store/cards-reducer";
-import React from "react";
+import {addCardTC, InitialStateType} from "../../../../../store/cards-reducer";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {SelectValueType} from "../../../../../store/packs-reducer";
-import { Button } from "../../../../common/button/Button";
+import {Button} from "../../../../common/button/Button";
+import {ModalForAddCard} from "../cardsTable/ModalForAddCard";
 
 type CardsListType = {
     userID: string
@@ -27,6 +28,28 @@ type CardsListType = {
 export const CardsList = React.memo((props: CardsListType) => {
 
     const cardsData = useSelector<AppRootStateType, InitialStateType>(state => state.cards);
+    const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId);
+    const dispatch = useDispatch()
+
+    // Hooks for adding cards
+    const [active, setActive]  = useState<boolean>(false);
+    const [question, setQuestion]  = useState<string>('');
+    const [answer, setAnswer]  = useState<string>('');
+
+    const newCardPayload = {
+        cardsPack_id: cardsPackId,
+        question: question,
+        answer: answer
+    }
+
+
+    // const onClickHandler = () => {
+    //     setActive(true)
+    // }
+
+    const addCardHandler = () => {
+        dispatch(addCardTC(newCardPayload, {cardsPack_id: cardsPackId, pageCount: 100}))
+    }
 
     const formatDate = (date: string): string => {
         return new Date(date).toLocaleDateString("ru", {
@@ -51,9 +74,9 @@ export const CardsList = React.memo((props: CardsListType) => {
                 </button>
                 <div className={s.search}>
                     <Search/>
-                    <Button value="Add cards"
-                            style= {{width: "184px" }}
-                            onClick= {props.addCards}/>
+                    <Button value="Add card"
+                            style={{width: "184px"}}
+                            onClick={() => setActive(true)}/>
                 </div>
                 <div className={s.wrap}>
                     <table>
@@ -91,6 +114,15 @@ export const CardsList = React.memo((props: CardsListType) => {
                         options={[5, 10, 25, 50, 100]}
                         value={props.value}
                         onChangeOption={props.onChangeOption}
+                    />
+                    <ModalForAddCard modalTitle={'New card'}
+                                     active={active}
+                                     question={question}
+                                     answer={answer}
+                                     addCardHandler={addCardHandler}
+                                     setQuestion={setQuestion}
+                                     setAnswer={setAnswer}
+                                     setActive={setActive}
                     />
                 </div>
             </div>
