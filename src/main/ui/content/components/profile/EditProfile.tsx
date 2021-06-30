@@ -16,6 +16,7 @@ export const EditProfile =  (props: any) => {
     const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
     const userEmail = useSelector<AppRootStateType, string>(state => state.login.user.email);
     const avatar = useSelector<AppRootStateType, string>(state => state.login.user.avatar);
+    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth);
     const inRef = useRef<HTMLInputElement>(null)
 
     const dispatch = useDispatch()
@@ -69,7 +70,7 @@ export const EditProfile =  (props: any) => {
         dispatch(logoutTC())
     }
 
-    if (user === null) {
+    if (user === null || !isAuth) {
         return <Redirect to={'/login'}/>
     }
 
