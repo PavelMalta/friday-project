@@ -6,7 +6,7 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
+import {getProfileUserdataTC, logoutTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 
@@ -28,7 +28,7 @@ export const EditProfile =  (props: any) => {
     //UPDATING PROFILE
     const [change, setChange] = useState(false)
     const [name, setName] = useState('')
-    const [baseImage, setBaseImage] = useState('');
+    const [baseImage, setBaseImage] = useState('')
 
     //ENCODING UPDATED DATA TO BASE64
     const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,6 +65,9 @@ export const EditProfile =  (props: any) => {
         }
     }
 
+    const logoutHandler = () => {
+        dispatch(logoutTC())
+    }
 
     if (user === null) {
         return <Redirect to={'/login'}/>
@@ -111,7 +114,7 @@ export const EditProfile =  (props: any) => {
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
                                 value="Cancel"
-                                onClick={props.onclickHandler}
+                                onClick={logoutHandler}
                         />
                         <Button style={{width: "125px"}}
                                 value="Save"
