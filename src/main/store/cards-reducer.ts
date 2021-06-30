@@ -115,18 +115,6 @@ export const rateCardTC = (grade: number, cardId: string ):ThunkType => (dispatc
         })
 }
 
-// export const deleteCard = (cardId: string): ThunkType => (dispatch) => {
-//     dispatch(isFetchingAC(true));
-//         cardsAPI.deleteCard(cardId)
-//             .then(res => {
-//
-//             })
-//             .finally( () => {
-//                 dispatch(isFetchingAC(false))
-//             })
-// }
-
-
 //Types
 export type InitialStateType = {
     cardsTableData: CardsResponseType

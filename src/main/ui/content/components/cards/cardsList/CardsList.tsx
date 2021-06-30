@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../../store/store";
 import {v1} from "uuid";
 import {addCardTC, InitialStateType} from "../../../../../store/cards-reducer";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {SelectValueType} from "../../../../../store/packs-reducer";
 import {Button} from "../../../../common/button/Button";
@@ -32,20 +32,24 @@ export const CardsList = React.memo((props: CardsListType) => {
     const dispatch = useDispatch()
 
     // Hooks for adding cards
-    const [active, setActive]  = useState<boolean>(false);
-    const [question, setQuestion]  = useState<string>('');
-    const [answer, setAnswer]  = useState<string>('');
+    const [active, setActive] = useState<boolean>(false);
+    const [question, setQuestion] = useState<string>('');
+    const [answer, setAnswer] = useState<string>('');
+
+    useEffect(() => {
+        const match = cardsData.cardsTableData.cards.filter((item) => item.user_id === props.userID)
+        if (match.length !== 0) {
+            setButtonVision(true)
+        }
+    })
+
+    const [buttonVision, setButtonVision] = useState<boolean>(false)
 
     const newCardPayload = {
         cardsPack_id: cardsPackId,
         question: question,
         answer: answer
     }
-
-
-    // const onClickHandler = () => {
-    //     setActive(true)
-    // }
 
     const addCardHandler = () => {
         dispatch(addCardTC(newCardPayload, {cardsPack_id: cardsPackId, pageCount: 100}))
@@ -74,9 +78,9 @@ export const CardsList = React.memo((props: CardsListType) => {
                 </button>
                 <div className={s.search}>
                     <Search/>
-                    <Button value="Add card"
-                            style={{width: "184px"}}
-                            onClick={() => setActive(true)}/>
+                    {buttonVision && <Button value="Add card"
+                                             style={{width: "184px"}}
+                                             onClick={() => setActive(true)}/>}
                 </div>
                 <div className={s.wrap}>
                     <table>
@@ -87,10 +91,7 @@ export const CardsList = React.memo((props: CardsListType) => {
                             <th className={s.item4}>Grade</th>
                         </tr>
                         {cardsData.cardsTableData.cards.map((item) => {
-
-
                             return (
-
                                 <StringTablePN
                                     key={v1()}
                                     value1={item.question}
