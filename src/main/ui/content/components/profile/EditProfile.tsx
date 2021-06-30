@@ -4,13 +4,13 @@ import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import editPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import {ChangeEvent, useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 
-export const EditProfile =  (props: any) => {
+export const EditProfile = (props: any) => {
     //HOOKS
     const user = useSelector<AppRootStateType>(state => state.login.user);
     const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
@@ -64,7 +64,14 @@ export const EditProfile =  (props: any) => {
             dispatch(updateProfileDataTC(name, baseImage))
         }
     }
+    const [cancel, setCancel] = useState<boolean>(false)
+    const onCancelClickHandler = () => {
 
+    }
+
+    if (cancel) {
+        return <Redirect to={'/packs'}/>
+    }
 
     if (user === null) {
         return <Redirect to={'/login'}/>
@@ -85,16 +92,16 @@ export const EditProfile =  (props: any) => {
                            }}/>
                     <div className={s.edit}>
                         <div className={s.circle}>
-                            <img className={s.photo} src={avatar} alt="photo"/> 
+                            <img className={s.photo} src={avatar} alt="photo"/>
                         </div>
                         <div>
                             <a onClick={() => inRef && inRef.current && inRef.current.click()}>
                                 <img className={s.icon} src={editPhoto} alt="photo"/>
                             </a>
-                        </div>    
+                        </div>
                     </div>
                     <form className={s.form}>
-                        <Input style= {{marginBottom:"25px"}}
+                        <Input style={{marginBottom: "25px"}}
                                title="Nickname"
                                type="text"
                                name="nickname"
@@ -111,7 +118,7 @@ export const EditProfile =  (props: any) => {
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
                                 value="Cancel"
-                                onClick={props.onclickHandler}
+                                onClick={() => setCancel(true) }
                         />
                         <Button style={{width: "125px"}}
                                 value="Save"
