@@ -121,7 +121,7 @@ export const EditProfile =  (props: any) => {
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
                                 value="Cancel"
-                                onClick={props.onclickHandler}
+                                onClick={() => setCancel(true)}
                         />
                         <Button style={{width: "125px"}}
                                 value="Save"
