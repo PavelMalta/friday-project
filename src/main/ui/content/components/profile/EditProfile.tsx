@@ -64,17 +64,12 @@ export const EditProfile =  (props: any) => {
             dispatch(updateProfileDataTC(name, baseImage))
         }
     }
-    const [cancel, setCancel] = useState<boolean>(false)
-    const onCancelClickHandler = () => {
+
 
     const logoutHandler = () => {
         dispatch(logoutTC())
     }
-    }
 
-    if (cancel) {
-        return <Redirect to={'/packs'}/>
-    }
 
     if (user === null || !isAuth) {
         return <Redirect to={'/login'}/>
@@ -120,8 +115,8 @@ export const EditProfile =  (props: any) => {
                     </form>
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
-                                value="Cancel"
-                                onClick={() => setCancel(true)}
+                                value="Logout"
+                                onClick={logoutHandler}
                         />
                         <Button style={{width: "125px"}}
                                 value="Save"
