@@ -1,10 +1,9 @@
 import {TitleH2} from "../../../common/titleh2/TitleH2";
 import s from "./EditProfile.module.scss";
-import profilePeter from "./../../../assets/images/profile/profileIvan.png";
 import editPhoto from "./../../../assets/images/profile/editPhoto.png";
 import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
-import React, {ChangeEvent, useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";

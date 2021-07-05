@@ -7,12 +7,10 @@ import {LoginContainer} from "./components/login/LoginContainer";
 import {PasswordRecoverContainer} from "./components/passwordRecover/PasswordRecoverContainer";
 import {Packs} from "./components/packs/Packs";
 import {Cards} from "./components/cards/Cards";
-import { NewPasswordContainer } from "./components/newPassword/NewPasswordContainer";
+import {NewPasswordContainer} from "./components/newPassword/NewPasswordContainer";
 import {LearnPack} from "./components/packs/learnPack/LearnPack";
 import {EditProfile} from "./components/profile/EditProfile";
 import {Error} from "./components/error/Error";
-import {ModalForEditCard} from "./components/cards/cardsTable/ModalForEditCard";
-
 
 
 export const Content = () => {
