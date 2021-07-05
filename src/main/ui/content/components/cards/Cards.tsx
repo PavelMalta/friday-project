@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addCardTC, deleteCardTC, getCardsTC, updateCardTC} from "../../../../store/cards-reducer";
 import {AppRootStateType} from "../../../../store/store";
-import {Redirect} from "react-router-dom";
 import {CardsList} from "./cardsList/CardsList";
 import {SelectValueType} from "../../../../store/packs-reducer";
 
@@ -15,7 +14,6 @@ export const Cards = () => {
 
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
-    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
     const dispatch = useDispatch()
 
     useEffect(() => {
