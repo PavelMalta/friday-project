@@ -4,25 +4,19 @@ import {addCardTC, deleteCardTC, getCardsTC, updateCardTC} from "../../../../sto
 import {AppRootStateType} from "../../../../store/store";
 import {CardsList} from "./cardsList/CardsList";
 import {SelectValueType} from "../../../../store/packs-reducer";
-import {Redirect} from "react-router-dom";
+
+
 
 
 export const Cards = () => {
-    console.log('cards render')
+
     const [options, setOptions] = useState<SelectValueType>(10)
 
     const userID = useSelector<AppRootStateType, string>(state => state.login.userID)
     const cardsPackId = useSelector<AppRootStateType, string>(state => state.cards.cardsPackId)
-    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth)
-    const isFetching = useSelector<AppRootStateType, boolean>(state => state.cards.isFetching)
     const dispatch = useDispatch()
 
-    // hooks for adding card
-
-
-
     useEffect(() => {
-        console.log(cardsPackId)
         dispatch(getCardsTC({cardsPack_id: cardsPackId, pageCount: options}))
     }, [dispatch, options])
 
@@ -56,21 +50,20 @@ export const Cards = () => {
         setOptions(value)
     },[])
 
-    if (!isAuth) {
-        return <Redirect to={'/login'}/>
-    }
+    // if (!isAuth) {
+    //     return <Redirect to={'/login'}/>
+    // }
 
     return (
         <div>
-            {!isFetching && <CardsList userID={userID}
-                                       deleteCard={deleteCard}
-                                       updateCard={updateCard}
-                                       addCards={addCards}
-                                       onChangePage={onChangePage}
-                                       value={options}
-                                       onChangeOption={onChangeOption}
+            <CardsList userID={userID}
+                       deleteCard={deleteCard}
+                       updateCard={updateCard}
+                       addCards={addCards}
+                       onChangePage={onChangePage}
+                       value={options}
+                       onChangeOption={onChangeOption}
             />
-            }
         </div>
     )
 }
