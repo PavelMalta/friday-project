@@ -5,6 +5,7 @@ import {LoginPage} from "./LoginPage";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 import {Preloader} from "../../../common/preloader/Preloader";
+import {routes} from "../../../../router/routes";
 
 export const LoginContainer = () => {
 
@@ -56,7 +57,7 @@ export const LoginContainer = () => {
         return <Preloader/>
     }
     if (isAuth) {
-        return <Redirect to={'/packs'}/>
+        return <Redirect to={routes.profile}/>
     }
 
     return    <LoginPage email={email}

@@ -6,16 +6,17 @@ import {Input} from "../../../common/input/Input";
 import {Button} from "../../../common/button/Button";
 import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getProfileUserdataTC, updateProfileDataTC} from "../../../../store/login-reducer";
+import {getProfileUserdataTC, logoutTC, updateProfileDataTC} from "../../../../store/login-reducer";
 import {AppRootStateType} from "../../../../store/store";
 import {Redirect} from "react-router-dom";
 
-export const EditProfile = (props: any) => {
+export const EditProfile =  (props: any) => {
     //HOOKS
     const user = useSelector<AppRootStateType>(state => state.login.user);
     const userName = useSelector<AppRootStateType, string>(state => state.login.user.name);
     const userEmail = useSelector<AppRootStateType, string>(state => state.login.user.email);
     const avatar = useSelector<AppRootStateType, string>(state => state.login.user.avatar);
+    const isAuth = useSelector<AppRootStateType, boolean>(state => state.login.isAuth);
     const inRef = useRef<HTMLInputElement>(null)
 
     const dispatch = useDispatch()
@@ -67,13 +68,16 @@ export const EditProfile = (props: any) => {
     const [cancel, setCancel] = useState<boolean>(false)
     const onCancelClickHandler = () => {
 
+    const logoutHandler = () => {
+        dispatch(logoutTC())
+    }
     }
 
     if (cancel) {
         return <Redirect to={'/packs'}/>
     }
 
-    if (user === null) {
+    if (user === null || !isAuth) {
         return <Redirect to={'/login'}/>
     }
 
@@ -92,16 +96,16 @@ export const EditProfile = (props: any) => {
                            }}/>
                     <div className={s.edit}>
                         <div className={s.circle}>
-                            <img className={s.photo} src={avatar} alt="photo"/>
+                            <img className={s.photo} src={avatar} alt="photo"/> 
                         </div>
                         <div>
                             <a onClick={() => inRef && inRef.current && inRef.current.click()}>
                                 <img className={s.icon} src={editPhoto} alt="photo"/>
                             </a>
-                        </div>
+                        </div>    
                     </div>
                     <form className={s.form}>
-                        <Input style={{marginBottom: "25px"}}
+                        <Input style= {{marginBottom:"25px"}}
                                title="Nickname"
                                type="text"
                                name="nickname"
@@ -118,7 +122,7 @@ export const EditProfile = (props: any) => {
                     <div className={s.btn}>
                         <Button style={{width: "125px", backgroundColor: "#D7D8EF", color: "#21268F"}}
                                 value="Cancel"
-                                onClick={() => setCancel(true) }
+                                onClick={props.onclickHandler}
                         />
                         <Button style={{width: "125px"}}
                                 value="Save"
